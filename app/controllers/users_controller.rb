@@ -17,6 +17,10 @@ require 'pry'
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   private
 
   def user_params
@@ -31,8 +35,6 @@ require 'pry'
   end
 
 
-  def new
-  end
-  
+
 
 end
