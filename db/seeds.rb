@@ -49,7 +49,7 @@
 @u49 = User.create(name: "Reynold Beed",street_address: "37076 Straubel Trail",city: "Oklahoma City",state: "Oklahoma",zip_code: "73099",email_address: "rbeed1c@ocn.ne.jp",password:"p1AZ5Z", enabled: true, role:0)
 @u50 = User.create(name: "Christiano Trighton",street_address: "81 Straubel Lane",city: "Las Vegas",state: "Nevada",zip_code: "89108",email_address: "ctrighton1d@comcast.net",password:"yz8Yvut6rG", enabled: true, role:0)
 
-@i1 = @u4.items.create(item_name: "W.L. Weller Special Reserve",image_url: "http://www.buffalotracedistillery.com/sites/default/files/Weller_CYPB_750ml_front_LoRes.png",price: 20.0,inventory: 4, description:"A sweet nose with a presence of caramel. Tasting notes of honey, butterscotch, and a soft woodiness. It's smooth, delicate and calm. Features a smooth finish with a sweet honeysuckle flair.",enabled: true)
+@i1 = @u4.items.create(item_name: "W.L. Weller Special Reserve",image_url: "http://www.buffalotracedistillery.com/sites/default/files/Weller_CYPB_750ml_front_LoRes.png",current_price: 20.0,inventory: 4, description:"A sweet nose with a presence of caramel. Tasting notes of honey, butterscotch, and a soft woodiness. It's smooth, delicate and calm. Features a smooth finish with a sweet honeysuckle flair.",enabled: true)
 @i2 = @u5.items.create(item_name: "W.L. Weller C.Y.P.B.",image_url: "http://www.buffalotracedistillery.com/sites/default/files/weller%20special%20reserve%20brand%20page%5B1%5D.png",current_price: 35.0,inventory: 30, description:"A light aroma with citrus and oak on the nose. The palate is well rounded and balanced, with a medium-long finish and hints of vanilla.",enabled: true)
 @i3 = @u8.items.create(item_name: "Bulleit Bourbon",image_url: "https://www.totalwine.com/media/sys_master/twmmedia/h5c/hed/11635356794910.png",current_price: 22.0,inventory: 42, description:"Medium amber in color, with gentle spiciness and sweet oak aromas. Mid-palate is smooth with tones of maple, oak, and nutmeg. Finish is long, dry, and satiny with a light toffee flavor.",enabled: true)
 @i4 = @u4.items.create(item_name: "Stagg Jr.",image_url: "https://www.totalwine.com/media/sys_master/twmmedia/hd3/h4f/10678919528478.png",current_price: 40.0,inventory: 30, description:"Rich, sweet, chocolate and brown sugar flavors mingle in perfect balance with the bold rye spiciness. The boundless finish lingers with hints of cherries, cloves and smokiness.",enabled: true)
@@ -103,104 +103,104 @@ BRAND",enabled: true)
 @i49 = @u6.items.create(item_name: "Sipper Leather Flask - 8 oz",image_url: "https://www.sargeknives.com/images/products/lg-200.png",current_price: 18.0,inventory: 42, description:"If you need to carry a little incognito something strong, do it like a gentleman with this classy leather wrapped 8 oz. Hip Flask. Stainless steel construction with attached screw top cap. No one will be the wiser.",enabled: true)
 @i50 = @u6.items.create(item_name: "Medieval Collectables Satin Finish Flask",image_url: "http://www.medievalcollectibles.com/images/Product/large/CG8931.png",current_price: 10.0,inventory: 37, description:"The stainless steel flask is both classic and classy with a funnel for easy filling to enjoy wherever the party may go.",enabled: true)
 
-@o1 = @u17.orders.create(status: 0)
-@o2 = @u35.orders.create(status: 0)
-@o3 = @u33.orders.create(status: 0)
-@o4 = @u31.orders.create(status: 0)
-@o5 = @u17.orders.create(status: 0)
-@o6 = @u19.orders.create(status: 0)
-@o7 = @u21.orders.create(status: 0)
-@o8 = @u23.orders.create(status: 0)
-@o9 = @u18.orders.create(status: 0)
-@o10 = @u18.orders.create(status: 0)
-@o11 = @u44.orders.create(status: 0)
-@o12 = @u20.orders.create(status: 0)
-@o13 = @u29.orders.create(status: 0)
-@o14 = @u27.orders.create(status: 0)
-@o15 = @u34.orders.create(status: 0)
-@o16 = @u25.orders.create(status: 0)
-@o17 = @u22.orders.create(status: 0)
-@o18 = @u27.orders.create(status: 0)
-@o19 = @u17.orders.create(status: 0)
-@o20 = @u31.orders.create(status: 0)
-@o21 = @u31.orders.create(status: 0)
-@o22 = @u22.orders.create(status: 0)
-@o23 = @u28.orders.create(status: 0)
-@o24 = @u46.orders.create(status: 0)
-@o25 = @u27.orders.create(status: 0)
-@o26 = @u16.orders.create(status: 0)
-@o27 = @u33.orders.create(status: 0)
-@o28 = @u30.orders.create(status: 0)
-@o29 = @u39.orders.create(status: 0)
-@o30 = @u31.orders.create(status: 0)
-@o31 = @u22.orders.create(status: 0)
-@o32 = @u21.orders.create(status: 0)
-@o33 = @u19.orders.create(status: 0)
-@o34 = @u26.orders.create(status: 0)
-@o35 = @u34.orders.create(status: 0)
-@o36 = @u14.orders.create(status: 0)
-@o37 = @u49.orders.create(status: 0)
-@o38 = @u47.orders.create(status: 0)
-@o39 = @u34.orders.create(status: 0)
-@o40 = @u15.orders.create(status: 0)
-@o41 = @u24.orders.create(status: 0)
-@o42 = @u11.orders.create(status: 0)
-@o43 = @u34.orders.create(status: 0)
-@o44 = @u34.orders.create(status: 0)
-@o45 = @u29.orders.create(status: 0)
-@o46 = @u50.orders.create(status: 0)
-@o47 = @u16.orders.create(status: 0)
-@o48 = @u40.orders.create(status: 0)
-@o49 = @u20.orders.create(status: 0)
-@o50 = @u17.orders.create(status: 0)
-
-@o1 << [@i1,@i15,@i28,@i43,@i4]
-@o2 << [@i25,@i20,@i50,@i37,@i27]
-@o3 << [@i10,@i37,@i31,@i40,@i41]
-@o4 << [@i15,@i41,@i3,@i26,@i3]
-@o5 << [@i21,@i23,@i6,@i49,@i2]
-@o6 << [@i32,@i21,@i32,@i22,@i10]
-@o7 << [@i25,@i31,@i38,@i31,@i41]
-@o8 << [@i12,@i32,@i3,@i3,@i15]
-@o9 << [@i43,@i39,@i34,@i22,@i47]
-@o10 << [@i11,@i48,@i41,@i28,@i28]
-@o11 << [@i34,@i48,@i21,@i28,@i13]
-@o12 << [@i39,@i3,@i41,@i11,@i18]
-@o13 << [@i41,@i3,@i13,@i7,@i5]
-@o14 << [@i27,@i40,@i20,@i49,@i3]
-@o15 << [@i24,@i27,@i50,@i39,@i32]
-@o16 << [@i27,@i39,@i27,@i49,@i45]
-@o17 << [@i3,@i44,@i27,@i33,@i39]
-@o18 << [@i39,@i31,@i29]
-@o19 << [@i14,@i10,@i33]
-@o20 << [@i39,@i31,@i5]
-@o21 << [@i50,@i24,@i32]
-@o22 << [@i5,@i1,@i31]
-@o23 << [@i21,@i3,@i48,@i3,@i19]
-@o24 << [@i42,@i27,@i40,@i34]
-@o25 << [@i9,@i29,@i12]
-@o26 << [@i27,@i37,@i39]
-@o27 << [@i11,@i40,@i12,@i25,@i3]
-@o28 << [@i46,@i37,@i48,@i40,@i28]
-@o29 << [@i45,@i16,@i40,@i34,@i33]
-@o30 << [@i1,@i22,@i33,@i38,@i27]
-@o31 << [@i32,@i42,@i25,@i11,@i12]
-@o32 << [@i48,@i37,@i11]
-@o33 << [@i13,@i47,@i20,@i21]
-@o34 << [@i29,@i36,@i43,@i32]
-@o35 << [@i28,@i2,@i49,@i31]
-@o36 << [@i13,@i26,@i6,@i5]
-@o37 << [@i8,@i47,@i2,@i15]
-@o38 << [@i49,@i49,@i18,@i21]
-@o39 << [@i28,@i32,@i22,@i19]
-@o40 << [@i1,@i10,@i39,@i17]
-@o41 << [@i8,@i50,@i47,@i16]
-@o42 << [@i7,@i48,@i30,@i38]
-@o43 << [@i4,@i28,@i14,@i17,@i27]
-@o44 << [@i36,@i23,@i2,@i40,@i13]
-@o45 << [@i27,@i47,@i24,@i5,@i33]
-@o46 << [@i45,@i33,@i20,@i31,@i26]
-@o47 << [@i7,@i30,@i7,@i37,@i35]
-@o48 << [@i15,@i11,@i1,@i17,@i25]
-@o49 << [@i37,@i19,@i11,@i31,@i30]
-@o50 << [@i34,@i26,@i31,@i8]
+# @o1 = @u17.orders.create(status: 0)
+# @o2 = @u35.orders.create(status: 0)
+# @o3 = @u33.orders.create(status: 0)
+# @o4 = @u31.orders.create(status: 0)
+# @o5 = @u17.orders.create(status: 0)
+# @o6 = @u19.orders.create(status: 0)
+# @o7 = @u21.orders.create(status: 0)
+# @o8 = @u23.orders.create(status: 0)
+# @o9 = @u18.orders.create(status: 0)
+# @o10 = @u18.orders.create(status: 0)
+# @o11 = @u44.orders.create(status: 0)
+# @o12 = @u20.orders.create(status: 0)
+# @o13 = @u29.orders.create(status: 0)
+# @o14 = @u27.orders.create(status: 0)
+# @o15 = @u34.orders.create(status: 0)
+# @o16 = @u25.orders.create(status: 0)
+# @o17 = @u22.orders.create(status: 0)
+# @o18 = @u27.orders.create(status: 0)
+# @o19 = @u17.orders.create(status: 0)
+# @o20 = @u31.orders.create(status: 0)
+# @o21 = @u31.orders.create(status: 0)
+# @o22 = @u22.orders.create(status: 0)
+# @o23 = @u28.orders.create(status: 0)
+# @o24 = @u46.orders.create(status: 0)
+# @o25 = @u27.orders.create(status: 0)
+# @o26 = @u16.orders.create(status: 0)
+# @o27 = @u33.orders.create(status: 0)
+# @o28 = @u30.orders.create(status: 0)
+# @o29 = @u39.orders.create(status: 0)
+# @o30 = @u31.orders.create(status: 0)
+# @o31 = @u22.orders.create(status: 0)
+# @o32 = @u21.orders.create(status: 0)
+# @o33 = @u19.orders.create(status: 0)
+# @o34 = @u26.orders.create(status: 0)
+# @o35 = @u34.orders.create(status: 0)
+# @o36 = @u14.orders.create(status: 0)
+# @o37 = @u49.orders.create(status: 0)
+# @o38 = @u47.orders.create(status: 0)
+# @o39 = @u34.orders.create(status: 0)
+# @o40 = @u15.orders.create(status: 0)
+# @o41 = @u24.orders.create(status: 0)
+# @o42 = @u11.orders.create(status: 0)
+# @o43 = @u34.orders.create(status: 0)
+# @o44 = @u34.orders.create(status: 0)
+# @o45 = @u29.orders.create(status: 0)
+# @o46 = @u50.orders.create(status: 0)
+# @o47 = @u16.orders.create(status: 0)
+# @o48 = @u40.orders.create(status: 0)
+# @o49 = @u20.orders.create(status: 0)
+# @o50 = @u17.orders.create(status: 0)
+#
+# @o1 << [@i1,@i15,@i28,@i43,@i4]
+# @o2 << [@i25,@i20,@i50,@i37,@i27]
+# @o3 << [@i10,@i37,@i31,@i40,@i41]
+# @o4 << [@i15,@i41,@i3,@i26,@i3]
+# @o5 << [@i21,@i23,@i6,@i49,@i2]
+# @o6 << [@i32,@i21,@i32,@i22,@i10]
+# @o7 << [@i25,@i31,@i38,@i31,@i41]
+# @o8 << [@i12,@i32,@i3,@i3,@i15]
+# @o9 << [@i43,@i39,@i34,@i22,@i47]
+# @o10 << [@i11,@i48,@i41,@i28,@i28]
+# @o11 << [@i34,@i48,@i21,@i28,@i13]
+# @o12 << [@i39,@i3,@i41,@i11,@i18]
+# @o13 << [@i41,@i3,@i13,@i7,@i5]
+# @o14 << [@i27,@i40,@i20,@i49,@i3]
+# @o15 << [@i24,@i27,@i50,@i39,@i32]
+# @o16 << [@i27,@i39,@i27,@i49,@i45]
+# @o17 << [@i3,@i44,@i27,@i33,@i39]
+# @o18 << [@i39,@i31,@i29]
+# @o19 << [@i14,@i10,@i33]
+# @o20 << [@i39,@i31,@i5]
+# @o21 << [@i50,@i24,@i32]
+# @o22 << [@i5,@i1,@i31]
+# @o23 << [@i21,@i3,@i48,@i3,@i19]
+# @o24 << [@i42,@i27,@i40,@i34]
+# @o25 << [@i9,@i29,@i12]
+# @o26 << [@i27,@i37,@i39]
+# @o27 << [@i11,@i40,@i12,@i25,@i3]
+# @o28 << [@i46,@i37,@i48,@i40,@i28]
+# @o29 << [@i45,@i16,@i40,@i34,@i33]
+# @o30 << [@i1,@i22,@i33,@i38,@i27]
+# @o31 << [@i32,@i42,@i25,@i11,@i12]
+# @o32 << [@i48,@i37,@i11]
+# @o33 << [@i13,@i47,@i20,@i21]
+# @o34 << [@i29,@i36,@i43,@i32]
+# @o35 << [@i28,@i2,@i49,@i31]
+# @o36 << [@i13,@i26,@i6,@i5]
+# @o37 << [@i8,@i47,@i2,@i15]
+# @o38 << [@i49,@i49,@i18,@i21]
+# @o39 << [@i28,@i32,@i22,@i19]
+# @o40 << [@i1,@i10,@i39,@i17]
+# @o41 << [@i8,@i50,@i47,@i16]
+# @o42 << [@i7,@i48,@i30,@i38]
+# @o43 << [@i4,@i28,@i14,@i17,@i27]
+# @o44 << [@i36,@i23,@i2,@i40,@i13]
+# @o45 << [@i27,@i47,@i24,@i5,@i33]
+# @o46 << [@i45,@i33,@i20,@i31,@i26]
+# @o47 << [@i7,@i30,@i7,@i37,@i35]
+# @o48 << [@i15,@i11,@i1,@i17,@i25]
+# @o49 << [@i37,@i19,@i11,@i31,@i30]
+# @o50 << [@i34,@i26,@i31,@i8]
