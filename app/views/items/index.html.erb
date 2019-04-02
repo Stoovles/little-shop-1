@@ -3,13 +3,13 @@
 </section>
 
 <div class="items-container">
-  <%= @items.each do |item| %>
+  <% @items.each do |item| %>
     <div class="item-card">
       <h2><%= item.item_name %></h2>
       <img src=<%= item.image_url %> class="large-image" alt="image of <%= item.item_name %>">
-      <p>Merchant: <%= item.user_id.name %></p>
+      <p>Merchant: <%= item.merchant_name %></p>
       <p>In Inventory: <%= item.inventory %></p>
-      <p>Price: <%= item.current_price %></p>
+      <p>Price: $<%= item.current_price.round(2) %></p>
     </div>
   <% end %>
 </div>
