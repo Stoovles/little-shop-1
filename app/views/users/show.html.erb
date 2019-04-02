@@ -1,1 +1,3 @@
-<h2>Welcome back, <%= @user.name %>, you've successfully logged in.</h2>
+<% if current_user %>
+  <h2>Welcome back, <%= current_user.name %>, you've successfully logged in.</h2>
+<% end %>
