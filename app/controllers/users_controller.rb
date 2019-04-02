@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+require 'pry'
   def new
     @user = User.new
   end
@@ -7,11 +7,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      # binding.pry
       redirect_to @user, success: "You are now registered and logged in"
-    elsif @user.exists?(email_address: user_params[:email_address])
-      render 'new', danger: "This email address already exists"
     else
-      render 'new', danger: "You are missing required fields"
+      # flash.now[:danger] = "This email address already exists"
+      # binding.pry
+      render :new
     end
   end
 
@@ -23,6 +24,7 @@ class UsersController < ApplicationController
                                  :state,
                                  :city,
                                  :zip_code,
+                                 :email_address,
                                  :password,
                                  :password_confirmation)
   end
