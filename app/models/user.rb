@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  has_many :items
+
   validates_presence_of :name, :street_address, :city, :state, :zip_code, :email_address, :password, :password_confirmation
   validates :email_address, :uniqueness => true
   validates :password, confirmation: true

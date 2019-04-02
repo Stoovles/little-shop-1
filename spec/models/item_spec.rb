@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Item do, type: :model do
+RSpec.describe Item, type: :model do
   before :each do
     @u4 = User.create(name: "Sibbie Cromett",address: "0 Towne Avenue",city: "Birmingham",state: "Alabama",zipcode: 35211,email: "scromett3@github.io",password:"fEFJeHdT1K", enabled: true, role:1)
     @u8 = User.create(name: "Tonya Baldock",address: "5 Bellgrove Crossing",city: "Yakima",state: "Washington",zipcode: 98902,email: "tbaldock7@wikia.com",password:"GN2dr6VfS", enabled: true, role:1)
