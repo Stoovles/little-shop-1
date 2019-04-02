@@ -59,10 +59,10 @@ RSpec.describe "Items Index Page", type: :feature do
       end
     end
 
-    xit "has a statistics section" do
+    it "has a statistics section" do
       visit items_path
       within ".statistics" do
-        expect(page).to have_css("Statistics:")
+        expect(page).to have_content("Statistics")
       end
     end
 
