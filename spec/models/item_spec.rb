@@ -18,7 +18,7 @@ RSpec.describe Item, type: :model do
     @i10 = @u8.items.create(item_name: "Laws Four Grain Straight Bourbon",image_url: "https://static.whiskybase.com/storage/whiskies/6/3/733/177713-normal.png",current_price: 60.0,inventory: 43, description:"Aromas of orange blossom compliment notes of black tea, honey, and dusty pepper on the nose. Flavors of pekoe tea, orange peel, cinnamon, and vanilla custard dominate the palate. Hints of sweet tobacco and spice lead to a rich, dry finish.",enabled: true)
 
     @o1 = @u17.orders.create(status: 0)
-    @o1 << [@i1,@i4]
+    @o1.items << [@i1,@i4]
 
   end
 
@@ -61,7 +61,8 @@ RSpec.describe Item, type: :model do
 
     describe ".fulfulled?" do
       xit "should indicate whether OrderItem has been fulfilled" do
-        expect(@AAAHORDERITEM.fulfilled?).to eq(false)
+        oi = OrderItem.where(order_id: @o1.id).first
+        expect(oi.fulfilled?).to eq(false)
       end
     end
 
