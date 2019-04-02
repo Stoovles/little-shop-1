@@ -39,6 +39,14 @@ RSpec.describe Item, type: :model do
     end
   end
 
+  context "items index page" do
+    describe ".merchant_name" do
+      it "should give the merchant name for an item" do
+        expect(@i1.merchant_name).to eq("Sibbie Cromett")
+      end
+    end
+  end
+
   context "item show page" do
     describe ".quantity_sold" do
       xit "should return the total quantity of an item shipped" do
