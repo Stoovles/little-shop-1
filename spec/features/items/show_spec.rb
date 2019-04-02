@@ -2,11 +2,11 @@ require "rails_helper"
 
 RSpec.describe "Items Show Page" do
   before :each do
-    @umerch = User.create(name: "Ondrea Chadburn",address: "6149 Pine View Alley",city: "Wichita Falls",state: "Texas",zipcode: "76301",email_address: "ochadburn0@washingtonpost.com",password_digest:"EKLr4gmM44")
-    @uadmin = User.create(name: "Raff Faust",address: "066 Debs Place",city: "El Paso",state: "Texas",zipcode: 79936,email_address: "rfaust1@naver.com",password_digest:"ZCoxai")
-    @u1 = User.create(name: "Con Chilver",address: "16455 Miller Circle",city: "Van Nuys",state: "California",zipcode: "91406",email_address: "cchilver2@mysql.com",password_digest:"IrGmrINsmr9e")
+    @umerch = User.create(name: "Ondrea Chadburn",address: "6149 Pine View Alley",city: "Wichita Falls",state: "Texas",zip_code: "76301",email_address: "ochadburn0@washingtonpost.com",password_digest:"EKLr4gmM44")
+    @uadmin = User.create(name: "Raff Faust",address: "066 Debs Place",city: "El Paso",state: "Texas",zip_code: 79936,email_address: "rfaust1@naver.com",password_digest:"ZCoxai")
+    @u1 = User.create(name: "Con Chilver",address: "16455 Miller Circle",city: "Van Nuys",state: "California",zip_code: "91406",email_address: "cchilver2@mysql.com",password_digest:"IrGmrINsmr9e")
 
-    @i1 = @umerch.items.create(item_name: "W.L. Weller Special Reserve",image: "http://www.buffalotracedistillery.com/sites/default/files/Weller_CYPB_750ml_front_LoRes.png",price: 20.0,inventory: 4, description:"A sweet nose with a presence of caramel. Tasting notes of honey, butterscotch, and a soft woodiness. It's smooth, delicate and calm. Features a smooth finish with a sweet honeysuckle flair.",enabled: true)
+    @i1 = @umerch.items.create(item_name: "W.L. Weller Special Reserve",image_url: "http://www.buffalotracedistillery.com/sites/default/files/Weller_CYPB_750ml_front_LoRes.png",price: 20.0,inventory: 4, description:"A sweet nose with a presence of caramel. Tasting notes of honey, butterscotch, and a soft woodiness. It's smooth, delicate and calm. Features a smooth finish with a sweet honeysuckle flair.",enabled: true)
   end
 
 
