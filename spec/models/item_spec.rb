@@ -17,6 +17,10 @@ RSpec.describe Item do, type: :model do
     @i10 = @u8.items.create(item_name: "Laws Four Grain Straight Bourbon",image: "https://static.whiskybase.com/storage/whiskies/6/3/733/177713-normal.png",current_price: 60.0,inventory: 43, description:"Aromas of orange blossom compliment notes of black tea, honey, and dusty pepper on the nose. Flavors of pekoe tea, orange peel, cinnamon, and vanilla custard dominate the palate. Hints of sweet tobacco and spice lead to a rich, dry finish.",enabled: true)
   end
 
+  describe "Relationships" do
+    it {should belong_to :user}
+  end
+
   context "items index statistics" do
     describe ".popular_five" do
       it "should list the 5 most popular items" do
