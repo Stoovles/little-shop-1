@@ -5,7 +5,7 @@
 <div class="items-container">
   <% @items.each do |item| %>
     <div class="item-card">
-      <h2><%= item.item_name %></h2>
+      <h2><%= link_to item.item_name, item_path(item) %></h2>
       <img src=<%= item.image_url %> class="large-image" alt="image of <%= item.item_name %>">
       <p>Merchant: <%= item.merchant_name %></p>
       <p>In Inventory: <%= item.inventory %></p>

@@ -4,4 +4,8 @@ class ItemsController < ApplicationController
     @items = Item.all.where(enabled: true)
   end
 
+  def show
+
+  end
+
 end

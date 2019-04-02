@@ -27,8 +27,8 @@ RSpec.describe "Items Index Page", type: :feature do
 
     xit "shows all enabled items and their info to an admin" do
       visit root_path
-      click_link "Log in"
-      fill_in "Email", with: @uadmin.email
+      click_link "Log In"
+      fill_in "Email", with: @uadmin.email_address
       fill_in "Password", with: @uadmin.password
       click_button "Log in"
       visit items_path
@@ -43,7 +43,7 @@ RSpec.describe "Items Index Page", type: :feature do
       expect(page).to_not have_content(@i2.item_name)
     end
 
-    xit "links item name to item show page" do
+    it "links item name to item show page" do
       visit items_path
       within first ".item-card" do
         click_link "#{@i1.item_name}"
