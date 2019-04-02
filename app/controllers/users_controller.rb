@@ -31,8 +31,6 @@ require 'pry'
   end
 
 
-  def new
-  end
-  
+
 
 end
