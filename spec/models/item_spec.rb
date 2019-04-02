@@ -20,6 +20,10 @@ RSpec.describe Item, type: :model do
     @o1 = @u17.orders.create(status: 0)
     @o1.items << [@i1,@i4]
 
+    @o2 = @u17.orders.create(status: 0)
+    @o1.items << [@i1,@i4]
+    @o2.status = 3
+
   end
 
   describe "Relationships" do
