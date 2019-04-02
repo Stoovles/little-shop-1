@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.describe Item, type: :model do
   before :each do
-    @u4 = User.create(name: "Sibbie Cromett",address: "0 Towne Avenue",city: "Birmingham",state: "Alabama",zipcode: 35211,email: "scromett3@github.io",password:"fEFJeHdT1K", enabled: true, role:1)
-    @u8 = User.create(name: "Tonya Baldock",address: "5 Bellgrove Crossing",city: "Yakima",state: "Washington",zipcode: 98902,email: "tbaldock7@wikia.com",password:"GN2dr6VfS", enabled: true, role:1)
+    @u4 = User.create(name: "Sibbie Cromett",street_address: "0 Towne Avenue",city: "Birmingham",state: "Alabama",zipcode: "35211",email_address: "scromett3@github.io",password:"fEFJeHdT1K", enabled: true, role:1)
+    @u8 = User.create(name: "Tonya Baldock",street_address: "5 Bellgrove Crossing",city: "Yakima",state: "Washington",zipcode: "98902",email_address: "tbaldock7@wikia.com",password:"GN2dr6VfS", enabled: true, role:1)
 
     @i1 = @u4.items.create(item_name: "W.L. Weller Special Reserve",image: "http://www.buffalotracedistillery.com/sites/default/files/Weller_CYPB_750ml_front_LoRes.png",current_price: 20.0,inventory: 4, description:"A sweet nose with a presence of caramel. Tasting notes of honey, butterscotch, and a soft woodiness. It's smooth, delicate and calm. Features a smooth finish with a sweet honeysuckle flair.",enabled: true)
     @i2 = @u4.items.create(item_name: "W.L. Weller C.Y.P.B.",image: "http://www.buffalotracedistillery.com/sites/default/files/weller%20special%20reserve%20brand%20page%5B1%5D.png",current_price: 35.0,inventory: 30, description:"A light aroma with citrus and oak on the nose. The palate is well rounded and balanced, with a medium-long finish and hints of vanilla.",enabled: true)
