@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
 require 'pry'
   def new
     @user = User.new
@@ -28,4 +29,10 @@ require 'pry'
                                  :password,
                                  :password_confirmation)
   end
+
+
+  def new
+  end
+  
+
 end

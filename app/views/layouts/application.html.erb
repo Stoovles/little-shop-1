@@ -8,6 +8,15 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
+  <section class=navbar>
+    <%= link_to "Home", root_path %>
+    <%= link_to "All Items", items_path %>
+    <%= link_to "Merchants", merchants_path %>
+    <%= link_to "Register", new_user_path %>
+    <%= link_to "Log In", login_path %>
+    <%= link_to "My Cart", cart_path %>
+  </section>
+
   <body>
     <% flash.each do |name, message| %>
       <div class='alert alert-<%= name %>', role="alert">

@@ -1,0 +1,65 @@
+Project: Little Shop of Whiskey
+
+Team Name: Whiskey Tango Foxtrot
+
+Group Member Names: Jeremy Bennett, Ethan Grab, Carrie Walsh, Matt Weiss
+
+Goals and Expectations for the Project (What does each group member hope to get out of this project? What do we want to achieve as a team? How will we know that we're successful?):
+- accomplish all required user stories
+- minimum 3's on everything
+- proficiency in nesting/namespacing
+- proficiency in authentication/authorization
+- full user functionality with all edge cases tested - can't break website
+
+Team strengths & collaboration styles (consider discussing your Pairin qualities here):
+- in-person stand-ups
+- multiple people on one screen
+- ALL of us (except Ethan) love TDD
+- Carrie likes CSS
+- Jeremy likes ActiveRecord
+- Matt likes edge-case testing
+- Ethan likes big picture (routes, schema)
+
+How we can use our strengths to overcome obstacles:
+- we have a variety of strengths, but also share a drive to do well and learn. We will have stand-ups daily to align the group and an open slack channel.
+
+Schedule Expectations (When are we available to work together and individually? What constraints do we have?):
+- Carrie gets here early
+- Jeremy, Matt, Ethan get here a little later
+- Carrie and Jeremy can stay late with 24hr notice
+- Ethan typically works at night
+- Making PR's make sure of functionality - x out failing tests - no failing CRUD actions
+- Git align ~every 2 days
+
+Communication Expectations (How and often will we communicate? How do we keep lines of communication open? How will we make decisions as a team?):
+- lots 'o Slack
+- in person stand-ups
+
+Abilities & Growth Expectations (Technical strengths and areas for desired improvement):
+- nesting/namespacing
+- authentication/authorization
+- css-ing
+
+Workload Expectations (What features do we each want to work on?):
+- TBD
+- bits of everything
+
+Workflow Expectations (Git workflow/Tools/Code Review/Reviewing Pull Requests/Debugging and Problem-solving Techniques):
+- small-ish commits - descriptive messages
+- open communication with PR's
+- Time-boxing until stuck (~30)
+- no giving answers - be a teacher
+
+Expectations for giving and receiving feedback:
+- Specific, Actionable, Kind feedback
+
+Project management tools we will use:
+- Waffle.io
+
+First Weekend Agenda:
+- setup repo - get cards setup
+- familarize selves with project and user stories
+- wireframing
+- db schema
+
+Additional Notes:
