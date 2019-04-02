@@ -34,7 +34,7 @@ RSpec.describe Item do, type: :model do
   end
 
   context "item show page" do
-    describe ".quant_sold" do
+    describe ".quantity_sold" do
       it "should return the total quantity of an item shipped" do
         expect(@i1.quant_sold).to eq(5) #create orders/orderitems
       end
