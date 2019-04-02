@@ -25,14 +25,14 @@ RSpec.describe Item, type: :model do
 
   context "items index statistics" do
     describe ".popular_five" do
-      it "should list the 5 most popular items" do
+      xit "should list the 5 most popular items" do
         expected = [@i1,@i3,@i5,@i7,@i8]
         expect(Item.popular_five).to eq(expected)
       end
     end
 
     describe ".unpopular_five" do
-      it "should list the 5 least popular items" do
+      xit "should list the 5 least popular items" do
         expected = [@i2,@i4,@i6,@i9,@i10]
         expect(Item.unpopular_five).to eq(expected)
       end
@@ -41,19 +41,19 @@ RSpec.describe Item, type: :model do
 
   context "item show page" do
     describe ".quantity_sold" do
-      it "should return the total quantity of an item shipped" do
+      xit "should return the total quantity of an item shipped" do
         expect(@i1.quant_sold).to eq(5) #create orders/orderitems
       end
     end
 
     describe ".fulfulled?" do
-      it "should indicate whether OrderItem has been fulfilled" do
+      xit "should indicate whether OrderItem has been fulfilled" do
         expect(@AAAHORDERITEM.fulfilled?).to eq(true)
       end
     end
 
     describe ".avg_fulfill_time" do
-      it "should calculate average time to fulfill item" do
+      xit "should calculate average time to fulfill item" do
         expect(@i1.avg_fulfill_time).to eq()
         expect(@i4.avg_fulfill_time).to eq()
       end

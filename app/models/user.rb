@@ -11,8 +11,8 @@ class User < ApplicationRecord
 
   # # e.g., User.authenticate('penelope@turing.com', 'boom')
   # def self.authenticate(email, password)
-  #   if self.find_by(email: email) == self.find_by(password: password)
-  #     self.find_by(email: email)
+  #   if self.find_by(email_address: email) == self.find_by(password: password)
+  #     self.find_by(email_address: email)
   #   else
   #     nil
   #   end
