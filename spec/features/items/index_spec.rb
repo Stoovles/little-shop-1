@@ -51,10 +51,10 @@ RSpec.describe "Items Index Page", type: :feature do
       end
     end
 
-    xit "links item thumbnail to item show page" do
+    it "links item thumbnail to item show page" do
       visit items_path
       within first ".item-card" do
-        find("#{@i1.image}").click
+        click_link "image of #{@i1.item_name}"
         expect(current_path).to eq(item_path(@i1))
       end
     end
