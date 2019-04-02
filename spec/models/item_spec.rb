@@ -40,6 +40,12 @@ RSpec.describe Item do, type: :model do
       end
     end
 
+    describe ".fulfulled?" do
+      it "should indicate whether OrderItem has been fulfilled" do
+        expect(@AAAHORDERITEM.fulfilled?).to eq(true)
+      end
+    end
+
     describe ".avg_fulfill_time" do
       it "should calculate average time to fulfill item" do
         expect(@i1.avg_fulfill_time).to eq()
