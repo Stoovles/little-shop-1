@@ -8,6 +8,11 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
+  <section class=navbar>
+    <%= link_to "Home", root_path %>
+    <%= link_to "All Items", items_path %>
+  </section>
+
   <body>
     <%= yield %>
   </body>
