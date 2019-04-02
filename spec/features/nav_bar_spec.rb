@@ -9,21 +9,26 @@ RSpec.describe 'When I visit our application I see a navbar' do
         expect(page).to have_link 'Home'
         click_link 'Home'
         expect(current_path).to eq(root_path)
+
         expect(page).to have_link 'All Items'
         click_link 'All Items'
         expect(current_path).to eq(items_path)
-        # expect(page).to have_link 'Merchants', merchants_path
-        # click_link 'Merchants'
-        # expect(current_path).to eq(merchants_path)
-        # expect(page).to have_link 'My Cart', cart_path(my_cart)
-        # click_link 'My Cart'
-        # expect(current_path).to eq(my_cart_path)
-        # expect(page).to have_link 'Log In', login_path
-        # click_link 'Log In'
-        # expect(current_path).to eq(login_path)
-        # expect(page).to have_link 'Register', new_user_path
-        # click_link 'Register'
-        # expect(current_path).to eq(new_user_path)
+
+        expect(page).to have_link 'Merchants'
+        click_link 'Merchants'
+        expect(current_path).to eq(merchants_path)
+
+        expect(page).to have_link 'My Cart'
+        click_link 'My Cart'
+        expect(current_path).to eq(cart_path)
+
+        expect(page).to have_link 'Log In'
+        click_link 'Log In'
+        expect(current_path).to eq(login_path)
+
+        expect(page).to have_link 'Register'
+        click_link 'Register'
+        expect(current_path).to eq(new_user_path)
       end
     end
 
