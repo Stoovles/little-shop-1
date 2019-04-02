@@ -13,15 +13,19 @@ RSpec.describe "Items Show Page" do
 
 
   context "anyone visiting an item show page" do
-    xit "shows all the information for that item" do
+    it "shows all the information for that item" do
       visit item_path(@i1)
       expect(page).to have_content(@i1.item_name)
       expect(page).to have_content(@i1.description)
-      expect(page).to have_css("img[src*='#{@i1.image}']")
-      expect(page).to have_content("Merchant: #{@i1.user.name}")
-      expect(page).to have_content("In inventory: :#{@i1.inventory}")
-      expect(page).to have_content("Price: $#{@i1.current_price}")
-      expect(page).to have_content("Average time to ship: #{@i1.avg_fulfill_time}")
+      expect(page).to have_css("img[src*='#{@i1.image_url}']")
+      expect(page).to have_content("Sold by: #{@i1.merchant_name}")
+      expect(page).to have_content("#{@i1.inventory} left in stock")
+      expect(page).to have_content("$#{@i1.current_price}")
+      if @i1.avg_fulfill_time == 1
+        expect(page).to have_content("Usually ships in #{@i1.avg_fulfill_time} day")
+      else
+        expect(page).to have_content("Usually ships in #{@i1.avg_fulfill_time} days")
+      end
     end
   end
 
