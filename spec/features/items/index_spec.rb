@@ -12,7 +12,7 @@ RSpec.describe "Items Index Page", type: :feature do
   end
 
   context "anyone visiting item catalog" do
-    xit "shows all enabled items and their info to a visitor" do
+    it "shows all enabled items and their info to a visitor" do
       visit items_path
       within first ".item-card" do
         expect(page).to have_content(@i1.item_name)

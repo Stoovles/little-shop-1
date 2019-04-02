@@ -1,0 +1,15 @@
+<section class="statistics">
+
+</section>
+
+<div class="items-container">
+  <%= @items.each do |item| %>
+    <div class="item-card">
+      <h2><%= item.item_name %></h2>
+      <img src=<%= item.img_url %> class="large-image" alt="image of <%= item.item_name %>">
+      <p>Merchant: <%= item.user_id.name %></p>
+      <p>In Inventory: <%= item.inventory %></p>
+      <p>Price: <%= item.current_price %></p>
+    </div>
+  <% end %>
+</div>
