@@ -4,8 +4,11 @@ before_action :require_visitor_or_user
   end
 
   def create
-    
-    redirect_to item_path(params[:item_id])
+    session[:cart] ||= Hash.new(0)
+    item = Item.find(params[:item_id])
+    @cart = Cart.new(session[:cart])
+    @cart.add_item(item.id)
+    redirect_to item_path(params[:item_id]), info: "You now have #{session[:cart][item.id.to_s]} #{item.item_name} in your cart."
   end
 
 private
