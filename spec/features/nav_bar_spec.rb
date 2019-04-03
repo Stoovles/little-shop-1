@@ -184,15 +184,45 @@ RSpec.describe 'When I visit our application I see a navbar' do
   end
 
 #User Story 6
-  # describe 'it has access protections in place' do
-  #   it 'keeps visitors away from user, merchant, and admin routes' do
-  #     visit dashboard_path
-  #     expect(page.status_code).to eq(404)
-  #     visit admin_dashboard_path
-  #     expect(page.status_code).to eq(404)
-  #
-  #   end
-  # end
+  describe 'it has access protections in place' do
+    it 'keeps visitors away from user, merchant, and admin routes' do
+      visit dashboard_path
+      expect(page).to have_content("The page you were looking for doesn't exist")
+      visit admin_dashboard_path
+      expect(page).to have_content("The page you were looking for doesn't exist")
+      visit profile_path
+      expect(page).to have_content("The page you were looking for doesn't exist")
+    end
 
+    it 'keeps users away from merchant and admin info' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
+      visit dashboard_path
+      expect(page).to have_content("The page you were looking for doesn't exist")
+      visit admin_dashboard_path
+      expect(page).to have_content("The page you were looking for doesn't exist")
+    end
+
+    it 'keeps merchants from accessing user profiles, admin, or cart info' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@merchant)
+
+      visit profile_path
+      expect(page).to have_content("The page you were looking for doesn't exist")
+      visit admin_dashboard_path
+      expect(page).to have_content("The page you were looking for doesn't exist")
+      visit cart_path
+      expect(page).to have_content("The page you were looking for doesn't exist")
+    end
+
+    it 'keeps admins from accessing user profiles, merchant dashboard, or cart info' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
+
+      visit profile_path
+      expect(page).to have_content("The page you were looking for doesn't exist")
+      visit dashboard_path
+      expect(page).to have_content("The page you were looking for doesn't exist")
+      visit cart_path
+      expect(page).to have_content("The page you were looking for doesn't exist")
+    end
+  end
 end
