@@ -9,9 +9,8 @@ before_action :require_user
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to @user, success: "You are now registered and logged in"
+      redirect_to profile_path, success: "You are now registered and logged in"
     else
-
       render :new
     end
   end
@@ -33,7 +32,7 @@ before_action :require_user
       user_params.delete(:password_confirmation)
     end
     if @user.update_attributes(user_params)
-      redirect_to @user, success: "Profile updated"
+      redirect_to profile_path, success: "Profile updated"
     else
       render :edit
     end
