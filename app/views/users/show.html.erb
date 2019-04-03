@@ -1,4 +1,5 @@
 <% if current_user %>
+
   <br>
   <section class='edit-profile'>
     <%= link_to "Edit Profile", edit_user_path(current_user) %>
@@ -13,5 +14,5 @@
     <p>Zip Code: <%= current_user.zip_code %></p>
     <p>Email: <%= current_user.email_address %></p>
   </div>
-
+<% else redirect_to "/public/404" %>
 <% end %>

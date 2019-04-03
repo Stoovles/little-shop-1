@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Login Page Workflow' do
   it 'can log in as a registered user with valid credentials' do
     user = User.create!(name: "Jeremy", role: 0,
+
                       street_address: "1331 17th St",
                       city: "Denver",
                       state: "CO",
@@ -22,7 +23,7 @@ RSpec.describe 'Login Page Workflow' do
 
     click_on "Log Me In"
 
-    expect(current_path).to eq(user_path(user))
+    expect(current_path).to eq(profile_path)
     expect(page).to have_content("Welcome back, #{user.name}, you've successfully logged in.")
   end
 

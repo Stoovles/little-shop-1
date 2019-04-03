@@ -4,18 +4,28 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  resources :items, only: [:index]
+  resources :items, only: [:index,:show]
 
   resources :merchants, only: [:index]
 
-  resources :users, only: [:new, :show, :create, :edit, :update]
+
+  resources :users, only: [:new, :create, :edit, :update]
+
 
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
 
   get '/logout', to: "sessions#destroy"
 
+  get '/profile', to: "users#show"
+
   get '/cart', to: "carts#show"
+
+  get '/dashboard', to: "merchants#show"
+
+  namespace :admin do
+    get '/dashboard', to: 'admins#show'
+  end
 
 
 end

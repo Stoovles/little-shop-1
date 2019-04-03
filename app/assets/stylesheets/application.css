@@ -1,15 +1,116 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+body {
+  font-family: New Century Schoolbook, serif;
+  background: url(https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1439,w_2560,x_0,y_0/dpr_1.5/c_limit,w_1044/fl_lossy,q_auto/v1493394312/articles/2014/12/03/how-much-do-whisky-casks-really-affect-taste/141125-macallen-cask-tease_hw1wed);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+nav {
+
+}
+
+a {
+  max-width: 10em;
+}
+
+a img {
+  width: 100%;
+}
+
+.statistics h2 {
+
+}
+
+.item-card h2 {
+  text-align: center;
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.item-show h1 {
+  text-align: center;
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 5em;
+}
+
+.item-card h2 a {
+  color: #363237;
+  text-decoration: none;
+  font-size: 1.1em;
+}
+
+.item-card a:hover {
+  color: #2D4262;
+  text-decoration: none;
+}
+
+.item-card p {
+  font-size: 1.5em;
+}
+
+.item-show p {
+  font-size: 1.4em;
+  padding-left: 5em;
+  padding-right: 5em;
+}
+
+
+.statistics {
+
+}
+
+.items-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-card {
+  display: flex;
+  flex-direction: column;
+  width: 31%;
+  background-color: rgba(193,140,90,0.71);
+  margin: 10px;
+  border-radius: 25px;
+  align-items: center;
+
+}
+
+.medium-image {
+  background: rgba(254,240,177,0.36);
+  align-self: center;
+}
+
+.item-show-container {
+  display: flex;
+  justify-content: center;
+}
+
+.item-show {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  background-color: rgba(193,140,90,0.71);
+  margin: 10px;
+  border-radius: 25px;
+  align-items: center;
+}
+
+.info-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.info-section {
+  grid-column: 1 / span 1;
+}
+
+.large-image {
+  grid-column: 2 / span 1;
+}
+
+.button-section {
+  grid-column: 3 / span 1;
+}
