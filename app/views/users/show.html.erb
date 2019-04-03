@@ -1,15 +1,18 @@
 <% if current_user %>
-  <h2>Welcome back, <%= current_user.name %>, you've successfully logged in.</h2>
-  <p>
-  <ul id="profile-info">
-    <li>Name: <%= current_user.name %>
-    <li>Street Address: <%= current_user.street_address %>
-    <li>City: <%= current_user.city %>
-    <li>State: <%= current_user.state %>
-    <li>Zip Code: <%= current_user.zip_code %>
-    <li>Email Address: <%= current_user.email_address %>
-  </ul>
-  <%= link_to "Edit my profile" %>
-</p>
+
+  <br>
+  <section class='edit-profile'>
+    <%= link_to "Edit Profile", edit_user_path(current_user) %>
+  </section>
+  <br>
+
+  <div class='user-info'>
+    <p>Name: <%= current_user.name %></p>
+    <p>Street Address: <%= current_user.street_address %></p>
+    <p>City: <%= current_user.city %></p>
+    <p>State: <%= current_user.state %></p>
+    <p>Zip Code: <%= current_user.zip_code %></p>
+    <p>Email: <%= current_user.email_address %></p>
+  </div>
 <% else redirect_to "/public/404" %>
 <% end %>
