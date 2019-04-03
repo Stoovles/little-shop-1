@@ -22,15 +22,15 @@ RSpec.describe 'As a registered user' do
 
     click_button "Log Me In"
 
-    click_link "Edit my profile"
+    click_link "Edit Profile"
 
     expect(current_path).to eq(edit_user_path(@user))
 
     fill_in "Email address", with: "changeo@changed_address.com"
 
-    click_button "Update My Profile"
+    click_button "Update Account"
 
-    expect(current_path).to eq(user_path(@user))
+    expect(current_path).to eq(profile_path)
     expect(page).to have_content("changeo@changed_address.com")
   end
 end
