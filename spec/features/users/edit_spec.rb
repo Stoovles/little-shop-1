@@ -12,7 +12,7 @@ RSpec.describe 'As a registered user' do
                       enabled: true)
 
   end
-  it "I can edit my profile information" do
+  xit "I can edit my profile information" do
     visit root_path
 
     click_link "Log In"

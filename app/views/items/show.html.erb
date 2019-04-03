@@ -16,8 +16,7 @@
       </section>
       <section class="button-section">
         <% if !current_admin? && !current_merchant? %>
-        <%= link_to "Add to Cart", item_path(@item) %>
-        <!-- <button type="button" name="Add to Cart"></button> -->
+          <%= button_to "Add to Cart", carts_path(item_id: @item.id) %>
         <% end %>
 
       </section>

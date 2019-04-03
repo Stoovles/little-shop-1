@@ -64,12 +64,13 @@ RSpec.describe 'When I visit our application I see a navbar' do
       end
     end
 
-    xit 'displays number of items in cart' do
-      visit "/"
-      #check within navbar for "0"
-      visit "/items"
-      #add item to cart
-      #check navbar for content "1"
+    it 'displays number of items in cart' do
+      visit root_path
+      expect(page).to have_content("My Cart: 0")
+      visit items_path
+      expect(page).to have_content("My Cart: 0")
+      visit merchants_path
+      expect(page).to have_content("My Cart: 0")
     end
   end
 
