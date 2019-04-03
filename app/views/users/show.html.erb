@@ -1,3 +1,16 @@
 <% if current_user %>
   <h2>Welcome back, <%= current_user.name %>, you've successfully logged in.</h2>
 <% end %>
+
+<section class='edit-profile'>
+  <%= link_to "Edit Profile", edit_user_path(@user) %>
+</section>
+
+<div class='user-info'>
+  <p>Name: <%= @user.name %></p>
+  <p>Street Address: <%= @user.street_address %></p>
+  <p>City: <%= @user.city %></p>
+  <p>State: <%= @user.state %></p>
+  <p>Zip Code: <%= @user.zip_code %></p>
+  <p>Email: <%= @user.email_address %></p>
+</div>
