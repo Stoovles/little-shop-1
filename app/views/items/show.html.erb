@@ -1,22 +1,26 @@
-<div class="item-show">
-  <h1><%= @item.item_name %></h1>
-  <p><%= @item.description %></p>
-  <img src="<%= @item.image_url%>" alt="image of <%= @item.item_name %>">
-  <section class="info-section">
-    <h4>Sold by: <%= @item.merchant_name %></h4>
-    <h4><%= @item.inventory %> left in stock</h4>
-    <h4>$<%= @item.current_price %></h4>
-    <% if @item.avg_fulfill_time == 1 %>
-    <h4>Usually ships in 1 day.</h4>
-    <% else %>
-    <h4>Usually ships in <%= @item.avg_fulfill_time %> days.</h4>
-    <% end %>
-  </section>
-  <section class="button-section">
-    <!-- if !current_user.admin? && !current_user.merchant? -->
-      <%= link_to "Add to Cart", item_path(@item) %>
-      <!-- <button type="button" name="Add to Cart"></button> -->
-    <!-- end -->
+<div class="item-show-container">
+  <div class="item-show">
+    <h1><%= @item.item_name %></h1>
+    <p><%= @item.description %></p>
+    <div class="info-container">
+      <img src="<%= @item.image_url%>" alt="image of <%= @item.item_name %>" class="large-image">
+      <section class="info-section">
+        <h4>Sold by: <%= @item.merchant_name %></h4>
+        <h4><%= @item.inventory %> left in stock</h4>
+        <h4>$<%= @item.current_price %></h4>
+        <% if @item.avg_fulfill_time == 1 %>
+        <h4>Usually ships in 1 day.</h4>
+        <% else %>
+        <h4>Usually ships in <%= @item.avg_fulfill_time %> days.</h4>
+        <% end %>
+      </section>
+      <section class="button-section">
+        <% if !current_admin? && !current_merchant? %>
+        <%= link_to "Add to Cart", item_path(@item) %>
+        <!-- <button type="button" name="Add to Cart"></button> -->
+        <% end %>
 
-  </section>
+      </section>
+    </div>
+  </div>
 </div>
