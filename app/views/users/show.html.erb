@@ -1,17 +1,22 @@
 <% if current_user %>
   <h2>Welcome back, <%= current_user.name %>, you've successfully logged in.</h2>
-<% end %>
-<br>
-<section class='edit-profile'>
-  <%= link_to "Edit Profile", edit_user_path(@user) %>
-</section>
-<br>
+  <br>
+  <section class='edit-profile'>
+    <%= link_to "Edit Profile", edit_user_path(@user) %>
+  </section>
+  <br>
 
-<div class='user-info'>
-  <p>Name: <%= @user.name %></p>
-  <p>Street Address: <%= @user.street_address %></p>
-  <p>City: <%= @user.city %></p>
-  <p>State: <%= @user.state %></p>
-  <p>Zip Code: <%= @user.zip_code %></p>
-  <p>Email: <%= @user.email_address %></p>
-</div>
+  <div class='user-info'>
+    <p>Name: <%= current_user.name %></p>
+    <p>Street Address: <%= current_user.street_address %></p>
+    <p>City: <%= current_user.city %></p>
+    <p>State: <%= current_user.state %></p>
+    <p>Zip Code: <%= current_user.zip_code %></p>
+    <p>Email: <%= current_user.email_address %></p>
+  </div>
+
+<% elsif @user != current_user %>
+  <h2>You do not have access to this user page.</h2>
+<% elsif !@user || !current_user %>
+  <h2>You are no logged in. Please register or login.</h2>
+<% end %>
