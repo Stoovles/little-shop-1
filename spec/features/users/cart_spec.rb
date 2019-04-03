@@ -20,12 +20,12 @@ RSpec.describe "User's cart abilities", type: :feature do
         click_on "Log Me In"
 
         visit item_path(@i1)
-        # expect(page).to have_content("My Cart: 0")
+        expect(page).to have_content("My Cart: 0")
         click_button "Add to Cart"
         expect(current_path).to eq item_path(@i1)
         expect(page).to have_content("You now have 1 #{@i1.item_name} in your cart.") #change to session number
 
-        # expect(page).to have_content("My Cart: 1")
+        expect(page).to have_content("My Cart: 1")
       end
     end
 
