@@ -1,20 +1,23 @@
 class UsersController < ApplicationController
-
-require 'pry'
+before_action :require_user
   def new
     @user = User.new
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      # binding.pry
-      redirect_to @user, success: "You are now registered and logged in"
+    user = User.new(user_params)
+    if user.save
+      session[:user_id] = user.id
+      redirect_to user_path, success: "You are now registered and logged in"
     else
-      # flash.now[:danger] = "This email address already exists"
-      # binding.pry
+      flash.now[:danger] = "This email address already exists"
       render :new
     end
+  end
+
+  def show
+    # binding.pry
+    @user = User.find(current_user.id)
   end
 
   private
@@ -30,6 +33,9 @@ require 'pry'
                                  :password_confirmation)
   end
 
+  def require_user
+    render file: "/public/404" unless current_user?
+  end
 
 
 
