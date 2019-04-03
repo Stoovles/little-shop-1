@@ -4,6 +4,7 @@ RSpec.describe Item, type: :model do
   before :each do
     @u4 = User.create(name: "Sibbie Cromett",street_address: "0 Towne Avenue",city: "Birmingham",state: "Alabama",zip_code: "35211",email_address: "scromett3@github.io",password:"fEFJeHdT1K", enabled: true, role:1)
     @u8 = User.create(name: "Tonya Baldock",street_address: "5 Bellgrove Crossing",city: "Yakima",state: "Washington",zip_code: "98902",email_address: "tbaldock7@wikia.com",password:"GN2dr6VfS", enabled: true, role:1)
+    @u17 = User.create(name: "Leanor Dencs",street_address: "1 Cody Lane",city: "Reno",state: "Nevada",zip_code: "89502",email_address: "ldencsg@mozilla.com",password:"KPI7nrZoA", enabled: true, role:0)
 
     @i1 = @u4.items.create(item_name: "W.L. Weller Special Reserve",image_url: "http://www.buffalotracedistillery.com/sites/default/files/Weller_CYPB_750ml_front_LoRes.png",current_price: 20.0,inventory: 4, description:"A sweet nose with a presence of caramel. Tasting notes of honey, butterscotch, and a soft woodiness. It's smooth, delicate and calm. Features a smooth finish with a sweet honeysuckle flair.",enabled: true)
     @i2 = @u4.items.create(item_name: "W.L. Weller C.Y.P.B.",image_url: "http://www.buffalotracedistillery.com/sites/default/files/weller%20special%20reserve%20brand%20page%5B1%5D.png",current_price: 35.0,inventory: 30, description:"A light aroma with citrus and oak on the nose. The palate is well rounded and balanced, with a medium-long finish and hints of vanilla.",enabled: true)
@@ -15,6 +16,14 @@ RSpec.describe Item, type: :model do
     @i8 = @u4.items.create(item_name: "Four Roses Single Barrel",image_url: "https://www.totalwine.com/media/sys_master/twmmedia/h2d/h6e/11152774365214.png",current_price: 43.0,inventory: 30, description:"Dried spice, pear, cocoa, vanilla & maple syrup. Hints of ripe plum & cherries, robust, full body, mellow. Smooth & delicately long.",enabled: true)
     @i9 = @u4.items.create(item_name: "Angel's Envy Kentucky Straight Bourbon finished in Port Wine Barrels",image_url: "https://d256619kyxncpv.cloudfront.net/gui/img/2015/09/17/13/2015091713_angels_envy_bourbon_original.png",current_price: 55.0,inventory: 27, description:"Gold color laced with reddish amber hues, nearly copper in tone. You’ll detect notes of subtle vanilla, raisins, maple syrup and toasted nuts. Vanilla, ripe fruit, maple syrup, toast and bitter chocolate. Clean and lingering sweetness with a hint of Madeira that slowly fades.",enabled: true)
     @i10 = @u8.items.create(item_name: "Laws Four Grain Straight Bourbon",image_url: "https://static.whiskybase.com/storage/whiskies/6/3/733/177713-normal.png",current_price: 60.0,inventory: 43, description:"Aromas of orange blossom compliment notes of black tea, honey, and dusty pepper on the nose. Flavors of pekoe tea, orange peel, cinnamon, and vanilla custard dominate the palate. Hints of sweet tobacco and spice lead to a rich, dry finish.",enabled: true)
+
+    @o1 = @u17.orders.create(status: 0)
+    @o1.items << [@i1,@i4]
+
+    @o2 = @u17.orders.create(status: 0)
+    @o1.items << [@i1,@i4]
+    @o2.status = 3
+
   end
 
   describe "Relationships" do
@@ -39,16 +48,25 @@ RSpec.describe Item, type: :model do
     end
   end
 
+  context "items index page" do
+    describe ".merchant_name" do
+      it "should give the merchant name for an item" do
+        expect(@i1.merchant_name).to eq("Sibbie Cromett")
+      end
+    end
+  end
+
   context "item show page" do
     describe ".quantity_sold" do
       xit "should return the total quantity of an item shipped" do
-        expect(@i1.quant_sold).to eq(5) #create orders/orderitems
+        expect(@i1.quantity_sold).to eq(5) #create orders/orderitems
       end
     end
 
     describe ".fulfulled?" do
       xit "should indicate whether OrderItem has been fulfilled" do
-        expect(@AAAHORDERITEM.fulfilled?).to eq(true)
+        oi = OrderItem.where(order_id: @o1.id).first
+        expect(oi.fulfilled?).to eq(false)
       end
     end
 

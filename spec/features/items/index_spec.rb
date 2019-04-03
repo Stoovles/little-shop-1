@@ -8,17 +8,17 @@ RSpec.describe "Items Index Page", type: :feature do
 
     @i1 = @umerch.items.create(item_name: "W.L. Weller Special Reserve",image_url: "http://www.buffalotracedistillery.com/sites/default/files/Weller_CYPB_750ml_front_LoRes.png",current_price: 20.0,inventory: 4, description:"A sweet nose with a presence of caramel. Tasting notes of honey, butterscotch, and a soft woodiness. It's smooth, delicate and calm. Features a smooth finish with a sweet honeysuckle flair.",enabled: true)
 
-    @i2 = @umerch.items.create(item_name: "W.L. Weller C.Y.P.B.",image_url: "http://www.buffalotracedistillery.com/sites/default/files/weller%20special%20reserve%20brand%20page%5B1%5D.png",current_price: 35.0,inventory: 30, description:"A light aroma with citrus and oak on the nose. The palate is well rounded and balanced, with a medium-long finish and hints of vanilla.",enabled: true)
+    @i2 = @umerch.items.create(item_name: "W.L. Weller C.Y.P.B.",image_url: "http://www.buffalotracedistillery.com/sites/default/files/weller%20special%20reserve%20brand%20page%5B1%5D.png",current_price: 35.0,inventory: 30, description:"A light aroma with citrus and oak on the nose. The palate is well rounded and balanced, with a medium-long finish and hints of vanilla.",enabled: false)
   end
 
   context "anyone visiting item catalog" do
-    xit "shows all enabled items and their info to a visitor" do
+    it "shows all enabled items and their info to a visitor" do
       visit items_path
       within first ".item-card" do
         expect(page).to have_content(@i1.item_name)
-        expect(page).to have_css("img[src*='#{@i1.image}']")
-        expect(page).to have_content("Merchant: #{@i1.user.name}")
-        expect(page).to have_content("In inventory: :#{@i1.inventory}")
+        expect(page).to have_css("img[src*='#{@i1.image_url}']")
+        expect(page).to have_content("Merchant: #{@i1.merchant_name}")
+        expect(page).to have_content("In Inventory: #{@i1.inventory}")
         expect(page).to have_content("Price: $#{@i1.current_price}")
       end
       expect(page).to have_css(".item-card",count: 1)
@@ -27,15 +27,15 @@ RSpec.describe "Items Index Page", type: :feature do
 
     xit "shows all enabled items and their info to an admin" do
       visit root_path
-      click_link "Log in"
-      fill_in "Email", with: @uadmin.email
+      click_link "Log In"
+      fill_in "Email", with: @uadmin.email_address
       fill_in "Password", with: @uadmin.password
       click_button "Log in"
       visit items_path
       within first ".item-card" do
         expect(page).to have_content(@i1.item_name)
-        expect(page).to have_css("img[src*='#{@i1.image}']")
-        expect(page).to have_content("Merchant: #{@i1.user.name}")
+        expect(page).to have_css("img[src*='#{@i1.image_url}']")
+        expect(page).to have_content("Merchant: #{@i1.merchant_name}")
         expect(page).to have_content("In inventory: :#{@i1.inventory}")
         expect(page).to have_content("Price: $#{@i1.current_price}")
       end
@@ -43,7 +43,7 @@ RSpec.describe "Items Index Page", type: :feature do
       expect(page).to_not have_content(@i2.item_name)
     end
 
-    xit "links item name to item show page" do
+    it "links item name to item show page" do
       visit items_path
       within first ".item-card" do
         click_link "#{@i1.item_name}"
@@ -51,18 +51,18 @@ RSpec.describe "Items Index Page", type: :feature do
       end
     end
 
-    xit "links item thumbnail to item show page" do
+    it "links item thumbnail to item show page" do
       visit items_path
       within first ".item-card" do
-        find("#{@i1.image}").click
+        click_link "image of #{@i1.item_name}"
         expect(current_path).to eq(item_path(@i1))
       end
     end
 
-    xit "has a statistics section" do
+    it "has a statistics section" do
       visit items_path
       within ".statistics" do
-        expect(page).to have_css("Statistics:")
+        expect(page).to have_content("Statistics")
       end
     end
 
