@@ -37,12 +37,12 @@ RSpec.describe "Items Show Page" do
   end
 
   context "as a regular user" do
-    xit "has a link to add this item to my cart" do
+    it "has a link to add this item to my cart" do
       visit root_path
-      click_link "Log in"
+      click_link "Log In"
       fill_in "Email", with: @u1.email_address
       fill_in "Password", with: @u1.password
-      click_button "Log in"
+      click_button "Log Me In"
       visit item_path(@i1)
       expect(page).to have_link("Add to Cart")
     end
