@@ -15,10 +15,10 @@
         <% end %>
       </section>
       <section class="button-section">
-        <!-- if !current_user.admin? && !current_user.merchant? -->
+        <% if !current_admin? && !current_merchant? %>
         <%= link_to "Add to Cart", item_path(@item) %>
         <!-- <button type="button" name="Add to Cart"></button> -->
-        <!-- end -->
+        <% end %>
 
       </section>
     </div>
