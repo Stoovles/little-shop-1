@@ -17,5 +17,7 @@ Rails.application.routes.draw do
 
   get '/cart', to: "carts#show"
 
+  get '/dashboard', to: "merchants#show"
+
 
 end
