@@ -46,7 +46,7 @@ RSpec.describe "Items Show Page" do
       fill_in "Password", with: @u1.password
       click_button "Log Me In"
       visit item_path(@i1)
-      expect(page).to have_link("Add to Cart")
+      expect(page).to have_button("Add to Cart")
     end
   end
 
@@ -65,7 +65,7 @@ RSpec.describe "Items Show Page" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@uadmin)
 
       visit item_path(@i1)
-      expect(page).to_not have_link("Add to Cart")
+      expect(page).to_not have_button("Add to Cart")
     end
   end
 end
