@@ -16,7 +16,7 @@ RSpec.describe 'As a registered user' do
   describe 'when I visit my own profile page' do
     it "I can see all my profile data except my password" do
 
-      visit user_path(@user)
+      visit profile_path
       within "#profile-info" do
         expect(page).to have_content("Name: #{@user.name}")
         expect(page).to have_content("Street Address: #{@user.street_address}")
