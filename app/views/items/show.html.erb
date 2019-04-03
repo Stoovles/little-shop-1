@@ -3,8 +3,8 @@
   <p><%= @item.description %></p>
   <img src="<%= @item.image_url%>" alt="image of <%= @item.item_name %>">
   <h4>Sold by: <%= @item.merchant_name %></h4>
-  <h4><%= @item.inventory %>left in stock</h4>
-  <h4>$<%= @item.merchant_name %></h4>
+  <h4><%= @item.inventory %> left in stock</h4>
+  <h4>$<%= @item.current_price %></h4>
   <% if @item.avg_fulfill_time == 1 %>
     <h4>Usually ships in 1 day.</h4>
   <% else %>

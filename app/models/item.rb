@@ -6,4 +6,8 @@ class Item < ApplicationRecord
   def merchant_name
     User.where(id: self.user_id).first.name
   end
+
+  def avg_fulfill_time
+
+  end
 end
