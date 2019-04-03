@@ -26,7 +26,7 @@ RSpec.describe 'As a registered user' do
         expect(page).to have_content("Email Address: #{@user.email_address}")
         expect(page).to_not have_content("#{@user.password}")
       end
-      expect(page).to have_link("Edit my profile")
+      expect(page).to have_link("Edit Profile")
     end
   end
 end

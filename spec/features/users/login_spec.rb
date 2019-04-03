@@ -24,7 +24,6 @@ RSpec.describe 'Login Page Workflow' do
     click_on "Log Me In"
 
     expect(current_path).to eq(profile_path)
-    expect(page).to have_content("Welcome back, #{user.name}, you've successfully logged in.")
   end
 
   describe 'sad path' do
