@@ -1,10 +1,11 @@
 <% if current_user %>
   <h2>Welcome back, <%= current_user.name %>, you've successfully logged in.</h2>
 <% end %>
-
+<br>
 <section class='edit-profile'>
   <%= link_to "Edit Profile", edit_user_path(@user) %>
 </section>
+<br>
 
 <div class='user-info'>
   <p>Name: <%= @user.name %></p>
