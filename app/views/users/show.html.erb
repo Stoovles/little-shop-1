@@ -1,8 +1,7 @@
 <% if current_user %>
-  <h2>Welcome back, <%= current_user.name %>, you've successfully logged in.</h2>
   <br>
   <section class='edit-profile'>
-    <%= link_to "Edit Profile", edit_user_path(@user) %>
+    <%= link_to "Edit Profile", edit_user_path(current_user) %>
   </section>
   <br>
 
@@ -15,8 +14,4 @@
     <p>Email: <%= current_user.email_address %></p>
   </div>
 
-<% elsif @user != current_user %>
-  <h2>You do not have access to this user page.</h2>
-<% elsif !@user || !current_user %>
-  <h2>You are no logged in. Please register or login.</h2>
 <% end %>

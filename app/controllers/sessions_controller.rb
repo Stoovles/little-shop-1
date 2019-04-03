@@ -9,8 +9,9 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user)
     else
-      flash.notice = "Incorrect email and/or password"
+      flash.now[:danger] = "Incorrect email and/or password"
       render :new
+
     end
   end
 
