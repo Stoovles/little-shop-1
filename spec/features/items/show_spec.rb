@@ -30,9 +30,9 @@ RSpec.describe "Items Show Page" do
   end
 
   context "as a visitor" do
-    xit "has a link to add this item to my cart" do
+    it "has a link to add this item to my cart" do
       visit item_path(@i1)
-      expect(page).to have_link("Add to Cart")
+      expect(page).to have_selector(:link_or_button, "Add to Cart")
     end
   end
 
