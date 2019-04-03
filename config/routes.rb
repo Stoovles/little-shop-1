@@ -17,5 +17,11 @@ Rails.application.routes.draw do
 
   get '/cart', to: "carts#show"
 
+  get '/dashboard', to: "merchants#show"
+
+  namespace :admin do
+    get '/dashboard', to: 'admins#show'
+  end
+
 
 end
