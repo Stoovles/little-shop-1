@@ -10,6 +10,8 @@ class User < ApplicationRecord
   # validates :password_digest, presence: true
   has_secure_password validations: false
 
+  enum role: ['user', 'merchant', 'admin']
+
   # # e.g., User.authenticate('penelope@turing.com', 'boom')
   # def self.authenticate(email, password)
   #   if self.find_by(email_address: email) == self.find_by(password: password)

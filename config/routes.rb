@@ -8,12 +8,14 @@ Rails.application.routes.draw do
 
   resources :merchants, only: [:index]
 
-  resources :users, only: [:new, :show, :create]
+  resources :users, only: [:new, :create]
 
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
 
   get '/logout', to: "sessions#destroy"
+
+  get '/profile', to: "users#show"
 
   get '/cart', to: "carts#show"
 
