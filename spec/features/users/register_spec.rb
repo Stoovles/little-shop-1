@@ -36,7 +36,7 @@ RSpec.describe 'Register Page Workflow' do
     fill_in "Confirmation Password", with: "wrong"
 
     click_on "Create my account"
-    expect(current_path).to eq(users_path)
+    expect(current_path).to eq(profile_path)
 
   end
 end

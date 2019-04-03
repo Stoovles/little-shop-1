@@ -26,8 +26,9 @@ skip_before_action :require_user, only: [:new, :create]
   end
 
   def update
-    @user = User.find(params[:id])
-    @user.skip_password_validation = true
+    @user = User.find(current_user.id)
+
+    # @user.skip_password_validation = true
     if user_params[:password].blank?
       user_params.delete(:password)
       user_params.delete(:password_confirmation)

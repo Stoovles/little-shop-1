@@ -52,7 +52,7 @@ RSpec.describe 'As a registered user' do
     fill_in "Confirmation Password", with: "wrong"
 
     click_on "Update Account"
-    expect(current_path).to eq(user_path(@user))
+    expect(current_path).to eq(profile_path)
     expect(page).to have_content("error prohibited")
 
   end
