@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :merchants, only: [:index]
 
-  resources :users, only: [:new, :create, :edit, :update]
+  resources :users, only: [:new, :edit]
 
   resources :carts, only: [:create]
 
@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get '/logout', to: "sessions#destroy"
 
   get '/profile', to: "users#show"
+  post "/profile", to: "users#create"
+  patch "/profile", to: "users#update"
 
   get '/cart', to: "carts#show"
 
