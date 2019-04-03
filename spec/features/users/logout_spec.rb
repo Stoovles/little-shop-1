@@ -22,13 +22,13 @@ RSpec.describe 'logout workflow' do
 
     click_button "Log Me In"
 
-    expect(current_path).to eq(user_path(@user))
+    expect(current_path).to eq(profile_path)
 
     click_link "Log Out"
 
     expect(current_path).to eq(root_path)
 
-    visit user_path(@user)
+    visit profile_path
 
     expect(page).to_not have_content(@user.name)
     # expect(page.status_code).to eq(404)

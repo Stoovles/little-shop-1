@@ -98,7 +98,7 @@ RSpec.describe 'When I visit our application I see a navbar' do
 
         expect(page).to have_link 'Profile'
         click_link 'Profile'
-        expect(current_path).to eq(user_path(@user))
+        expect(current_path).to eq(profile_path)
 
         expect(page).to have_link 'Log Out'
 
@@ -182,4 +182,17 @@ RSpec.describe 'When I visit our application I see a navbar' do
       end
     end
   end
+
+#User Story 6
+  # describe 'it has access protections in place' do
+  #   it 'keeps visitors away from user, merchant, and admin routes' do
+  #     visit dashboard_path
+  #     expect(page.status_code).to eq(404)
+  #     visit admin_dashboard_path
+  #     expect(page.status_code).to eq(404)
+  #
+  #   end
+  # end
+
+
 end

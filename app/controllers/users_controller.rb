@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-
-require 'pry'
+before_action :require_user
   def new
     @user = User.new
   end
@@ -17,7 +16,8 @@ require 'pry'
   end
 
   def show
-    @user = User.find(params[:id])
+    # binding.pry
+    @user = User.find(current_user.id)
   end
 
   private
@@ -33,6 +33,9 @@ require 'pry'
                                  :password_confirmation)
   end
 
+  def require_user
+    render file: "/public/404" unless current_user?
+  end
 
 
 
