@@ -8,11 +8,8 @@ require 'pry'
   def create
     @user = User.new(user_params)
     if @user.save
-      # binding.pry
       redirect_to @user, success: "You are now registered and logged in"
     else
-      # flash.now[:danger] = "This email address already exists"
-      # binding.pry
       render :new
     end
   end
