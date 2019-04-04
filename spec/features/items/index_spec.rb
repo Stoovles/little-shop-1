@@ -14,6 +14,8 @@ RSpec.describe "Items Index Page", type: :feature do
 
     @i3 = @umerch.items.create(item_name: "Bulleit Bourbon",image_url: "https://www.totalwine.com/media/sys_master/twmmedia/h5c/hed/11635356794910.png",current_price: 22.0,inventory: 42, description:"Medium amber in color, with gentle spiciness and sweet oak aromas. Mid-palate is smooth with tones of maple, oak, and nutmeg. Finish is long, dry, and satiny with a light toffee flavor.",enabled: false)
 
+    @i4 = @umerch2.items.create(item_name: "Stagg Jr.",image_url: "https://www.totalwine.com/media/sys_master/twmmedia/hd3/h4f/10678919528478.png",current_price: 40.0,inventory: 30, description:"Rich, sweet, chocolate and brown sugar flavors mingle in perfect balance with the bold rye spiciness. The boundless finish lingers with hints of cherries, cloves and smokiness.",enabled: false)
+
     @o1 = @u1.orders.create(status: 2)
     @o2 = @u1.orders.create(status: 2)
     @o3 = @u1.orders.create(status: 0)
@@ -25,6 +27,7 @@ RSpec.describe "Items Index Page", type: :feature do
     @oi5 = OrderItem.create(order_id: @o3.id,item_id: @i1.id, quantity: 6,fulfilled: false,order_price: 44.0,created_at: "2018-04-05 20:03:19",updated_at: "2018-04-14 11:15:44")
     @oi6 = OrderItem.create(order_id: @o3.id,item_id: @i2.id, quantity: 8,fulfilled: false,order_price: 63.0,created_at: "2018-04-04 10:42:04",updated_at: "2018-04-17 16:22:35")
     @oi7 = OrderItem.create(order_id: @o3.id,item_id: @i3.id, quantity: 800,fulfilled: false,order_price: 63.0,created_at: "2018-04-04 10:42:04",updated_at: "2018-04-17 16:22:35")
+    @oi8 = OrderItem.create(order_id: @o3.id,item_id: @i3.id, quantity: 1,fulfilled: false,order_price: 63.0,created_at: "2018-04-04 10:42:04",updated_at: "2018-04-17 16:22:35")
   end
 
   context "anyone visiting item catalog" do
@@ -91,11 +94,12 @@ RSpec.describe "Items Index Page", type: :feature do
       end
     end
 
-    xit "shows the five least popular items by total quantity sold" do
+    it "shows the five least popular items by total quantity sold" do
       visit items_path
       within ".statistics" do
         expect(page).to have_content("Least Popular Items")
         expect(page).to have_css(".unpopular", count: 2)
+        expect(page).to_not have_content(@i4.item_name)
       end
     end
   end
