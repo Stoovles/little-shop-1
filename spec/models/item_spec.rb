@@ -43,9 +43,9 @@ RSpec.describe Item, type: :model do
         expect(Item.popular_five.last).to eq(@i2)
       end
     end
-    
+
     describe ".unpopular_five" do
-      xit "should list the 5 least popular items" do
+      it "should list the 5 least popular items" do
         expect(Item.unpopular_five).to include(@i4)
       end
     end
