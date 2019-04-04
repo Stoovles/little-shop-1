@@ -23,11 +23,7 @@ RSpec.describe "Items Show Page" do
       expect(page).to have_content("Sold by: #{@i1.merchant_name}")
       expect(page).to have_content("#{@i1.inventory} left in stock")
       expect(page).to have_content("$#{@i1.current_price}")
-      # if @i1.avg_fulfill_time == 1
-      #   expect(page).to have_content("Usually ships in #{@i1.avg_fulfill_time} day")
-      # else
-      #   expect(page).to have_content("Usually ships in #{@i1.avg_fulfill_time} days")
-      # end
+      expect(page).to have_content("Usually ships in #{@i1.avg_fulfill_time}")
     end
   end
 
@@ -51,7 +47,7 @@ RSpec.describe "Items Show Page" do
   end
 
   context "as a merchant or admin" do
-    xit "does not have a link to add item to my cart" do
+    it "does not have a link to add item to my cart" do
       visit root_path
       click_link "Log In"
       fill_in "Email", with: @umerch.email_address
