@@ -14,5 +14,8 @@
     <p>Zip Code: <%= current_user.zip_code %></p>
     <p>Email Address: <%= current_user.email_address %></p>
   </div>
+  <% if current_user.orders.first %>
+    <%= link_to "My Orders", profile_orders_path %>
+  <% end %>
 <% else redirect_to "/public/404" %>
 <% end %>

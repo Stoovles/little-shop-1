@@ -12,6 +12,7 @@ RSpec.describe 'As a registered user' do
                       enabled: true)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+
   end
   describe 'when I visit my own profile page' do
     it "I can see all my profile data except my password" do
@@ -28,5 +29,14 @@ RSpec.describe 'As a registered user' do
       end
       expect(page).to have_link("Edit Profile")
     end
+
+    it "has a link to my order page" do
+      visit profile_path
+      expect(page).to_not have_content("My Orders")
+      @user.orders.create!(status: 0)
+      visit profile_path
+      expect(page).to have_link("My Orders")
+    end
+
   end
 end
