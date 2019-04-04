@@ -2,6 +2,14 @@ require "rails_helper"
 
 RSpec.describe Cart do
   before :each do
+    @item = Item.new(id: 1,
+            item_name: "W.L. Weller Special Reserve",
+            description: "A sweet nose with a presence of caramel. Tasting notes of honey, butterscotch, and a soft woodiness. It's smooth, delicate and calm. Features a smooth finish with a sweet honeysuckle flair.",
+            image_url: "http://www.buffalotracedistillery.com/sites/default/files/Weller_CYPB_750ml_front_LoRes.png",
+            inventory: 4,
+            current_price: 0.2e2,
+            enabled: true)
+
     @cart = Cart.new({
       "1" => 3,
       "2" => 1,
@@ -26,6 +34,12 @@ RSpec.describe Cart do
     it "should add item to my cart" do
       @cart.add_item(2)
       expect(@cart.count_of(2)).to eq(2)
+    end
+  end
+
+  describe ".subtotal" do
+    it "should calculate item quantity times price" do
+      expect(@cart.subtotal(@item)).to eq(60.0)
     end
   end
 end
