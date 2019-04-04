@@ -20,8 +20,13 @@ class Item < ApplicationRecord
   end
 
   def avg_fulfill_time
-    # x = OrderItem.where(item_id: self.id, fulfilled: true).select("order_item.item_id, AVG(updated_at - created_at) AS average_fulfill_time").group(:item_id).order("average_fulfill_time")
-    # x = OrderItem.select("AVG(order_items.updated_at - order_items.created_at) as avg_f_time").where(item_id: self.id, fulfilled: true).group(:item_id)
+    # SELECT item_id, AVG(updated_at - created_at) from order_items WHERE item_id = 1 GROUP BY item_id; #THIS WORKS
+    if OrderItem.find_by(item_id: self.id)
+      time_diff = OrderItem.select("item_id, AVG(updated_at - created_at)").where(item_id: self.id).group(:item_id).pluck("AVG(updated_at - created_at)")
+      time_diff[0].split(" ")[0,2].join(" ")
+    else
+      "no shipments yet"
+    end
   end
 
   def quantity_sold

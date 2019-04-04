@@ -7,7 +7,6 @@ body {
 }
 
 nav {
-
 }
 
 a {
@@ -16,10 +15,6 @@ a {
 
 a img {
   width: 100%;
-}
-
-.statistics h2 {
-
 }
 
 .item-card h2 {
@@ -60,7 +55,31 @@ a img {
 
 
 .statistics {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: white;
+  background-color: rgba(17,5,5,0.71);
+  padding-bottom: 5px;
+}
 
+.statistics h2 {
+  text-align: center;
+  grid-column: 1 / span 2;
+}
+
+.statistics h3 {
+  text-align: center;
+}
+
+.five_most {
+  grid-column: 1 / span 1;
+  padding-left: 8em;
+}
+
+.five_least {
+  grid-column: 2 / span 1;
+  padding-left: 8em;
 }
 
 .items-container {
@@ -110,6 +129,11 @@ a img {
 
 .large-image {
   grid-column: 2 / span 1;
+}
+
+.tiny-image {
+  width: 15px;
+  height: auto;
 }
 
 .button-section {

@@ -67,9 +67,9 @@ RSpec.describe Item, type: :model do
     end
 
     describe ".avg_fulfill_time" do
-      xit "should calculate average time to fulfill item" do
-        expect(@i1.avg_fulfill_time).to eq(4)
-        expect(@i4.avg_fulfill_time).to eq(5)
+      it "should calculate average time to fulfill item" do
+        expect(@i1.avg_fulfill_time).to eq("7 days")
+        expect(@i4.avg_fulfill_time).to eq("no shipments yet")
       end
     end
   end
