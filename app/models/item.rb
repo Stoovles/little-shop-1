@@ -7,8 +7,16 @@ class Item < ApplicationRecord
     User.where(id: self.user_id).first.name
   end
 
-  def self.popular_unpopular_five
-    joins(:order_items).where("order_items.fulfilled": true).select("items.*, sum(order_items.quantity) as total").group(:id).order("total DESC")
+  def self.popular_five
+    joins(:order_items).where("order_items.fulfilled": true).select("items.*, sum(order_items.quantity) as total").group(:id).order("total desc")
+  end
+
+  def self.unpopular_five
+    unpopular = []
+    oi_item_ids = OrderItem.select(:item_id).distinct.pluck(:item_id)
+    unpopular << Item.where.not(id: oi_item_ids).limit(5)
+    unpopular << joins(:order_items).where("order_items.fulfilled": true).select("items.*, sum(order_items.quantity) as total").group(:id).order("total asc")
+    unpopular[0..4]
   end
 
   def avg_fulfill_time
