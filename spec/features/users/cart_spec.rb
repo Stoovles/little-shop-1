@@ -95,7 +95,7 @@ RSpec.describe "User's cart abilities", type: :feature do
         expect(page).to_not have_content("W.L. Weller Special Reserve")
       end
 
-      xit 'can incrementally add items to quantity' do
+      it 'can incrementally add items to quantity' do
         visit item_path(@i2)
         click_button "Add to Cart"
 
@@ -103,7 +103,7 @@ RSpec.describe "User's cart abilities", type: :feature do
         within first ".cart-card" do
           expect(page).to have_content("Quantity: 1")
           select "30", from: :quantity
-          click_link 'Update Quantity'
+          click_on 'Update Quantity'
         end
         expect(current_path).to eq(cart_path)
         within first ".cart-card" do

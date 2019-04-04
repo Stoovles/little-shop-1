@@ -8,10 +8,14 @@
         </div>
         <p><%= item.merchant_name %></p>
         <h4><%= item.current_price %></h4>
-        <h5><%= @cart.contents[item.id.to_s] %></h5>
+        <h5>Quantity: <%= @cart.contents[item.id.to_s] %></h5>
         <div class="total">
           <%= @cart.subtotal(item) %>
         </div>
+        <%= form_tag(cart_path(item_id: item.id), method: :patch) do %>
+          <%= select_tag :quantity, options_for_select(0..item.inventory), selected: @cart.contents[item.id.to_s] %>
+          <%= submit_tag 'Update Quantity' %>
+        <% end %>
         <%= link_to 'Remove Item', cart_path(update: :remove, item_id: item.id),  method: :patch %>
       </div>
     <% end %>

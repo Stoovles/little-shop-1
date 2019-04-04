@@ -17,11 +17,17 @@ before_action :require_visitor_or_user
   end
 
   def update
-    if params[:update] == "remove"
+    if params[:update] == "remove" || params[:quantity] == "0"
       session[:cart].delete(params[:item_id])
+    else
+      # binding.pry
+      session[:cart][params[:item_id]] = params[:quantity].to_i
     end
-    redirect_to cart_path
-
+    if @cart.contents.first == nil
+      destroy
+    else
+      redirect_to cart_path
+    end
   end
 
 private
