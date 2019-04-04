@@ -19,6 +19,10 @@
         Total: <%= @cart.cart_total %>
       </div>
     </div>
+
+  <% end %>
+  Total: <%= @cart.cart_total %>
+  <%= link_to 'Empty my cart', cart_path, method: :delete %>
 <% else %>
   <div>Your Cart is empty!</div>
 <% end %>
