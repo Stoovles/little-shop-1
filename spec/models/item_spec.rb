@@ -37,17 +37,15 @@ RSpec.describe Item, type: :model do
   end
 
   context "items index statistics" do
-    describe ".popular_five" do
-      xit "should list the 5 most popular items" do
-        expected = [@i1,@i3,@i5,@i7,@i8]
-        expect(Item.popular_five).to eq(expected)
+    describe ".popular_unpopular_five" do
+      it "should list the 5 most popular items" do
+        expect(Item.popular_unpopular_five("desc").first).to eq(@i1)
+        expect(Item.popular_unpopular_five("desc").last).to eq(@i2)
       end
-    end
 
-    describe ".unpopular_five" do
-      xit "should list the 5 least popular items" do
-        expected = [@i2,@i4,@i6,@i9,@i10]
-        expect(Item.unpopular_five).to eq(expected)
+      it "should list the 5 least popular items" do
+        expected = [@i2,@i1]
+        expect(Item.popular_unpopular_five("asc")).to eq(expected)
       end
     end
   end
