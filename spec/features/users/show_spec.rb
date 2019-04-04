@@ -33,7 +33,8 @@ RSpec.describe 'As a registered user' do
     it "has a link to my order page" do
       visit profile_path
       expect(page).to_not have_content("My Orders")
-      @user.orders.create(status: 0)
+      @user.orders.create!(status: 0)
+      visit profile_path
       expect(page).to have_link("My Orders")
     end
 
