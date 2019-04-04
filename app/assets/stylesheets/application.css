@@ -55,7 +55,7 @@ a img {
 
 
 .statistics {
-  width: 90%;
+  width: cover;
   display: grid;
   grid-template-columns: 1fr 1fr;
   color: white;
