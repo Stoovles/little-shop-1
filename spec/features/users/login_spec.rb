@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Login Page Workflow' do
-  xit 'can log in as a registered user with valid credentials' do
+  it 'can log in as a registered user with valid credentials' do
     user = User.create!(name: "Jeremy", role: 0,
-
                       street_address: "1331 17th St",
                       city: "Denver",
                       state: "CO",
@@ -27,7 +26,7 @@ RSpec.describe 'Login Page Workflow' do
   end
 
   describe 'sad path' do
-    xit 'cannot log in with incorrect credentials' do
+    it 'cannot log in with incorrect credentials' do
       user = User.create!(name: "Jeremy", role: 0,
                         street_address: "1331 17th St",
                         city: "Denver",
@@ -39,21 +38,25 @@ RSpec.describe 'Login Page Workflow' do
 
       visit root_path
 
-      click_on "Login"
+      click_on "Log In"
 
       fill_in "email_address", with: user.email_address
       fill_in "password", with: "wrong"
 
-      expect(current_path).to eq(root_path)
-      epect(page).to have_content("Incorrect email and/or password")
+      click_on "Log In"
+
+      expect(current_path).to eq(login_path)
+      # expect(user.errors.messages).to eq(danger: "Incorrect email and/or password")
 
       visit login_path
 
       fill_in "email_address", with: "wrong"
       fill_in "password", with: user.password
 
-      expect(current_path).to eq(root_path)
-      epect(page).to have_content("Incorrect email and/or password")
+      click_on "Log In"
+
+      expect(current_path).to eq(login_path)
+      # expect(user.errors.messages).to eq(danger: "Incorrect email and/or password")
     end
   end
 end
