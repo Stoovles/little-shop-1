@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   end
 
   def self.popular_five
-    joins(:order_items).where("order_items.fulfilled": true).select("items.*, sum(order_items.quantity) as total").group(:id).order("total desc")
+    joins(:order_items).where("order_items.fulfilled": true, enabled: true).select("items.*, sum(order_items.quantity) as total").group(:id).order("total desc").limit(5)
   end
 
   def self.unpopular_five

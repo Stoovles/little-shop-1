@@ -8,9 +8,11 @@ RSpec.describe "Items Index Page", type: :feature do
     @uadmin = User.create(name: "Raff Faust",street_address: "066 Debs Place",city: "El Paso",state: "Texas",zip_code: "79936",email_address: "rfaust1@naver.com",password:"ZCoxai", enabled: true, role:2)
     @u1 = User.create(name: "Con Chilver",street_address: "16455 Miller Circle",city: "Van Nuys",state: "California",zip_code: "91406",email_address: "cchilver2@mysql.com",password:"IrGmrINsmr9e", enabled: true, role:0)
 
-    @i1 = @umerch.items.create(item_name: "W.L. Weller Special Reserve",image_url: "http://www.buffalotracedistillery.com/sites/default/files/Weller_CYPB_750ml_front_LoRes.png",current_price: 20.0,inventory: 4, description:"A sweet nose with a presence of caramel. Tasting notes of honey, butterscotch, and a soft woodiness. It's smooth, delicate and calm. Features a smooth finish with a sweet honeysuckle flair.",enabled: true)
+    @i1 = @umerch.items.create(item_name: "W.L. Weller Special Reserve",image_url: "http://www.buffalotracedistillery.com/sites/default/files/weller%20special%20reserve%20brand%20page%5B1%5D.png",current_price: 20.0,inventory: 4, description:"A sweet nose with a presence of caramel. Tasting notes of honey, butterscotch, and a soft woodiness. It's smooth, delicate and calm. Features a smooth finish with a sweet honeysuckle flair.",enabled: true)
 
-    @i2 = @umerch2.items.create(item_name: "W.L. Weller C.Y.P.B.",image_url: "http://www.buffalotracedistillery.com/sites/default/files/weller%20special%20reserve%20brand%20page%5B1%5D.png",current_price: 35.0,inventory: 30, description:"A light aroma with citrus and oak on the nose. The palate is well rounded and balanced, with a medium-long finish and hints of vanilla.",enabled: false)
+    @i2 = @umerch2.items.create(item_name: "W.L. Weller C.Y.P.B.",image_url: "http://www.buffalotracedistillery.com/sites/default/files/Weller_CYPB_750ml_front_LoRes.png",current_price: 35.0,inventory: 30, description:"A light aroma with citrus and oak on the nose. The palate is well rounded and balanced, with a medium-long finish and hints of vanilla.",enabled: true)
+
+    @i3 = @umerch.items.create(item_name: "Bulleit Bourbon",image_url: "https://www.totalwine.com/media/sys_master/twmmedia/h5c/hed/11635356794910.png",current_price: 22.0,inventory: 42, description:"Medium amber in color, with gentle spiciness and sweet oak aromas. Mid-palate is smooth with tones of maple, oak, and nutmeg. Finish is long, dry, and satiny with a light toffee flavor.",enabled: false)
 
     @o1 = @u1.orders.create(status: 2)
     @o2 = @u1.orders.create(status: 2)
@@ -34,8 +36,8 @@ RSpec.describe "Items Index Page", type: :feature do
         expect(page).to have_content("In Inventory: #{@i1.inventory}")
         expect(page).to have_content("Price: $#{@i1.current_price}")
       end
-      expect(page).to have_css(".item-card",count: 1)
-      expect(page).to_not have_content(@i2.item_name)
+      expect(page).to have_css(".item-card",count: 2)
+      expect(page).to_not have_content(@i3.item_name)
     end
 
     it "shows all enabled items and their info to an admin" do
@@ -52,8 +54,8 @@ RSpec.describe "Items Index Page", type: :feature do
         expect(page).to have_content("In Inventory: #{@i1.inventory}")
         expect(page).to have_content("Price: $#{@i1.current_price}")
       end
-      expect(page).to have_css(".item-card",count: 1)
-      expect(page).to_not have_content(@i2.item_name)
+      expect(page).to have_css(".item-card",count: 2)
+      expect(page).to_not have_content(@i3.item_name)
     end
 
     it "links item name to item show page" do
@@ -79,11 +81,11 @@ RSpec.describe "Items Index Page", type: :feature do
       end
     end
 
-    xit "shows the five most popular items by total quantity sold" do
+    it "shows the five most popular items by total quantity sold" do
       visit items_path
       within ".statistics" do
         expect(page).to have_content("Most Popular Items")
-        expect(page).to have_css(".popular", count: 5)
+        expect(page).to have_css(".popular", count: 2)
       end
     end
 
@@ -91,7 +93,7 @@ RSpec.describe "Items Index Page", type: :feature do
       visit items_path
       within ".statistics" do
         expect(page).to have_content("Least Popular Items")
-        expect(page).to have_css(".unpopular", count: 5)
+        expect(page).to have_css(".unpopular", count: 2)
       end
     end
   end
