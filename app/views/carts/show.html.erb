@@ -1,4 +1,5 @@
-<% if @cart.items.first %>
+<div class="cart-container">
+  <% if @cart.items.first %>
   <% @cart.items.each do |item| %>
     <div class="cart-card">
       <%= item.item_name %>
@@ -6,10 +7,17 @@
       <%= item.merchant_name %>
       <%= item.current_price %>
       <%= @cart.contents[item.id.to_s] %>
+      <div class="total"
       <%= @cart.subtotal(item) %>
+      </div>
     </div>
   <% end %>
-  Total: <%= @cart.cart_total %>
+  <div class="cart-card">
+    <div class="total">
+      Total: <%= @cart.cart_total %>
+    </div>
+  </div>
 <% else %>
   <div>Your Cart is empty!</div>
 <% end %>
+</div>
