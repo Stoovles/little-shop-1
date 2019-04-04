@@ -2,7 +2,6 @@ class CartsController < ApplicationController
 before_action :require_visitor_or_user
   def show
     ids = @cart.contents.keys
-    @items = Item.where(id: ids)
   end
 
   def create

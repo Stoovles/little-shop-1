@@ -1,4 +1,4 @@
-<% @items.each do |item| %>
+<% @cart.items.each do |item| %>
   <div class="cart-card">
     <%= item.item_name %>
     <img src="<%= item.image_url%>" alt="image of <%= item.item_name %>" class="small-image">
@@ -8,3 +8,4 @@
     <%= @cart.subtotal(item) %>
   </div>
 <% end %>
+Total: <%= @cart.cart_total %>
