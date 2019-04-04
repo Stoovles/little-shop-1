@@ -17,12 +17,16 @@ RSpec.describe Item, type: :model do
     @i9 = @u4.items.create(item_name: "Angel's Envy Kentucky Straight Bourbon finished in Port Wine Barrels",image_url: "https://d256619kyxncpv.cloudfront.net/gui/img/2015/09/17/13/2015091713_angels_envy_bourbon_original.png",current_price: 55.0,inventory: 27, description:"Gold color laced with reddish amber hues, nearly copper in tone. You’ll detect notes of subtle vanilla, raisins, maple syrup and toasted nuts. Vanilla, ripe fruit, maple syrup, toast and bitter chocolate. Clean and lingering sweetness with a hint of Madeira that slowly fades.",enabled: true)
     @i10 = @u8.items.create(item_name: "Laws Four Grain Straight Bourbon",image_url: "https://static.whiskybase.com/storage/whiskies/6/3/733/177713-normal.png",current_price: 60.0,inventory: 43, description:"Aromas of orange blossom compliment notes of black tea, honey, and dusty pepper on the nose. Flavors of pekoe tea, orange peel, cinnamon, and vanilla custard dominate the palate. Hints of sweet tobacco and spice lead to a rich, dry finish.",enabled: true)
 
-    @o1 = @u17.orders.create(status: 0)
-    @o1.items << [@i1,@i4]
+    @o1 = @u17.orders.create(status: 2)
+    @o2 = @u17.orders.create(status: 2)
+    @o3 = @u17.orders.create(status: 0)
 
-    @o2 = @u17.orders.create(status: 0)
-    @o1.items << [@i1,@i4]
-    @o2.status = 3
+    @oi1 = OrderItem.create(order_id: @o1.id,item_id: @i1.id, quantity: 4,fulfilled: true,order_price: 66.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
+    @oi2 = OrderItem.create(order_id: @o1.id,item_id: @i2.id, quantity: 4,fulfilled: true,order_price: 57.0,created_at: "2018-04-06 19:07:44",updated_at: "2018-04-17 00:06:32")
+    @oi3 = OrderItem.create(order_id: @o2.id,item_id: @i1.id, quantity: 4,fulfilled: true,order_price: 64.0,created_at: "2018-04-08 22:14:08",updated_at: "2018-04-14 02:03:32")
+    @oi4 = OrderItem.create(order_id: @o2.id,item_id: @i2.id, quantity: 2,fulfilled: true,order_price: 58.0,created_at: "2018-04-10 09:04:53",updated_at: "2018-04-12 00:25:16")
+    @oi5 = OrderItem.create(order_id: @o3.id,item_id: @i1.id, quantity: 6,fulfilled: false,order_price: 44.0,created_at: "2018-04-05 20:03:19",updated_at: "2018-04-14 11:15:44")
+    @oi6 = OrderItem.create(order_id: @o3.id,item_id: @i2.id, quantity: 8,fulfilled: false,order_price: 63.0,created_at: "2018-04-04 10:42:04",updated_at: "2018-04-17 16:22:35")
 
   end
 
@@ -58,8 +62,8 @@ RSpec.describe Item, type: :model do
 
   context "item show page" do
     describe ".quantity_sold" do
-      xit "should return the total quantity of an item shipped" do
-        expect(@i1.quantity_sold).to eq(5) #create orders/orderitems
+      it "should return the total quantity of an item shipped" do
+        expect(@i1.quantity_sold).to eq(8)
       end
     end
 

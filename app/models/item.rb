@@ -10,4 +10,8 @@ class Item < ApplicationRecord
   def avg_fulfill_time
 
   end
+
+  def quantity_sold
+    OrderItem.where(item_id: self.id, fulfilled: true).sum(:quantity)
+  end
 end
