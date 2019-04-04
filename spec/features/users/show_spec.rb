@@ -14,7 +14,7 @@ RSpec.describe 'As a registered user' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
   describe 'when I visit my own profile page' do
-    xit "I can see all my profile data except my password" do
+    it "I can see all my profile data except my password" do
 
       visit profile_path
       within "#profile-info" do
