@@ -29,6 +29,27 @@ RSpec.describe "User's cart abilities", type: :feature do
       end
     end
 
+    describe 'A visitor or regular user can view their cart' do
+      it 'with items in the cart' do
+
+      visit item_path(@i1)
+      click_button "Add to Cart"
+      visit item_path(@i1)
+      click_button "Add to Cart"
+      visit item_path(@i2)
+      click_button "Add to Cart"
+
+      visit cart_path
+        within first ".cart-card" do
+        expect(page).to have_content("W.L. Weller Special Reserve")
+        expect(page).to have_css("img[src*='#{@i1.image_url}']")
+        expect(page).to have_content("Ondrea Chadburn")
+        expect(page).to have_content("20.0")
+        expect(page).to have_content("2")
+        expect(page).to have_content("40.0")
+        end
+      end
+    end
   end
 
 end
