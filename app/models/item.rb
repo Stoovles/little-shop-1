@@ -16,8 +16,7 @@ class Item < ApplicationRecord
     oi_item_ids = OrderItem.select(:item_id).distinct.pluck(:item_id)
     unpopular << Item.where.not(id: oi_item_ids).limit(5)
     unpopular << joins(:order_items).where("order_items.fulfilled": true).select("items.*, sum(order_items.quantity) as total").group(:id).order("total asc")
-    unpopular.flatten!
-    unpopular[0..4]
+    unpopular.flatten![0..4]
   end
 
   def avg_fulfill_time
