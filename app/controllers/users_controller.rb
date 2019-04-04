@@ -27,12 +27,7 @@ skip_before_action :require_user, only: [:new, :create]
 
   def update
     @user = User.find(current_user.id)
-    @user.skip_password_validation = true
-    if user_params[:password].blank?
-      user_params.delete(:password)
-      user_params.delete(:password_confirmation)
-    end
-    if @user.update_attributes(user_params)
+    if @user.update(update_params)
       redirect_to profile_path, success: "Profile updated"
     else
       render :edit
@@ -50,6 +45,20 @@ skip_before_action :require_user, only: [:new, :create]
                                  :email_address,
                                  :password,
                                  :password_confirmation)
+  end
+
+  def update_params
+    up = params.require(:user).permit(:name,
+                                 :street_address,
+                                 :state,
+                                 :city,
+                                 :zip_code,
+                                 :email_address,
+                                 :password,
+                                 :password_confirmation)
+     up.delete(:password) if up[:password].blank?
+     up.delete(:password_confirmation) if up[:password_confirmation].blank?
+     up
   end
 
   def require_user

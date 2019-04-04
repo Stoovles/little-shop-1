@@ -36,27 +36,28 @@ RSpec.describe 'Login Page Workflow' do
                         password: "test",
                         enabled: true)
 
-      visit root_path
-
-      click_on "Log In"
+      visit login_path
 
       fill_in "email_address", with: user.email_address
       fill_in "password", with: "wrong"
 
-      click_on "Log In"
+      click_on "Log Me In"
 
       expect(current_path).to eq(login_path)
-      # expect(user.errors.messages).to eq(danger: "Incorrect email and/or password")
+      expect(page).to have_content("Incorrect email and/or password")
 
-      visit login_path
+      #submitting an empty form
+      click_on "Log Me In"
+
+      expect(page).to have_content("Incorrect email and/or password")
+
 
       fill_in "email_address", with: "wrong"
       fill_in "password", with: user.password
 
-      click_on "Log In"
+      click_on "Log Me In"
 
-      expect(current_path).to eq(login_path)
-      # expect(user.errors.messages).to eq(danger: "Incorrect email and/or password")
+      expect(page).to have_content("Incorrect email and/or password")
     end
   end
 end
