@@ -1,11 +1,15 @@
-<% @cart.items.each do |item| %>
-  <div class="cart-card">
-    <%= item.item_name %>
-    <img src="<%= item.image_url%>" alt="image of <%= item.item_name %>" class="small-image">
-    <%= item.merchant_name %>
-    <%= item.current_price %>
-    <%= @cart.contents[item.id.to_s] %>
-    <%= @cart.subtotal(item) %>
-  </div>
+<% if @cart.items.first %>
+  <% @cart.items.each do |item| %>
+    <div class="cart-card">
+      <%= item.item_name %>
+      <img src="<%= item.image_url%>" alt="image of <%= item.item_name %>" class="small-image">
+      <%= item.merchant_name %>
+      <%= item.current_price %>
+      <%= @cart.contents[item.id.to_s] %>
+      <%= @cart.subtotal(item) %>
+    </div>
+  <% end %>
+  Total: <%= @cart.cart_total %>
+<% else %>
+  <div>Your Cart is empty!</div>
 <% end %>
-Total: <%= @cart.cart_total %>
