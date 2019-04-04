@@ -38,6 +38,7 @@ a img {
   font-size: 1.1em;
 }
 
+
 .item-card a:hover {
   color: #2D4262;
   text-decoration: none;
@@ -52,6 +53,15 @@ a img {
   padding-left: 5em;
   padding-right: 5em;
 }
+
+.cart-card h3 {
+  grid-column: 2 / span 2;
+}
+
+.cart-card p {
+  grid-column: 2 / span 1;
+}
+
 
 
 .statistics {
@@ -131,6 +141,13 @@ a img {
   grid-column: 2 / span 1;
 }
 
+.small-image {
+  width: auto;
+  height: 100%;
+  align-items: center;
+  background-color: maroon;
+}
+
 .tiny-image {
   width: 15px;
   height: auto;
@@ -138,4 +155,30 @@ a img {
 
 .button-section {
   grid-column: 3 / span 1;
+}
+
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(193,140,90,0.71);
+  border-radius: 25px;
+  align-items: center;
+}
+
+.cart-card  {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border: grey 2px solid;
+  border-radius: 10px;
+  width: 97%;
+  margin: 10px;
+}
+
+.total {
+  grid-column: 4 / span 1;
+}
+
+.image-container {
+  grid-column: 1 / span 1;
+  display: flex;
 }

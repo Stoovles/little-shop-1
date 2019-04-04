@@ -14,7 +14,6 @@ Rails.application.routes.draw do
 
 
   get '/login', to: "sessions#new"
-
   post '/login', to: "sessions#create"
 
   get '/logout', to: "sessions#destroy"
@@ -28,6 +27,7 @@ Rails.application.routes.draw do
   end
 
   get '/cart', to: "carts#show"
+  delete '/cart', to: "carts#destroy"
 
   get '/dashboard', to: "merchants#show"
 

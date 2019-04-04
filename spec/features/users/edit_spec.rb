@@ -30,7 +30,7 @@ RSpec.describe 'As a registered user' do
     click_button "Update Account"
 
     expect(current_path).to eq(profile_path)
-    # expect(page).to have_content("changeo@changed_address.com")
+    expect(page).to have_content("changeo@changed_address.com")
   end
 
   it 'throws error when any validations fail' do
