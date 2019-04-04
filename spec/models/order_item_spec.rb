@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Item, type: :model do
+RSpec.describe OrderItem, type: :model do
   before :each do
     @u4 = User.create(name: "Sibbie Cromett",street_address: "0 Towne Avenue",city: "Birmingham",state: "Alabama",zip_code: "35211",email_address: "scromett3@github.io",password:"fEFJeHdT1K", enabled: true, role:1)
     @u8 = User.create(name: "Tonya Baldock",street_address: "5 Bellgrove Crossing",city: "Yakima",state: "Washington",zip_code: "98902",email_address: "tbaldock7@wikia.com",password:"GN2dr6VfS", enabled: true, role:1)
@@ -30,48 +30,12 @@ RSpec.describe Item, type: :model do
 
   end
 
-  describe "Relationships" do
-    it {should belong_to :user}
-    it {should have_many :order_items}
-    it {should have_many :orders}
-  end
+  describe ".fulfulled?" do
+    it "should indicate whether OrderItem has been fulfilled" do
 
-  context "items index statistics" do
-    describe ".popular_five" do
-      xit "should list the 5 most popular items" do
-        expected = [@i1,@i3,@i5,@i7,@i8]
-        expect(Item.popular_five).to eq(expected)
-      end
-    end
-
-    describe ".unpopular_five" do
-      xit "should list the 5 least popular items" do
-        expected = [@i2,@i4,@i6,@i9,@i10]
-        expect(Item.unpopular_five).to eq(expected)
-      end
-    end
-  end
-
-  context "items index page" do
-    describe ".merchant_name" do
-      it "should give the merchant name for an item" do
-        expect(@i1.merchant_name).to eq("Sibbie Cromett")
-      end
-    end
-  end
-
-  context "item show page" do
-    describe ".quantity_sold" do
-      it "should return the total quantity of an item shipped" do
-        expect(@i1.quantity_sold).to eq(8)
-      end
-    end
-
-    describe ".avg_fulfill_time" do
-      xit "should calculate average time to fulfill item" do
-        expect(@i1.avg_fulfill_time).to eq()
-        expect(@i4.avg_fulfill_time).to eq()
-      end
+      expect(@oi1.fulfilled?).to eq(true)
+      expect(@oi2.fulfilled?).to eq(true)
+      expect(@oi6.fulfilled?).to eq(false)
     end
   end
 end

@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   end
 
   def avg_fulfill_time
-
+    
   end
 
   def quantity_sold
