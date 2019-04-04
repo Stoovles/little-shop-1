@@ -2,13 +2,13 @@
   <% if @cart.items.first %>
     <% @cart.items.each do |item| %>
       <div class="cart-card">
+          <h3><%= item.item_name %></h3>
         <div class="image-container">
           <img src="<%= item.image_url%>" alt="image of <%= item.item_name %>" class="small-image">
         </div>
-        <h3><%= item.item_name %></h3>
         <p><%= item.merchant_name %></p>
-        <p><%= item.current_price %></p>
-        <p><%= @cart.contents[item.id.to_s] %></p>
+        <h4><%= item.current_price %></h4>
+        <h5><%= @cart.contents[item.id.to_s] %></h5>
         <div class="total">
           <%= @cart.subtotal(item) %>
         </div>
@@ -19,8 +19,6 @@
         Total: <%= @cart.cart_total %>
       </div>
     </div>
-
-  Total: <%= @cart.cart_total %>
   <%= link_to 'Empty my cart', cart_path, method: :delete %>
 <% else %>
   <div>Your Cart is empty!</div>

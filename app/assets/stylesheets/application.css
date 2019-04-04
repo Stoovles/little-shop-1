@@ -55,7 +55,16 @@ a img {
 }
 
 .cart-card h3 {
-  grid-column: 2 / span 2;
+  grid-column: 2 / span 4;
+
+}
+
+.cart-card h4 {
+  grid-column: 3 / span 1;
+}
+
+.cart-card h5 {
+  grid-column: 4 / span 1;
 }
 
 .cart-card p {
@@ -142,10 +151,11 @@ a img {
 }
 
 .small-image {
+  grid-column: 1 / span 1;
   width: auto;
-  height: 100%;
+  height: 10vw;
   align-items: center;
-  background-color: maroon;
+  z-index: 10;
 }
 
 .tiny-image {
@@ -167,7 +177,7 @@ a img {
 
 .cart-card  {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   border: grey 2px solid;
   border-radius: 10px;
   width: 97%;
@@ -175,10 +185,12 @@ a img {
 }
 
 .total {
-  grid-column: 4 / span 1;
+  grid-column: 5 / span 1;
 }
 
 .image-container {
   grid-column: 1 / span 1;
   display: flex;
+  justify-content: center;
+  align-items: ce
 }
