@@ -38,18 +38,18 @@ RSpec.describe "Items Index Page", type: :feature do
       expect(page).to_not have_content(@i2.item_name)
     end
 
-    xit "shows all enabled items and their info to an admin" do
+    it "shows all enabled items and their info to an admin" do
       visit root_path
       click_link "Log In"
       fill_in "Email", with: @uadmin.email_address
       fill_in "Password", with: @uadmin.password
-      click_button "Log in"
+      click_button "Log Me In"
       visit items_path
       within first ".item-card" do
         expect(page).to have_content(@i1.item_name)
         expect(page).to have_css("img[src*='#{@i1.image_url}']")
         expect(page).to have_content("Merchant: #{@i1.merchant_name}")
-        expect(page).to have_content("In inventory: :#{@i1.inventory}")
+        expect(page).to have_content("In Inventory: #{@i1.inventory}")
         expect(page).to have_content("Price: $#{@i1.current_price}")
       end
       expect(page).to have_css(".item-card",count: 1)
