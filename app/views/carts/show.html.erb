@@ -12,6 +12,7 @@
         <div class="total">
           <%= @cart.subtotal(item) %>
         </div>
+        <%= link_to 'Remove Item', cart_path(update: :remove, item_id: item.id),  method: :patch %>
       </div>
     <% end %>
     <div class="cart-card">

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :edit]
 
-  resources :carts, only: [:create]
+  resources :carts, only: [:create, :edit]
 
 
   get '/login', to: "sessions#new"
@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   get '/cart', to: "carts#show"
   delete '/cart', to: "carts#destroy"
+  patch '/cart', to: "carts#update"
 
   get '/dashboard', to: "merchants#show"
 

@@ -16,6 +16,14 @@ before_action :require_visitor_or_user
     redirect_to cart_path
   end
 
+  def update
+    if params[:update] == "remove"
+      session[:cart].delete(params[:item_id])
+    end
+    redirect_to cart_path
+
+  end
+
 private
   def require_visitor_or_user
     render file: "/public/404" unless current_user? || !current_user
