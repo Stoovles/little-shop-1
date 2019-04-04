@@ -49,7 +49,13 @@ RSpec.describe "User's cart abilities", type: :feature do
         expect(page).to have_content("40.0")
         end
       end
+
+      it 'with no items in the cart' do
+        visit cart_path
+        expect(page).to have_content("Your Cart is empty!")
+        expect(page).to_not have_content("Empty my cart")
+      end
+
     end
   end
-
 end
