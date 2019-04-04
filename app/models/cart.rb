@@ -7,6 +7,10 @@ class Cart
     @contents.default = 0
   end
 
+  def items
+    Item.where(id: @contents.keys)
+  end
+
   def total_count
     @contents.values.sum if @contents
   end
@@ -17,6 +21,17 @@ class Cart
 
   def add_item(item_id)
     @contents[item_id.to_s] += 1
+  end
+
+  def subtotal(item)
+    @contents[item.id.to_s] * item.current_price
+  end
+
+  def cart_total
+    items.inject(0) do |total, item|
+      total += subtotal(item)
+    end
+
   end
 
 end
