@@ -16,6 +16,8 @@ RSpec.describe "Items Index Page", type: :feature do
 
     @i4 = @umerch2.items.create(item_name: "Stagg Jr.",image_url: "https://www.totalwine.com/media/sys_master/twmmedia/hd3/h4f/10678919528478.png",current_price: 40.0,inventory: 30, description:"Rich, sweet, chocolate and brown sugar flavors mingle in perfect balance with the bold rye spiciness. The boundless finish lingers with hints of cherries, cloves and smokiness.",enabled: false)
 
+    @i5 = @umerch.items.create(item_name: "George T. Stagg",image_url: "http://www.buffalotracedistillery.com/sites/default/files/Antique-GTS_0.png",current_price: 85.0,inventory: 47, description:"Lush toffee sweetness and dark chocolate with hints of vanilla, fudge, nougat and molasses. Underlying notes of dates, tobacco, dark berries, spearmint and a hint of coffee round out the palate.",enabled: true)
+
     @o1 = @u1.orders.create(status: 2)
     @o2 = @u1.orders.create(status: 2)
     @o3 = @u1.orders.create(status: 0)
@@ -40,7 +42,7 @@ RSpec.describe "Items Index Page", type: :feature do
         expect(page).to have_content("In Inventory: #{@i1.inventory}")
         expect(page).to have_content("Price: $#{@i1.current_price}")
       end
-      expect(page).to have_css(".item-card",count: 2)
+      expect(page).to have_css(".item-card",count: 3)
       expect(page).to_not have_content(@i3.item_name)
     end
 
@@ -58,7 +60,7 @@ RSpec.describe "Items Index Page", type: :feature do
         expect(page).to have_content("In Inventory: #{@i1.inventory}")
         expect(page).to have_content("Price: $#{@i1.current_price}")
       end
-      expect(page).to have_css(".item-card",count: 2)
+      expect(page).to have_css(".item-card",count: 3)
       expect(page).to_not have_content(@i3.item_name)
     end
 
@@ -98,7 +100,8 @@ RSpec.describe "Items Index Page", type: :feature do
       visit items_path
       within ".statistics" do
         expect(page).to have_content("Least Popular Items")
-        expect(page).to have_css(".unpopular", count: 2)
+        expect(page).to have_content(0)
+        expect(page).to have_css(".unpopular", count: 3)
         expect(page).to_not have_content(@i4.item_name)
       end
     end

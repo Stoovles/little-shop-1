@@ -7,6 +7,13 @@
         <%= item.quantity_sold %>
       </div>
     <% end %>
+  <h3>Least Popular Items</h3>
+    <% @items.unpopular_five.each do |item| %>
+      <div class="unpopular">
+        <%= item.item_name %>
+        <%= item.quantity_sold %>
+      </div>
+    <% end %>
 </section>
 
 <div class="items-container">
