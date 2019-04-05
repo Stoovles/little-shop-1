@@ -8,7 +8,8 @@ class Order < ApplicationRecord
   end
 
   def total
-
+    OrderItem.where(order_id: self.id).sum("quantity*order_price")
+    #SELECT sum(quantity*order_price) FROM order_items WHERE order_id = 1;
   end
 
 end
