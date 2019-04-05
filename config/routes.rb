@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :edit]
 
-  resources :carts, only: [:create]
+  resources :carts, only: [:create, :edit]
 
 
   get '/login', to: "sessions#new"
@@ -23,11 +23,12 @@ Rails.application.routes.draw do
   patch "/profile", to: "users#update"
 
   namespace :profile do
-    resources :orders, only: [:index]
+    resources :orders, only: [:index, :show, :update]
   end
 
   get '/cart', to: "carts#show"
   delete '/cart', to: "carts#destroy"
+  patch '/cart', to: "carts#update"
 
   get '/dashboard', to: "merchants#show"
   get '/dashboard/items', to: "items#index"

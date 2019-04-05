@@ -1,16 +1,29 @@
+<h3 class="heading">My Cart:</h3>
 <div class="cart-container">
   <% if @cart.items.first %>
     <% @cart.items.each do |item| %>
       <div class="cart-card">
-          <h3><%= item.item_name %></h3>
+        <h3><%= item.item_name %></h3>
         <div class="image-container">
           <img src="<%= item.image_url%>" alt="image of <%= item.item_name %>" class="small-image">
         </div>
-        <p><%= item.merchant_name %></p>
-        <h4><%= item.current_price %></h4>
-        <h5><%= @cart.contents[item.id.to_s] %></h5>
+        <div class="cart-item-info">
+          Merchant: <%= item.merchant_name %>
+          <br>
+          Current Price: <%= item.current_price %>
+          <br>
+          Quantity: <%= @cart.contents[item.id.to_s] %>
+          <%= form_tag(cart_path(item_id: item.id), method: :patch) do %>
+          <%= select_tag :quantity, options_for_select(0..item.inventory), selected: @cart.contents[item.id.to_s] %>
+          <br>
+          <br>
+          <%= submit_tag 'Update Quantity', id: :button %>
+          <br>
+          <% end %>
+        </div>
         <div class="total">
-          <%= @cart.subtotal(item) %>
+          <h4>Subtotal: <%= @cart.subtotal(item) %></h4>
+          <%= link_to 'Remove Item', cart_path(update: :remove, item_id: item.id),  method: :patch, id: :button %>
         </div>
       </div>
     <% end %>
