@@ -6,7 +6,7 @@ class OrderItem < ApplicationRecord
     self.fulfilled
   end
 
-  def subtotal
-    quantity * order_price
-  end
+  # def subtotal
+  #   quantity * order_price
+  # end
 end

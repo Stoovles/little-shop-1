@@ -10,10 +10,11 @@
       <img src="<%= item.image_url%>" alt="image of <%= item.item_name %>" class="small-image">
     </div>
     <p><%= item.merchant_name %></p>
+    <p><%= item.description %></p>
     <h4><%= item.current_price %></h4>
-    <h5>Quantity: <%= @cart.contents[item.id.to_s] %></h5>
+
     <div class="total">
-      <%= @cart.subtotal(item) %>
+      <%= item.subtotal %>
     </div>
 
     </div>

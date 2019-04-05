@@ -73,4 +73,12 @@ RSpec.describe Item, type: :model do
       end
     end
   end
+
+  context "profile order show page" do
+    describe ".subtotal" do
+      it "should return an item subtotal for a specific order" do
+        expect(@i1.subtotal(@o1)).to eq(264.0)
+      end
+    end
+  end
 end
