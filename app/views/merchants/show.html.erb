@@ -1,0 +1,13 @@
+<% if current_user %>
+<br>
+  <div id='profile-info'>
+    <p>Name: <%= current_user.name %></p>
+    <p>Street Address: <%= current_user.street_address %></p>
+    <p>City: <%= current_user.city %></p>
+    <p>State: <%= current_user.state %></p>
+    <p>Zip Code: <%= current_user.zip_code %></p>
+    <p>Email Address: <%= current_user.email_address %></p>
+  </div>
+
+<% else redirect_to "/public/404" %>
+<% end %>
