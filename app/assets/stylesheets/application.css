@@ -94,8 +94,8 @@ a img {
 .order-card a {
   color: #fffdd0;
   text-decoration: none;
-  font-size: 2em;
-  text-align: center;
+  font-size: 1.4em;
+  align-self: center;
 }
 
 .order-card a:hover {
@@ -207,15 +207,6 @@ a img {
   align-items: ce
 }
 
-.order-container h2 {
-  background-color: rgba(255,253,208,0.71);
-  color: #110404;
-  text-align: center;
-  margin-right: 15vw;
-  margin-left: 15vw;
-  font-size: 4vw;
-}
-
 .order-card {
   display: flex;
   flex-direction: column;
@@ -225,4 +216,53 @@ a img {
   margin-right: 20vw;
   border-radius: 25px;
   padding-left: 25px;
+}
+
+.order-card h5 {
+  margin-top: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.order-item-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 10px;
+  border-radius: 25px;
+  align-items: center;
+}
+
+.order-item-card h3 {
+  grid-column: 1 / span 3;
+}
+
+.order-item-card img {
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 2;
+  height: 20vw;
+  width: auto;
+}
+
+.item-info {
+  grid-column: 2 / span 2;
+}
+
+.heading {
+  font-size: 3em;
+  color:#fffdd0;
+  text-align: center;
+}
+
+#button {
+  border: none;
+  background: #fffdd0;
+  align-self: center;
+  color: brown;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+#button:hover {
+  background: #110505;
+  color: #fffdd0;
 }
