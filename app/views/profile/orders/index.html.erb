@@ -2,7 +2,7 @@
 <div class="orders-container">
   <% @orders.each do |order| %>
     <div class="order-card">
-      <p>Order ID: <%= order.id %></p>
+      <%= link_to "Order ID: #{order.id}", profile_orders_path(order) %>
       <p>Created: <%= order.created_at %></p>
       <p>Last Update: <%= order.updated_at %></p>
       <p>Status: <%= order.status %></p>
