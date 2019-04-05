@@ -5,4 +5,8 @@ class OrderItem < ApplicationRecord
   def fulfilled?
     self.fulfilled
   end
+
+  # def subtotal
+  #   quantity * order_price
+  # end
 end

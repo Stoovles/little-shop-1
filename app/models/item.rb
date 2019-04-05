@@ -23,7 +23,7 @@ class Item < ApplicationRecord
     # SELECT item_id, AVG(updated_at - created_at) from order_items WHERE item_id = 1 GROUP BY item_id; #THIS WORKS
     if OrderItem.find_by(item_id: self.id)
       time_diff = OrderItem.where(item_id: self.id).group(:item_id).pluck("AVG(updated_at - created_at)")
-      time_diff[0].split(" ")[0,2].join(" ")
+      time_diff[0].split(" ")[0,2].join(" ") #helper method in appcont
     else
       "no shipments yet"
     end
@@ -31,5 +31,17 @@ class Item < ApplicationRecord
 
   def quantity_sold
     OrderItem.where(item_id: self.id, fulfilled: true).sum(:quantity)
+  end
+
+  def subtotal(order)
+    OrderItem.where(item_id: self, order_id: order.id).sum("quantity*order_price")
+  end
+
+  def order_price(order)
+    OrderItem.where(item_id: self, order_id: order.id).first.order_price
+  end
+
+  def order_quantity(order)
+    OrderItem.where(item_id: self, order_id: order.id).first.quantity
   end
 end
