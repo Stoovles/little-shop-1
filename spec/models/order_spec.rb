@@ -45,4 +45,11 @@ RSpec.describe Order, type: :model do
     end
   end
 
+  describe ".total" do
+    it "should find the total cost of all the items" do
+      expect(@o1.total).to eq(624.0)
+      expect(@o2.total).to eq(51231.0) #order show page should only have 3 items
+    end
+  end
+
 end

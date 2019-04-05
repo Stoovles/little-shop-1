@@ -7,4 +7,8 @@ class Order < ApplicationRecord
     OrderItem.where(order_id: self.id).sum(:quantity)
   end
 
+  def total
+
+  end
+
 end

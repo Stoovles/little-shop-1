@@ -40,6 +40,7 @@ RSpec.describe "user orders page" do
       click_link "My Orders"
       expect(current_path).to eq(profile_orders_path)
       expect(page).to have_content("My Orders")
+      expect(page).to have_css(".order-card", count: 3)
       within first (".order-card") do
         expect(page).to have_link("Order ID: #{@u1.orders.first.id}")
         expect(page).to have_content("Created: #{@u1.orders.first.created_at}")
