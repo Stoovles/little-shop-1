@@ -57,7 +57,8 @@ RSpec.describe "user orders" do
       it "should show me information about that order" do
         visit profile_orders_path
         click_link "Order ID: #{@o1.id}"
-        expect(current_path).to eq(profile_orders_path(@o1))
+        expect(current_path).to eq(profile_order_path(@o1))
+        save_and_open_page
 
         expect(page).to have_content("Order ID: #{@u1.orders.first.id}")
         expect(page).to have_content("Created: #{@u1.orders.first.created_at}")
