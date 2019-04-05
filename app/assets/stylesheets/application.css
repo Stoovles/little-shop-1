@@ -77,7 +77,7 @@ a img {
   width: cover;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  color: white;
+  color: #FFF5DB;
   background-color: rgba(17,5,5,0.71);
   padding-bottom: 5px;
 }
@@ -92,7 +92,7 @@ a img {
 }
 
 .order-card a {
-  color: #fffdd0;
+  color: #FFF5DB;
   text-decoration: none;
   font-size: 1.4em;
   align-self: center;
@@ -130,7 +130,6 @@ a img {
 }
 
 .medium-image {
-  background: rgba(254,240,177,0.36);
   align-self: center;
 }
 
@@ -165,9 +164,8 @@ a img {
 .small-image {
   grid-column: 1 / span 1;
   width: auto;
-  height: 10vw;
+  height: 20vw;
   align-items: center;
-  z-index: 10;
 }
 
 .tiny-image {
@@ -196,8 +194,17 @@ a img {
   margin: 10px;
 }
 
+.cart-item-info {
+  padding-left: 55px;
+  grid-column: 2 / span 2;
+  font-size: 1.2em;
+}
+
 .total {
-  grid-column: 5 / span 1;
+  grid-column: 4 / span 2;
+  margin-left: 25px;
+  margin-bottom: 5px;
+  font-size: 2vw;
 }
 
 .image-container {
@@ -249,20 +256,22 @@ a img {
 
 .heading {
   font-size: 3em;
-  color:#fffdd0;
+  color:#FFF5DB;
   text-align: center;
 }
 
 #button {
   border: none;
-  background: #fffdd0;
+  background: #FFF5DB;
   align-self: center;
-  color: brown;
+  color: #642C00;
   border-radius: 5px;
   padding: 2px;
+  font-size: 1.2vw;
 }
 
 #button:hover {
   background: #110505;
-  color: #fffdd0;
+  color: #FFF5DB;
+  text-decoration: none;
 }
