@@ -75,6 +75,14 @@ RSpec.describe "user orders" do
         expect(page).to have_content("Item Quantity: #{@u1.orders.first.item_quantity}")
         expect(page).to have_content("Total: #{@u1.orders.first.total}")
       end
+
+      it "should show me a cancel button if the order is pending" do
+        visit profile_orders_path(@o3)
+        expect(page).to have_link("Cancel Order")
+
+        visit profile_order_path(@o1)
+        expect(page).to_not have_link("Cancel Order")
+      end
     end
   end
 end
