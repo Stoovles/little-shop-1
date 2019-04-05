@@ -47,6 +47,11 @@ RSpec.describe "Merchant Show Page" do
       expect(page).to_not have_content("Quantity: #{@oi214.quantity}")
       expect(page).to_not have_content("Total Price: #{@oi214.order_price}")
     end
+
+    xit 'order id is a link to order show page' do
+
+    end
+    
   end
 
 end
