@@ -80,5 +80,11 @@ RSpec.describe Item, type: :model do
         expect(@i1.subtotal(@o1)).to eq(264.0)
       end
     end
+
+    describe ".order_price" do
+      it "should return the order price on an item from its order item" do
+        expect(@i1.order_price(@o1)).to eq(66.0)
+      end
+    end
   end
 end

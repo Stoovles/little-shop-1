@@ -36,4 +36,8 @@ class Item < ApplicationRecord
   def subtotal(order)
     OrderItem.where(item_id: self, order_id: order.id).sum("quantity*order_price")
   end
+
+  def order_price(order)
+    OrderItem.where(item_id: self, order_id: order.id).first.order_price
+  end
 end
