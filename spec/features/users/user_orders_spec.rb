@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "user orders page" do
+RSpec.describe "user orders" do
   before :each do
     @umerch = User.create(name: "Ondrea Chadburn",street_address: "6149 Pine View Alley",city: "Wichita Falls",state: "Texas",zip_code: "76301",email_address: "ochadburn0@washingtonpost.com",password:"EKLr4gmM44", enabled: true, role:1)
     @umerch2 = User.create(name: "Sibbie Cromett",street_address: "0 Towne Avenue",city: "Birmingham",state: "Alabama",zip_code: "35211",email_address: "scromett3@github.io",password:"fEFJeHdT1K", enabled: true, role:1)
@@ -35,22 +35,38 @@ RSpec.describe "user orders page" do
   end
 
   describe "as a user who is logged in and has orders" do
-    it "should show me information about my order" do
-      visit profile_path
-      click_link "My Orders"
-      expect(current_path).to eq(profile_orders_path)
-      expect(page).to have_content("My Orders")
-      expect(page).to have_css(".order-card", count: 3)
-      within first (".order-card") do
-        expect(page).to have_link("Order ID: #{@u1.orders.first.id}")
-        expect(page).to have_content("Created: #{@u1.orders.first.created_at}")
-        expect(page).to have_content("Last Update: #{@u1.orders.first.updated_at}")
-        expect(page).to have_content("Status: #{@u1.orders.first.status}") #how do I call the enum?
-        expect(page).to have_content("Item Quantity: #{@u1.orders.first.item_quantity}")
-        expect(page).to have_content("Total: #{@u1.orders.first.total}")
-
+    describe "on my orders page" do
+      it "should show me information about my order" do
+        visit profile_path
+        click_link "My Orders"
+        expect(current_path).to eq(profile_orders_path)
+        expect(page).to have_content("My Orders")
+        expect(page).to have_css(".order-card", count: 3)
+        within first (".order-card") do
+          expect(page).to have_link("Order ID: #{@u1.orders.first.id}")
+          expect(page).to have_content("Created: #{@u1.orders.first.created_at}")
+          expect(page).to have_content("Last Update: #{@u1.orders.first.updated_at}")
+          expect(page).to have_content("Status: #{@u1.orders.first.status}") #how do I call the enum?
+          expect(page).to have_content("Item Quantity: #{@u1.orders.first.item_quantity}")
+          expect(page).to have_content("Total: #{@u1.orders.first.total}")
+        end
       end
     end
 
+    describe "on an order show page" do
+      it "should show me information about that order" do
+        visit profile_orders_path
+        click_link "Order ID: #{@o1.id}"
+        expect(current_path).to eq(profile_orders_path(@o1))
+
+        expect(page).to have_content("Order ID: #{@u1.orders.first.id}")
+        expect(page).to have_content("Created: #{@u1.orders.first.created_at}")
+        expect(page).to have_content("Last Update: #{@u1.orders.first.updated_at}")
+        expect(page).to have_content("Status: #{@u1.orders.first.status}") #how do I call the enum?
+        expect(page).to have_css(".item-card", count: 2)
+        expect(page).to have_content("Item Quantity: #{@u1.orders.first.item_quantity}")
+        expect(page).to have_content("Total: #{@u1.orders.first.total}")
+      end
+    end
   end
 end
