@@ -58,13 +58,20 @@ RSpec.describe "user orders" do
         visit profile_orders_path
         click_link "Order ID: #{@o1.id}"
         expect(current_path).to eq(profile_order_path(@o1))
-        save_and_open_page
 
-        expect(page).to have_content("Order ID: #{@u1.orders.first.id}")
+        expect(page).to have_content("Order: #{@u1.orders.first.id}")
         expect(page).to have_content("Created: #{@u1.orders.first.created_at}")
         expect(page).to have_content("Last Update: #{@u1.orders.first.updated_at}")
         expect(page).to have_content("Status: #{@u1.orders.first.status}") #how do I call the enum?
         expect(page).to have_css(".item-card", count: 2)
+        within first (".item-card") do
+          expect(page).to have_link(@o1.items.first.name)
+          expect(page).to have_css("img[src*='#{@i1.image_url}']")
+          expect(page).to have_content(@o1.items.first.description)
+          expect(page).to have_content(@oi1.quantity)
+          expect(page).to have_content(@oi1.order_price)
+          expect(page).to have_content(@oi1.subtotal)
+        end
         expect(page).to have_content("Item Quantity: #{@u1.orders.first.item_quantity}")
         expect(page).to have_content("Total: #{@u1.orders.first.total}")
       end
