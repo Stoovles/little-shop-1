@@ -51,7 +51,14 @@ RSpec.describe "Merchant Show Page" do
     xit 'order id is a link to order show page' do
 
     end
-    
+  end
+
+  context 'click on Items Index link' do
+    it 'should redirect to dashboard/items' do
+      visit dashboard_path
+      click_link "Items Index"
+      expect(current_path).to eq(dashboard_items_path)
+    end
   end
 
 end
