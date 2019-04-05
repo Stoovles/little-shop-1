@@ -1,5 +1,6 @@
 <% if current_user %>
 <br>
+<% binding.pry %>
   <div id='profile-info'>
     <p>Name: <%= current_user.name %></p>
     <p>Street Address: <%= current_user.street_address %></p>
@@ -7,6 +8,14 @@
     <p>State: <%= current_user.state %></p>
     <p>Zip Code: <%= current_user.zip_code %></p>
     <p>Email Address: <%= current_user.email_address %></p>
+  </div>
+
+  <div class='pending-orders'>
+    <% @pending_merchant_items.each do |orderitem| %>
+    <p>Order ID: <%= orderitem.order_id %></p>
+    <p>Ordered On: <%= orderitem.created_at %></p>
+    <p>Quantity: <%= orderitem.quantity %></p>
+    <p>Total Price: <%= orderitem.order_price %></p>
   </div>
 
 <% else redirect_to "/public/404" %>
