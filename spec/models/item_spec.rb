@@ -51,6 +51,17 @@ RSpec.describe Item, type: :model do
     end
   end
 
+  context 'items specific to merchant' do
+    describe '.merchant_items' do
+      it 'should return array of item ids specific to merchant' do
+        expect(Item.merchant_items(@u4)).to include(@i1)
+        expect(Item.merchant_items(@u4)).to include(@i2)
+        expect(Item.merchant_items(@u4)).to include(@i4)
+        expect(Item.merchant_items(@u4)).to include(@i6)
+      end
+    end
+  end
+
   context "items index page" do
     describe ".merchant_name" do
       it "should give the merchant name for an item" do
