@@ -63,8 +63,8 @@ RSpec.describe "user orders" do
         expect(page).to have_content("Created: #{@u1.orders.first.created_at}")
         expect(page).to have_content("Last Update: #{@u1.orders.first.updated_at}")
         expect(page).to have_content("Status: #{@u1.orders.first.status}")
-        expect(page).to have_css(".item-card", count: 2)
-        within first (".item-card") do
+        expect(page).to have_css(".order-item-card", count: 2)
+        within first (".order-item-card") do
           expect(page).to have_link(@o1.items.first.item_name)
           expect(page).to have_css("img[src*='#{@i1.image_url}']")
           expect(page).to have_content(@o1.items.first.description)
