@@ -22,4 +22,7 @@
   <% end %>
   <p>Item Quantity: <%= @order.item_quantity %></p>
   <p>Total: <%= @order.total %></p>
+  <% if @order.status == "pending" %>
+    <%= link_to "Cancel Order", profile_order_path(@order), method: :patch %>
+  <% end %>
 </div>

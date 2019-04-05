@@ -62,7 +62,7 @@ RSpec.describe "user orders" do
         expect(page).to have_content("Order: #{@u1.orders.first.id}")
         expect(page).to have_content("Created: #{@u1.orders.first.created_at}")
         expect(page).to have_content("Last Update: #{@u1.orders.first.updated_at}")
-        expect(page).to have_content("Status: #{@u1.orders.first.status}") #how do I call the enum?
+        expect(page).to have_content("Status: #{@u1.orders.first.status}")
         expect(page).to have_css(".item-card", count: 2)
         within first (".item-card") do
           expect(page).to have_link(@o1.items.first.item_name)
@@ -77,11 +77,21 @@ RSpec.describe "user orders" do
       end
 
       it "should show me a cancel button if the order is pending" do
-        visit profile_orders_path(@o3)
+        visit profile_order_path(@o3)
         expect(page).to have_link("Cancel Order")
 
         visit profile_order_path(@o1)
         expect(page).to_not have_link("Cancel Order")
+      end
+
+      it "takes me back to my profile page if a cancel an order" do
+        visit profile_order_path(@o3)
+        click_link "Cancel Order"
+        expect(current_path).to eq(profile_path)
+        expect(page).to have_content("Order #{@o3.id} has been cancelled")
+
+        visit profile_order_path(@o3)
+        expect(page).to have_content("Status: cancelled")
       end
     end
   end
