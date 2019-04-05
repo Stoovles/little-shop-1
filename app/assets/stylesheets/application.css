@@ -91,6 +91,18 @@ a img {
   text-align: center;
 }
 
+.order-card a {
+  color: #fffdd0;
+  text-decoration: none;
+  font-size: 2em;
+  text-align: center;
+}
+
+.order-card a:hover {
+  color: #2D4262;
+  text-decoration: none;
+}
+
 .five_most {
   grid-column: 1 / span 1;
   padding-left: 8em;
@@ -193,4 +205,24 @@ a img {
   display: flex;
   justify-content: center;
   align-items: ce
+}
+
+.order-container h2 {
+  background-color: rgba(255,253,208,0.71);
+  color: #110404;
+  text-align: center;
+  margin-right: 15vw;
+  margin-left: 15vw;
+  font-size: 4vw;
+}
+
+.order-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(193,140,90,0.71);
+  margin: 10px;
+  margin-left: 20vw;
+  margin-right: 20vw;
+  border-radius: 25px;
+  padding-left: 25px;
 }
