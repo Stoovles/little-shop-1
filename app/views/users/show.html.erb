@@ -17,5 +17,5 @@
   <% if current_user.orders.first %>
     <%= link_to "My Orders", profile_orders_path %>
   <% end %>
-<% else redirect_to "/public/404" %>
+  <% else redirect_to "/public/404" %>
 <% end %>

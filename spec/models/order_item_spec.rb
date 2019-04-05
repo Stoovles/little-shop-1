@@ -39,9 +39,19 @@ RSpec.describe OrderItem, type: :model do
     end
   end
 
+
+  describe '.unfulfilled_merchant_orderitems' do
+    it 'should return all unfulfilled orderitems for specific merchant' do
+      expect(OrderItem.unfulfilled_merchant_orderitems(@u4)).to include(@oi5)
+      expect(OrderItem.unfulfilled_merchant_orderitems(@u4)).to include(@oi6)
+    end
+  end
+
+
   # describe ".subtotal" do
   #   it "should give the subtotal" do
   #     expect(@oi1.subtotal).to eq(264.0)
   #   end
   # end
+
 end

@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   patch '/cart', to: "carts#update"
 
   get '/dashboard', to: "merchants#show"
+  get '/dashboard/items', to: "items#index"
 
   namespace :admin do
     get '/dashboard', to: 'admins#show'

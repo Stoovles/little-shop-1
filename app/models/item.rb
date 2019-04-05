@@ -19,6 +19,25 @@ class Item < ApplicationRecord
     unpopular.flatten![0..4]
   end
 
+  def self.merchant_items(merchant)
+    all.where(id: [merchant.items.pluck(:id)])
+  end
+
+  def self.merchant_popular_states
+  end
+
+  def self.merchant_popular_city_states
+  end
+
+  def self.merchant_most_orders_user
+  end
+
+  def self.merchant_most_items_user
+  end
+
+  def self.merchant_most_money_spent_user
+  end
+
   def avg_fulfill_time
     # SELECT item_id, AVG(updated_at - created_at) from order_items WHERE item_id = 1 GROUP BY item_id; #THIS WORKS
     if OrderItem.find_by(item_id: self.id)
