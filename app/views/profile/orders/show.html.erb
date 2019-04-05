@@ -11,7 +11,8 @@
     </div>
     <p><%= item.merchant_name %></p>
     <p><%= item.description %></p>
-    <h4><%= item.current_price %></h4>
+    <h4><%= item.order_price(@order) %></h4>
+    <h4><%= item.order_quantity(@order) %></h4>
 
     <div class="total">
       <%= item.subtotal(@order) %>
