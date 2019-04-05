@@ -40,4 +40,8 @@ class Item < ApplicationRecord
   def order_price(order)
     OrderItem.where(item_id: self, order_id: order.id).first.order_price
   end
+
+  def order_quantity(order)
+    OrderItem.where(item_id: self, order_id: order.id).first.quantity
+  end
 end
