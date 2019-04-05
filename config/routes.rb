@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   delete '/cart', to: "carts#destroy"
 
   get '/dashboard', to: "merchants#show"
+  get '/dashboard/items', to: "items#index"
 
   namespace :admin do
     get '/dashboard', to: 'admins#show'
