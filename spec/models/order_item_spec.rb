@@ -41,7 +41,7 @@ RSpec.describe OrderItem, type: :model do
 
   describe ".subtotal" do
     it "should give the subtotal" do
-      expect(@oi1.subtotal).to eq(274.0)
+      expect(@oi1.subtotal).to eq(264.0)
     end
 
   end

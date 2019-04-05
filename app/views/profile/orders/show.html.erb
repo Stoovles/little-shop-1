@@ -5,7 +5,7 @@
   <p>Status: <%= @order.status %></p> <!-- enums -->
   <% @order.items.each do |item| %>
   <div class="item-card">
-    <h3><%= link_to item.item_name item_path(item)%></h3>
+    <h3><%= link_to item.item_name, item_path(item)%></h3>
     <div class="image-container">
       <img src="<%= item.image_url%>" alt="image of <%= item.item_name %>" class="small-image">
     </div>
