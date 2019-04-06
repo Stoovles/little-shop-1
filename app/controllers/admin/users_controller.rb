@@ -9,8 +9,10 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(role: 1)
-    flash.notice = "#{@user.name} has been upgraded to a merchant"
-    redirect_to admin_users_path
+    if params[:update] == "upgrade"
+      @user.update(role: 1)
+      flash.notice = "#{@user.name} has been upgraded to a merchant"
+      redirect_to admin_users_path
+    end
   end
 end

@@ -62,8 +62,8 @@ RSpec.describe "As an admin who is logged in" do
         click_link "Upgrade to Merchant"
         expect(current_path).to eq(admin_users_path)
       end
+      expect(page).to have_content("#{@u1.name} has been upgraded to a merchant")
       visit admin_users_path
-      # expect(page).to have_content("#{@u1.name} has been upgraded to a merchant")
       within ".users-container" do
         expect(page).to_not have_content(@u1.name)
       end
