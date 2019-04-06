@@ -8,12 +8,14 @@ class Dashboard::ItemsController < ApplicationController
   def deactivate
   @item = Item.find(params[:id])
   @item.update(enabled: false)
+  flash.notice = "Item #{@item.id} has been disabled"
   redirect_to dashboard_items_path
 end
 
 def activate
   @item = Item.find(params[:id])
   @item.update(enabled: true)
+  flash.notice = "Item #{@item.id} has been enabled"
   redirect_to dashboard_items_path
 end
 
