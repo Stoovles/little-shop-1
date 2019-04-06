@@ -1,4 +1,3 @@
-<% if request.env['PATH_INFO'] == "/items" %>
 <section class="statistics">
   <h2>Statistics</h2>
   <div class="five_most">
@@ -23,7 +22,6 @@
     <% end %>
   </div>
 </section>
-<% end %>
 
 <div class="items-container">
   <% @items.each do |item| %>

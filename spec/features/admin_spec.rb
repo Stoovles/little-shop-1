@@ -40,7 +40,7 @@ RSpec.describe "As an admin who is logged in" do
       expect(current_path).to eq(admin_user_path(@u1))
     end
 
-    it "should upgrade the user to a merchant and they can no longer be seen" do
+    xit "should upgrade the user to a merchant and they can no longer be seen" do
       visit admin_users_path
       within first ".user-card" do
         click_link "Upgrade to Merchant"

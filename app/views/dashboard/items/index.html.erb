@@ -1,0 +1,12 @@
+<div class="items-container">
+  <% @items.each do |item| %>
+    <div class="item-card">
+      <h2>ID: <%= item.id %></h2>
+      <a href="<%=item_path(item)%>"><img src=<%= item.image_url %> class="medium-image" alt="image of <%= item.item_name %>"></a>
+      <br>
+      <p>Merchant: <%= item.merchant_name %></p>
+      <p>In Inventory: <%= item.inventory %></p>
+      <p>Price: $<%= item.current_price.round(2) %></p>
+    </div>
+  <% end %>
+</div>
