@@ -27,7 +27,10 @@ Rails.application.routes.draw do
   end
 
   namespace :dashboard do
-    resources :items, only: [:index]
+    resources :items, only: [:index, :update, :destroy] do
+      member { patch :activate }
+      member { patch :deactivate }
+    end
     resources :orders, only: [:show]
   end
 
