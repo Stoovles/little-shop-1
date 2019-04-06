@@ -34,6 +34,7 @@
       <% end %>
 
       <% if current_admin? %>
+        <%= link_to "Users", admin_users_path %>
         <%= link_to "Log Out", logout_path %>
         <%= link_to "Dashboard", admin_dashboard_path %>
         <%= "Admin logged in as #{current_user.name}" %>
