@@ -1,3 +1,5 @@
+<% if current_admin? %>
+
 <h1>Current Registered Users</h1>
 <div class="users-container">
   <% @users.each do |user| %>
