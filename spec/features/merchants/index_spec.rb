@@ -13,6 +13,9 @@ RSpec.describe 'On the merchant index page' do
       expect(page).to have_content("#{@u1.name}")
       expect(page).to have_content("Ships from: #{@u1.city}, #{@u1.state}")
       expect(page).to have_content("Member since: #{@u1.created_at.to_date}")
+
+      expect(page).to_not have_content("#{@u3.name}")
+      expect(page).to_not have_content("Ships from: #{@u3.city}, #{@u3.state}")
     end
   end
 end
