@@ -2,11 +2,21 @@
   <% @items.each do |item| %>
     <div class="item-card">
       <h2>ID: <%= item.id %></h2>
-      <a href="<%=item_path(item)%>"><img src=<%= item.image_url %> class="medium-image" alt="image of <%= item.item_name %>"></a>
+      <p><%= item.item_name %></p>
+      <a href="<%=item_path(item)%>"><img src=<%= item.image_url %> class="small-image" alt="image of <%= item.item_name %>"></a>
       <br>
-      <p>Merchant: <%= item.merchant_name %></p>
       <p>In Inventory: <%= item.inventory %></p>
       <p>Price: $<%= item.current_price.round(2) %></p>
+      <%= link_to 'Edit Item' %>
+      <% if item.enabled %>
+        <%= link_to 'Disable Item' %>
+      <% else %>
+        <%= link_to 'Enable Item' %>
+      <% end %>
+      <% if item.quantity_sold == 0 %>
+        <%= link_to 'Delete Item' %>
+      <% end %>
     </div>
   <% end %>
+  <%= link_to 'Add New Item' %>
 </div>
