@@ -44,8 +44,9 @@ RSpec.describe "As an admin who is logged in" do
       visit admin_users_path
       within first ".user-card" do
         click_link "Upgrade to Merchant"
-        expect(current_path).to eq(edit_admin_user_path(@u1)) #is this right?
+        expect(current_path).to eq(admin_user_path(@u1)) #is this right?
       end
+      visit admin_users_path
       expect(page).to_not have_content(@u1.name)
     end
   end
