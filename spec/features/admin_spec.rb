@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "As an admin who is logged in" do
   before :each do
     @uadmin = User.create!(name: "Darnell Topliss",street_address: "02 Monument Street",city: "Lincoln",state: "Nebraska",zip_code: "68515",email_address: "dtopliss6@unicef.org",password:"usJn1CuUB", enabled: true, role:2)
-    
+
     @umerch = User.create(name: "Ondrea Chadburn",street_address: "6149 Pine View Alley",city: "Wichita Falls",state: "Texas",zip_code: "76301",email_address: "ochadburn0@washingtonpost.com",password:"EKLr4gmM44", enabled: true, role:1)
     @umerch2 = User.create(name: "Raff Faust",street_address: "066 Debs Place",city: "El Paso",state: "Texas",zip_code: "79936",email_address: "rfaust1@naver.com",password:"ZCoxai", enabled: true, role:1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@umerch2)
@@ -100,10 +100,10 @@ RSpec.describe "As an admin who is logged in" do
         visit admin_merchant_path(@umerch)
         expect(page).to have_css(".order-card", count: 1)
         within first ".order-card" do
-          expect(page).to have_link("Order: #{@o49.id}")
-          expect(page).to have_content("Date created: #{@o49.created_at}")
-          expect(page).to have_content("Total items: #{@merch.my_item_count(@o49)}")
-          expect(page).to have_content("Total items: #{@merch.my_total(@o49)}")
+          expect(page).to have_content("Order ID: #{@oi171.order_id}")
+          expect(page).to have_content("Ordered On: #{@oi171.created_at}")
+          expect(page).to have_content("Quantity: #{@oi171.order_id}")
+          expect(page).to have_content("Total Price: #{@oi171.order_price}")
         end
       end
 

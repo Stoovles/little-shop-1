@@ -29,6 +29,7 @@
   </div>
 
   <div class='pending-orders'>
+    <%# this doesn't show what it's supposed to - orders, not orderitems %>
     <% @pending_merchant_items.each do |orderitem| %>
     <p>Order ID: <%= orderitem.order_id %></p>
     <p>Ordered On: <%= orderitem.created_at %></p>

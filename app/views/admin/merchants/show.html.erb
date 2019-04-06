@@ -1,2 +1,42 @@
 <% if current_admin? %>
+
+<section class="statistics">
+  <h2>Statistics</h2>
+  <div class="five_most">
+    <h3>Most Popular Items</h3>
+    <% @merchant.items.popular_five.each do |item| %>
+    <div class="popular">
+      <img src=<%= item.image_url %> class="tiny-image" alt="image of <%= item.item_name %>"></a>
+      <%= item.item_name %> -
+      <%= item.quantity_sold %> bought
+    </div>
+    <% end %>
+  </div>
+
+</section>
+
+
+<br>
+<%= link_to "Items Index", dashboard_items_path %>
+
+  <div id='profile-info'>
+    <p>Name: <%= @merchant.name %></p>
+    <p>Street Address: <%= @merchant.street_address %></p>
+    <p>City: <%= @merchant.city %></p>
+    <p>State: <%= @merchant.state %></p>
+    <p>Zip Code: <%= @merchant.zip_code %></p>
+    <p>Email Address: <%= @merchant.email_address %></p>
+  </div>
+
+  <div class='pending-orders'>
+    <% @pending_merchant_items.each do |orderitem| %>
+    <div class="order-card">
+      <p>Order ID: <%= orderitem.order_id %></p>
+      <p>Ordered On: <%= orderitem.created_at %></p>
+      <p>Quantity: <%= orderitem.quantity %></p>
+      <p>Total Price: <%= orderitem.order_price %></p>
+    </div>
+    <% end %>
+  </div>
+<% else redirect_to "/public/404" %>
 <% end %>
