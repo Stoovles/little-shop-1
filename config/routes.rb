@@ -28,7 +28,12 @@ Rails.application.routes.draw do
 
   namespace :dashboard do
     resources :items, only: [:index]
+    resources :orders, only: [:show]
   end
+
+  # namcespace :dashboard do
+  #   resources :orders, only: [:show]
+  # end
 
   get '/cart', to: "carts#show"
   delete '/cart', to: "carts#destroy"
