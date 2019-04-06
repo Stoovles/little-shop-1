@@ -13,6 +13,10 @@ class User < ApplicationRecord
 
   enum role: ['user', 'merchant', 'admin']
 
+  def self.active_merchant
+    User.where(role: 1, enabled: true)
+  end
+
   # # e.g., User.authenticate('penelope@turing.com', 'boom')
   # def self.authenticate(email, password)
   #   if self.find_by(email_address: email) == self.find_by(password: password)
