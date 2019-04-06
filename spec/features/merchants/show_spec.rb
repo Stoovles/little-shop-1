@@ -48,8 +48,10 @@ RSpec.describe "Merchant Show Page" do
       expect(page).to_not have_content("Total Price: #{@oi214.order_price}")
     end
 
-    xit 'order id is a link to order show page' do
-
+    it 'order id is a link to order show page' do
+      visit dashboard_path
+      click_link "Order ID: #{@oi171.order_id}"
+      expect(current_path).to eq(dashboard_order_path(@oi171.order_id))
     end
   end
 
