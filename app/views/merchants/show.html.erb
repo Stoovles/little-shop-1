@@ -30,7 +30,7 @@
 
   <div class='pending-orders'>
     <% @pending_merchant_items.each do |orderitem| %>
-    <p>Order ID: <%= orderitem.order_id %></p>
+    <p><%= link_to "Order ID: #{orderitem.order_id}", dashboard_order_path(orderitem.order_id) %></p>
     <p>Ordered On: <%= orderitem.created_at %></p>
     <p>Quantity: <%= orderitem.quantity %></p>
     <p>Total Price: <%= orderitem.order_price %></p>
