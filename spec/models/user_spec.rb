@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
 
     describe ".merchant_orders" do
       it "should list all the orders that include the merchant's items" do
-        expect(@umerch.merchant_orders).to eq([@o39,@o49])
+        expect(@umerch.merchant_pending_orders).to eq([@o49])
       end
     end
   end

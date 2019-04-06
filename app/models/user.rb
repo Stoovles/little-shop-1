@@ -36,4 +36,10 @@ class User < ApplicationRecord
     OrderItem.where(item_id: self.items, order_id: order.id).sum("quantity*order_price")
   end
 
+  def merchant_pending_orders
+    ids = OrderItem.where(item_id: self.items,fulfilled: false).pluck(:order_id)
+    Order.where(id: ids)
+    # REFACTORRR
+  end
+
 end
