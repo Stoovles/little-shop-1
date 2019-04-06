@@ -28,4 +28,12 @@ class User < ApplicationRecord
   # # otherwise, return nil
   # end
 
+  def my_item_count(order)
+    OrderItem.where(item_id: self.items, order_id: order.id).sum(:quantity)
+  end
+
+  def my_total(order)
+    OrderItem.where(item_id: self.items, order_id: order.id).sum("quantity*order_price")
+  end
+
 end

@@ -22,7 +22,7 @@ RSpec.describe "As an admin who is logged in" do
     @oi171 = OrderItem.create(order_id: @o39.id,item_id: @i39.id, quantity: 7,fulfilled: true,order_price: 53.0,created_at: "2018-04-07 22:05:50",updated_at: "2018-04-17 08:47:14")
     @oi172 = OrderItem.create(order_id: @o39.id,item_id: @i44.id, quantity: 7,fulfilled: true,order_price: 53.0,created_at: "2018-04-07 22:05:50",updated_at: "2018-04-17 08:47:14")
     @oi214 = OrderItem.create(order_id: @o49.id,item_id: @i44.id, quantity: 2,fulfilled: false,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
-    @oi214 = OrderItem.create(order_id: @o49.id,item_id: @i23.id, quantity: 2,fulfilled: false,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
+    @oi215 = OrderItem.create(order_id: @o49.id,item_id: @i23.id, quantity: 2,fulfilled: false,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@uadmin)
   end
@@ -100,10 +100,10 @@ RSpec.describe "As an admin who is logged in" do
         visit admin_merchant_path(@umerch)
         expect(page).to have_css(".order-card", count: 1)
         within first ".order-card" do
-          expect(page).to have_content("Order ID: #{@oi171.order_id}")
-          expect(page).to have_content("Ordered On: #{@oi171.created_at}")
-          expect(page).to have_content("Quantity: #{@oi171.order_id}")
-          expect(page).to have_content("Total Price: #{@oi171.order_price}")
+          expect(page).to have_content("Order ID: #{@o49.id}")
+          expect(page).to have_content("Ordered On: #{@o49.created_at}")
+          expect(page).to have_content("Quantity: #{@merch.my_item_count(@o49)}")
+          expect(page).to have_content("Total Price: #{@merch.my_total(@o49)}")
         end
       end
 

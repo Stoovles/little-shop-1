@@ -29,12 +29,12 @@
   </div>
 
   <div class='pending-orders'>
-    <% @pending_merchant_items.each do |orderitem| %>
+    <% @orders.each do |order| %>
     <div class="order-card">
-      <p>Order ID: <%= orderitem.order_id %></p>
-      <p>Ordered On: <%= orderitem.created_at %></p>
-      <p>Quantity: <%= orderitem.quantity %></p>
-      <p>Total Price: <%= orderitem.order_price %></p>
+      <p>Order ID: <%= order.id %></p>
+      <p>Ordered On: <%= order.created_at %></p>
+      <p>Quantity: <%= @merchant.my_item_count(order) %></p>
+      <p>Total Price: <%= @merchant.my_total(order) %></p>
     </div>
     <% end %>
   </div>
