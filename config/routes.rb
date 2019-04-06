@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   patch "/profile", to: "users#update"
 
   namespace :profile do
-    resources :orders, only: [:index, :show, :update]
+    resources :orders, only: [:index, :show, :update, :create]
   end
 
   get '/cart', to: "carts#show"
