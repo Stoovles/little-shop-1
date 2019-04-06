@@ -31,6 +31,11 @@
       <div class="total">
         Total: <%= @cart.cart_total %>
       </div>
+      <% if !current_user %>
+      <div class="login-register">
+        Please <%= link_to 'Register', new_user_path %> or <%= link_to 'Log In', login_path %> to place your order.
+      </div>
+      <% end %>
     </div>
   <%= link_to 'Empty my cart', cart_path, method: :delete %>
 <% else %>

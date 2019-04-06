@@ -125,6 +125,32 @@ RSpec.describe "User's cart abilities", type: :feature do
         expect(page).to_not have_content("W.L. Weller Special Reserve")
       end
 
+      it 'asks visitor to login or register to check out' do
+        visit item_path(@i2)
+        click_button "Add to Cart"
+        visit cart_path
+
+        within ".cart-container" do
+          expect(page).to have_link('Register')
+          expect(page).to have_link('Log In')
+        end
+      end
+
+      it 'does not ask user to login or register to check out' do
+        visit login_path
+        fill_in "email_address", with: @u1.email_address
+        fill_in "password", with: @u1.password
+        click_on "Log Me In"
+        
+        visit item_path(@i2)
+        click_button "Add to Cart"
+        visit cart_path
+
+        within ".cart-container" do
+          expect(page).to_not have_link('Register')
+          expect(page).to_not have_link('Log In')
+        end
+      end
     end
   end
 end
