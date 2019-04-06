@@ -133,6 +133,7 @@ RSpec.describe "User's cart abilities", type: :feature do
         within ".cart-container" do
           expect(page).to have_link('Register')
           expect(page).to have_link('Log In')
+          expect(page).to_not have_button('Check Out')
         end
       end
 
@@ -141,7 +142,7 @@ RSpec.describe "User's cart abilities", type: :feature do
         fill_in "email_address", with: @u1.email_address
         fill_in "password", with: @u1.password
         click_on "Log Me In"
-        
+
         visit item_path(@i2)
         click_button "Add to Cart"
         visit cart_path
@@ -150,6 +151,37 @@ RSpec.describe "User's cart abilities", type: :feature do
           expect(page).to_not have_link('Register')
           expect(page).to_not have_link('Log In')
         end
+      end
+
+      it 'does allows a user to check out' do
+        visit login_path
+        fill_in "email_address", with: @u1.email_address
+        fill_in "password", with: @u1.password
+        click_on "Log Me In"
+
+        visit item_path(@i2)
+        click_button "Add to Cart"
+        visit cart_path
+
+        within ".cart-container" do
+          expect(page).to have_button('Check Out')
+        end
+
+        click_button 'Check Out'
+
+        expect(current_path).to eq(profile_orders_path)
+        expect(page).to have_content("Your order was successfully created!")
+
+        within ".navbar" do
+          expect(page).to have_content("My Cart: 0")
+        end
+
+        within ".order-card" do
+          expect(page).to have_content("pending")
+          expect(page).to have_content("Item Quantity: 1")
+          expect(page).to have_content("Total: 35")
+        end
+
       end
     end
   end
