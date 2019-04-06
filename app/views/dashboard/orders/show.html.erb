@@ -1,0 +1,33 @@
+
+<h2 class="heading">Order: <%= @order.id %></h2>
+<div class="order-card">
+  <h5>Created: <%= @order.created_at %></h5>
+  <h5>Last Update: <%= @order.updated_at %></h5>
+  <h5>Status: <%= @order.status %></h5> <!-- enums -->
+  <h5>Item Quantity: <%= @order.item_quantity %></h5>
+  <h5>Total: <%= @order.total %></h5>
+  <% if @order.status == "pending" %>
+  <%= link_to "Cancel Order", profile_order_path(@order), method: :patch, id: "button" %>
+  <% end %>
+  <% @order.items.each do |item| %>
+  <div class="order-item-card">
+    <h3><%= link_to item.item_name, item_path(item)%></h3>
+    <div class="image-container">
+      <img src="<%= item.image_url%>" alt="image of <%= item.item_name %>">
+    </div>
+    <div class="item-info">
+      Merchant: <%= item.merchant_name %>
+      <br>
+      <%= item.description %>
+      <br>
+      <br>
+      Quantity ordered: <%= item.order_quantity(@order) %>
+      <br>
+      Price: <%= item.order_price(@order) %>
+      <br>
+      Subtotal: <%= item.subtotal(@order) %>
+    </div>
+
+  </div>
+  <% end %>
+</div>

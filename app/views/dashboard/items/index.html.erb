@@ -1,0 +1,22 @@
+<div class="items-container">
+  <% @items.each do |item| %>
+    <div class="item-card">
+      <h2>ID: <%= item.id %></h2>
+      <p><%= item.item_name %></p>
+      <a href="<%=item_path(item)%>"><img src=<%= item.image_url %> class="small-image" alt="image of <%= item.item_name %>"></a>
+      <br>
+      <p>In Inventory: <%= item.inventory %></p>
+      <p>Price: $<%= item.current_price.round(2) %></p>
+      <%= link_to 'Edit Item' %>
+      <% if item.enabled %>
+        <%= link_to 'Disable Item', deactivate_dashboard_item_path(item), method: :patch%>
+      <% else %>
+        <%= link_to 'Enable Item', activate_dashboard_item_path(item), method: :patch%>
+      <% end %>
+      <% if item.quantity_sold == 0 %>
+        <%= link_to 'Delete Item' %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= link_to 'Add New Item' %>
+</div>

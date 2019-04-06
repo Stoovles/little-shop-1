@@ -1,0 +1,42 @@
+<% if current_user %>
+
+<section class="statistics">
+  <h2>Statistics</h2>
+  <div class="five_most">
+    <h3>Most Popular Items</h3>
+    <% @items.popular_five.each do |item| %>
+    <div class="popular">
+      <img src=<%= item.image_url %> class="tiny-image" alt="image of <%= item.item_name %>"></a>
+      <%= item.item_name %> -
+      <%= item.quantity_sold %> bought
+    </div>
+    <% end %>
+  </div>
+
+</section>
+
+
+<br>
+<%= link_to "Items Index", dashboard_items_path %>
+
+  <div id='profile-info'>
+    <p>Name: <%= current_user.name %></p>
+    <p>Street Address: <%= current_user.street_address %></p>
+    <p>City: <%= current_user.city %></p>
+    <p>State: <%= current_user.state %></p>
+    <p>Zip Code: <%= current_user.zip_code %></p>
+    <p>Email Address: <%= current_user.email_address %></p>
+  </div>
+
+  <div class='pending-orders'>
+    <%# this doesn't show what it's supposed to - orders, not orderitems %>
+    <% @pending_merchant_items.each do |orderitem| %>
+    <p><%= link_to "Order ID: #{orderitem.order_id}", dashboard_order_path(orderitem.order_id) %></p>
+    <p>Ordered On: <%= orderitem.created_at %></p>
+    <p>Quantity: <%= orderitem.quantity %></p>
+    <p>Total Price: <%= orderitem.order_price %></p>
+    <% end %>
+  </div>
+
+<% else redirect_to "/public/404" %>
+<% end %>

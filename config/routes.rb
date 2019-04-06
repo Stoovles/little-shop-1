@@ -23,17 +23,32 @@ Rails.application.routes.draw do
   patch "/profile", to: "users#update"
 
   namespace :profile do
-    resources :orders, only: [:index, :show, :update]
+    resources :orders, only: [:index, :show, :update, :create]
   end
+
+  namespace :dashboard do
+    resources :items, only: [:index, :update, :destroy] do
+      member { patch :activate }
+      member { patch :deactivate }
+    end
+    resources :orders, only: [:show]
+  end
+
+  # namcespace :dashboard do
+  #   resources :orders, only: [:show]
+  # end
 
   get '/cart', to: "carts#show"
   delete '/cart', to: "carts#destroy"
   patch '/cart', to: "carts#update"
 
   get '/dashboard', to: "merchants#show"
+  # get '/dashboard/items', to: "items#index"
 
   namespace :admin do
     get '/dashboard', to: 'admins#show'
+    resources :users, only: [:index, :show, :update]
+    resources :merchants, only: [:show]
   end
 
 

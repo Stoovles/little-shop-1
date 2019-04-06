@@ -6,7 +6,6 @@ skip_before_action :require_user, only: [:new, :create]
   end
 
   def create
-
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
@@ -17,7 +16,6 @@ skip_before_action :require_user, only: [:new, :create]
   end
 
   def show
-    # binding.pry
     @user = User.find(current_user.id)
   end
 

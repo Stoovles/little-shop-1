@@ -1,0 +1,16 @@
+<% if current_admin? %>
+
+  <h1>Current Registered Users</h1>
+  <div class="users-container">
+    <% @users.each do |user| %>
+      <div class="user-card">
+        <%= link_to user.name, admin_user_path(user) %>
+        Registered: <%= user.created_at %>
+        <%= link_to "Upgrade to Merchant", admin_user_path(user,update: :upgrade), method: :patch %>
+
+      </div>
+    <% end %>
+
+  </div>
+<% else redirect_to "/public/404" %>
+<% end %>
