@@ -20,7 +20,6 @@ before_action :require_visitor_or_user
     if params[:update] == "remove" || params[:quantity] == "0"
       session[:cart].delete(params[:item_id])
     else
-      # binding.pry
       session[:cart][params[:item_id]] = params[:quantity].to_i
     end
     if @cart.contents.first == nil
