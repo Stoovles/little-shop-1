@@ -7,7 +7,7 @@ class Dashboard::ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id]).delete
-    redirect_to dashboard_items_path
+    redirect_to dashboard_items_path, danger: "Item #{@item.id} has been deleted"
   end
 
   def deactivate
