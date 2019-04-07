@@ -13,9 +13,11 @@ RSpec.describe User, type: :model do
       @u3 = User.create(name: "Con Chilver",street_address: "16455 Miller Circle",city: "Van Nuys",state: "California",zip_code: "91406",email_address: "cchilver2@mysql.com",password:"IrGmrINsmr9e", enabled: false, role:0)
     end
 
-    xit ".member_since" do
-      #what does this test do?
-      expect(User.active_merchant).to eq([@u1, @u2])
+
+    describe "can return users who are active merchants with" do
+      it ".active_merchant" do
+        expect(User.active_merchant).to eq([@u1, @u2])
+      end
     end
   end
 
