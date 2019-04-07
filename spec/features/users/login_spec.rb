@@ -59,5 +59,46 @@ RSpec.describe 'Login Page Workflow' do
 
       expect(page).to have_content("Incorrect email and/or password")
     end
+
+    it 'will redirect a user of any role who is already logged in to the right path' do
+      user = User.create!(name: "Jeremy", role: 0,
+                        street_address: "1331 17th St",
+                        city: "Denver",
+                        state: "CO",
+                        zip_code: 80202,
+                        email_address: "Jeremy@test_user.com",
+                        password: "test",
+                        enabled: true)
+
+      visit login_path
+
+      expect(page).to_not have_content("You are already logged in.")
+
+      fill_in "email_address", with: "Jeremy@test_user.com"
+      fill_in "password", with: "test"
+
+      click_button "Log Me In"
+
+      expect(current_path).to eq(profile_path)
+
+      visit login_path
+
+      expect(page).to have_content("You are already logged in.")
+      expect(current_path).to eq(profile_path)
+
+      user.update!(role: 1)
+
+      visit login_path
+
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_content("You are already logged in.")
+
+      user.update!(role: 2)
+
+      visit login_path
+
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content("You are already logged in.")
+    end
   end
 end
