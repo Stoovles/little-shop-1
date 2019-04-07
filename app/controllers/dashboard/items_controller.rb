@@ -5,6 +5,11 @@ class Dashboard::ItemsController < ApplicationController
     @items = Item.merchant_items(current_user)
   end
 
+  def destroy
+    @item = Item.find(params[:id]).delete
+    redirect_to dashboard_items_path
+  end
+
   def deactivate
   @item = Item.find(params[:id])
   @item.update(enabled: false)
