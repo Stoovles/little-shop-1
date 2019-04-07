@@ -41,6 +41,17 @@ RSpec.describe 'When I visit the merchant dashboard page' do
     end
   end
 
+  describe 'click link to delete item' do
+    it 'should delete the item' do
+      visit dashboard_items_path
+      within all(".item-card").last do
+        click_link 'Delete Item'
+        expect(current_path).to eq(dashboard_items_path)
+      end
+      expect(page).to_not have_content(@i23.item_name)
+    end
+  end
+
   describe 'click link to enable/disable item' do
     it 'should disable an enabled item' do
       visit dashboard_items_path

@@ -14,9 +14,9 @@
         <%= link_to 'Enable Item', activate_dashboard_item_path(item), method: :patch%>
       <% end %>
       <% if item.quantity_sold == 0 %>
-        <%= link_to 'Delete Item' %>
+        <%= link_to 'Delete Item', dashboard_item_path(item), method: :delete %>
       <% end %>
     </div>
   <% end %>
-  <%= link_to 'Add New Item' %>
+  <%= link_to 'Add New Item', new_dashboard_item_path%>
 </div>
