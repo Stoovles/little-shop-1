@@ -86,6 +86,7 @@ RSpec.describe 'Login Page Workflow' do
       expect(page).to have_content("You are already logged in.")
       expect(current_path).to eq(profile_path)
 
+      #as a merchant
       user.update!(role: 1)
 
       visit login_path
@@ -93,6 +94,7 @@ RSpec.describe 'Login Page Workflow' do
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content("You are already logged in.")
 
+      #as an admin
       user.update!(role: 2)
 
       visit login_path
