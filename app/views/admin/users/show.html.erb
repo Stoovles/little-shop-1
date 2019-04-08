@@ -1,3 +1,14 @@
 <% if current_admin? %>
+
+  <div id='profile-info'>
+    <p>Name: <%= @user.name %></p>
+    <p>Street Address: <%= @user.street_address %></p>
+    <p>City: <%= @user.city %></p>
+    <p>State: <%= @user.state %></p>
+    <p>Zip Code: <%= @user.zip_code %></p>
+    <p>Email Address: <%= @user.email_address %></p>
+  </div>
+  <%= link_to "Upgrade to Merchant", admin_user_path(@user,update: :upgrade), method: :patch %>
+
 <% else redirect_to "/public/404" %>
 <% end %>
