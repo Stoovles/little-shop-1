@@ -64,6 +64,7 @@ class Item < ApplicationRecord
   end
 
   def order_quantity(order)
-    OrderItem.where(item_id: self, order_id: order.id).first.quantity
+    # OrderItem.where(item_id: self, order_id: order.id).first.quantity
+    order_items.where(order_id: order.id).first.quantity
   end
 end

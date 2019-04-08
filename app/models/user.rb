@@ -14,7 +14,7 @@ class User < ApplicationRecord
   enum role: ['user', 'merchant', 'admin']
 
   def self.active_merchant
-    User.where(role: 1, enabled: true)
+    where(role: 1, enabled: true)
   end
 
   # # e.g., User.authenticate('penelope@turing.com', 'boom')
