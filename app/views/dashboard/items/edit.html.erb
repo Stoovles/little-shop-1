@@ -1,8 +1,8 @@
-<h1>Create New Item</h1>
+<h1>Edit Item</h1>
 
 <!-- <div class="row"> -->
   <!-- <div class="col-md-6 col-md-offset-3"> -->
-    <%= form_for [:dashboard, @item], url: {action: "create"} do |f| %>
+    <%= form_for [:dashboard, @item], url: {action: "update"} do |f| %>
       <%= f.error_messages %>
 
       <%= f.label :item_name %>
@@ -12,15 +12,15 @@
       <%= f.text_area :description, :required => true %>
 
       <%= f.label :image_url %>
-      <%= f.text_field :image_url%>
+      <%= f.url_field :image_url%>
 
       <%= f.label :current_price %>
-      <%= f.number_field :current_price, :required => true %>
+      <%= f.text_field :current_price, :required => true %>
 
       <%= f.label :inventory %>
       <%= f.number_field :inventory, :required => true %>
 
-      <%= f.submit "Create Item" %>
+      <%= f.submit "Edit Item" %>
     <% end %>
   <!-- </div> -->
 <!-- </div> -->

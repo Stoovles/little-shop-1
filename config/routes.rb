@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   end
 
   namespace :dashboard do
-    resources :items, only: [:index, :new, :update, :destroy, :create] do
+    resources :items, only: [:index, :new, :update, :destroy, :create, :edit] do
       member { patch :activate }
       member { patch :deactivate }
     end
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'admins#show'
     resources :users, only: [:index, :show, :update]
-    resources :merchants, only: [:show]
+    resources :merchants, only: [:show, :index]
   end
 
 
