@@ -20,6 +20,19 @@ class Dashboard::ItemsController < ApplicationController
     @items = Item.merchant_items(current_user)
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to dashboard_items_path, success: "Item #{@item.id} has been updated"
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @item = Item.find(params[:id]).delete
     redirect_to dashboard_items_path, danger: "Item #{@item.id} has been deleted"
