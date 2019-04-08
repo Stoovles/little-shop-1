@@ -75,4 +75,63 @@ RSpec.describe 'When I visit the merchant dashboard page' do
       end
     end
   end
+
+  describe 'click link to add new item' do
+    it 'should go to new form path' do
+      visit dashboard_items_path
+      click_link "Add New Item"
+      expect(current_path).to eq(new_dashboard_item_path)
+    end
+
+    it 'should create a new item' do
+      visit new_dashboard_item_path
+      fill_in "Item name", with: "Test Whiskey"
+      fill_in "Description", with: "Test Whiskey description"
+      fill_in "Inventory", with: 4
+      fill_in "Current price", with: "55.50"
+
+      click_button "Create Item"
+
+      expect(current_path).to eq(dashboard_items_path)
+
+      expect(page).to have_content("Test Whiskey")
+      expect(page).to have_content("4")
+      expect(page).to have_content("$55.5")
+    end
+
+    it 'should not create a new item with bad values' do
+      visit new_dashboard_item_path
+
+      click_button "Create Item"
+
+      expect(page).to have_content("Inventory is not a number")
+      expect(page).to have_content("Current price is invalid")
+      expect(page).to have_content("Current price is not a number")
+
+    end
+  end
+
+
+  describe 'click link to edit item' do
+    it 'should go to edit form path' do
+      visit dashboard_items_path
+      within first ".item-card" do
+        click_link "Edit Item"
+      end
+      expect(current_path).to eq(edit_dashboard_item_path(@i19))
+    end
+
+    it 'should update item information' do
+      visit edit_dashboard_item_path(@i19)
+      fill_in "Description", with: "This is a great whiskey"
+      fill_in "Inventory", with: 4
+
+      click_button "Edit Item"
+
+      expect(current_path).to eq(dashboard_items_path)
+      within first ".item-card" do
+        expect(page).to have_content("4")
+      end
+    end
+  end
 end
