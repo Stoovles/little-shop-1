@@ -52,18 +52,19 @@ class Item < ApplicationRecord
   end
 
   def quantity_sold
-    OrderItem.where(item_id: self.id, fulfilled: true).sum(:quantity)
+    order_items.where(fulfilled: true).sum(:quantity)
   end
 
   def subtotal(order)
-    OrderItem.where(item_id: self, order_id: order.id).sum("quantity*order_price")
+    order_items.where(order_id: order.id).sum("quantity*order_price")
   end
 
   def order_price(order)
-    OrderItem.where(item_id: self, order_id: order.id).first.order_price
+    order_items.where(order_id: order.id).first.order_price
   end
 
   def order_quantity(order)
-    OrderItem.where(item_id: self, order_id: order.id).first.quantity
+    # OrderItem.where(item_id: self, order_id: order.id).first.quantity
+    order_items.where(order_id: order.id).first.quantity
   end
 end
