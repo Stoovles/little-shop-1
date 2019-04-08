@@ -6,11 +6,15 @@
     <h3>Most Popular Items</h3>
     <% @popular_five.each do |item| %>
     <div class="popular">
-      <img src=<%= item.image_url %> class="tiny-image" alt="image of <%= item.item_name %>"></a>
+      <a><img src=<%= item.image_url %> class="tiny-image" alt="image of <%= item.item_name %>"></a>
       <%= item.item_name %> -
       <%= item.quantity_sold %> bought
     </div>
     <% end %>
+    <div class="percentage-sold">
+      Total Items Sold: <%= current_user.total_quantity_sold %>
+      Percentage of Inventory Sold: <%= current_user.percentage_sold.round(2) %>%
+    </div>
   </div>
 
 </section>

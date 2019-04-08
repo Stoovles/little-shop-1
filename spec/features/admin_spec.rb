@@ -73,7 +73,7 @@ RSpec.describe "As an admin who is logged in" do
   describe "admin merchants index" do
     describe "clicking on a merchant name from merchants index page" do
       it "should take me to the admin merchant show page" do
-        visit merchants_path
+        visit admin_merchants_path
         within first ".merchant-card" do
           click_link "Ondrea Chadburn"
           expect(current_path).to eq admin_merchant_path(@umerch)
