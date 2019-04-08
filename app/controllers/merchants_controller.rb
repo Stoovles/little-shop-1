@@ -9,6 +9,7 @@ skip_before_action :require_merchant, only: [:index]
     @user = User.find(current_user.id)
     @items = Item.merchant_items(current_user)
     @pending_merchant_items = OrderItem.unfulfilled_merchant_orderitems(@user)
+    @popular_five = @items.popular_five
   end
 
   private
