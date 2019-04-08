@@ -77,7 +77,16 @@ RSpec.describe "Merchant Show Page" do
       visit dashboard_path
 
       within '.statistics' do
-        # expect(page).to have_content()
+        expected = "#{@i41.item_name} - #{@i41.quantity_sold} bought\n#{@i40.item_name} - #{@i40.quantity_sold} bought\n#{@i50.item_name} - #{@i50.quantity_sold} bought\n#{@i44.item_name} - #{@i44.quantity_sold} bought\n#{@i23.item_name} - #{@i23.quantity_sold} bought"
+        expect(page).to have_content(expected)
+      end
+    end
+
+    it "shows the percentage and total quantity of items I've sold" do
+      visit dashboard_path
+      within '.statistics' do
+        expect(page).to have_content("Total Items Sold: 24")
+        expect(page).to have_content("Percentage of Inventory Sold: 8.33%")
       end
     end
   end

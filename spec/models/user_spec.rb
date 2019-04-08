@@ -64,5 +64,23 @@ RSpec.describe User, type: :model do
         expect(@umerch.merchant_pending_orders).to eq([@o49])
       end
     end
+
+    describe "total_inventory" do
+      it "should give the total inventory of a merchant's items" do
+        expect(@umerch.total_inventory).to eq(84)
+      end
+    end
+
+    describe "total_quantity_sold" do
+      it "should give the total quantity of a merchant's sold items" do
+        expect(@umerch.total_quantity_sold).to eq(14)
+      end
+    end
+
+    describe "percentage sold" do
+      it "should give the percentage of a merchant's inventory sold" do
+        expect(@umerch.percentage_sold.round(2)).to eq(14.29)
+      end
+    end
   end
 end

@@ -42,4 +42,16 @@ class User < ApplicationRecord
     # REFACTORRR
   end
 
+  def total_inventory
+    items.sum(:inventory)
+  end
+
+  def total_quantity_sold
+    items.joins(:order_items).where("order_items.fulfilled = true").sum(:quantity)
+  end
+
+  def percentage_sold
+    (total_quantity_sold / (total_inventory + total_quantity_sold).to_f) * 100
+  end
+
 end
