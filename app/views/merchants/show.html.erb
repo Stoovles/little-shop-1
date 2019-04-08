@@ -15,6 +15,7 @@
       Total Items Sold: <%= current_user.total_quantity_sold %>
       Percentage of Inventory Sold: <%= current_user.percentage_sold.round(2) %>%
     </div>
+
   </div>
 
 </section>
@@ -33,14 +34,16 @@
   </div>
 
   <div class='pending-orders'>
-    <%# this doesn't show what it's supposed to - orders, not orderitems %>
-    <% @pending_merchant_items.each do |orderitem| %>
-    <p><%= link_to "Order ID: #{orderitem.order_id}", dashboard_order_path(orderitem.order_id) %></p>
-    <p>Ordered On: <%= orderitem.created_at %></p>
-    <p>Quantity: <%= orderitem.quantity %></p>
-    <p>Total Price: <%= orderitem.order_price %></p>
+    <% @orders.each do |order| %>
+    <div class="order-card">
+      <p><%= link_to "Order ID: #{order.id}", dashboard_order_path(order) %></p>
+      <p>Ordered On: <%= order.created_at %></p>
+      <p>Quantity: <%= @user.my_item_count(order) %></p>
+      <p>Total Price: <%= @user.my_total(order) %></p>
+    </div>
     <% end %>
   </div>
+
 
 <% else redirect_to "/public/404" %>
 <% end %>
