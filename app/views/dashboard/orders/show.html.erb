@@ -1,33 +1,16 @@
-
-<h2 class="heading">Order: <%= @order.id %></h2>
-<div class="order-card">
-  <h5>Created: <%= @order.created_at %></h5>
-  <h5>Last Update: <%= @order.updated_at %></h5>
-  <h5>Status: <%= @order.status %></h5> <!-- enums -->
-  <h5>Item Quantity: <%= @order.item_quantity %></h5>
-  <h5>Total: <%= @order.total %></h5>
-  <% if @order.status == "pending" %>
-  <%= link_to "Cancel Order", profile_order_path(@order), method: :patch, id: "button" %>
-  <% end %>
+<h2 class="heading">Customer Info</h2>
+<div class="customer-info">
+  <p><%= @order.user.name %></p>
+  <p><%= @order.user.street_address %></p>
+  <p><%= @order.user.city %>, <%= @order.user.state %>  <%= @order.user.zip_code %></p>
+</div>
   <% @order.items.each do |item| %>
-  <div class="order-item-card">
-    <h3><%= link_to item.item_name, item_path(item)%></h3>
-    <div class="image-container">
-      <img src="<%= item.image_url%>" alt="image of <%= item.item_name %>">
-    </div>
-    <div class="item-info">
-      Merchant: <%= item.merchant_name %>
-      <br>
-      <%= item.description %>
-      <br>
-      <br>
-      Quantity ordered: <%= item.order_quantity(@order) %>
-      <br>
+  <div class="order-card">
+    <% if item.user_id == current_user.id %>
+      <%= link_to item.item_name, item_path(item) %>
+      <img src=<%= item.image_url %> class="small-image" alt="image of <%= item.item_name %>">
       Price: <%= item.order_price(@order) %>
-      <br>
-      Subtotal: <%= item.subtotal(@order) %>
-    </div>
-
+      Quantity: <%= item.order_quantity(@order) %>
+    <% end %>
   </div>
   <% end %>
-</div>

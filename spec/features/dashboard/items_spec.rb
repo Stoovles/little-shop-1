@@ -12,8 +12,10 @@ RSpec.describe 'When I visit the merchant dashboard page' do
     @o39 = @u34.orders.create(status: 2)
     @oi171 = OrderItem.create(order_id: @o39.id,item_id: @i19.id, quantity: 7,fulfilled: false,order_price: 53.0,created_at: "2018-04-07 22:05:50",updated_at: "2018-04-17 08:47:14")
   end
+
   describe 'and click link to view my items' do
     it 'shows me the correct information' do
+
       visit dashboard_items_path
 
       expect(page).to have_content(@i19.id)
@@ -40,7 +42,6 @@ RSpec.describe 'When I visit the merchant dashboard page' do
       expect(page).to have_link('Add New Item')
     end
   end
-
 
   describe 'click link to delete item' do
     it 'should delete the item' do
@@ -73,65 +74,6 @@ RSpec.describe 'When I visit the merchant dashboard page' do
       end
       within all(".item-card").last do
         expect(page).to have_link('Disable Item')
-      end
-    end
-  end
-
-  describe 'click link to add new item' do
-    it 'should go to new form path' do
-      visit dashboard_items_path
-      click_link "Add New Item"
-      expect(current_path).to eq(new_dashboard_item_path)
-    end
-
-    it 'should create a new item' do
-      visit new_dashboard_item_path
-      fill_in "Item name", with: "Test Whiskey"
-      fill_in "Description", with: "Test Whiskey description"
-      fill_in "Inventory", with: 4
-      fill_in "Current price", with: "55.50"
-
-      click_button "Create Item"
-
-      expect(current_path).to eq(dashboard_items_path)
-
-      expect(page).to have_content("Test Whiskey")
-      expect(page).to have_content("4")
-      expect(page).to have_content("$55.5")
-    end
-
-    it 'should not create a new item with bad values' do
-      visit new_dashboard_item_path
-
-      click_button "Create Item"
-
-      expect(page).to have_content("Inventory is not a number")
-      expect(page).to have_content("Current price is invalid")
-      expect(page).to have_content("Current price is not a number")
-
-    end
-  end
-
-
-  describe 'click link to edit item' do
-    it 'should go to edit form path' do
-      visit dashboard_items_path
-      within first ".item-card" do
-        click_link "Edit Item"
-      end
-      expect(current_path).to eq(edit_dashboard_item_path(@i19))
-    end
-
-    it 'should update item information' do
-      visit edit_dashboard_item_path(@i19)
-      fill_in "Description", with: "This is a great whiskey"
-      fill_in "Inventory", with: 4
-
-      click_button "Edit Item"
-
-      expect(current_path).to eq(dashboard_items_path)
-      within first ".item-card" do
-        expect(page).to have_content("4")
       end
     end
   end
