@@ -12,7 +12,11 @@
     <section class=navbar>
       <%= link_to "Home", root_path %>
       <%= link_to "All Items", items_path %>
-      <%= link_to "Merchants", merchants_path %>
+      <% if current_admin? %>
+        <%= link_to "Merchants", admin_merchants_path %>
+      <% else %>
+        <%= link_to "Merchants", merchants_path %>
+      <% end %>
 
       <% if !current_user %>
         <%= link_to "Register", new_user_path %>
