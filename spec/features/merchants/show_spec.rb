@@ -12,12 +12,21 @@ RSpec.describe "Merchant Show Page" do
     @i23 = @u7.items.create(item_name: "Belle Meade Cask Strength Reserve",image_url: "http://s3.amazonaws.com/mscwordpresscontent/wa/wp-content/uploads/2018/11/Belle-Meade-Cask-Strength.png",current_price: 60.0,inventory: 36, description:"Tennessee- A blend of single barrel bourbons making each batch slightly different. Aged for 7-11 years. Flavors of vanilla, caramel, spice, and stone fruits. Try it neat or on the rocks.",enabled: true)
     @i39 = @u7.items.create(item_name: "Tovolo King Cube Tray",image_url: "https://www.totalwine.com/dynamic/490x/media/sys_master/twmmedia/hc7/h7c/11374503362590.png",current_price: 9.0,inventory: 40, description:"Ice cubes, squared. These larger-than-normal ice cubes add a little special pizazz to a drink on the rocks. The silicone tray makes for easy removal of the cubes so that they won't shatter or crack. Cheers!",enabled: true)
     @i44 = @u7.items.create(item_name: "Etched Globe Whiskey Glasses",image_url: "https://www.totalwine.com/media/sys_master/twmmedia/h2b/hde/8876890587166.png",current_price: 30.0,inventory: 44, description:"A sure conversation starter, the decorative etching of the world map brings a new spin on serving spirits.",enabled: true)
+    @i40 = @u7.items.create(item_name: "Tovolo Clear Sphere Ice Mold",image_url: "https://www.totalwine.com/dynamic/490x/media/sys_master/twmmedia/hda/h26/11374525349918.png",current_price: 30.0,inventory: 47, description:"Finally, an easy method for making clear ice! Perfectly insulated system creates a controlled environment where the oxygen is pushed into the bottom tray, leaving you with 4 crystal-clear ice cubes. Ultra-slow melting Clear Ice won't dilute your favorite spirits or cocktails.",enabled: true)
+    @i41 = @u7.items.create(item_name: "Tovolo Clear King Cube Ice Mold",image_url: "https://www.totalwine.com/dynamic/490x/media/sys_master/twmmedia/hc1/h58/11374525382686.png",current_price: 30.0,inventory: 27, description:"Finally, an easy method for making clear ice! Perfectly insulated system creates a controlled environment where the oxygen is pushed into the bottom tray, leaving you with 4 crystal-clear ice spheres. Ultra-slow melting Clear Ice won't dilute your favorite spirits or cocktails.",enabled: true)
+    @i50 = @u7.items.create(item_name: "Medieval Collectables Satin Finish Flask",image_url: "http://www.medievalcollectibles.com/images/Product/large/CG8931.png",current_price: 10.0,inventory: 37, description:"The stainless steel flask is both classic and classy with a funnel for easy filling to enjoy wherever the party may go.",enabled: true)
 
     @o39 = @u34.orders.create(status: 2)
     @o49 = @u20.orders.create(status: 2)
 
+
     @oi171 = OrderItem.create(order_id: @o39.id,item_id: @i19.id, quantity: 7,fulfilled: false,order_price: 53.0,created_at: "2018-04-07 22:05:50",updated_at: "2018-04-17 08:47:14")
-    @oi214 = OrderItem.create(order_id: @o49.id,item_id: @i19.id, quantity: 2,fulfilled: true,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
+    @oi214 = OrderItem.create(order_id: @o49.id,item_id: @i23.id, quantity: 2,fulfilled: true,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
+    @oi200 = OrderItem.create(order_id: @o39.id,item_id: @i39.id, quantity: 1,fulfilled: true,order_price: 53.0,created_at: "2018-04-07 22:05:50",updated_at: "2018-04-17 08:47:14")
+    @oi201 = OrderItem.create(order_id: @o49.id,item_id: @i44.id, quantity: 3,fulfilled: true,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
+    @oi203 = OrderItem.create(order_id: @o39.id,item_id: @i40.id, quantity: 5,fulfilled: true,order_price: 53.0,created_at: "2018-04-07 22:05:50",updated_at: "2018-04-17 08:47:14")
+    @oi204 = OrderItem.create(order_id: @o49.id,item_id: @i41.id, quantity: 9,fulfilled: true,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
+    @oi205 = OrderItem.create(order_id: @o49.id,item_id: @i50.id, quantity: 4,fulfilled: true,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
   end
 
   context 'merchant visiting dashboard' do
@@ -60,6 +69,16 @@ RSpec.describe "Merchant Show Page" do
       visit dashboard_path
       click_link "Items Index"
       expect(current_path).to eq(dashboard_items_path)
+    end
+  end
+
+  context 'in the statistics area' do
+    it 'shows top 5 items sold by quantity and the quantity sold' do
+      visit dashboard_path
+
+      within '.statistics' do
+        # expect(page).to have_content()
+      end
     end
   end
 
