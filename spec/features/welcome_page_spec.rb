@@ -6,13 +6,15 @@ RSpec.describe "As any user on the welcome page" do
   end
   describe "website description" do
     it "should show information about the website" do
+      expect(page).to have_content("Welcome to Little Shop of Whiskeys!")
+      expect(page).to have_css(".about-site")
 
     end
 
     it "should have a login or register section" do
-      within "welcome-login" do
+      within ".welcome-login" do
         expect(page).to have_content("Log In")
-        expect(page).to have_link("Log In")
+        expect(page).to have_button("Log Me In")
         expect(page).to have_link("Not a Member? Register Here")
         click_link "Not a Member? Register Here"
         expect(current_path).to eq(new_user_path)
@@ -20,7 +22,7 @@ RSpec.describe "As any user on the welcome page" do
     end
 
     it "should have an items/merchants section" do
-      within "welcome-nav-section" do
+      within ".welcome-nav-section" do
         expect(page).to have_content("Browse")
         expect(page).to have_link("All Items")
         expect(page).to have_link("All Merchants")
