@@ -7,7 +7,7 @@
       <br>
       <p>In Inventory: <%= item.inventory %></p>
       <p>Price: $<%= item.current_price.round(2) %></p>
-      <%= link_to 'Edit Item' %>
+      <%= link_to 'Edit Item', edit_dashboard_item_path(item) %>
       <% if item.enabled %>
         <%= link_to 'Disable Item', deactivate_dashboard_item_path(item), method: :patch%>
       <% else %>
