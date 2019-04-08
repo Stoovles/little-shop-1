@@ -1,5 +1,12 @@
 class SessionsController < ApplicationController
   def new
+    if current_user?
+      redirect_to profile_path, alert: "You are already logged in."
+    elsif current_merchant?
+      redirect_to dashboard_path, alert: "You are already logged in."
+    elsif current_admin?
+      redirect_to root_path, alert: "You are already logged in."
+    end
   end
 
   def create

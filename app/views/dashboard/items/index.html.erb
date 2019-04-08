@@ -9,14 +9,14 @@
       <p>Price: $<%= item.current_price.round(2) %></p>
       <%= link_to 'Edit Item' %>
       <% if item.enabled %>
-        <%= link_to 'Disable Item' %>
+        <%= link_to 'Disable Item', deactivate_dashboard_item_path(item), method: :patch%>
       <% else %>
-        <%= link_to 'Enable Item' %>
+        <%= link_to 'Enable Item', activate_dashboard_item_path(item), method: :patch%>
       <% end %>
       <% if item.quantity_sold == 0 %>
-        <%= link_to 'Delete Item' %>
+        <%= link_to 'Delete Item', dashboard_item_path(item), method: :delete %>
       <% end %>
     </div>
   <% end %>
-  <%= link_to 'Add New Item' %>
+  <%= link_to 'Add New Item', new_dashboard_item_path%>
 </div>
