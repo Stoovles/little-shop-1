@@ -56,11 +56,11 @@ RSpec.describe "As an admin who is logged in" do
       expect(current_path).to eq(admin_user_path(@u1))
     end
 
-    xit "should upgrade the user to a merchant and they can no longer be seen" do
+    it "should upgrade the user to a merchant and they can no longer be seen" do
       visit admin_users_path
       within first ".user-card" do
         click_link "Upgrade to Merchant"
-        expect(current_path).to eq(admin_users_path)
+        expect(current_path).to eq(admin_merchant_path(@u1))
       end
       expect(page).to have_content("#{@u1.name} has been upgraded to a merchant")
       visit admin_users_path
