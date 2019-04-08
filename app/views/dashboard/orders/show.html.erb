@@ -11,6 +11,11 @@
       <img src=<%= item.image_url %> class="small-image" alt="image of <%= item.item_name %>">
       Price: <%= item.order_price(@order) %>
       Quantity: <%= item.order_quantity(@order) %>
+      <% if !item.order_items[0].fulfilled? %>
+        <%= button_to 'Fulfill Item', dashboard_order_path(@order), method: :patch %>
+      <% else %>
+        You have already fulfilled this item
+      <% end %>
     <% end %>
   </div>
   <% end %>

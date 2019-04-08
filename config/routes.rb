@@ -31,7 +31,7 @@ Rails.application.routes.draw do
       member { patch :activate }
       member { patch :deactivate }
     end
-    resources :orders, only: [:show]
+    resources :orders, only: [:show, :update, :edit]
   end
 
   # namcespace :dashboard do
