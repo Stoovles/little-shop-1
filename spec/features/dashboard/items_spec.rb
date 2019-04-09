@@ -77,5 +77,4 @@ RSpec.describe 'When I visit the merchant dashboard page' do
       end
     end
   end
-
 end
