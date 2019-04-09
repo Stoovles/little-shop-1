@@ -64,12 +64,11 @@ class User < ApplicationRecord
 
 
   def self.three_fastest
-    joins(items: :order_items).select("order_items.order_id","AVG(order_items.updated_at - order_items.created_at)").where("order_items.fulfilled": true).group("order_items.order_id").order("AVG(order_items.updated_at - order_items.created_at)")
-
+    joins(items: :order_items).select("items.user_id","AVG(order_items.updated_at - order_items.created_at)").where("order_items.fulfilled": true).group("items.user_id").order("AVG(order_items.updated_at - order_items.created_at)").limit(3)
   end
 
   def self.three_slowest
-
+    joins(items: :order_items).select("items.user_id","AVG(order_items.updated_at - order_items.created_at)").where("order_items.fulfilled": true).group("items.user_id").order("AVG(order_items.updated_at - order_items.created_at) DESC").limit(3)
   end
 
   def self.top_three_states_overall
