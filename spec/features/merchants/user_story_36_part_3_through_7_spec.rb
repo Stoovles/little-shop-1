@@ -66,4 +66,11 @@ RSpec.describe 'when we visit a merchant show page' do
       expect(page).to have_content("Top Customer (items): #{@u17.name} - 30")
     end
   end
+
+  it 'shows us the top 3 users by revenue' do
+    within ".statistics" do
+      expect(page).to have_content("Top Customers (revenue): #{@u17.name} - 300.0 #{@u21.name} - 200.0 #{@u20.name} - 180.0")
+    end
+  end
+
 end
