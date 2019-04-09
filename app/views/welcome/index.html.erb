@@ -1,36 +1,53 @@
 <h1>Welcome to Little Shop of Whiskeys!</h1>
+<div class="welcome-container">
+  <div class="about-site">
+    <div class="welcome-image">
+      <img src="https://qph.fs.quoracdn.net/main-qimg-1435d61161f83638566e79e3f997f569" alt="picture of a whiskey glass">
+    </div>
+    <p>If you're a connoisseur of all things whiskey, this is the website for you! You can browse our various wares from Irish whiskey to Scotch whisky.</p>
+  </div>
 
-<div class="about-site">
-  <p>If you're a connoisseur of all thinkgs whiskey, this is the website for you! You can browse our various wares from Irish whiskey to Scotch whisky.</p>
-</div>
-
-<div class="welcome-login">
-  <% if current_user %>
+  <div class="welcome-login">
+    <% if current_user %>
     <h3>Welcome, <%= current_user.name %></h3>
     <%= link_to "Log Out", logout_path %>
-  <% else %>
+    <% else %>
     <h3>Log In</h3>
     <%= form_tag login_path do %>
     <%= label_tag :email_address %>
     <%= email_field_tag :email_address %>
+    <br>
     <%= label_tag :password %>
     <%= password_field_tag :password %>
-    <%= submit_tag "Log Me In" %>
+    <br>
+    <%= submit_tag "Log Me In", id: "medium-button" %>
     <% end %>
-    <%= link_to "Not a Member? Register Here", new_user_path %>
-  <% end %>
-</div>
+    <br>
+    <br>
+    <%= link_to "Not a Member? Register Here", new_user_path, id: "medium-button" %>
+    <% end %>
+  </div>
 
-<div class="welcome-nav-section">
-  <h3>Browse</h3>
-  <%= link_to "All Items", items_path %>
-  <%= link_to "All Merchants", merchants_path %>
-</div>
+  <div class="welcome-nav-section">
+    <h3>Browse</h3>
+    <%= link_to "All Items", items_path, class: "browse-button" %>
+    <%= link_to "All Merchants", merchants_path, class: "browse-button" %>
+  </div>
 
-<div class="about-us">
-  <h3>About Creators</h3>
-  <%= link_to "Jeremy Bennett's Github", "https://github.com/JaxJafinPapau" %>
-  <%= link_to "Ethan Grab's Github", "https://github.com/Stoovles" %>
-  <%= link_to "Carrie Walsh's Github", "https://github.com/carriewalsh" %>
-  <%= link_to "Matt Weiss's Github", "https://github.com/Matt-Weiss" %>
+  <div class="about-us">
+    <h3>About Creators</h3>
+    <div class="about-us-blurb">
+      <p>This project was part of our second Module at Turing School of Software & Design. The goal of our website was to create a working shop where users can register, create orders, browse wares, or become merchants. Our focus was on logical namespacing as well as dividing up tasks among the Models, Views, and Controllers.</p>
+    </div>
+    <div class="about-us-links">
+      <%= link_to "Jeremy Bennett's Github", "https://github.com/JaxJafinPapau" %>
+      <br>
+      <%= link_to "Ethan Grab's Github", "https://github.com/Stoovles" %>
+      <br>
+      <%= link_to "Carrie Walsh's Github", "https://github.com/carriewalsh" %>
+      <br>
+      <%= link_to "Matt Weiss's Github", "https://github.com/Matt-Weiss" %>
+    </div>
+  </div>
+
 </div>
