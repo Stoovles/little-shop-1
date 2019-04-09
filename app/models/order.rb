@@ -14,4 +14,8 @@ class Order < ApplicationRecord
     #SELECT sum(quantity*order_price) FROM order_items WHERE order_id = 1;
   end
 
+  def item_fulfilled?(item)
+    order_items.where(item_id: item.id).first.fulfilled?
+  end
+
 end

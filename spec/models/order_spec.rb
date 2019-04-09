@@ -52,4 +52,9 @@ RSpec.describe Order, type: :model do
     end
   end
 
+  describe ".item_fulfilled?(item)" do
+    it "should return false if item on order has not been filled" do
+      expect(@o3.item_fulfilled?(@i1)).to eq(false)
+    end
+  end
 end

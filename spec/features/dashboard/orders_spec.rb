@@ -15,7 +15,7 @@ RSpec.describe 'When I visit the merchant dashboard page' do
       @u34 = User.create(name: "Jazmin Frederick",street_address: "59 Victoria Lane",city: "Atlanta",state: "Georgia",zip_code: "30318",email_address: "jfrederickx@t-online.de",password:"FZbJe0", enabled: true, role:0)
       @o39 = @u34.orders.create(status: 2)
       @oi171 = OrderItem.create(order_id: @o39.id,item_id: @i19.id, quantity: 7,fulfilled: false,order_price: 53.0,created_at: "2018-04-07 22:05:50",updated_at: "2018-04-17 08:47:14")
-      @oi168 = OrderItem.create(order_id: @o39.id,item_id: @i23.id, quantity: 6,fulfilled: false,order_price: 61.0,created_at: "2018-04-05 13:49:11",updated_at: "2018-04-15 18:26:50")
+      @oi168 = OrderItem.create(order_id: @o39.id,item_id: @i23.id, quantity: 37,fulfilled: false,order_price: 61.0,created_at: "2018-04-05 13:49:11",updated_at: "2018-04-15 18:26:50")
       @oi170 = OrderItem.create(order_id: @o39.id,item_id: @i22.id, quantity: 4,fulfilled: false,order_price: 60.0,created_at: "2018-04-04 00:55:36",updated_at: "2018-04-15 17:09:27")
       visit dashboard_order_path(@o39)
     end
@@ -47,12 +47,14 @@ RSpec.describe 'When I visit the merchant dashboard page' do
       end
         expect(current_path).to eq(dashboard_order_path(@o39))
         expect(page).to have_content("You have fulfilled #{@i19.item_name}")
-
         expect(@u7.items.order(:inventory)[0].inventory).to eq(26)
       within first ".order-card" do
         expect(page).to_not have_button('Fulfill Item')
         expect(page).to have_content('You have already fulfilled this item')
+      end
 
+      within all(".order-card").last do
+        expect(page).to have_content('You do not have enough inventory to fill this item!')
       end
     end
   end
