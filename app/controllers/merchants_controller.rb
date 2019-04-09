@@ -3,6 +3,11 @@ before_action :require_merchant
 skip_before_action :require_merchant, only: [:index]
   def index
     @merchants = User.active_merchant
+    @fastest = User.three_fastest
+    @slowest = User.three_slowest
+    @states = User.top_three_states_overall
+    @citystates = User.top_three_city_states_overall
+    @orders = User.three_biggest_orders
   end
 
   def show
