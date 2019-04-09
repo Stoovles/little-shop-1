@@ -70,6 +70,6 @@ class User < ApplicationRecord
   end
 
   def self.three_biggest_orders
-    joins(orders: :order_items).where("order_items.fulfilled": true).select(:name, "sum(order_items.quantity)").group(:name).order("sum(order_items.quantity) DESC").limit(3)
+    x = joins(orders: :order_items).where("order_items.fulfilled": true).select("orders.id", "sum(order_items.quantity)").group("orders.id").order("sum(order_items.quantity) DESC").limit(3)
   end
 end

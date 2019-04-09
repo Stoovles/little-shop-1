@@ -118,12 +118,12 @@ RSpec.describe 'when we visit a merchant show page' do
 
   describe "self.three_biggest_orders" do
     it "lists top 3 biggest orders" do
-      expect(User.three_biggest_orders.first.order_id).to eq("#{@o12.id}")
-      expect(User.three_biggest_orders.first.count).to eq(400)
-      expect(User.three_biggest_orders.second.order_id).to eq("#{@o9.id}")
-      expect(User.three_biggest_orders.second.count).to eq()
-      expect(User.three_biggest_orders.third.order_id).to eq("#{@o8.id}")
-      expect(User.three_biggest_orders.third.count).to eq()
+      expect(User.three_biggest_orders.first.id).to eq(@o12.id)
+      expect(User.three_biggest_orders.first.sum).to eq(400)
+      expect(User.three_biggest_orders.second.id).to eq(@o9.id)
+      expect(User.three_biggest_orders.second.sum).to eq(20)
+      expect(User.three_biggest_orders.third.id).to eq(@o8.id)
+      expect(User.three_biggest_orders.third.sum).to eq(18)
     end
   end
 end
