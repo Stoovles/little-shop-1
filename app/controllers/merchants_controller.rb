@@ -11,6 +11,7 @@ skip_before_action :require_merchant, only: [:index]
     @orders = @merchant.merchant_pending_orders
     @popular_five = @items.popular_five
     @top_3_states = User.top_three_states(@merchant)
+    @top_3_cities = User.top_three_city_states(@merchant)
   end
 
   private
