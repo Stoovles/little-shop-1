@@ -17,17 +17,6 @@ class User < ApplicationRecord
     where(role: 1, enabled: true)
   end
 
-  # # e.g., User.authenticate('penelope@turing.com', 'boom')
-  # def self.authenticate(email, password)
-  #   if self.find_by(email_address: email) == self.find_by(password: password)
-  #     self.find_by(email_address: email)
-  #   else
-  #     nil
-  #   end
-  # # if email and password correspond to a valid user, return that user
-  # # otherwise, return nil
-  # end
-
   def my_item_count(order)
     OrderItem.where(item_id: self.items, order_id: order.id).sum(:quantity)
   end
@@ -37,9 +26,7 @@ class User < ApplicationRecord
   end
 
   def merchant_pending_orders
-    ids = OrderItem.where(item_id: self.items,fulfilled: false).pluck(:order_id)
-    Order.where(id: ids)
-    # REFACTORRR
+    Order.joins(:order_items).select("orders.*").where("order_items.item_id": self.items,"order_items.fulfilled": false)
   end
 
   def total_inventory
@@ -61,6 +48,4 @@ class User < ApplicationRecord
   def self.top_three_city_states(merchant)
     joins(orders: :order_items).select("DISTINCT (users.city || ', ' || users.state) AS citystate","SUM(order_items.quantity)").where("order_items.fulfilled": true, "order_items.item_id": merchant.items.ids).group("citystate").order("sum(order_items.quantity) DESC").limit(3)
   end
-
-
 end
