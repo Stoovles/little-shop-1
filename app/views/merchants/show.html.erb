@@ -20,6 +20,10 @@
     <% @top_3_states.each do |relation| %>
       <%= relation.state %>: <%= relation.sum %>
     <% end %>
+    Top 3 Cities - 
+    <% @top_3_cities.each do |relation| %>
+      <%= relation.citystate %>: <%= relation.sum %>
+    <% end %>
   </div>
 
 </section>
