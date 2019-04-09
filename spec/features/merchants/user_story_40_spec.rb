@@ -53,6 +53,7 @@ RSpec.describe 'as a visitor when I visit the merchant index page' do
 
   describe "in the statistics section" do
     xit "should have the top 3 merchnts" do
+      expect(page).to have_content("Top 3 Merchants: #{} -  #{} - ")
     end
 
     it "should have the 3 fastest merchants" do

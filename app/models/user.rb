@@ -63,6 +63,10 @@ class User < ApplicationRecord
 
 
 
+  def self.top_three_merchants_overall
+    joins(items: :order_items).select("users.name","SUM(order_items.quantity * order_items.order_price)").where("order_items.fulfilled": true).group("users.name").order("SUM(order_items.quantity * order_items.order_price) DESC").limit(3)
+  end
+
   def self.three_fastest
     joins(items: :order_items).select("users.name","AVG(order_items.updated_at - order_items.created_at)").where("order_items.fulfilled": true).group("users.name").order("AVG(order_items.updated_at - order_items.created_at)").limit(3)
   end

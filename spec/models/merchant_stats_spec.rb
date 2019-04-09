@@ -70,7 +70,14 @@ RSpec.describe 'when we visit a merchant show page' do
     end
   end
 
-
+  describe "self.top_three_merchants_overall" do
+    it "lists top 3 merchants by quantity * price" do
+      expect(User.top_three_merchants_overall.first.name).to eq(@umerch2.name)
+      expect(User.top_three_merchants_overall.first.sum).to eq(4330)
+      expect(User.top_three_merchants_overall.second.name).to eq(@umerch.name)
+      expect(User.top_three_merchants_overall.second.sum).to eq(1080)
+    end
+  end
 
 
   describe "self.three_fastest" do
