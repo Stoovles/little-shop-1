@@ -1,6 +1,10 @@
 class Admin::MerchantsController < ApplicationController
   def show
-    @merchant = User.find(params[:id])
+    if User.find(params[:id]).role == "user"
+      redirect_to admin_user_path(User.find(params[:id]))
+    else
+      @merchant = User.find(params[:id])
+    end
     @orders = @merchant.merchant_pending_orders
     @popular_five = @merchant.items.popular_five
     @top_3_states = User.top_three_states(@merchant)
