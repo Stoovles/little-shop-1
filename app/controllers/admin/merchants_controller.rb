@@ -13,7 +13,7 @@ class Admin::MerchantsController < ApplicationController
   end
 
   def index
-    @merchants = User.where(role: 1)
+    @merchants = User.where(role: 1).order(:name)
   end
 
   def deactivate

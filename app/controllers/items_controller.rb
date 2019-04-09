@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   # before_action :determine_scope
 
   def index
-    @items = Item.all.where(enabled: true)
+    @items = Item.all.where(enabled: true).order(:item_name)
   end
 
   def show

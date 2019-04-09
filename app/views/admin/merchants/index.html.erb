@@ -1,5 +1,5 @@
 <div class="merchants-container">
-  <% @merchants.order(:name).each do |merchant| %>
+  <% @merchants.each do |merchant| %>
   <div class="merchant-card">
     <h2><%= link_to merchant.name, admin_merchant_path(merchant) %></h2>
     <p>Ships from: <%= merchant.city %>, <%= merchant.state %></p>

@@ -18,4 +18,11 @@ class Order < ApplicationRecord
     order_items.where(item_id: item.id).first.fulfilled?
   end
 
+  def order_fulfilled?
+    order_items.all? do |order_item|
+      order_item.fulfilled?
+    end
+  end
+      
+
 end
