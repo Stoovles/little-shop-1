@@ -75,18 +75,18 @@ RSpec.describe 'when we visit a merchant show page' do
 
   describe "self.three_fastest" do
     it "lists top 3 merchants by speed of fulfillment" do
-      expect(User.three_fastest.first.user_id).to eq(@umerch.id)
+      expect(User.three_fastest.first.name).to eq(@umerch.name)
       expect(User.three_fastest.first.avg).to eq("7 days 24:05:59.444444")
-      expect(User.three_fastest.second.user_id).to eq(@umerch2.id)
+      expect(User.three_fastest.second.name).to eq(@umerch2.name)
       expect(User.three_fastest.second.avg).to eq("8 days 19:03:04.25")
     end
   end
 
   describe "self.three_slowest" do
     it "lists bottom 3 merchants by speed of fulfillment or lack thereof" do
-      expect(User.three_slowest.first.user_id).to eq(@umerch2.id)
+      expect(User.three_slowest.first.name).to eq(@umerch2.name)
       expect(User.three_slowest.first.avg).to eq("8 days 19:03:04.25")
-      expect(User.three_slowest.second.user_id).to eq(@umerch.id)
+      expect(User.three_slowest.second.name).to eq(@umerch.name)
       expect(User.three_slowest.second.avg).to eq("7 days 24:05:59.444444")
     end
   end
