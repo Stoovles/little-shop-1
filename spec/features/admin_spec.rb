@@ -55,6 +55,10 @@ RSpec.describe "As an admin who is logged in" do
       click_link "Con Chilver"
       expect(current_path).to eq(admin_user_path(@u1))
     end
+    it "should link to user show pages via their name" do
+      visit admin_user_path(@umerch)
+      expect(current_path).to eq(admin_merchant_path(@umerch))
+    end
 
     it "should upgrade the user to a merchant and they can no longer be seen" do
       visit admin_users_path
