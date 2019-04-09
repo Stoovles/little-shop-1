@@ -134,6 +134,15 @@ RSpec.describe 'When I visit the merchant dashboard page' do
         expect(page).to have_content("4")
       end
     end
-  end
 
+    it 'should update item information' do
+      visit edit_dashboard_item_path(@i19)
+      fill_in "Description", with: "This is a great whiskey"
+      fill_in "Inventory", with: "-10"
+
+      click_button "Edit Item"
+
+      expect(page).to have_content("error")
+    end
+  end
 end
