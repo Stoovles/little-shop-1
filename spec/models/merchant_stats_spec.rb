@@ -36,45 +36,82 @@ RSpec.describe 'when we visit a merchant show page' do
     @oi9 = OrderItem.create(order_id: @o9.id,item_id: @i24.id, quantity: 20,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
   end
 
-  describe '.top_three_states' do
+  describe 'self.top_three_states' do
     it 'lists top 3 states by quantity sold' do
-      expect(User.top_three_states(@umerch).first.state).to eq("California")
-      expect(User.top_three_states(@umerch).first.sum).to eq(34)
-      expect(User.top_three_states(@umerch).second.state).to eq("Nevada")
-      expect(User.top_three_states(@umerch).second.sum).to eq(30)
-      expect(User.top_three_states(@umerch).third.state).to eq("Pennsylvania")
-      expect(User.top_three_states(@umerch).third.sum).to eq(18)
+      expect(User.top_three_states.first.state).to eq("California")
+      expect(User.top_three_states.first.sum).to eq(34)
+      expect(User.top_three_states.second.state).to eq("Nevada")
+      expect(User.top_three_states.second.sum).to eq(30)
+      expect(User.top_three_states.third.state).to eq("Pennsylvania")
+      expect(User.top_three_states.third.sum).to eq(18)
     end
   end
 
-  describe '.top_three_city_states' do
+  describe 'self.top_three_city_states' do
     it 'lists top 3 city, states by quantity sold' do
-      expect(User.top_three_city_states(@umerch).first.citystate).to eq("Fresno, Nevada")
-      expect(User.top_three_city_states(@umerch).first.sum).to eq(30)
-      expect(User.top_three_city_states(@umerch).second.citystate).to eq("Miami, California")
-      expect(User.top_three_city_states(@umerch).second.sum).to eq(20)
-      expect(User.top_three_city_states(@umerch).third.citystate).to eq("Harrisburg, Pennsylvania")
-      expect(User.top_three_city_states(@umerch).third.sum).to eq(18)
+      expect(User.top_three_city_states.first.citystate).to eq("Fresno, Nevada")
+      expect(User.top_three_city_states.first.sum).to eq(30)
+      expect(User.top_three_city_states.second.citystate).to eq("Miami, California")
+      expect(User.top_three_city_states.second.sum).to eq(20)
+      expect(User.top_three_city_states.third.citystate).to eq("Harrisburg, Pennsylvania")
+      expect(User.top_three_city_states.third.sum).to eq(18)
     end
   end
+
+
 
   describe "self.three_fastest" do
-
+    xit "lists top 3 merchants by speed of fulfillment" do
+      expect(User.three_fastest.first.name).to eq("")
+      expect(User.three_fastest.first.TIME).to eq()
+      expect(User.three_fastest.second.name).to eq("")
+      expect(User.three_fastest.second.TIME).to eq()
+      expect(User.three_fastest.third.name).to eq("")
+      expect(User.three_fastest.third.TIME).to eq()
+    end
   end
 
   describe "self.three_slowest" do
-
+    xit "lists bottom 3 merchants by speed of fulfillment or lack thereof" do
+      expect(User.three_slowest.first.name).to eq("")
+      expect(User.three_slowest.first.TIME).to eq()
+      expect(User.three_slowest.second.name).to eq("")
+      expect(User.three_slowest.second.TIME).to eq()
+      expect(User.three_slowest.third.name).to eq("")
+      expect(User.three_slowest.third.TIME).to eq()
+    end
   end
 
-  describe "self.top_three_states" do
-
+  describe "self.top_three_states_overall" do
+    it "lists top 3 states overall by order count" do
+      expect(User.top_three_states_overall.first.state).to eq("")
+      expect(User.top_three_states_overall.first.sum).to eq()
+      expect(User.top_three_states_overall.second.state).to eq("")
+      expect(User.top_three_states_overall.second.sum).to eq()
+      expect(User.top_three_states_overall.third.state).to eq("")
+      expect(User.top_three_states_overall.third.sum).to eq()
+    end
   end
 
-  describe "self.top_three_city_states" do
-
+  describe "self.top_three_city_states_overall" do
+    xit "lists top 3 city,states overall by order count" do
+      expect(User.top_three_city_states_overall.first.citystate).to eq("")
+      expect(User.top_three_city_states_overall.first.sum).to eq()
+      expect(User.top_three_city_states_overall.second.citystate).to eq("")
+      expect(User.top_three_city_states_overall.second.sum).to eq()
+      expect(User.top_three_city_states_overall.third.citystate).to eq("")
+      expect(User.top_three_city_states_overall.third.sum).to eq()
+    end
   end
 
   describe "self.three_biggest_orders" do
-
+    xit "lists top 3 biggest orders" do
+      expect(User.three_biggest_orders.first.order_id).to eq("")
+      expect(User.three_biggest_orders.first.count).to eq()
+      expect(User.three_biggest_orders.second.order_id).to eq("")
+      expect(User.three_biggest_orders.second.count).to eq()
+      expect(User.three_biggest_orders.third.order_id).to eq("")
+      expect(User.three_biggest_orders.third.count).to eq()
+    end
   end
 end
