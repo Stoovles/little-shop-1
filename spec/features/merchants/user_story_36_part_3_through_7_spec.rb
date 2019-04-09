@@ -44,4 +44,10 @@ RSpec.describe 'when we visit a merchant show page' do
       expect(page).to have_content("Top 3 States - California: 34 Nevada: 30 Pennsylvania: 18")
     end
   end
+
+  it 'shows us top 3 city,ST wher items were shipped with quantities' do
+    within ".statistics" do
+      expect(page).to have_content("Top 3 Cities - Fresno, California: 34 Fresno, Nevada: 30 Harrisburg, Pennsylvania: 18")
+    end
+  end
 end

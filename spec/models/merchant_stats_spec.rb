@@ -47,4 +47,15 @@ RSpec.describe 'when we visit a merchant show page' do
     end
   end
 
+  describe '.top_three_city_states' do
+    it 'lists top 3 city, states by quantity sold' do
+      expect(User.top_three_city_states(@umerch).first.citystate).to eq("Fresno, Nevada")
+      expect(User.top_three_city_states(@umerch).first.sum).to eq(30)
+      expect(User.top_three_city_states(@umerch).second.citystate).to eq("Miami, California")
+      expect(User.top_three_city_states(@umerch).second.sum).to eq(20)
+      expect(User.top_three_city_states(@umerch).third.citystate).to eq("Harrisburg, Pennsylvania")
+      expect(User.top_three_city_states(@umerch).third.sum).to eq(18)
+    end
+  end
+
 end
