@@ -4,6 +4,11 @@
     <h2><%= link_to merchant.name, admin_merchant_path(merchant) %></h2>
     <p>Ships from: <%= merchant.city %>, <%= merchant.state %></p>
     <p>Member since: <%= merchant.created_at.to_date %>
-    </div>
+    <% if merchant.enabled %>
+      <%= link_to 'Disable Merchant', deactivate_admin_merchant_path(merchant), method: :patch%>
+    <% else %>
+      <%= link_to 'Enable Merchant', activate_admin_merchant_path(merchant), method: :patch%>
     <% end %>
+    </div>
+  <% end %>
 </div>
