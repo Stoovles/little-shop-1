@@ -23,7 +23,6 @@ class Profile::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order.update(status: 3)
-    flash.notice = "Order #{@order.id} has been cancelled"
-    redirect_to profile_path
+    redirect_to profile_path, danger: "Order #{@order.id} has been cancelled"
   end
 end

@@ -8,11 +8,13 @@ class Dashboard::OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
     @order.order_items.where(item_id: @item).first.update(fulfilled: true)
     @item.update_inventory(@order)
+
     if @order.order_fulfilled?
       @order.update!(status: "packaged")
     end
-    flash.notice = "You have fulfilled #{@item.item_name}"
-    redirect_to dashboard_order_path(@order)
+    
+    redirect_to dashboard_order_path(@order), success: "You have fulfilled #{@item.item_name}"
+
   end
 
 end
