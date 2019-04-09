@@ -1,5 +1,8 @@
 <div class="statistics">
-
+  Top 3 Merchants: <% @top.each do |merchant| %>
+    <%= merchant.name %> -
+    <%= merchant.sum %>
+  <% end %>
 
   Fastest Merchants: <% @fastest.each do |merchant| %>
       <%= merchant.name %> -
