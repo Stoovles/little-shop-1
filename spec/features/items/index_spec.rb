@@ -36,11 +36,11 @@ RSpec.describe "Items Index Page", type: :feature do
     it "shows all enabled items and their info to a visitor" do
       visit items_path
       within first ".item-card" do
-        expect(page).to have_content(@i1.item_name)
-        expect(page).to have_css("img[src*='#{@i1.image_url}']")
-        expect(page).to have_content("Merchant: #{@i1.merchant_name}")
-        expect(page).to have_content("In Inventory: #{@i1.inventory}")
-        expect(page).to have_content("Price: $#{@i1.current_price}")
+        expect(page).to have_content(@i5.item_name)
+        expect(page).to have_css("img[src*='#{@i5.image_url}']")
+        expect(page).to have_content("Merchant: #{@i5.merchant_name}")
+        expect(page).to have_content("In Inventory: #{@i5.inventory}")
+        expect(page).to have_content("Price: $#{@i5.current_price}")
       end
       expect(page).to have_css(".item-card",count: 3)
       expect(page).to_not have_content(@i3.item_name)
@@ -54,11 +54,11 @@ RSpec.describe "Items Index Page", type: :feature do
       click_button "Log Me In"
       visit items_path
       within first ".item-card" do
-        expect(page).to have_content(@i1.item_name)
-        expect(page).to have_css("img[src*='#{@i1.image_url}']")
-        expect(page).to have_content("Merchant: #{@i1.merchant_name}")
-        expect(page).to have_content("In Inventory: #{@i1.inventory}")
-        expect(page).to have_content("Price: $#{@i1.current_price}")
+        expect(page).to have_content(@i5.item_name)
+        expect(page).to have_css("img[src*='#{@i5.image_url}']")
+        expect(page).to have_content("Merchant: #{@i5.merchant_name}")
+        expect(page).to have_content("In Inventory: #{@i5.inventory}")
+        expect(page).to have_content("Price: $#{@i5.current_price}")
       end
       expect(page).to have_css(".item-card",count: 3)
       expect(page).to_not have_content(@i3.item_name)
@@ -67,16 +67,16 @@ RSpec.describe "Items Index Page", type: :feature do
     it "links item name to item show page" do
       visit items_path
       within first ".item-card" do
-        click_link "#{@i1.item_name}"
-        expect(current_path).to eq(item_path(@i1))
+        click_link "#{@i5.item_name}"
+        expect(current_path).to eq(item_path(@i5))
       end
     end
 
     it "links item thumbnail to item show page" do
       visit items_path
       within first ".item-card" do
-        click_link "image of #{@i1.item_name}"
-        expect(current_path).to eq(item_path(@i1))
+        click_link "image of #{@i5.item_name}"
+        expect(current_path).to eq(item_path(@i5))
       end
     end
 

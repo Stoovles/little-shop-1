@@ -21,6 +21,7 @@ RSpec.describe Order, type: :model do
     @o1 = @u1.orders.create(status: 2)
     @o2 = @u1.orders.create(status: 2)
     @o3 = @u1.orders.create(status: 0)
+    @o4 = @u1.orders.create(status: 1)
 
     @oi1 = OrderItem.create(order_id: @o1.id,item_id: @i1.id, quantity: 4,fulfilled: true,order_price: 66.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
     @oi2 = OrderItem.create(order_id: @o1.id,item_id: @i2.id, quantity: 4,fulfilled: true,order_price: 57.0,created_at: "2018-04-06 19:07:44",updated_at: "2018-04-17 00:06:32")
@@ -30,6 +31,7 @@ RSpec.describe Order, type: :model do
     @oi6 = OrderItem.create(order_id: @o3.id,item_id: @i2.id, quantity: 8,fulfilled: false,order_price: 63.0,created_at: "2018-04-04 10:42:04",updated_at: "2018-04-17 16:22:35")
     @oi7 = OrderItem.create(order_id: @o3.id,item_id: @i3.id, quantity: 800,fulfilled: false,order_price: 63.0,created_at: "2018-04-04 10:42:04",updated_at: "2018-04-17 16:22:35")
     @oi8 = OrderItem.create(order_id: @o3.id,item_id: @i3.id, quantity: 1,fulfilled: false,order_price: 63.0,created_at: "2018-04-04 10:42:04",updated_at: "2018-04-17 16:22:35")
+    @oi9 = OrderItem.create(order_id: @o4.id,item_id: @i2.id, quantity: 1,fulfilled: true,order_price: 63.0,created_at: "2018-04-04 10:42:04",updated_at: "2018-04-17 16:22:35")
   end
 
   describe "Relationships" do
@@ -57,5 +59,13 @@ RSpec.describe Order, type: :model do
       expect(@o3.item_fulfilled?(@i1)).to eq(false)
     end
   end
+
+  describe ".order_fulfilled?" do
+    it "returns true when all items are fulfilled" do
+      expect(@o3.order_fulfilled?).to eq(false)
+      expect(@o4.order_fulfilled?).to eq(true)
+    end
+  end
+
 
 end

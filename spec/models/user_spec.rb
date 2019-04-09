@@ -96,5 +96,18 @@ RSpec.describe User, type: :model do
       end
     end
 
+    describe "top user by items" do
+      it "returns the top user by quantity of items purchased" do
+        expect(User.top_user_by_items(@umerch).name).to eq(@u4.name)
+        expect(User.top_user_by_items(@umerch).sum).to eq(14)
+      end
+    end
+
+    describe "top 3 alcoholics by $$ spent" do
+      it 'returns the top 3 users by dollars spent' do
+        expect(User.top_users_by_revenue(@umerch).first.name).to eq(@u4.name)
+        expect(User.top_users_by_revenue(@umerch).first.sum).to eq(742.0)
+      end
+    end    
   end
 end

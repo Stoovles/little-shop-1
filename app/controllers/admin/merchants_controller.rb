@@ -1,4 +1,6 @@
 class Admin::MerchantsController < ApplicationController
+  before_action :require_admin
+
   def show
     if User.find(params[:id]).role == "user"
       redirect_to admin_user_path(User.find(params[:id]))
@@ -11,7 +13,7 @@ class Admin::MerchantsController < ApplicationController
   end
 
   def index
-    @merchants = User.where(role: 1)
+    @merchants = User.where(role: 1).order(:name)
   end
 
   def deactivate
@@ -34,5 +36,12 @@ class Admin::MerchantsController < ApplicationController
     @merchant.update(role: 'user')
     redirect_to admin_user_path(@merchant), success: "Merchant #{@merchant.id} has been downgraded to a user"
   end
+
+  private
+
+    def require_admin
+      render file: "/public/404" unless current_admin?
+    end
+
 
 end
