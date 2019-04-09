@@ -105,10 +105,10 @@ RSpec.describe 'when we visit a merchant show page' do
   end
 
   describe "self.top_three_city_states_overall" do
-    xit "lists top 3 city,states overall by order count" do
+    it "lists top 3 city,states overall by order count" do
       expect(User.top_three_city_states_overall.first.citystate).to eq("Miami, California")
       expect(User.top_three_city_states_overall.first.count).to eq(4)
-      expect(User.top_three_city_states_overall.second.citystate).to eq("Fresno, Nevaeda")
+      expect(User.top_three_city_states_overall.second.citystate).to eq("Fresno, Nevada")
       expect(User.top_three_city_states_overall.second.count).to eq(3)
       expect(User.top_three_city_states_overall.third.citystate).to eq("Saint Louis, Missouri")
       expect(User.top_three_city_states_overall.third.count).to eq(2)

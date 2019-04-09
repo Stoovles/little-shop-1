@@ -64,4 +64,8 @@ class User < ApplicationRecord
   def self.top_three_states_overall
     joins(orders: :order_items).select(:state,"count(order_id)").where("order_items.fulfilled": true).group(:state).order("count(order_id) DESC").limit(3)
   end
+
+  def self.top_three_city_states_overall
+    joins(orders: :order_items).select("DISTINCT (users.city || ', ' || users.state) AS citystate","count(order_items.quantity)").where("order_items.fulfilled": true).group("citystate").order("count(order_items.quantity) DESC").limit(3)
+  end
 end
