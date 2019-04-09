@@ -23,6 +23,11 @@ class Order < ApplicationRecord
       order_item.fulfilled?
     end
   end
-      
+
+  def user_name
+    user = User.find(self.user_id)
+    user.name
+  end
+
 
 end

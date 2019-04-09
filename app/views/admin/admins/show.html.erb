@@ -1,0 +1,7 @@
+<% @orders.each do |order| %>
+  <div class="order-card">
+    Order ID: <%= order.id %>
+    Ordered by: <%= link_to "#{order.user_name}", admin_user_path(order.user_id) %>
+    Created at: <%= order.created_at %>
+  </div>
+<% end %>

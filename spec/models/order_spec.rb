@@ -67,5 +67,10 @@ RSpec.describe Order, type: :model do
     end
   end
 
+  describe ".user_name" do
+    it "returns the name of the user who created the order" do
+      expect(@o3.user_name).to eq("#{@u1.name}")
+    end
+  end
 
 end
