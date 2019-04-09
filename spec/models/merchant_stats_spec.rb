@@ -43,8 +43,9 @@ RSpec.describe 'when we visit a merchant show page' do
     @oi8 = OrderItem.create(order_id: @o8.id,item_id: @i15.id, quantity: 18,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
     @oi9 = OrderItem.create(order_id: @o9.id,item_id: @i24.id, quantity: 20,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
     @oi10 = OrderItem.create(order_id: @o10.id,item_id: @i12.id, quantity: 16,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi11 = OrderItem.create(order_id: @o11.id,item_id: @i12.id, quantity: 18,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
+    @oi11 = OrderItem.create(order_id: @o11.id,item_id: @i12.id, quantity: 17,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
     @oi12 = OrderItem.create(order_id: @o12.id,item_id: @i13.id, quantity: 200,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
+    @oi13 = OrderItem.create(order_id: @o12.id,item_id: @i12.id, quantity: 200,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
   end
 
   describe 'self.top_three_states' do
@@ -96,7 +97,7 @@ RSpec.describe 'when we visit a merchant show page' do
   describe "self.top_three_states_overall" do
     it "lists top 3 states overall by order count" do
       expect(User.top_three_states_overall.first.state).to eq("California")
-      expect(User.top_three_states_overall.first.count).to eq(5)
+      expect(User.top_three_states_overall.first.count).to eq(6)
       expect(User.top_three_states_overall.second.state).to eq("Nevada")
       expect(User.top_three_states_overall.second.count).to eq(3)
       expect(User.top_three_states_overall.third.state).to eq("Missouri")
@@ -107,7 +108,7 @@ RSpec.describe 'when we visit a merchant show page' do
   describe "self.top_three_city_states_overall" do
     it "lists top 3 city,states overall by order count" do
       expect(User.top_three_city_states_overall.first.citystate).to eq("Miami, California")
-      expect(User.top_three_city_states_overall.first.count).to eq(4)
+      expect(User.top_three_city_states_overall.first.count).to eq(5)
       expect(User.top_three_city_states_overall.second.citystate).to eq("Fresno, Nevada")
       expect(User.top_three_city_states_overall.second.count).to eq(3)
       expect(User.top_three_city_states_overall.third.citystate).to eq("Saint Louis, Missouri")
@@ -116,12 +117,12 @@ RSpec.describe 'when we visit a merchant show page' do
   end
 
   describe "self.three_biggest_orders" do
-    xit "lists top 3 biggest orders" do
-      expect(User.three_biggest_orders.first.order_id).to eq("")
-      expect(User.three_biggest_orders.first.count).to eq()
-      expect(User.three_biggest_orders.second.order_id).to eq("")
+    it "lists top 3 biggest orders" do
+      expect(User.three_biggest_orders.first.order_id).to eq("#{@o12.id}")
+      expect(User.three_biggest_orders.first.count).to eq(400)
+      expect(User.three_biggest_orders.second.order_id).to eq("#{@o9.id}")
       expect(User.three_biggest_orders.second.count).to eq()
-      expect(User.three_biggest_orders.third.order_id).to eq("")
+      expect(User.three_biggest_orders.third.order_id).to eq("#{@o8.id}")
       expect(User.three_biggest_orders.third.count).to eq()
     end
   end
