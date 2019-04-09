@@ -51,7 +51,8 @@ Rails.application.routes.draw do
     resources :merchants, only: [:show, :index] do
       member {patch :activate}
       member {patch :deactivate}
-    end 
+      member {patch :downgrade}
+    end
   end
 
 
