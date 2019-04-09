@@ -5,15 +5,23 @@
 </div>
 
 <div class="welcome-login">
-  <h3>Log In</h3>
-  <%= form_tag login_path do %>
+  <% if !current_user? %>
+    <h3>Log In</h3>
+    <%= form_tag login_path do %>
     <%= label_tag :email_address %>
     <%= email_field_tag :email_address %>
     <%= label_tag :password %>
     <%= password_field_tag :password %>
     <%= submit_tag "Log Me In" %>
+    <% end %>
+    <%= link_to "Not a Member? Register Here", new_user_path %>
+  <% elsif current_admin? %>
+    <h3>Welcome, current_user.name</h3>
+  <% elsif current_merchant? %>
+    <h3>Welcome, current_user.name</h3>
+  <% else %>
+
   <% end %>
-  <%= link_to "Not a Member? Register Here", new_user_path %>
 </div>
 
 <div class="welcome-nav-section">
