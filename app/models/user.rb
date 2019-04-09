@@ -54,4 +54,9 @@ class User < ApplicationRecord
     (total_quantity_sold / (total_inventory + total_quantity_sold).to_f) * 100
   end
 
+  def top_three_states
+    binding.pry
+  end
+
+
 end

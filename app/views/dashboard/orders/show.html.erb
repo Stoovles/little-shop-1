@@ -4,13 +4,20 @@
   <p><%= @order.user.street_address %></p>
   <p><%= @order.user.city %>, <%= @order.user.state %>  <%= @order.user.zip_code %></p>
 </div>
-  <% @order.items.each do |item| %>
-  <div class="order-card">
+  <% @order.items.order(:item_name).each do |item| %>
     <% if item.user_id == current_user.id %>
+    <div class="order-card">
       <%= link_to item.item_name, item_path(item) %>
       <img src=<%= item.image_url %> class="small-image" alt="image of <%= item.item_name %>">
       Price: <%= item.order_price(@order) %>
       Quantity: <%= item.order_quantity(@order) %>
+      <% if  (!@order.item_fulfilled?(item) && (item.inventory < item.order_quantity(@order))) %>
+        <p style="color:red; font-size:16px;">You do not have enough inventory to fill this item!</p>
+      <% elsif !@order.item_fulfilled?(item) %>
+        <%= button_to 'Fulfill Item', dashboard_order_path(@order), method: :patch, params:{item_id: item.id} %>
+      <% else %>
+        You have already fulfilled this item
+      <% end %>
+    </div>
     <% end %>
-  </div>
   <% end %>

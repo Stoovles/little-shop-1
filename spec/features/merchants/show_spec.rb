@@ -43,10 +43,10 @@ RSpec.describe "Merchant Show Page" do
 
     it 'show unfulfilled order information' do
       visit dashboard_path
-      expect(page).to have_content("Order ID: #{@oi171.order_id}")
-      expect(page).to have_content("Ordered On: #{@oi171.created_at}")
-      expect(page).to have_content("Quantity: #{@oi171.quantity}")
-      expect(page).to have_content("Total Price: #{@oi171.order_price}")
+      expect(page).to have_content("Order ID: #{@o39.id}")
+      expect(page).to have_content("Ordered On: #{@o39.created_at}")
+      expect(page).to have_content("Quantity: 13")
+      expect(page).to have_content("Total Price: 689.0")
     end
 
     it 'does not show fulfilled order information' do

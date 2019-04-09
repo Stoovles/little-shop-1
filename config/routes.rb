@@ -31,7 +31,7 @@ Rails.application.routes.draw do
       member { patch :activate }
       member { patch :deactivate }
     end
-    resources :orders, only: [:show]
+    resources :orders, only: [:show, :update, :edit]
   end
 
   # namcespace :dashboard do
@@ -48,7 +48,10 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'admins#show'
     resources :users, only: [:index, :show, :update]
-    resources :merchants, only: [:show, :index]
+    resources :merchants, only: [:show, :index] do
+      member {patch :activate}
+      member {patch :deactivate}
+    end 
   end
 
 

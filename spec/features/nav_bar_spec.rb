@@ -169,7 +169,7 @@ RSpec.describe 'When I visit our application I see a navbar' do
 
         expect(page).to have_link 'Merchants'
         click_link 'Merchants'
-        expect(current_path).to eq(merchants_path)
+        expect(current_path).to eq(admin_merchants_path)
 
         expect(page).to have_link 'Dashboard'
         click_link 'Dashboard'

@@ -56,11 +56,11 @@ RSpec.describe "As an admin who is logged in" do
       expect(current_path).to eq(admin_user_path(@u1))
     end
 
-    xit "should upgrade the user to a merchant and they can no longer be seen" do
+    it "should upgrade the user to a merchant and they can no longer be seen" do
       visit admin_users_path
       within first ".user-card" do
         click_link "Upgrade to Merchant"
-        expect(current_path).to eq(admin_users_path)
+        expect(current_path).to eq(admin_merchant_path(@u1))
       end
       expect(page).to have_content("#{@u1.name} has been upgraded to a merchant")
       visit admin_users_path
@@ -75,50 +75,64 @@ RSpec.describe "As an admin who is logged in" do
       it "should take me to the admin merchant show page" do
         visit admin_merchants_path
         within first ".merchant-card" do
+          expect(page).to have_link("Disable")
           click_link "Ondrea Chadburn"
           expect(current_path).to eq admin_merchant_path(@umerch)
         end
       end
     end
 
-    describe "on a merchants show page" do
-      it "should show me the mechant's profile info" do
-        visit admin_merchant_path(@umerch)
-        expect(page).to have_content("Name: #{@umerch.name}")
-        expect(page).to have_content("Street Address: #{@umerch.street_address}")
-        expect(page).to have_content("City: #{@umerch.city}")
-        expect(page).to have_content("State: #{@umerch.state}")
-        expect(page).to have_content("Zip Code: #{@umerch.zip_code}")
-        expect(page).to have_content("Email Address: #{@umerch.email_address}")
-        expect(page).to_not have_content("#{@umerch.password}")
-      end
-
-      it "should show me the merchant's statistics" do
-        visit admin_merchant_path(@umerch)
-        expect(page).to have_css(".statistics")
-        #MORE TESTS!!
-      end
-
-      it "should show me the merchant's unfulfilled orders" do
-        visit admin_merchant_path(@umerch)
-        expect(page).to have_css(".order-card", count: 1)
-        within first ".order-card" do
-          expect(page).to have_content("Order ID: #{@o49.id}")
-          expect(page).to have_content("Ordered On: #{@o49.created_at}")
-          expect(page).to have_content("Quantity: #{@umerch.my_item_count(@o49)}")
-          expect(page).to have_content("Total Price: #{@umerch.my_total(@o49)}")
+    describe 'click link to enable/disable item' do
+      it 'should disable/enable merchant' do
+        visit admin_merchants_path
+        within first ".merchant-card" do
+          click_link 'Disable Merchant'
+          expect(current_path).to eq(admin_merchants_path)
         end
-      end
-
-      xit "should link me to the order page via the order id" do
-        #did I make this up?
-        visit admin_merchant_path(@umerch)
-        within first ".order-card" do
-          click_link "Order: #{@o49.id}"
-          expect(current_path).to eq(dashboard_orders_path(@o49)) #maybe?
-        end
+        expect(page).to have_link('Enable Merchant')
+        click_link 'Enable Merchant'
+        expect(page).to_not have_link('Enable Merchant')
       end
     end
+
+  describe "on a merchants show page" do
+    it "should show me the mechant's profile info" do
+      visit admin_merchant_path(@umerch)
+      expect(page).to have_content("Name: #{@umerch.name}")
+      expect(page).to have_content("Street Address: #{@umerch.street_address}")
+      expect(page).to have_content("City: #{@umerch.city}")
+      expect(page).to have_content("State: #{@umerch.state}")
+      expect(page).to have_content("Zip Code: #{@umerch.zip_code}")
+      expect(page).to have_content("Email Address: #{@umerch.email_address}")
+      expect(page).to_not have_content("#{@umerch.password}")
+    end
+
+    it "should show me the merchant's statistics" do
+      visit admin_merchant_path(@umerch)
+      expect(page).to have_css(".statistics")
+      #MORE TESTS!!
+    end
+
+    it "should show me the merchant's unfulfilled orders" do
+      visit admin_merchant_path(@umerch)
+      expect(page).to have_css(".order-card", count: 1)
+      within first ".order-card" do
+        expect(page).to have_content("Order ID: #{@o49.id}")
+        expect(page).to have_content("Ordered On: #{@o49.created_at}")
+        expect(page).to have_content("Quantity: #{@umerch.my_item_count(@o49)}")
+        expect(page).to have_content("Total Price: #{@umerch.my_total(@o49)}")
+      end
+    end
+
+    xit "should link me to the order page via the order id" do
+      #did I make this up?
+      visit admin_merchant_path(@umerch)
+      within first ".order-card" do
+        click_link "Order: #{@o49.id}"
+        expect(current_path).to eq(dashboard_orders_path(@o49)) #maybe?
+      end
+    end
+  end
 
   end
 
