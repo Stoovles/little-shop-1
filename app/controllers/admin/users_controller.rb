@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  before_action :require_admin
   def index
     @users = User.where(role: 0)
   end
@@ -9,7 +10,7 @@ class Admin::UsersController < ApplicationController
     else
       @user = User.find(params[:id])
     end
-  end 
+  end
 
   def update
     @user = User.find(params[:id])
@@ -18,4 +19,12 @@ class Admin::UsersController < ApplicationController
       redirect_to admin_merchant_path(@user), success: "#{@user.name} has been upgraded to a merchant"
     end
   end
+
+  private
+
+  def require_admin
+    render file: "/public/404" unless current_admin?
+  end
+
+
 end
