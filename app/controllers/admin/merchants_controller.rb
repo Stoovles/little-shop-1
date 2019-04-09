@@ -3,6 +3,7 @@ class Admin::MerchantsController < ApplicationController
     @merchant = User.find(params[:id])
     @orders = @merchant.merchant_pending_orders
     @popular_five = @merchant.items.popular_five
+    @top_3_states = User.top_three_states(@merchant)
   end
 
   def index

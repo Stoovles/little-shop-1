@@ -37,9 +37,13 @@ RSpec.describe 'when we visit a merchant show page' do
   end
 
   describe '.top_three_states' do
-    xit 'lists top 3 states by quantity sold' do
-      # binding.pry
-      expect(@umerch.top_three_states).to eq()
+    it 'lists top 3 states by quantity sold' do
+      expect(User.top_three_states(@umerch).first.state).to eq("California")
+      expect(User.top_three_states(@umerch).first.sum).to eq(34)
+      expect(User.top_three_states(@umerch).second.state).to eq("Nevada")
+      expect(User.top_three_states(@umerch).second.sum).to eq(30)
+      expect(User.top_three_states(@umerch).third.state).to eq("Pennsylvania")
+      expect(User.top_three_states(@umerch).third.sum).to eq(18)
     end
   end
 

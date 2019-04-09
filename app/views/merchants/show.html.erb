@@ -15,7 +15,11 @@
       Total Items Sold: <%= current_user.total_quantity_sold %>
       Percentage of Inventory Sold: <%= current_user.percentage_sold.round(2) %>%
     </div>
-
+    Top 3 States -
+    <% @top_3_states.each do |relation| %>
+      <%= relation.state %>: <%= relation.sum %>
+      <br>
+    <% end %>
   </div>
 
 </section>
@@ -38,8 +42,8 @@
     <div class="order-card">
       <p><%= link_to "Order ID: #{order.id}", dashboard_order_path(order) %></p>
       <p>Ordered On: <%= order.created_at %></p>
-      <p>Quantity: <%= @user.my_item_count(order) %></p>
-      <p>Total Price: <%= @user.my_total(order) %></p>
+      <p>Quantity: <%= @merchant.my_item_count(order) %></p>
+      <p>Total Price: <%= @merchant.my_total(order) %></p>
     </div>
     <% end %>
   </div>

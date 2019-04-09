@@ -39,9 +39,9 @@ RSpec.describe 'when we visit a merchant show page' do
     visit dashboard_path
   end
 
-  xit 'shows us top 3 states where items were shipped with quantities' do
+  it 'shows us top 3 states where items were shipped with quantities' do
     within ".statistics" do
-      expect(page).to have_content("Top 3 States - California: 34, Nevada: 30, Pennsylvania: 18")
+      expect(page).to have_content("Top 3 States - California: 34 Nevada: 30 Pennsylvania: 18")
     end
   end
 end
