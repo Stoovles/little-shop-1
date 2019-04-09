@@ -13,12 +13,12 @@
     <% end %>
     <div class="percentage-sold">
       Total Items Sold: <%= current_user.total_quantity_sold %>
+      <br>
       Percentage of Inventory Sold: <%= current_user.percentage_sold.round(2) %>%
     </div>
     Top 3 States -
     <% @top_3_states.each do |relation| %>
       <%= relation.state %>: <%= relation.sum %>
-      <br>
     <% end %>
   </div>
 
