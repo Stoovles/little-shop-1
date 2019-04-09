@@ -24,6 +24,17 @@ RSpec.describe "As any user on the welcome page" do
 
     describe "as a logged in user/merchant/admin" do
       it "should have a welcome section with logout button" do
+        within ".welcome-login" do
+          expect(page).to have_content("Log In")
+          expect(page).to have_css("#email_address")
+          expect(page).to have_css("#password")
+          expect(page).to have_button("Log Me In")
+          click_link "Not a Member? Register Here"
+          expect(current_path).to eq new_user_path
+        end
+      end
+
+      it "should have a welcome section with logout button" do
         merchant = User.create(name: "Madelon Hicken",street_address: "3830 Becker Trail",city: "Saint Louis",state: "Missouri",zip_code: "63116",email_address: "mhickenf@unesco.org",password:"q9qDA9PA", enabled: true, role:1)
         # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(merchant)
         visit login_path
