@@ -149,5 +149,12 @@ RSpec.describe "As an admin who is logged in" do
       expect(page).to have_link("#{@u4.name}")
       end
     end
+
+    it "I can click the user name to go to a admin view of user profile" do
+      visit admin_dashboard_path(@uadmin)
+      click_link "#{@u8.name}"
+      expect(current_path).to eq(admin_user_path(@u8))
+      save_and_open_page
+    end
   end
 end
