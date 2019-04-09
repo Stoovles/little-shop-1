@@ -26,14 +26,15 @@ RSpec.describe 'when we visit a merchant show page' do
     @o9 = @u21.orders.create(status: 2)
 
     @oi1 = OrderItem.create(order_id: @o1.id,item_id: @i8.id, quantity: 4,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi2 = OrderItem.create(order_id: @o2.id,item_id: @i15.id, quantity: 6,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi3 = OrderItem.create(order_id: @o3.id,item_id: @i24.id, quantity: 8,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi4 = OrderItem.create(order_id: @o4.id,item_id: @i8.id, quantity: 10,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi5 = OrderItem.create(order_id: @o5.id,item_id: @i15.id, quantity: 12,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi6 = OrderItem.create(order_id: @o6.id,item_id: @i24.id, quantity: 14,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi7 = OrderItem.create(order_id: @o7.id,item_id: @i8.id, quantity: 16,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi8 = OrderItem.create(order_id: @o8.id,item_id: @i15.id, quantity: 18,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi9 = OrderItem.create(order_id: @o9.id,item_id: @i24.id, quantity: 20,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
+    @oi2 = OrderItem.create(order_id: @o2.id,item_id: @i15.id, quantity: 6,fulfilled: true,order_price: 10.0,created_at: "2018-04-06 19:07:44",updated_at: "2018-04-17 00:06:32")
+    @oi3 = OrderItem.create(order_id: @o3.id,item_id: @i24.id, quantity: 8,fulfilled: true,order_price: 10.0,created_at: "2018-04-08 22:14:08",updated_at: "2018-04-14 02:03:32")
+    @oi4 = OrderItem.create(order_id: @o4.id,item_id: @i8.id, quantity: 10,fulfilled: true,order_price: 10.0,created_at: "2018-04-10 09:04:53",updated_at: "2018-04-12 00:25:16")
+    @oi5 = OrderItem.create(order_id: @o5.id,item_id: @i15.id, quantity: 12,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 20:03:19",updated_at: "2018-04-14 11:15:44")
+    @oi6 = OrderItem.create(order_id: @o6.id,item_id: @i24.id, quantity: 14,fulfilled: true,order_price: 10.0,created_at: "2018-04-04 10:42:04",updated_at: "2018-04-17 16:22:35")
+    @oi7 = OrderItem.create(order_id: @o7.id,item_id: @i8.id, quantity: 16,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 17:57:49",updated_at: "2018-04-14 08:56:26")
+    @oi8 = OrderItem.create(order_id: @o8.id,item_id: @i15.id, quantity: 18,fulfilled: true,order_price: 10.0,created_at: "2018-04-09 14:24:00",updated_at: "2018-04-15 03:51:26")
+    @oi9 = OrderItem.create(order_id: @o9.id,item_id: @i24.id, quantity: 20,fulfilled: true,order_price: 10.0,created_at: "2018-04-07 23:06:46",updated_at: "2018-04-18 21:14:44")
+
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@umerch)
     visit dashboard_path

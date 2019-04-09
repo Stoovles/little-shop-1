@@ -61,6 +61,17 @@ class User < ApplicationRecord
     joins(orders: :order_items).where("order_items.item_id": merchant.items.ids, "order_items.fulfilled": true).select(:name, "sum(order_items.quantity * order_items.order_price)").group(:name).order("sum(order_items.quantity * order_items.order_price) DESC").limit(3)
   end
 
+
+
+  def self.three_fastest
+    joins(items: :order_items).select("order_items.order_id","AVG(order_items.updated_at - order_items.created_at)").where("order_items.fulfilled": true).group("order_items.order_id").order("AVG(order_items.updated_at - order_items.created_at)")
+
+  end
+
+  def self.three_slowest
+
+  end
+
   def self.top_three_states_overall
     joins(orders: :order_items).select(:state,"count(order_id)").where("order_items.fulfilled": true).group(:state).order("count(order_id) DESC").limit(3)
   end

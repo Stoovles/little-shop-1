@@ -34,18 +34,18 @@ RSpec.describe 'when we visit a merchant show page' do
 
 
     @oi1 = OrderItem.create(order_id: @o1.id,item_id: @i8.id, quantity: 4,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi2 = OrderItem.create(order_id: @o2.id,item_id: @i15.id, quantity: 6,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi3 = OrderItem.create(order_id: @o3.id,item_id: @i24.id, quantity: 8,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi4 = OrderItem.create(order_id: @o4.id,item_id: @i8.id, quantity: 10,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi5 = OrderItem.create(order_id: @o5.id,item_id: @i15.id, quantity: 12,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi6 = OrderItem.create(order_id: @o6.id,item_id: @i24.id, quantity: 14,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi7 = OrderItem.create(order_id: @o7.id,item_id: @i8.id, quantity: 16,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi8 = OrderItem.create(order_id: @o8.id,item_id: @i15.id, quantity: 18,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi9 = OrderItem.create(order_id: @o9.id,item_id: @i24.id, quantity: 20,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi10 = OrderItem.create(order_id: @o10.id,item_id: @i12.id, quantity: 16,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi11 = OrderItem.create(order_id: @o11.id,item_id: @i12.id, quantity: 17,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi12 = OrderItem.create(order_id: @o12.id,item_id: @i13.id, quantity: 200,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi13 = OrderItem.create(order_id: @o12.id,item_id: @i12.id, quantity: 200,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
+    @oi2 = OrderItem.create(order_id: @o2.id,item_id: @i15.id, quantity: 6,fulfilled: true,order_price: 10.0,created_at: "2018-04-06 19:07:44",updated_at: "2018-04-17 00:06:32")
+    @oi3 = OrderItem.create(order_id: @o3.id,item_id: @i24.id, quantity: 8,fulfilled: true,order_price: 10.0,created_at: "2018-04-08 22:14:08",updated_at: "2018-04-14 02:03:32")
+    @oi4 = OrderItem.create(order_id: @o4.id,item_id: @i8.id, quantity: 10,fulfilled: true,order_price: 10.0,created_at: "2018-04-10 09:04:53",updated_at: "2018-04-12 00:25:16")
+    @oi5 = OrderItem.create(order_id: @o5.id,item_id: @i15.id, quantity: 12,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 20:03:19",updated_at: "2018-04-14 11:15:44")
+    @oi6 = OrderItem.create(order_id: @o6.id,item_id: @i24.id, quantity: 14,fulfilled: true,order_price: 10.0,created_at: "2018-04-04 10:42:04",updated_at: "2018-04-17 16:22:35")
+    @oi7 = OrderItem.create(order_id: @o7.id,item_id: @i8.id, quantity: 16,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 17:57:49",updated_at: "2018-04-14 08:56:26")
+    @oi8 = OrderItem.create(order_id: @o8.id,item_id: @i15.id, quantity: 18,fulfilled: true,order_price: 10.0,created_at: "2018-04-09 14:24:00",updated_at: "2018-04-15 03:51:26")
+    @oi9 = OrderItem.create(order_id: @o9.id,item_id: @i24.id, quantity: 20,fulfilled: true,order_price: 10.0,created_at: "2018-04-07 23:06:46",updated_at: "2018-04-18 21:14:44")
+    @oi10 = OrderItem.create(order_id: @o10.id,item_id: @i12.id, quantity: 16,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 22:49:21",updated_at: "2018-04-18 16:09:57")
+    @oi11 = OrderItem.create(order_id: @o11.id,item_id: @i12.id, quantity: 17,fulfilled: true,order_price: 10.0,created_at: "2018-04-04 18:58:29",updated_at: "2018-04-17 15:35:00")
+    @oi12 = OrderItem.create(order_id: @o12.id,item_id: @i13.id, quantity: 200,fulfilled: true,order_price: 10.0,created_at: "2018-04-09 05:42:01",updated_at: "2018-04-14 07:19:36")
+    @oi13 = OrderItem.create(order_id: @o12.id,item_id: @i12.id, quantity: 200,fulfilled: true,order_price: 10.0,created_at: "2018-04-07 17:46:56",updated_at: "2018-04-12 06:24:31")
   end
 
   describe 'self.top_three_states' do
@@ -72,14 +72,15 @@ RSpec.describe 'when we visit a merchant show page' do
 
 
 
+
   describe "self.three_fastest" do
-    xit "lists top 3 merchants by speed of fulfillment" do
-      expect(User.three_fastest.first.name).to eq("")
-      expect(User.three_fastest.first.TIME).to eq()
-      expect(User.three_fastest.second.name).to eq("")
-      expect(User.three_fastest.second.TIME).to eq()
-      expect(User.three_fastest.third.name).to eq("")
-      expect(User.three_fastest.third.TIME).to eq()
+    it "lists top 3 merchants by speed of fulfillment" do
+      expect(User.three_fastest.first.order_id).to eq(@o4.id)
+      expect(User.three_fastest.first.avg).to eq("1 day 15:20:23")
+      expect(User.three_fastest.second.order_id).to eq(@o12.id)
+      expect(User.three_fastest.second.avg).to eq("4 days 19:07:35")
+      expect(User.three_fastest.third.order_id).to eq(@o3.id)
+      expect(User.three_fastest.third.avg).to eq("5 days 03:49:24")
     end
   end
 
