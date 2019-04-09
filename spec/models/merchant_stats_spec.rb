@@ -96,22 +96,22 @@ RSpec.describe 'when we visit a merchant show page' do
   describe "self.top_three_states_overall" do
     it "lists top 3 states overall by order count" do
       expect(User.top_three_states_overall.first.state).to eq("California")
-      expect(User.top_three_states_overall.first.sum).to eq(5)
+      expect(User.top_three_states_overall.first.count).to eq(5)
       expect(User.top_three_states_overall.second.state).to eq("Nevada")
-      expect(User.top_three_states_overall.second.sum).to eq(3)
+      expect(User.top_three_states_overall.second.count).to eq(3)
       expect(User.top_three_states_overall.third.state).to eq("Missouri")
-      expect(User.top_three_states_overall.third.sum).to eq(2)
+      expect(User.top_three_states_overall.third.count).to eq(2)
     end
   end
 
   describe "self.top_three_city_states_overall" do
     xit "lists top 3 city,states overall by order count" do
       expect(User.top_three_city_states_overall.first.citystate).to eq("Miami, California")
-      expect(User.top_three_city_states_overall.first.sum).to eq(4)
+      expect(User.top_three_city_states_overall.first.count).to eq(4)
       expect(User.top_three_city_states_overall.second.citystate).to eq("Fresno, Nevaeda")
-      expect(User.top_three_city_states_overall.second.sum).to eq(3)
+      expect(User.top_three_city_states_overall.second.count).to eq(3)
       expect(User.top_three_city_states_overall.third.citystate).to eq("Saint Louis, Missouri")
-      expect(User.top_three_city_states_overall.third.sum).to eq(2)
+      expect(User.top_three_city_states_overall.third.count).to eq(2)
     end
   end
 

@@ -60,4 +60,8 @@ class User < ApplicationRecord
   def self.top_users_by_revenue(merchant)
     joins(orders: :order_items).where("order_items.item_id": merchant.items.ids, "order_items.fulfilled": true).select(:name, "sum(order_items.quantity * order_items.order_price)").group(:name).order("sum(order_items.quantity * order_items.order_price) DESC").limit(3)
   end
+
+  def self.top_three_states_overall
+    joins(orders: :order_items).select(:state,"count(order_id)").where("order_items.fulfilled": true).group(:state).order("count(order_id) DESC").limit(3)
+  end
 end
