@@ -94,6 +94,7 @@ RSpec.describe "As an admin who is logged in" do
         expect(page).to_not have_link('Enable Merchant')
       end
     end
+  end
 
   describe "on a merchants show page" do
     it "should show me the mechant's profile info" do
@@ -133,8 +134,27 @@ RSpec.describe "As an admin who is logged in" do
     #     expect(current_path).to eq(dashboard_orders_path(@o49)) #maybe?
     #   end
     # end
-  end
 
-  end
 
+  describe 'when I visit my dashboard page' do
+    it "I see all orders in the system" do
+      visit admin_dashboard_path(@uadmin)
+      within first ".order-card" do
+        expect(page).to have_content("Order ID: #{@o49.id}")
+        expect(page).to have_link("#{@u8.name}")
+      end
+
+      within all(".order-card").last
+      expect(page).to have_content("Order ID: #{@o39.id}")
+      expect(page).to have_link("#{@u4.name}")
+      end
+    end
+
+    it "I can click the user name to go to a admin view of user profile" do
+      visit admin_dashboard_path(@uadmin)
+      click_link "#{@u8.name}"
+      expect(current_path).to eq(admin_user_path(@u8))
+      save_and_open_page
+    end
+  end
 end
