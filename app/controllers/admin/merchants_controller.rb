@@ -26,4 +26,13 @@ class Admin::MerchantsController < ApplicationController
     redirect_to admin_merchants_path, success: "Merchant #{@merchant.id} has been enabled"
   end
 
+  def downgrade
+    @merchant = User.find(params[:id])
+    @merchant.items.each do |item|
+      item.update(enabled: false)
+    end
+    @merchant.update(role: 'user')
+    redirect_to admin_user_path(@merchant), success: "Merchant #{@merchant.id} has been downgraded to a user"
+  end
+
 end
