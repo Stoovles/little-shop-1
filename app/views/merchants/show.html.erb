@@ -28,7 +28,8 @@
   </div>
   <% end %>
   <% if @top_user %>
-      Top Customer: <%= @top_user.name %> - <%= @top_user.count %>
+      Top Customer (orders): <%= @top_user.name %> - <%= @top_user.count %>
+      Top Customer (items): <%= @top_user_by_items.name %> - <%= @top_user_by_items.sum %>
   <% end %>
 
 </section>

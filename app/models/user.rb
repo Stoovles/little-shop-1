@@ -52,4 +52,8 @@ class User < ApplicationRecord
   def self.top_user_by_orders(merchant)
     joins(orders: :order_items).where("order_items.item_id": merchant.items.ids, "order_items.fulfilled": true).select(:name, "count(orders)").group(:name).order("count(orders)").last
   end
+
+  def self.top_user_by_items(merchant)
+    joins(orders: :order_items).where("order_items.item_id": merchant.items.ids, "order_items.fulfilled": true).select(:name, "sum(order_items.quantity)").group(:name).order("sum(order_items.quantity)").last
+  end
 end

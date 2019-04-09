@@ -13,6 +13,7 @@ skip_before_action :require_merchant, only: [:index]
     @top_3_states = User.top_three_states(@merchant)
     @top_3_cities = User.top_three_city_states(@merchant)
     @top_user = User.top_user_by_orders(@merchant)
+    @top_user_by_items = User.top_user_by_items(@merchant)
   end
 
   private
