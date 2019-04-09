@@ -54,8 +54,8 @@ class User < ApplicationRecord
     (total_quantity_sold / (total_inventory + total_quantity_sold).to_f) * 100
   end
 
-  def top_three_states
-    binding.pry
+  def self.top_three_states(merchant)
+    joins(orders: :order_items).select(:state,"SUM(order_items.quantity)").where("order_items.fulfilled": true, "order_items.item_id": merchant.items.ids).group(:state).order("sum(order_items.quantity) DESC").limit(3)
   end
 
 
