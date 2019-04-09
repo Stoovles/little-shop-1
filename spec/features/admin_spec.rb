@@ -124,14 +124,15 @@ RSpec.describe "As an admin who is logged in" do
       end
     end
 
-    xit "should link me to the order page via the order id" do
-      #did I make this up?
-      visit admin_merchant_path(@umerch)
-      within first ".order-card" do
-        click_link "Order: #{@o49.id}"
-        expect(current_path).to eq(dashboard_orders_path(@o49)) #maybe?
-      end
-    end
+    # it "should link me to the order page via the order id" do
+    #   #did I make this up?
+    #  Extension 60?
+    #   visit admin_merchant_path(@umerch)
+    #   within first ".order-card" do
+    #     click_link "Order: #{@o49.id}"
+    #     expect(current_path).to eq(dashboard_orders_path(@o49)) #maybe?
+    #   end
+    # end
   end
 
   end
