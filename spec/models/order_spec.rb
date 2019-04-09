@@ -57,4 +57,5 @@ RSpec.describe Order, type: :model do
       expect(@o3.item_fulfilled?(@i1)).to eq(false)
     end
   end
+
 end

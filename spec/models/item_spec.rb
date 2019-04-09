@@ -103,5 +103,12 @@ RSpec.describe Item, type: :model do
         expect(@i1.order_quantity(@o1)).to eq(4)
       end
     end
+
+    describe ".update_inventory" do
+      it "should subtract quantity ordered from inventory and return new inventory count" do
+        @i2.update_inventory(@o2)
+        expect(@i2.inventory).to eq(28)
+      end
+    end
   end
 end

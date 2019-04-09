@@ -67,4 +67,9 @@ class Item < ApplicationRecord
     # OrderItem.where(item_id: self, order_id: order.id).first.quantity
     order_items.where(order_id: order.id).first.quantity
   end
+
+  def update_inventory(order)
+    new_inventory = self.inventory - order.order_items.where(item_id: self.id).first.quantity
+    update(inventory: new_inventory)
+  end
 end

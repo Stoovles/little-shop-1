@@ -26,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def merchant_pending_orders
-    Order.joins(:order_items).select("orders.*").where("order_items.item_id": self.items,"order_items.fulfilled": false)
+    Order.joins(:order_items).select("orders.*").where("order_items.item_id": self.items,"order_items.fulfilled": false).distinct
   end
 
   def total_inventory
