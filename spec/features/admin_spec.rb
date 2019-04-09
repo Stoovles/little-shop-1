@@ -154,7 +154,6 @@ RSpec.describe "As an admin who is logged in" do
       visit admin_dashboard_path(@uadmin)
       click_link "#{@u8.name}"
       expect(current_path).to eq(admin_user_path(@u8))
-      save_and_open_page
     end
   end
 end
