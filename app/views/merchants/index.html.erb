@@ -1,5 +1,14 @@
 <div class="statistics">
 
+  Fastest Merchants: <% @fastest.each do |merchant| %>
+      <%= merchant.name %> -
+      <%= merchant.avg %>
+    <% end %>
+  Slowest Merchants: <% @slowest.each do |merchant| %>
+      <%= merchant.name %> -
+      <%= merchant.avg %>
+    <% end %>
+
   Top 3 States: <% @states.each do |relation| %>
     <%= relation.state %> -
     <%= relation.count %>

@@ -55,11 +55,11 @@ RSpec.describe 'as a visitor when I visit the merchant index page' do
     xit "should have the top 3 merchnts" do
     end
 
-    xit "should have the 3 fastest merchants" do
+    it "should have the 3 fastest merchants" do
       expect(page).to have_content("Fastest Merchants: #{@umerch.name} - 7 days 24:05:59.444444 #{@umerch2.name} - 8 days 19:03:04.25")
     end
 
-    xit "should have the 3 slowest merchants" do
+    it "should have the 3 slowest merchants" do
       expect(page).to have_content("Slowest Merchants: #{@umerch2.name} - 8 days 19:03:04.25 #{@umerch.name} - 7 days 24:05:59.444444")
     end
 
