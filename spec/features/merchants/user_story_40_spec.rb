@@ -34,47 +34,9 @@ RSpec.describe 'when we visit a merchant show page' do
     @oi7 = OrderItem.create(order_id: @o7.id,item_id: @i8.id, quantity: 16,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
     @oi8 = OrderItem.create(order_id: @o8.id,item_id: @i15.id, quantity: 18,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
     @oi9 = OrderItem.create(order_id: @o9.id,item_id: @i24.id, quantity: 20,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@umerch)
+    visit dashboard_path
   end
 
-  describe '.top_three_states' do
-    it 'lists top 3 states by quantity sold' do
-      expect(User.top_three_states(@umerch).first.state).to eq("California")
-      expect(User.top_three_states(@umerch).first.sum).to eq(34)
-      expect(User.top_three_states(@umerch).second.state).to eq("Nevada")
-      expect(User.top_three_states(@umerch).second.sum).to eq(30)
-      expect(User.top_three_states(@umerch).third.state).to eq("Pennsylvania")
-      expect(User.top_three_states(@umerch).third.sum).to eq(18)
-    end
-  end
-
-  describe '.top_three_city_states' do
-    it 'lists top 3 city, states by quantity sold' do
-      expect(User.top_three_city_states(@umerch).first.citystate).to eq("Fresno, Nevada")
-      expect(User.top_three_city_states(@umerch).first.sum).to eq(30)
-      expect(User.top_three_city_states(@umerch).second.citystate).to eq("Miami, California")
-      expect(User.top_three_city_states(@umerch).second.sum).to eq(20)
-      expect(User.top_three_city_states(@umerch).third.citystate).to eq("Harrisburg, Pennsylvania")
-      expect(User.top_three_city_states(@umerch).third.sum).to eq(18)
-    end
-  end
-
-  describe "self.three_fastest" do
-
-  end
-
-  describe "self.three_slowest" do
-
-  end
-
-  describe "self.top_three_states" do
-
-  end
-
-  describe "self.top_three_city_states" do
-
-  end
-
-  describe "self.three_biggest_orders" do
-
-  end
 end
