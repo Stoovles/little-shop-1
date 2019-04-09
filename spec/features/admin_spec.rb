@@ -94,6 +94,7 @@ RSpec.describe "As an admin who is logged in" do
         expect(page).to_not have_link('Enable Merchant')
       end
     end
+  end
 
   describe "on a merchants show page" do
     it "should show me the mechant's profile info" do
@@ -133,8 +134,6 @@ RSpec.describe "As an admin who is logged in" do
     #     expect(current_path).to eq(dashboard_orders_path(@o49)) #maybe?
     #   end
     # end
-  end
 
   end
-
 end
