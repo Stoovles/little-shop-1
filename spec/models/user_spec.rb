@@ -28,6 +28,8 @@ RSpec.describe User, type: :model do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@umerch)
 
       @u4 = User.create(name: "Sibbie Cromett",street_address: "0 Towne Avenue",city: "Birmingham",state: "Alabama",zip_code: "35211",email_address: "scromett3@github.io",password:"fEFJeHdT1K", enabled: true, role:0)
+      @u34 = User.create(name: "Jazmin Frederick",street_address: "59 Victoria Lane",city: "Atlanta",state: "Georgia",zip_code: "30318",email_address: "jfrederickx@t-online.de",password:"FZbJe0", enabled: true, role:0)
+
       @umerch2 = User.create(name: "Raff Faust",street_address: "066 Debs Place",city: "El Paso",state: "Texas",zip_code: "79936",email_address: "rfauft1@naver.com",password:"ZCoxai", enabled: true, role:1)
 
       @i39 = @umerch.items.create(item_name: "Tovolo King Cube Tray",image_url: "https://www.totalwine.com/dynamic/490x/media/sys_master/twmmedia/hc7/h7c/11374503362590.png",current_price: 9.0,inventory: 40, description:"Ice cubes, squared. These larger-than-normal ice cubes add a little special pizazz to a drink on the rocks. The silicone tray makes for easy removal of the cubes so that they won't shatter or crack. Cheers!",enabled: true)
@@ -37,12 +39,16 @@ RSpec.describe User, type: :model do
       @o39 = @u4.orders.create(status: 2)
       @o49 = @u4.orders.create(status: 0)
       @o59 = @u4.orders.create(status: 0)
+      @o60 = @u34.orders.create(status: 2)
+      @o61 = @u34.orders.create(status: 2)
 
       @oi171 = OrderItem.create(order_id: @o39.id,item_id: @i39.id, quantity: 7,fulfilled: true,order_price: 53.0,created_at: "2018-04-07 22:05:50",updated_at: "2018-04-17 08:47:14")
       @oi172 = OrderItem.create(order_id: @o39.id,item_id: @i44.id, quantity: 7,fulfilled: true,order_price: 53.0,created_at: "2018-04-07 22:05:50",updated_at: "2018-04-17 08:47:14")
       @oi214 = OrderItem.create(order_id: @o49.id,item_id: @i44.id, quantity: 2,fulfilled: false,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
       @oi215 = OrderItem.create(order_id: @o49.id,item_id: @i23.id, quantity: 2,fulfilled: false,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
       @oi275 = OrderItem.create(order_id: @o59.id,item_id: @i23.id, quantity: 2,fulfilled: false,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
+      @oi275 = OrderItem.create(order_id: @o61.id,item_id: @i39.id, quantity: 2,fulfilled: true,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
+      @oi275 = OrderItem.create(order_id: @o60.id,item_id: @i44.id, quantity: 2,fulfilled: true,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
     end
 
     describe ".my_item_count" do
@@ -59,7 +65,7 @@ RSpec.describe User, type: :model do
       end
     end
 
-    describe ".merchant_orders" do
+    describe ".merchant_pending_orders" do
       it "should list all the orders that include the merchant's items" do
         expect(@umerch.merchant_pending_orders).to eq([@o49])
       end
@@ -73,14 +79,22 @@ RSpec.describe User, type: :model do
 
     describe "total_quantity_sold" do
       it "should give the total quantity of a merchant's sold items" do
-        expect(@umerch.total_quantity_sold).to eq(14)
+        expect(@umerch.total_quantity_sold).to eq(18)
       end
     end
 
     describe "percentage sold" do
       it "should give the percentage of a merchant's inventory sold" do
-        expect(@umerch.percentage_sold.round(2)).to eq(14.29)
+        expect(@umerch.percentage_sold.round(2)).to eq(17.65)
       end
     end
+
+    describe "top user by orders" do
+      it "should give one user name and they will have most orders" do
+        expect(User.top_user_by_orders(@umerch).name).to eq(@u34.name)
+        expect(User.top_user_by_orders(@umerch).count).to eq(2)
+      end
+    end
+
   end
 end

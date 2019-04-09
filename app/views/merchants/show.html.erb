@@ -2,6 +2,7 @@
 
 <section class="statistics">
   <h2>Statistics</h2>
+  <% if @popular_five %>
   <div class="five_most">
     <h3>Most Popular Items</h3>
     <% @popular_five.each do |item| %>
@@ -20,11 +21,15 @@
     <% @top_3_states.each do |relation| %>
       <%= relation.state %>: <%= relation.sum %>
     <% end %>
-    Top 3 Cities - 
+    Top 3 Cities -
     <% @top_3_cities.each do |relation| %>
       <%= relation.citystate %>: <%= relation.sum %>
     <% end %>
   </div>
+  <% end %>
+  <% if @top_user %>
+      Top Customer: <%= @top_user.name %> - <%= @top_user.count %>
+  <% end %>
 
 </section>
 
