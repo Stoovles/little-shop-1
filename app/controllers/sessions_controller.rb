@@ -11,7 +11,10 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email_address: params[:email_address])
-    if user && user.authenticate(params[:password]) && user.role == 'merchant'
+    if user && user.authenticate(params[:password]) && user.enabled == false && user.role == 'merchant'
+      flash.now[:danger] = "Your account is disabled"
+      render :new
+    elsif user && user.authenticate(params[:password]) && user.role == 'merchant'
       session[:user_id] = user.id
       redirect_to dashboard_path, success: "You are now logged in"
     elsif user && user.authenticate(params[:password]) && user.role == 'admin'
