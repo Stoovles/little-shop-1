@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       redirect_to dashboard_path, success: "You are now logged in"
     elsif user && user.authenticate(params[:password]) && user.role == 'admin'
       session[:user_id] = user.id
-      redirect_to admin_dashboard_path, success: "You are now logged in"
+      redirect_to root_path, success: "You are now logged in"
     elsif user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to profile_path, success: "You are now logged in"
