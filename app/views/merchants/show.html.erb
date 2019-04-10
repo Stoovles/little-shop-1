@@ -44,13 +44,13 @@
 <br>
 
   <div class='order-card'>
-    <p>Name: <%= current_user.name %></p>
+    <h3>Name: <%= current_user.name %></h3>
     <p>Street Address: <%= current_user.street_address %></p>
     <p>City: <%= current_user.city %></p>
     <p>State: <%= current_user.state %></p>
     <p>Zip Code: <%= current_user.zip_code %></p>
     <p>Email Address: <%= current_user.email_address %></p>
-    <%= link_to "Items Index", dashboard_items_path, id: "button" %>
+    <%= link_to "My Items", dashboard_items_path, id: "button" %>
   </div>
 
   <div class='pending-orders'>

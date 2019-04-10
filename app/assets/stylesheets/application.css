@@ -133,7 +133,6 @@ a img {
   color: #FFF5DB;
   background-color: rgba(17,5,5,0.71);
   padding-bottom: 5px;
-  margin-top: 5vw;
 }
 
 
@@ -159,7 +158,6 @@ a img {
   color: #FFF5DB;
   background-color: rgba(17,5,5,0.71);
   padding-bottom: 5px;
-  margin-top: 5vw;
 }
 
 .statistics a {
@@ -396,6 +394,10 @@ a img {
 .admin-order-card a:hover {
   color: #2D4262;
   text-decoration: none;
+}
+.admin-order-card h3 {
+  color: #FFF5DB;
+  text-align: center;
 }
 
 .order-card h5 {
