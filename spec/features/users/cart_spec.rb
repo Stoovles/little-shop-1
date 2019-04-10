@@ -173,7 +173,7 @@ RSpec.describe "User's cart abilities", type: :feature do
         within ".order-card" do
           expect(page).to have_content("pending")
           expect(page).to have_content("Item Quantity: 1")
-          expect(page).to have_content("Total: 35")
+          expect(page).to have_content("Total: $35")
         end
 
       end

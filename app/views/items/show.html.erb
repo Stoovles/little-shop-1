@@ -7,7 +7,7 @@
       <section class="info-section">
         <h4>Sold by: <%= @item.merchant_name %></h4>
         <h4><%= @item.inventory %> left in stock</h4>
-        <h4>$<%= @item.current_price %></h4>
+        <h4><%= number_to_currency(@item.current_price) %></h4>
         <% if @item.avg_fulfill_time == 1 %>
         <h4>Usually ships in 1 day.</h4>
         <% else %>

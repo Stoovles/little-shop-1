@@ -50,4 +50,13 @@ RSpec.describe 'when we visit a merchant show page' do
       expect(page).to have_content("Top 3 Cities - Fresno, Nevada: 30 Miami, California: 20 Harrisburg, Pennsylvania: 18")
     end
   end
+
+  it 'shows us top users' do
+    within ".statistics" do
+      expect(page).to have_content("Top Customer (orders): Leanor Dencs - 3")
+      expect(page).to have_content("Top Customer (items): Leanor Dencs - 30")
+      expect(page).to have_content("Top Customers (revenue): Leanor Dencs - $300.00 Abby Stedell - $200.00 Shawn Goosnell - $180.00")
+    end
+  end
+
 end

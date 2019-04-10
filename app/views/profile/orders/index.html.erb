@@ -8,7 +8,7 @@
         <p>Last Update: <%= order.updated_at %></p>
         <p>Status: <%= order.status %></p> <!-- enums -->
         <p>Item Quantity: <%= order.item_quantity %></p>
-        <p>Total: <%= order.total %></p>
+        <p>Total: <%= number_to_currency(order.total) %></p>
       </div>
     <% end %>
   </div>

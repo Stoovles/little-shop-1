@@ -48,7 +48,7 @@ RSpec.describe "user orders" do
           expect(page).to have_content("Last Update: #{@u1.orders.first.updated_at}")
           expect(page).to have_content("Status: #{@u1.orders.first.status}") #how do I call the enum?
           expect(page).to have_content("Item Quantity: #{@u1.orders.first.item_quantity}")
-          expect(page).to have_content("Total: #{@u1.orders.first.total}")
+          expect(page).to have_content("Total: $#{@u1.orders.first.total}")
         end
       end
     end
@@ -69,11 +69,11 @@ RSpec.describe "user orders" do
           expect(page).to have_css("img[src*='#{@i1.image_url}']")
           expect(page).to have_content(@o1.items.first.description)
           expect(page).to have_content("Quantity ordered: #{@i1.order_quantity(@o1)}")
-          expect(page).to have_content("Price: #{@i1.order_price(@o1)}")
-          expect(page).to have_content("Subtotal: #{@i1.subtotal(@o1)}")
+          expect(page).to have_content("Price: $#{@i1.order_price(@o1)}")
+          expect(page).to have_content("Subtotal: $#{@i1.subtotal(@o1)}")
         end
         expect(page).to have_content("Item Quantity: #{@u1.orders.first.item_quantity}")
-        expect(page).to have_content("Total: #{@u1.orders.first.total}")
+        expect(page).to have_content("Total: $#{@u1.orders.first.total}")
       end
 
       it "should show me a cancel button if the order is pending" do

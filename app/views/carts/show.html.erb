@@ -10,7 +10,7 @@
         <div class="cart-item-info">
           Merchant: <%= item.merchant_name %>
           <br>
-          Current Price: <%= item.current_price %>
+          Current Price: <%= number_to_currency(item.current_price) %>
           <br>
           Quantity: <%= @cart.contents[item.id.to_s] %>
           <%= form_tag(cart_path(item_id: item.id), method: :patch) do %>
@@ -22,14 +22,14 @@
           <% end %>
         </div>
         <div class="total">
-          <h4>Subtotal: <%= @cart.subtotal(item) %></h4>
+          <h4>Subtotal: <%= number_to_currency(@cart.subtotal(item)) %></h4>
           <%= link_to 'Remove Item', cart_path(update: :remove, item_id: item.id),  method: :patch, id: :button %>
         </div>
       </div>
     <% end %>
     <div class="cart-card">
       <div class="total">
-        Total: <%= @cart.cart_total %>
+        Total: <%= number_to_currency(@cart.cart_total) %>
       </div>
       <% if !current_user %>
       <div class="login-register">

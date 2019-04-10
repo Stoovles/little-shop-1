@@ -9,7 +9,7 @@
     <div class="order-card">
       <%= link_to item.item_name, item_path(item) %>
       <img src=<%= item.image_url %> class="small-image" alt="image of <%= item.item_name %>">
-      Price: <%= item.order_price(@order) %>
+      Price: <%= number_to_currency(item.order_price(@order)) %>
       Quantity: <%= item.order_quantity(@order) %>
       <% if  (!@order.item_fulfilled?(item) && (item.inventory < item.order_quantity(@order))) %>
         <p style="color:red; font-size:16px;">You do not have enough inventory to fill this item!</p>

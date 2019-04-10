@@ -1,7 +1,7 @@
 <div class="statistics">
   Top 3 Merchants: <% @top.each do |merchant| %>
     <%= merchant.name %> -
-    <%= merchant.sum %>
+    <%= number_to_currency(merchant.sum) %>
   <% end %>
 
   Fastest Merchants: <% @fastest.each do |merchant| %>
