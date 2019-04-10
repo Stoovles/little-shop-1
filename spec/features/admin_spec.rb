@@ -38,13 +38,13 @@ RSpec.describe "As an admin who is logged in" do
   describe "on admin users index page" do
     it "should show all the users in the system" do
       visit admin_users_path
-      expect(page).to have_css(".user-card", count: 3)
-      within first ".user-card" do
+      expect(page).to have_css(".merchant-card", count: 3)
+      within first ".merchant-card" do
         expect(page).to have_link(@u1.name)
         expect(page).to have_content("Registered: #{@u1.created_at}")
         expect(page).to have_link("Upgrade to Merchant")
       end
-      within ".users-container" do
+      within ".merchants-container" do
         expect(page).to_not have_content("Darnell Topliss")
         expect(page).to_not have_content("Ondrea Chadburn")
       end
@@ -62,13 +62,13 @@ RSpec.describe "As an admin who is logged in" do
 
     it "should upgrade the user to a merchant and they can no longer be seen" do
       visit admin_users_path
-      within first ".user-card" do
+      within first ".merchant-card" do
         click_link "Upgrade to Merchant"
         expect(current_path).to eq(admin_merchant_path(@u1))
       end
       expect(page).to have_content("#{@u1.name} has been upgraded to a merchant")
       visit admin_users_path
-      within ".users-container" do
+      within ".merchants-container" do
         expect(page).to_not have_content(@u1.name)
       end
     end
