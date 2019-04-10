@@ -148,6 +148,16 @@ a img {
   margin-top: 5vw;
 }
 
+.statistics a {
+  color: #FFF5DB;
+  text-decoration: none;
+}
+
+.statistics a:hover {
+  color: #2D4262;
+  text-decoration: none;
+}
+
 .statistics h2 {
   text-align: center;
   grid-column: 1 / span 2;

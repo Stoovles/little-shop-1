@@ -5,7 +5,7 @@
     <% @items.popular_five.each do |item| %>
     <div class="popular">
       <img src=<%= item.image_url %> class="tiny-image" alt="image of <%= item.item_name %>"></a>
-      <%= item.item_name %> -
+      <%= link_to item.item_name, item_path(item) %> -
       <%= item.quantity_sold %> bought
     </div>
     <% end %>
@@ -16,7 +16,7 @@
     <% @items.unpopular_five.each do |item| %>
     <div class="unpopular">
       <img src=<%= item.image_url %> class="tiny-image" alt="image of <%= item.item_name %>"></a>
-      <%= item.item_name %> -
+      <%= link_to item.item_name, item_path(item) %> -
       <%= item.quantity_sold %> bought
     </div>
     <% end %>
