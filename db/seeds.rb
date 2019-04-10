@@ -3,7 +3,7 @@ Item.destroy_all
 Order.destroy_all
 User.destroy_all
 
-@u1 = User.create(name: "Ondrea Chadburn",street_address: "6149 Pine View Alley",city: "Wichita Falls",state: "Texas",zip_code: "76301",email_address: "ochadburn0@washingtonpost.com",password:"EKLr4gmM44", enabled: true, role:1)
+@u1 = User.create(name: "Ondrea Chadburn",street_address: "6149 Pine View Alley",city: "Wichita Falls",state: "Texas",zip_code: "76301",email_address: "ochadburn0@washingtonpost.com",password:"password", enabled: true, role:1)
 @u2 = User.create(name: "Raff Faust",street_address: "066 Debs Place",city: "El Paso",state: "Texas",zip_code: "79936",email_address: "rfaust1@naver.com",password:"ZCoxai", enabled: true, role:1)
 @u3 = User.create(name: "Con Chilver",street_address: "16455 Miller Circle",city: "Van Nuys",state: "California",zip_code: "91406",email_address: "cchilver2@mysql.com",password:"IrGmrINsmr9e", enabled: true, role:1)
 @u4 = User.create(name: "Sibbie Cromett",street_address: "0 Towne Avenue",city: "Birmingham",state: "Alabama",zip_code: "35211",email_address: "scromett3@github.io",password:"fEFJeHdT1K", enabled: true, role:1)
@@ -16,7 +16,7 @@ User.destroy_all
 @u11 = User.create(name: "Willard Dutnall",street_address: "77991 Eliot Avenue",city: "Houston",state: "Texas",zip_code: "77036",email_address: "wdutnalla@flickr.com",password:"zI1wi9APT", enabled: true, role:2)
 @u12 = User.create(name: "Bob Brickwood",street_address: "331 Holy Cross Place",city: "Charlotte",state: "North Carolina",zip_code: "25269",email_address: "bbrickwoodb@marketwatch.com",password:"MzgjuT", enabled: true, role:2)
 @u13 = User.create(name: "Letitia Gerriet",street_address: "214 Tennessee Center",city: "New Bedford",state: "Massachusetts",zip_code: "02740",email_address: "lgerrietc@princeton.edu",password:"QkU3dAZlcBmb", enabled: true, role:2)
-@u14 = User.create(name: "Nate Rosen",street_address: "88 Walton Place",city: "Orange",state: "California",zip_code: "92867",email_address: "nrosend@dot.gov",password:"NIGHCODbtf", enabled: true, role:2)
+@u14 = User.create(name: "Nate Rosen",street_address: "88 Walton Place",city: "Orange",state: "California",zip_code: "92867",email_address: "nrosend@dot.gov",password:"password", enabled: true, role:2)
 @u15 = User.create(name: "Jordana MacAndrew",street_address: "52 Vernon Park",city: "New York City",state: "New York",zip_code: "11368",email_address: "jmacandrewe@microsoft.com",password:"OH4lNJm", enabled: true, role:2)
 @u16 = User.create(name: "Madelon Hicken",street_address: "3830 Becker Trail",city: "Saint Louis",state: "Missouri",zip_code: "63116",email_address: "mhickenf@unesco.org",password:"q9qDA9PA", enabled: true, role:0)
 @u17 = User.create(name: "Leanor Dencs",street_address: "1 Cody Lane",city: "Reno",state: "Nevada",zip_code: "89502",email_address: "ldencsg@mozilla.com",password:"KPI7nrZoA", enabled: true, role:0)
@@ -36,7 +36,7 @@ User.destroy_all
 @u31 = User.create(name: "Garrick MacAllan",street_address: "4 Straubel Junction",city: "Chicago",state: "Illinois",zip_code: "60629",email_address: "gmacallanu@dell.com",password:"lT0Wo0", enabled: true, role:0)
 @u32 = User.create(name: "Abby D'Cruze",street_address: "17001 Monument Park",city: "Albuquerque",state: "New Mexico",zip_code: "87711",email_address: "adcruzev@wiley.com",password:"h2BlB9y", enabled: true, role:0)
 @u33 = User.create(name: "Rosabel Thomasen",street_address: "54876 Oneill Court",city: "Colorado Springs",state: "Colorado",zip_code: "80918",email_address: "rthomasenw@engadget.com",password:"bwH6cQ2", enabled: true, role:0)
-@u34 = User.create(name: "Jazmin Frederick",street_address: "59 Victoria Lane",city: "Atlanta",state: "Georgia",zip_code: "30318",email_address: "jfrederickx@t-online.de",password:"FZbJe0", enabled: true, role:0)
+@u34 = User.create(name: "Jazmin Frederick",street_address: "59 Victoria Lane",city: "Atlanta",state: "Georgia",zip_code: "30318",email_address: "jfrederickx@t-online.de",password:"password", enabled: true, role:0)
 @u35 = User.create(name: "Osbert Lack",street_address: "831 Golf View Place",city: "San Francisco",state: "California",zip_code: "94112",email_address: "olacky@issuu.com",password:"9b7ukbbC", enabled: true, role:0)
 @u36 = User.create(name: "Lucienne Reah",street_address: "02669 Caliangt Drive",city: "Phoenix",state: "Arizona",zip_code: "85032",email_address: "lreahz@wordpress.org",password:"PF66a5", enabled: true, role:0)
 @u37 = User.create(name: "Myrlene Goman",street_address: "9 Nova Street",city: "Shreveport",state: "Louisiana",zip_code: "71106",email_address: "mgoman10@cocolog-nifty.com",password:"iULQgh", enabled: true, role:0)
