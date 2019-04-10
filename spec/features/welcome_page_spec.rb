@@ -34,6 +34,16 @@ RSpec.describe "As any user on the welcome page" do
         end
       end
 
+      it "should have an items/merchants section" do
+        within ".welcome-nav-section" do
+          expect(page).to have_content("Browse")
+          expect(page).to have_link("All Items")
+          expect(page).to have_link("All Merchants")
+        end
+      end
+    end
+
+    describe "as a merchant"
       it "should have a welcome section with logout button" do
         merchant = User.create(name: "Madelon Hicken",street_address: "3830 Becker Trail",city: "Saint Louis",state: "Missouri",zip_code: "63116",email_address: "mhickenf@unesco.org",password:"q9qDA9PA", enabled: true, role:1)
         # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(merchant)
@@ -42,29 +52,20 @@ RSpec.describe "As any user on the welcome page" do
         fill_in "password", with: merchant.password
         click_button "Log Me In"
         visit root_path
+        expect(page).to have_link("Dashboard")
         within ".welcome-login" do
           expect(page).to have_content("Welcome, #{merchant.name}")
           expect(page).to have_link("Log Out")
         end
       end
     end
-
-    it "should have an items/merchants section" do
-      within ".welcome-nav-section" do
-        expect(page).to have_content("Browse")
-        expect(page).to have_link("All Items")
-        expect(page).to have_link("All Merchants")
+    describe "creators description" do
+      it "should have a blurb about us and the project" do
+        expect(page).to have_content("About Creators")
+        expect(page).to have_link("Jeremy Bennett's Github")
+        expect(page).to have_link("Ethan Grab's Github")
+        expect(page).to have_link("Carrie Walsh's Github")
+        expect(page).to have_link("Matt Weiss's Github")
       end
     end
   end
-
-  describe "creators description" do
-    it "should have a blurb about us and the project" do
-      expect(page).to have_content("About Creators")
-      expect(page).to have_link("Jeremy Bennett's Github")
-      expect(page).to have_link("Ethan Grab's Github")
-      expect(page).to have_link("Carrie Walsh's Github")
-      expect(page).to have_link("Matt Weiss's Github")
-    end
-  end
-end
