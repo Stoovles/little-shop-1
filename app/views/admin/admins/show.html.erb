@@ -6,5 +6,8 @@
       <p>Created at: <%= order.created_at %></p>
       <p>status: <%= order.status %></p>
     </div>
+    <% if order.status == 'packaged' %>
+      <%= link_to "Ship Order", admin_order_path(order), method: :patch, id: "button"%>
+    <% end %>
   </div>
 <% end %>

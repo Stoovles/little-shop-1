@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'admins#show'
     resources :users, only: [:index, :show, :update]
+    resources :orders, only: [:update]
     resources :merchants, only: [:show, :index] do
       member {patch :activate}
       member {patch :deactivate}

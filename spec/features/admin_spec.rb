@@ -176,6 +176,23 @@ RSpec.describe "As an admin who is logged in" do
       end
     end
 
+    it "it should have a link that ships packaged orders" do
+      @o49.update!(status: 1)
+
+      visit admin_dashboard_path(@uadmin)
+
+      within first ".admin-order-card" do
+        expect(page).to have_link("Ship Order")
+        click_link("Ship Order")
+      end
+      expect(current_path).to eq(admin_dashboard_path(@uadmin))
+
+      visit admin_dashboard_path(@uadmin)
+      expect(page).to_not have_link("Ship Order")
+      expect(page).to_not have_content("packaged")
+      expect(@u8.orders.first.status).to eq("shipped")
+    end
+
     it "I can click the user name to go to a admin view of user profile" do
       visit admin_dashboard_path(@uadmin)
       click_link "#{@u8.name}"
