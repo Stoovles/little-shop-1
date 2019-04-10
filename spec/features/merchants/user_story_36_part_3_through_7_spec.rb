@@ -8,15 +8,12 @@ RSpec.describe 'when we visit a merchant show page' do
     @u19 = User.create(name: "Vere Armin",street_address: "8954 Northridge Circle",city: "Minneapolis",state: "Minnesota",zip_code: "55407",email_address: "varmini@a8.net",password:"sBAIMwr", enabled: true, role:0)
     @u20 = User.create(name: "Shawn Goosnell",street_address: "06366 Veith Avenue",city: "Harrisburg",state: "Pennsylvania",zip_code: "17104",email_address: "sgoosnellj@hubpages.com",password:"BiGRBWYs", enabled: true, role:0)
     @u21 = User.create(name: "Abby Stedell",street_address: "0383 Shasta Circle",city: "Miami",state: "California",zip_code: "33127",email_address: "astedellk@yelp.com",password:"zVstAHzK", enabled: true, role:0)
-    @u34 = User.create(name: "Jazmin Frederick",street_address: "59 Victoria Lane",city: "Atlanta",state: "Georgia",zip_code: "30318",email_address: "jfrederickx@t-online.de",password:"FZbJe0", enabled: true, role:0)
 
     @umerch = User.create(name: "Ondrea Chadburn",street_address: "6149 Pine View Alley",city: "Wichita Falls",state: "Texas",zip_code: "76301",email_address: "ochadburn0@washingtonpost.com",password:"EKLr4gmM44", enabled: true, role:1)
-    @umerch2 = User.create(name: "Raff Faust",street_address: "066 Debs Place",city: "El Paso",state: "Texas",zip_code: "79936",email_address: "rfaust1@naver.com",password:"ZCoxai", enabled: true, role:1)
 
     @i8 = @umerch.items.create(item_name: "Four Roses Single Barrel",image_url: "https://www.totalwine.com/media/sys_master/twmmedia/h2d/h6e/11152774365214.png",current_price: 43.0,inventory: 30, description:"Dried spice, pear, cocoa, vanilla & maple syrup. Hints of ripe plum & cherries, robust, full body, mellow. Smooth & delicately long.",enabled: true)
     @i15 = @umerch.items.create(item_name: "Jack Daniels Single Barrel Heritage Barrel",image_url: "http://s3.amazonaws.com/mscwordpresscontent/wa/wp-content/uploads/2018/11/Jack-Daniels-Heritage.png",current_price: 65.0,inventory: 33, description:"Tennessee- A delicious and complex whiskey. Barreled in heavy-toast barrels and bottled at 100 proof. Notes of baking spices, vanilla, and toasted oak. Long, lingering finish.",enabled: true)
     @i24 = @umerch.items.create(item_name: "Little Book Chapter 2 'Noe Simple Task'",image_url: "http://s3.amazonaws.com/mscwordpresscontent/wa/wp-content/uploads/2018/11/Little-Book-Noe-Simple.png",current_price: 100.0,inventory: 40, description:"Blend of whiskeys from Jim Beam and Canadian distilleries owned by Beam Suntory",enabled: true)
-    @i23 = @umerch2.items.create(item_name: "Belle Meade Cask Strength Reserve",image_url: "http://s3.amazonaws.com/mscwordpresscontent/wa/wp-content/uploads/2018/11/Belle-Meade-Cask-Strength.png",current_price: 60.0,inventory: 36, description:"Tennessee- A blend of single barrel bourbons making each batch slightly different. Aged for 7-11 years. Flavors of vanilla, caramel, spice, and stone fruits. Try it neat or on the rocks.",enabled: true)
 
     @o1 = @u16.orders.create(status: 2)
     @o2 = @u16.orders.create(status: 2)
@@ -27,7 +24,6 @@ RSpec.describe 'when we visit a merchant show page' do
     @o7 = @u19.orders.create(status: 2)
     @o8 = @u20.orders.create(status: 2)
     @o9 = @u21.orders.create(status: 2)
-    @o10 = @u34.orders.create(status: 2)
 
     @oi1 = OrderItem.create(order_id: @o1.id,item_id: @i8.id, quantity: 4,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
     @oi2 = OrderItem.create(order_id: @o2.id,item_id: @i15.id, quantity: 6,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
@@ -38,7 +34,7 @@ RSpec.describe 'when we visit a merchant show page' do
     @oi7 = OrderItem.create(order_id: @o7.id,item_id: @i8.id, quantity: 16,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
     @oi8 = OrderItem.create(order_id: @o8.id,item_id: @i15.id, quantity: 18,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
     @oi9 = OrderItem.create(order_id: @o9.id,item_id: @i24.id, quantity: 20,fulfilled: true,order_price: 10.0,created_at: "2018-04-05 11:50:20",updated_at: "2018-04-13 13:08:43")
-    @oi10 = OrderItem.create(order_id: @o10.id,item_id: @i23.id, quantity: 4,fulfilled: true,order_price: 47.0,created_at: "2018-04-06 22:35:53",updated_at: "2018-04-13 06:54:52")
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@umerch)
     visit dashboard_path
   end
@@ -54,23 +50,4 @@ RSpec.describe 'when we visit a merchant show page' do
       expect(page).to have_content("Top 3 Cities - Fresno, Nevada: 30 Miami, California: 20 Harrisburg, Pennsylvania: 18")
     end
   end
-
-  it 'shows us the user with most orders, their name and number of orders' do
-    within ".statistics" do
-      expect(page).to have_content("Top Customer (orders): #{@u17.name} - 3")
-    end
-  end
-
-  it 'shows us the user name with the most items ordered and quantity of items' do
-    within ".statistics" do
-      expect(page).to have_content("Top Customer (items): #{@u17.name} - 30")
-    end
-  end
-
-  it 'shows us the top 3 users by revenue' do
-    within ".statistics" do
-      expect(page).to have_content("Top Customers (revenue): #{@u17.name} - 300.0 #{@u21.name} - 200.0 #{@u20.name} - 180.0")
-    end
-  end
-
 end

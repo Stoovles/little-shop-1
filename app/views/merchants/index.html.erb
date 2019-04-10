@@ -1,3 +1,32 @@
+<div class="statistics">
+  Top 3 Merchants: <% @top.each do |merchant| %>
+    <%= merchant.name %> -
+    <%= merchant.sum %>
+  <% end %>
+
+  Fastest Merchants: <% @fastest.each do |merchant| %>
+      <%= merchant.name %> -
+      <%= merchant.avg %>
+    <% end %>
+  Slowest Merchants: <% @slowest.each do |merchant| %>
+      <%= merchant.name %> -
+      <%= merchant.avg %>
+    <% end %>
+
+  Top 3 States: <% @states.each do |relation| %>
+    <%= relation.state %> -
+    <%= relation.count %>
+  <% end %>
+  Top 3 Cities: <% @citystates.each do |relation| %>
+    <%= relation.citystate %> -
+    <%= relation.count %>
+  <% end %>
+  Biggest Orders: <% @orders.each do |order| %>
+    <%= order.id %> -
+    <%= order.sum %>
+  <% end %>
+</div>
+
 <div class="merchants-container">
   <% @merchants.each do |merchant| %>
   <div class="merchant-card">

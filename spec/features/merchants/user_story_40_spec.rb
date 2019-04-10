@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'when we visit a merchant show page' do
+RSpec.describe 'as a visitor when I visit the merchant index page' do
   before :each do
     @u16 = User.create(name: "Madelon Hicken",street_address: "3830 Becker Trail",city: "Saint Louis",state: "Missouri",zip_code: "63116",email_address: "mhickenf@unesco.org",password:"q9qDA9PA", enabled: true, role:0)
     @u17 = User.create(name: "Leanor Dencs",street_address: "1 Cody Lane",city: "Fresno",state: "Nevada",zip_code: "89502",email_address: "ldencsg@mozilla.com",password:"KPI7nrZoA", enabled: true, role:0)
@@ -46,88 +46,35 @@ RSpec.describe 'when we visit a merchant show page' do
     @oi11 = OrderItem.create(order_id: @o11.id,item_id: @i12.id, quantity: 17,fulfilled: true,order_price: 10.0,created_at: "2018-04-04 18:58:29",updated_at: "2018-04-17 15:35:00")
     @oi12 = OrderItem.create(order_id: @o12.id,item_id: @i13.id, quantity: 200,fulfilled: true,order_price: 10.0,created_at: "2018-04-09 05:42:01",updated_at: "2018-04-14 07:19:36")
     @oi13 = OrderItem.create(order_id: @o12.id,item_id: @i12.id, quantity: 200,fulfilled: true,order_price: 10.0,created_at: "2018-04-07 17:46:56",updated_at: "2018-04-12 06:24:31")
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@u16)
+    visit merchants_path
   end
 
-  describe 'self.top_three_states' do
-    it 'lists top 3 states by quantity sold' do
-      expect(User.top_three_states(@umerch).first.state).to eq("California")
-      expect(User.top_three_states(@umerch).first.sum).to eq(34)
-      expect(User.top_three_states(@umerch).second.state).to eq("Nevada")
-      expect(User.top_three_states(@umerch).second.sum).to eq(30)
-      expect(User.top_three_states(@umerch).third.state).to eq("Pennsylvania")
-      expect(User.top_three_states(@umerch).third.sum).to eq(18)
+  describe "in the statistics section" do
+    it "should have the top 3 merchnts" do
+      expect(page).to have_content("Top 3 Merchants: #{@umerch2.name} - 4330.0 #{@umerch.name} - 1080.0")
+    end
+
+    it "should have the 3 fastest merchants" do
+      expect(page).to have_content("Fastest Merchants: #{@umerch.name} - 7 days 24:05:59.444444 #{@umerch2.name} - 8 days 19:03:04.25")
+    end
+
+    it "should have the 3 slowest merchants" do
+      expect(page).to have_content("Slowest Merchants: #{@umerch2.name} - 8 days 19:03:04.25 #{@umerch.name} - 7 days 24:05:59.444444")
+    end
+
+    it "should have the top 3 states by order count" do
+      expect(page).to have_content("Top 3 States: California - 6 Nevada - 3 Missouri - 2")
+    end
+
+    it "should have the top 3 city,states by order count" do
+      expect(page).to have_content("Top 3 Cities: Miami, California - 5 Fresno, Nevada - 3 Saint Louis, Missouri - 2")
+    end
+
+    it "should have the top 3 biggest orders by quantity" do
+      expect(page).to have_content("Biggest Orders: #{@o12.id} - 400 #{@o9.id} - 20 #{@o8.id} - 18")
     end
   end
 
-  describe 'self.top_three_city_states' do
-    it 'lists top 3 city, states by quantity sold' do
-      expect(User.top_three_city_states(@umerch).first.citystate).to eq("Fresno, Nevada")
-      expect(User.top_three_city_states(@umerch).first.sum).to eq(30)
-      expect(User.top_three_city_states(@umerch).second.citystate).to eq("Miami, California")
-      expect(User.top_three_city_states(@umerch).second.sum).to eq(20)
-      expect(User.top_three_city_states(@umerch).third.citystate).to eq("Harrisburg, Pennsylvania")
-      expect(User.top_three_city_states(@umerch).third.sum).to eq(18)
-    end
-  end
-
-  describe "self.top_three_merchants_overall" do
-    it "lists top 3 merchants by quantity * price" do
-      expect(User.top_three_merchants_overall.first.name).to eq(@umerch2.name)
-      expect(User.top_three_merchants_overall.first.sum).to eq(4330)
-      expect(User.top_three_merchants_overall.second.name).to eq(@umerch.name)
-      expect(User.top_three_merchants_overall.second.sum).to eq(1080)
-    end
-  end
-
-
-  describe "self.three_fastest" do
-    it "lists top 3 merchants by speed of fulfillment" do
-      expect(User.three_fastest.first.name).to eq(@umerch.name)
-      expect(User.three_fastest.first.avg).to eq("7 days 24:05:59.444444")
-      expect(User.three_fastest.second.name).to eq(@umerch2.name)
-      expect(User.three_fastest.second.avg).to eq("8 days 19:03:04.25")
-    end
-  end
-
-  describe "self.three_slowest" do
-    it "lists bottom 3 merchants by speed of fulfillment or lack thereof" do
-      expect(User.three_slowest.first.name).to eq(@umerch2.name)
-      expect(User.three_slowest.first.avg).to eq("8 days 19:03:04.25")
-      expect(User.three_slowest.second.name).to eq(@umerch.name)
-      expect(User.three_slowest.second.avg).to eq("7 days 24:05:59.444444")
-    end
-  end
-
-  describe "self.top_three_states_overall" do
-    it "lists top 3 states overall by order count" do
-      expect(User.top_three_states_overall.first.state).to eq("California")
-      expect(User.top_three_states_overall.first.count).to eq(6)
-      expect(User.top_three_states_overall.second.state).to eq("Nevada")
-      expect(User.top_three_states_overall.second.count).to eq(3)
-      expect(User.top_three_states_overall.third.state).to eq("Missouri")
-      expect(User.top_three_states_overall.third.count).to eq(2)
-    end
-  end
-
-  describe "self.top_three_city_states_overall" do
-    it "lists top 3 city,states overall by order count" do
-      expect(User.top_three_city_states_overall.first.citystate).to eq("Miami, California")
-      expect(User.top_three_city_states_overall.first.count).to eq(5)
-      expect(User.top_three_city_states_overall.second.citystate).to eq("Fresno, Nevada")
-      expect(User.top_three_city_states_overall.second.count).to eq(3)
-      expect(User.top_three_city_states_overall.third.citystate).to eq("Saint Louis, Missouri")
-      expect(User.top_three_city_states_overall.third.count).to eq(2)
-    end
-  end
-
-  describe "self.three_biggest_orders" do
-    it "lists top 3 biggest orders" do
-      expect(User.three_biggest_orders.first.id).to eq(@o12.id)
-      expect(User.three_biggest_orders.first.sum).to eq(400)
-      expect(User.three_biggest_orders.second.id).to eq(@o9.id)
-      expect(User.three_biggest_orders.second.sum).to eq(20)
-      expect(User.three_biggest_orders.third.id).to eq(@o8.id)
-      expect(User.three_biggest_orders.third.sum).to eq(18)
-    end
-  end
 end
