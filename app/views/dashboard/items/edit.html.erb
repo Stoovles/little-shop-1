@@ -1,9 +1,12 @@
 <h1>Edit Item</h1>
+<div class="welcome-login">
 
 <!-- <div class="row"> -->
   <!-- <div class="col-md-6 col-md-offset-3"> -->
     <%= form_for [:dashboard, @item], url: {action: "update"} do |f| %>
+      <div class="error-messages"
       <%= f.error_messages %>
+      </div>
 
       <%= f.label :item_name %>
       <%= f.text_field :item_name, :required => true%>
@@ -20,7 +23,9 @@
       <%= f.label :inventory %>
       <%= f.number_field :inventory, :required => true %>
 
-      <%= f.submit "Edit Item" %>
+      <%= f.submit "Edit Item" , id: "medium-button"%>
+
     <% end %>
+</div>
   <!-- </div> -->
 <!-- </div> -->
