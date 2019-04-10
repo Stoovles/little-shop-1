@@ -125,7 +125,7 @@ RSpec.describe "As an admin who is logged in" do
         expect(page).to have_content("Order ID: #{@o49.id}")
         expect(page).to have_content("Ordered On: #{@o49.created_at}")
         expect(page).to have_content("Quantity: #{@umerch.my_item_count(@o49)}")
-        expect(page).to have_content("Total Price: #{@umerch.my_total(@o49)}")
+        expect(page).to have_content("Total Price: $#{@umerch.my_total(@o49)}")
       end
     end
 

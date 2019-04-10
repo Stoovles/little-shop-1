@@ -6,7 +6,7 @@
       <a href="<%=item_path(item)%>"><img src=<%= item.image_url %> class="small-image" alt="image of <%= item.item_name %>"></a>
       <br>
       <p>In Inventory: <%= item.inventory %></p>
-      <p>Price: $<%= item.current_price.round(2) %></p>
+      <p>Price: <%= number_to_currency(item.current_price.round(2)) %></p>
       <%= link_to 'Edit Item', edit_dashboard_item_path(item) %>
       <% if item.enabled %>
         <%= link_to 'Disable Item', deactivate_dashboard_item_path(item), method: :patch%>

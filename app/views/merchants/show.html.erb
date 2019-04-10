@@ -31,7 +31,7 @@
       Top Customer (orders): <%= @top_user.name %> - <%= @top_user.count %>
       Top Customer (items): <%= @top_user_by_items.name %> - <%= @top_user_by_items.sum %>
       Top Customers (revenue):<% @top_users_by_revenue.each do |customer| %>
-        <%= customer.name %> - <%= customer.sum %>
+        <%= customer.name %> - <%= number_to_currency(customer.sum) %>
       <% end %>
   <% end %>
 

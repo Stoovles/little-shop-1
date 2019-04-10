@@ -37,7 +37,7 @@ a img {
 }
 
 .item-card h2 a {
-  color: #363237;
+  color: #FFF5DB;
   text-decoration: none;
   font-size: 1.1em;
 }
@@ -75,7 +75,52 @@ a img {
   grid-column: 2 / span 1;
 }
 
+.merch-stats h5 {
+  margin-top: 4px;
+  margin-bottom: 2px;
+}
 
+.merch-stats h2 {
+  text-align: center;
+  grid-column: 1 / span 3;
+}
+
+.top-merchants {
+  text-align: center;
+}
+
+.top-geographical {
+  text-align: center;
+}
+
+.merchant-speed {
+  text-align: center;
+}
+
+.merch-stats {
+  width: cover;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  color: #FFF5DB;
+  background-color: rgba(17,5,5,0.71);
+  padding-bottom: 5px;
+}
+
+
+.merchants-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.merchant-card {
+  display: flex;
+  flex-direction: column;
+  width: 31%;
+  background-color: rgba(193,140,90,0.71);
+  margin: 10px;
+  border-radius: 25px;
+  align-items: center;
+
+}
 
 .statistics {
   width: cover;
@@ -254,6 +299,34 @@ a img {
   margin-right: 20vw;
   border-radius: 25px;
   padding-left: 25px;
+}
+.admin-order-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(193,140,90,0.71);
+  font-size: 1.2em;
+  margin: 10px;
+  margin-left: 20vw;
+  margin-right: 20vw;
+  border-radius: 25px;
+  padding-left: 25px;
+}
+
+.admin-order-card h4{
+  margin-bottom: 0px;
+}
+
+.admin-order-card a {
+  color: #FFF5DB;
+  text-decoration: none;
+  font-size: 1.2em;
+  max-width: 100%;
+  /* align-self: center; */
+}
+
+.admin-order-card a:hover {
+  color: #2D4262;
+  text-decoration: none;
 }
 
 .order-card h5 {
