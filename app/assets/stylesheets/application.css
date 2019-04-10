@@ -100,6 +100,10 @@ a img {
   grid-column: 1 / span 3;
 }
 
+.welcome {
+  margin-top: 5vw;
+}
+
 .top-merchants {
   text-align: center;
 }
@@ -119,6 +123,7 @@ a img {
   color: #FFF5DB;
   background-color: rgba(17,5,5,0.71);
   padding-bottom: 5px;
+  margin-top: 5vw;
 }
 
 
@@ -144,6 +149,17 @@ a img {
   color: #FFF5DB;
   background-color: rgba(17,5,5,0.71);
   padding-bottom: 5px;
+  margin-top: 5vw;
+}
+
+.statistics a {
+  color: #FFF5DB;
+  text-decoration: none;
+}
+
+.statistics a:hover {
+  color: #2D4262;
+  text-decoration: none;
 }
 
 .statistics h2 {
@@ -172,9 +188,10 @@ a img {
   background: rgba(193,140,90,1);
   display: flex;
   justify-content: space-around;
-  /* position: fixed;
+  position: fixed;
   top: 0px;
-  height: 5vw; */
+  height: 5vw;
+  width: 100%;
 }
 
 .nav-link{
