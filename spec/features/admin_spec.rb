@@ -143,12 +143,12 @@ RSpec.describe "As an admin who is logged in" do
   describe 'when I visit my dashboard page' do
     it "I see all orders in the system" do
       visit admin_dashboard_path(@uadmin)
-      within first ".order-card" do
+      within first ".admin-order-card" do
         expect(page).to have_content("Order ID: #{@o49.id}")
         expect(page).to have_link("#{@u8.name}")
       end
 
-      within all(".order-card").last
+      within all(".admin-order-card").last
       expect(page).to have_content("Order ID: #{@o39.id}")
       expect(page).to have_link("#{@u4.name}")
       end
