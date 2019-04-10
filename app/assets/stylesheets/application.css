@@ -100,6 +100,10 @@ a img {
   grid-column: 1 / span 3;
 }
 
+.welcome {
+  margin-top: 5vw;
+}
+
 .top-merchants {
   text-align: center;
 }
