@@ -327,6 +327,8 @@ a img {
 
 .admin-order-card h4{
   margin-bottom: 0px;
+  text-align: center;
+  color: #2D4262;
 }
 
 .admin-order-card a {
@@ -334,7 +336,6 @@ a img {
   text-decoration: none;
   font-size: 1.2em;
   max-width: 100%;
-  /* align-self: center; */
 }
 
 .admin-order-card a:hover {
@@ -404,6 +405,10 @@ a img {
   font-size: 2vw;
   padding: 5px;
   padding-top: 3vw;
+}
+
+.merchant-card p {
+  text-align: center;
 }
 
 .welcome-login {

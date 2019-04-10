@@ -3,5 +3,6 @@
     <h4>Order ID: <%= order.id %></h4>
     <%= link_to "Ordered by: #{order.user_name}", admin_user_path(order.user_id) %>
     Created at: <%= order.created_at %>
+    status: <%= order.status %>
   </div>
 <% end %>

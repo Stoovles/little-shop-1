@@ -146,11 +146,13 @@ RSpec.describe "As an admin who is logged in" do
       within first ".admin-order-card" do
         expect(page).to have_content("Order ID: #{@o49.id}")
         expect(page).to have_link("#{@u8.name}")
+        expect(page).to have_content("status: #{@o49.status}")
       end
 
       within all(".admin-order-card").last
       expect(page).to have_content("Order ID: #{@o39.id}")
       expect(page).to have_link("#{@u4.name}")
+      expect(page).to have_content("status: #{@o39.status}")
       end
     end
 
