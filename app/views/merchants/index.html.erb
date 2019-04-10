@@ -1,30 +1,38 @@
-<div class="statistics">
-  Top 3 Merchants: <% @top.each do |merchant| %>
+<div class="merch-stats">
+ <h2> Statistics </h2>
+  <div class="top-merchants">
+  <h5>Top 3 Merchants:</h5> <% @top.each do |merchant| %>
     <%= merchant.name %> -
-    <%= number_to_currency(merchant.sum) %>
-  <% end %>
+    <%= number_to_currency(merchant.sum) %><br>
+  <% end %><br>
+  <h5>Biggest Orders:</h5> <% @orders.each do |order| %>
+  ID: <%= order.id %> -
+  <%= order.sum %> units<br>
+  <% end %><br>
+  </div>
 
-  Fastest Merchants: <% @fastest.each do |merchant| %>
+  <div class="merchant-speed">
+  <h5>Fastest Merchants:</h5> <% @fastest.each do |merchant| %>
       <%= merchant.name %> -
-      <%= merchant.avg %>
-    <% end %>
-  Slowest Merchants: <% @slowest.each do |merchant| %>
+      <%= merchant.avg %><br>
+    <% end %><br>
+  <h5>Slowest Merchants:</h5> <% @slowest.each do |merchant| %>
       <%= merchant.name %> -
-      <%= merchant.avg %>
-    <% end %>
+      <%= merchant.avg %><br>
+    <% end %><br>
+  </div>
 
-  Top 3 States: <% @states.each do |relation| %>
+  <div class="top-geographical">
+  <h5>Top 3 States:</h5>
+    <% @states.each do |relation| %>
     <%= relation.state %> -
-    <%= relation.count %>
-  <% end %>
-  Top 3 Cities: <% @citystates.each do |relation| %>
+    <%= relation.count %> orders<br>
+  <% end %><br>
+  <h5>Top 3 Cities:</h5> <% @citystates.each do |relation| %>
     <%= relation.citystate %> -
-    <%= relation.count %>
-  <% end %>
-  Biggest Orders: <% @orders.each do |order| %>
-    <%= order.id %> -
-    <%= order.sum %>
-  <% end %>
+    <%= relation.count %> orders<br>
+  <% end %><br>
+  </div>
 </div>
 
 <div class="merchants-container">
