@@ -4,15 +4,20 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  margin-top: 5.5em;
 }
 
 nav {
   position: fixed;
-  margin-top: 0;
+  top: 0px;
+  height: 5em;
+  width: 100%;
+  z-index: 10;
 }
 
 h1 {
   color:#FFF5DB;
+  text-align: center;
 }
 
 a {
@@ -188,14 +193,10 @@ a img {
   background: rgba(193,140,90,1);
   display: flex;
   justify-content: space-around;
-  position: fixed;
-  top: 0px;
-  height: 5vw;
-  width: 100%;
+  align-items: flex-start;
 }
 
 .nav-link{
-  margin-top: 3px;
   color: #FFF5DB;
   border-radius: 5px;
   text-align: center;
@@ -211,7 +212,8 @@ a img {
 
 .logged-in-as{
   color: #2D4262;
-  width: 8vw;
+  width: 12vw;
+  max-height: 5em;
 }
 
 .five_most {
@@ -369,6 +371,11 @@ a img {
   margin-top: 5px;
   text-align: center;
   font-weight: bold;
+}
+
+.order-card h3 {
+  color: #FFF5DB;
+  text-align: center;
 }
 
 .order-item-card {
