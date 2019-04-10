@@ -7,6 +7,8 @@ body {
 }
 
 nav {
+  position: fixed;
+  margin-top: 0;
 }
 
 h1 {
@@ -170,6 +172,9 @@ a img {
   background: rgba(193,140,90,1);
   display: flex;
   justify-content: space-around;
+  /* position: fixed;
+  top: 0px;
+  height: 5vw; */
 }
 
 .nav-link{
@@ -366,6 +371,12 @@ a img {
   grid-row: 2 / span 2;
   height: 20vw;
   width: auto;
+}
+
+.order-info {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 15px;
 }
 
 .item-info {
