@@ -1,14 +1,14 @@
- 
+
 <div class="merchants-container">
   <% @merchants.each do |merchant| %>
   <div class="merchant-card">
     <h2><%= link_to merchant.name, admin_merchant_path(merchant) %></h2>
     <p>Ships from: <%= merchant.city %>, <%= merchant.state %></p>
-    <p>Member since: <%= merchant.created_at.to_date %>
+    <p>Member since: <%= merchant.created_at.to_date %><br>
     <% if merchant.enabled %>
-      <%= link_to 'Disable Merchant', deactivate_admin_merchant_path(merchant), method: :patch%>
+      <%= link_to 'Disable Merchant', deactivate_admin_merchant_path(merchant), method: :patch, id: "button"%>
     <% else %>
-      <%= link_to 'Enable Merchant', activate_admin_merchant_path(merchant), method: :patch%>
+      <%= link_to 'Enable Merchant', activate_admin_merchant_path(merchant), method: :patch, id: "button"%>
     <% end %>
     </div>
   <% end %>

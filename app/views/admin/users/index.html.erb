@@ -1,12 +1,12 @@
 <% if current_admin? %>
 
   <h1>Current Registered Users</h1>
-  <div class="users-container">
+  <div class="merchants-container">
     <% @users.each do |user| %>
-      <div class="user-card">
-        <%= link_to user.name, admin_user_path(user) %>
+      <div class="merchant-card">
+        <h2><%= link_to user.name, admin_user_path(user) %></h2>
         Registered: <%= user.created_at %>
-        <%= link_to "Upgrade to Merchant", admin_user_path(user,update: :upgrade), method: :patch %>
+        <%= link_to "Upgrade to Merchant", admin_user_path(user,update: :upgrade), method: :patch, id: "button" %>
 
       </div>
     <% end %>

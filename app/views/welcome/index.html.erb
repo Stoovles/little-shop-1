@@ -10,7 +10,7 @@
   <div class="welcome-login">
     <% if current_user %>
     <h3>Welcome, <%= current_user.name %></h3>
-    <%= link_to "Log Out", logout_path %>
+    <%= link_to "Log Out", logout_path, id: "button" %>
     <% else %>
     <h3>Log In</h3>
     <%= form_tag login_path do %>
