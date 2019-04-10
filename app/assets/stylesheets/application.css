@@ -107,6 +107,33 @@ a img {
   text-decoration: none;
 }
 
+.navbar{
+  height: 100%;
+  background: rgba(193,140,90,1);
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-link{
+  margin-top: 3px;
+  color: #FFF5DB;
+  border-radius: 5px;
+  text-align: center;
+  width: 10vw;
+  background: #2D4262;
+}
+
+.nav-link:hover{
+  color: #642C00;
+  text-decoration: none;
+  background: #7895c1;
+}
+
+.logged-in-as{
+  color: #2D4262;
+  width: 8vw;
+}
+
 .five_most {
   grid-column: 1 / span 1;
   padding-left: 8em;
