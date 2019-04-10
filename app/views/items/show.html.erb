@@ -10,8 +10,10 @@
         <h4><%= number_to_currency(@item.current_price) %></h4>
         <% if @item.avg_fulfill_time == 1 %>
         <h4>Usually ships in 1 day.</h4>
+        <% elsif !@item.avg_fulfill_time %>
+          <h4>Usually ships in <%= @item.avg_fulfill_time %>
         <% else %>
-        <h4>Usually ships in <%= @item.avg_fulfill_time %></h4>
+          <h4>Usually ships in <%= @item.avg_fulfill_time[0].split(" ")[0,2].join(" ") %></h4>
         <% end %>
       </section>
       <section class="button-section">

@@ -23,7 +23,8 @@ RSpec.describe "Items Show Page" do
       expect(page).to have_content("Sold by: #{@i1.merchant_name}")
       expect(page).to have_content("#{@i1.inventory} left in stock")
       expect(page).to have_content("$#{@i1.current_price}")
-      expect(page).to have_content("Usually ships in #{@i1.avg_fulfill_time}")
+      avg_fulfill_time = @i1.avg_fulfill_time[0].split(" ")[0,2].join(" ")
+      expect(page).to have_content("Usually ships in #{avg_fulfill_time}")
     end
   end
 
