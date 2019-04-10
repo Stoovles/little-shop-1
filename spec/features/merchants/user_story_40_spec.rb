@@ -63,19 +63,23 @@ RSpec.describe 'as a visitor when I visit the merchant index page' do
     end
 
     it "should have the 3 slowest merchants" do
-      expect(page).to have_content("Slowest Merchants: #{@umerch2.name} - 8 days 19:03:04.25 #{@umerch.name} - 7 days 24:05:59.444444")
+      expect(page).to have_content("Slowest Merchants:")
+      expect(page).to have_content("#{@umerch2.name} - 8 days 19:03:04.25 #{@umerch.name} - 7 days 24:05:59.444444")
     end
 
     it "should have the top 3 states by order count" do
-      expect(page).to have_content("Top 3 States: California - 6 Nevada - 3 Missouri - 2")
+      expect(page).to have_content("Top 3 States:")
+      expect(page).to have_content("California - 6 orders Nevada - 3 orders Missouri - 2 orders")
     end
 
     it "should have the top 3 city,states by order count" do
-      expect(page).to have_content("Top 3 Cities: Miami, California - 5 Fresno, Nevada - 3 Saint Louis, Missouri - 2")
+      expect(page).to have_content("Top 3 Cities:")
+      expect(page).to have_content("Miami, California - 5 orders Fresno, Nevada - 3 orders Saint Louis, Missouri - 2 orders")
     end
 
     it "should have the top 3 biggest orders by quantity" do
-      expect(page).to have_content("Biggest Orders: #{@o12.id} - 400 #{@o9.id} - 20 #{@o8.id} - 18")
+      expect(page).to have_content("Biggest Orders:")
+      expect(page).to have_content("ID: #{@o12.id} - 400 units ID: #{@o9.id} - 20 units ID: #{@o8.id} - 18 units")
     end
   end
 
