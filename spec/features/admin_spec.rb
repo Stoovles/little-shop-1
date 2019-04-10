@@ -35,6 +35,13 @@ RSpec.describe "As an admin who is logged in" do
     end
   end
 
+  describe "when I visit merchant show but role is user" do
+    it "should redirect me to /users/:id" do
+      visit admin_merchant_path(@u1)
+      expect(current_path).to eq(admin_user_path(@u1))
+    end
+  end
+
   describe "on admin users index page" do
     it "should show all the users in the system" do
       visit admin_users_path
@@ -126,6 +133,19 @@ RSpec.describe "As an admin who is logged in" do
         expect(page).to have_content("Ordered On: #{@o49.created_at}")
         expect(page).to have_content("Quantity: #{@umerch.my_item_count(@o49)}")
         expect(page).to have_content("Total Price: $#{@umerch.my_total(@o49)}")
+      end
+    end
+
+    describe "on a merchants show page" do
+      it "should show me the downgrade to user button" do
+        visit admin_merchant_path(@umerch)
+        expect(page).to have_link('Downgrade to User')
+      end
+
+      it "should redirect me to user profile page" do
+        visit admin_merchant_path(@umerch)
+        click_link "Downgrade to User"
+        expect(current_path).to eq(admin_user_path(@umerch))
       end
     end
 
