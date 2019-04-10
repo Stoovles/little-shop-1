@@ -1,14 +1,17 @@
 <h2 class="heading">Customer Info</h2>
-<div class="customer-info">
-  <p><%= @order.user.name %></p>
+<div class="order-card">
+  <h3><%= @order.user.name %></h3>
   <p><%= @order.user.street_address %></p>
   <p><%= @order.user.city %>, <%= @order.user.state %>  <%= @order.user.zip_code %></p>
 </div>
   <% @order.items.order(:item_name).each do |item| %>
     <% if item.user_id == current_user.id %>
-    <div class="order-card">
+    <div class="customer-order-card">
       <%= link_to item.item_name, item_path(item) %>
-      <img src=<%= item.image_url %> class="small-image" alt="image of <%= item.item_name %>">
+      <div class="img-container">
+        <img src=<%= item.image_url %> class="small-image" alt="image of <%= item.item_name %>">
+
+      </div>
       Price: <%= number_to_currency(item.order_price(@order)) %>
       Quantity: <%= item.order_quantity(@order) %>
       <% if  (!@order.item_fulfilled?(item) && (item.inventory < item.order_quantity(@order))) %>
