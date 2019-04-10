@@ -119,6 +119,7 @@ a img {
   color: #FFF5DB;
   background-color: rgba(17,5,5,0.71);
   padding-bottom: 5px;
+  margin-top: 5vw;
 }
 
 
@@ -144,6 +145,7 @@ a img {
   color: #FFF5DB;
   background-color: rgba(17,5,5,0.71);
   padding-bottom: 5px;
+  margin-top: 5vw;
 }
 
 .statistics h2 {
@@ -172,9 +174,10 @@ a img {
   background: rgba(193,140,90,1);
   display: flex;
   justify-content: space-around;
-  /* position: fixed;
+  position: fixed;
   top: 0px;
-  height: 5vw; */
+  height: 5vw;
+  width: 100%;
 }
 
 .nav-link{
