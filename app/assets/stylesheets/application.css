@@ -48,6 +48,19 @@ a img {
   text-decoration: none;
 }
 
+.merchant-card h2 a {
+  color: #FFF5DB;
+  text-decoration: none;
+  font-size: 1.1em;
+}
+
+
+.merchant-card a:hover {
+  color: #2D4262;
+  text-decoration: none;
+}
+
+
 .item-card p {
   font-size: 1.5em;
 }
@@ -467,6 +480,7 @@ a img {
   font-size: 3vw;
   width: 40vw;
   color:#FFF5DB;
+  max-width: 100%;
 }
 
 .browse-button:hover {

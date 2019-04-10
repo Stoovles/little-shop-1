@@ -30,18 +30,18 @@
     <div class="cart-card">
       <div class="total">
         Total: <%= number_to_currency(@cart.cart_total) %>
-      </div>
       <% if !current_user %>
       <div class="login-register">
-        Please <%= link_to 'Register', new_user_path %> or <%= link_to 'Log In', login_path %> to place your order.
+        Please <%= link_to 'Register', new_user_path, id: "button" %> or <%= link_to 'Log In', login_path, id: "button" %> to place your order.
       </div>
       <% else %>
       <div class="checkout">
-        <%= button_to 'Check Out', profile_orders_path, method: :create %>
+        <%= button_to 'Check Out', profile_orders_path, method: :create, class: "browse-button" %>
       </div>
       <% end %>
     </div>
-  <%= link_to 'Empty my cart', cart_path, method: :delete %>
+    </div>
+  <%= link_to 'Empty my cart', cart_path, method: :delete, id: "button" %>
 <% else %>
   <div>Your Cart is empty!</div>
 <% end %>

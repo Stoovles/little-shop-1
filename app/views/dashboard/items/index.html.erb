@@ -7,16 +7,16 @@
       <br>
       <p>In Inventory: <%= item.inventory %></p>
       <p>Price: <%= number_to_currency(item.current_price.round(2)) %></p>
-      <%= link_to 'Edit Item', edit_dashboard_item_path(item) %>
+      <%= link_to 'Edit Item', edit_dashboard_item_path(item), id: "button" %>
       <% if item.enabled %>
-        <%= link_to 'Disable Item', deactivate_dashboard_item_path(item), method: :patch%>
+        <%= link_to 'Disable Item', deactivate_dashboard_item_path(item), method: :patch, id: "button"%>
       <% else %>
-        <%= link_to 'Enable Item', activate_dashboard_item_path(item), method: :patch%>
+        <%= link_to 'Enable Item', activate_dashboard_item_path(item), method: :patch, id: "button"%>
       <% end %>
       <% if item.quantity_sold == 0 %>
-        <%= link_to 'Delete Item', dashboard_item_path(item), method: :delete %>
+        <%= link_to 'Delete Item', dashboard_item_path(item), method: :delete, id: "button" %>
       <% end %>
     </div>
   <% end %>
-  <%= link_to 'Add New Item', new_dashboard_item_path%>
+  <%= link_to 'Add New Item', new_dashboard_item_path, class: "browse-button"%>
 </div>
