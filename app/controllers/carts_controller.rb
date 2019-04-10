@@ -8,7 +8,7 @@ before_action :require_visitor_or_user
     item = Item.find(params[:item_id])
     @cart.add_item(item.id)
     session[:cart] = @cart.contents
-    redirect_to item_path(params[:item_id]), info: "You now have #{session[:cart][item.id.to_s]} #{item.item_name} in your cart."
+    redirect_to items_path, info: "You now have #{session[:cart][item.id.to_s]} #{item.item_name} in your cart."
   end
 
   def destroy

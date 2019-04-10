@@ -23,6 +23,7 @@ RSpec.describe 'Login Page Workflow' do
     click_on "Log Me In"
 
     expect(current_path).to eq(profile_path)
+    expect(page).to have_content("You are now logged in")
   end
 
   it "can log in as an admin" do
@@ -46,7 +47,9 @@ RSpec.describe 'Login Page Workflow' do
 
     click_on "Log Me In"
 
-    expect(current_path).to eq(admin_dashboard_path)
+    expect(current_path).to eq(root_path)
+    expect(page).to have_content("You are now logged in")
+
   end
 
   it "can log in as a merchant" do
@@ -71,6 +74,8 @@ RSpec.describe 'Login Page Workflow' do
     click_on "Log Me In"
 
     expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content("You are now logged in")
+
   end
 
   describe 'sad path' do
