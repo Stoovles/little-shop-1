@@ -155,5 +155,21 @@ RSpec.describe 'Login Page Workflow' do
       expect(current_path).to eq(root_path)
       expect(page).to have_content("You are already logged in.")
     end
+    it 'cannot login if merchant is disabled' do
+      user = User.create!(name: "Test", role: 1,
+                        street_address: "1331 17th St",
+                        city: "Denver",
+                        state: "CO",
+                        zip_code: 80202,
+                        email_address: "test@test_user.com",
+                        password: "test",
+                        enabled: false)
+      visit login_path
+      fill_in "email_address", with: "test@test_user.com"
+      fill_in "password", with: "test"
+      click_button "Log Me In"
+      expect(current_path).to eq(login_path)
+      expect(page).to have_content("Your account is disabled")
+    end
   end
 end
