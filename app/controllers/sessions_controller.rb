@@ -13,13 +13,13 @@ class SessionsController < ApplicationController
     user = User.find_by(email_address: params[:email_address])
     if user && user.authenticate(params[:password]) && user.role == 'merchant'
       session[:user_id] = user.id
-      redirect_to dashboard_path
+      redirect_to dashboard_path, success: "You are now logged in"
     elsif user && user.authenticate(params[:password]) && user.role == 'admin'
       session[:user_id] = user.id
-      redirect_to admin_dashboard_path
+      redirect_to admin_dashboard_path, success: "You are now logged in"
     elsif user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to profile_path
+      redirect_to profile_path, success: "You are now logged in"
     else
       flash.now[:danger] = "Incorrect email and/or password"
       render :new
