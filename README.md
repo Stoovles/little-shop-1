@@ -22,8 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ... -->
-# Little Shop of Whiskey
-Project description: This project was our second deployed Rails app from our second Module at Turing School of Software & Design. The goal of our website was to create a working shop where users can register, create orders, browse wares, or become merchants. Our focus was on logical namespacing as well as dividing up tasks among the Models, Views, and Controllers.
+# Little Shop of Whiskeys
+Project description: This project was our second deployed Rails app from our second Module at Turing School of Software & Design. The goal of our website was to create a working shop where users can register, create orders, browse wares, or become merchants. Users can then log in securely as a user, merchant, or admin. Our learning focus was on restful routing, CRUD actions, logical namespacing, as well as dividing up tasks among the Models, Views, and Controllers.
 
 Project is deployed at: https://gentle-lowlands-85048.herokuapp.com
 
@@ -50,7 +50,15 @@ Matt Weiss's Github https://github.com/Matt-Weiss
 ## Versions
   Rails: 5.1.7
   Ruby: 2.4.1
-  See Gemfile for gem versions.
+
+## Gems
+rspec-rails
+capybara
+launchy
+pry
+shoulda-matchers version 3.1
+simplecov
+
 
 ### Assignment link
   https://github.com/turingschool-projects/little_shop_v2/blob/master/stories.md
