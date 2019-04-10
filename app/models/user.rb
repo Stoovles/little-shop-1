@@ -14,7 +14,7 @@ class User < ApplicationRecord
   enum role: ['user', 'merchant', 'admin']
 
   def self.active_merchant
-    where(role: 1, enabled: true)
+    where(role: 1, enabled: true).order(:id)
   end
 
   def my_item_count(order)
