@@ -42,7 +42,7 @@ class Item < ApplicationRecord
   end
 
   def avg_fulfill_time
-    if OrderItem.find_by(item_id: self.id)
+    if OrderItem.where(item_id: self.id, "order_items.fulfilled": true).first
       OrderItem.where(item_id: self.id, "order_items.fulfilled": true).group(:item_id).pluck("AVG(updated_at - created_at)")
     else
       "no shipments yet"
