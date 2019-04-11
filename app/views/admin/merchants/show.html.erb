@@ -1,38 +1,33 @@
 <% if current_admin? %>
-<%= link_to 'Downgrade to User', downgrade_admin_merchant_path(@merchant), method: :patch%>
-
-<section class="statistics">
-  <h2>Statistics</h2>
-  <div class="five_most">
-    <h3>Most Popular Items</h3>
-    <% @popular_five.each do |item| %>
-    <div class="popular">
-      <img src=<%= item.image_url %> class="tiny-image" alt="image of <%= item.item_name %>"></a>
-      <%= item.item_name %> -
-      <%= item.quantity_sold %> bought
+  <section class="statistics">
+    <h2>Statistics</h2>
+    <div class="five_most">
+      <h3>Most Popular Items</h3>
+      <% @popular_five.each do |item| %>
+      <div class="popular">
+        <img src=<%= item.image_url %> class="tiny-image" alt="image of <%= item.item_name %>"></a>
+        <%= item.item_name %> -
+        <%= item.quantity_sold %> bought
+      </div>
+      <% end %>
     </div>
-    <% end %>
-  </div>
+  </section>
+  <br>
 
-</section>
-
-
-<br>
-
-
-  <div id='profile-info'>
-    <p>Name: <%= @merchant.name %></p>
+  <div class='admin-order-card'>
+    <h3>Name: <%= @merchant.name %></h3>
     <p>Street Address: <%= @merchant.street_address %></p>
     <p>City: <%= @merchant.city %></p>
     <p>State: <%= @merchant.state %></p>
     <p>Zip Code: <%= @merchant.zip_code %></p>
     <p>Email Address: <%= @merchant.email_address %></p>
+    <%= link_to 'Downgrade to User', downgrade_admin_merchant_path(@merchant), method: :patch, id: "button"%>
   </div>
 
   <div class='pending-orders'>
     <% @orders.each do |order| %>
     <div class="order-card">
-      <p>Order ID: <%= order.id %></p>
+      <h3>Order ID: <%= order.id %></h3>
       <p>Ordered On: <%= order.created_at %></p>
       <p>Quantity: <%= @merchant.my_item_count(order) %></p>
       <p>Total Price: <%= number_to_currency(@merchant.my_total(order)) %></p>

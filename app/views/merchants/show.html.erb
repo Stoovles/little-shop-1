@@ -44,19 +44,19 @@
 <br>
 
   <div class='order-card'>
-    <p>Name: <%= current_user.name %></p>
+    <h3>Name: <%= current_user.name %></h3>
     <p>Street Address: <%= current_user.street_address %></p>
     <p>City: <%= current_user.city %></p>
     <p>State: <%= current_user.state %></p>
     <p>Zip Code: <%= current_user.zip_code %></p>
     <p>Email Address: <%= current_user.email_address %></p>
-    <%= link_to "Items Index", dashboard_items_path, id: "button" %>
+    <%= link_to "My Items", dashboard_items_path, id: "button" %>
   </div>
 
   <div class='pending-orders'>
     <% @orders.each do |order| %>
     <div class="order-card">
-      <p><%= link_to "Order ID: #{order.id}", dashboard_order_path(order) %></p>
+      <h3><%= link_to "Order ID: #{order.id}", dashboard_order_path(order) %></h3>
       <p>Ordered On: <%= order.created_at %></p>
       <p>Quantity: <%= @merchant.my_item_count(order) %></p>
       <p>Total Price: <%= @merchant.my_total(order) %></p>

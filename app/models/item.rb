@@ -42,10 +42,8 @@ class Item < ApplicationRecord
   end
 
   def avg_fulfill_time
-    # SELECT item_id, AVG(updated_at - created_at) from order_items WHERE item_id = 1 GROUP BY item_id; #THIS WORKS
     if OrderItem.find_by(item_id: self.id)
-      time_diff = OrderItem.where(item_id: self.id, "order_items.fulfilled": true).group(:item_id).pluck("AVG(updated_at - created_at)")
-      time_diff[0].split(" ")[0,2].join(" ") #helper method in appcont
+      OrderItem.where(item_id: self.id, "order_items.fulfilled": true).group(:item_id).pluck("AVG(updated_at - created_at)")
     else
       "no shipments yet"
     end

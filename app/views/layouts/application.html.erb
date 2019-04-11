@@ -8,43 +8,46 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body>
+  <nav>
     <section class=navbar>
       <%= link_to "Home", root_path, :class=>"nav-link" %>
       <%= link_to "All Items", items_path, :class=>"nav-link" %>
       <% if current_admin? %>
-        <%= link_to "Merchants", admin_merchants_path, :class=>"nav-link" %>
+      <%= link_to "Merchants", admin_merchants_path, :class=>"nav-link" %>
       <% else %>
-        <%= link_to "Merchants", merchants_path, :class=>"nav-link" %>
+      <%= link_to "Merchants", merchants_path, :class=>"nav-link" %>
       <% end %>
 
       <% if !current_user %>
-        <%= link_to "Register", new_user_path, :class=>"nav-link" %>
-        <%= link_to "Log In", login_path, :class=>"nav-link" %>
-        <%= link_to "My Cart: #{@cart.total_count}", cart_path, :class=>"nav-link" %>
+      <%= link_to "Register", new_user_path, :class=>"nav-link" %>
+      <%= link_to "Log In", login_path, :class=>"nav-link" %>
+      <%= link_to "My Cart: #{@cart.total_count}", cart_path, :class=>"nav-link" %>
       <% end %>
 
       <% if current_user? %>
-        <%= link_to "Profile", profile_path, :class=>"nav-link" %>
-        <%= link_to "Log Out", logout_path, :class=>"nav-link" %>
-        <%= link_to "My Cart: #{@cart.total_count}", cart_path, :class=>"nav-link" %>
-        <div class="logged-in-as"><%= "Logged in as #{current_user.name}" %></div>
+      <%= link_to "Profile", profile_path, :class=>"nav-link" %>
+      <%= link_to "Log Out", logout_path, :class=>"nav-link" %>
+      <%= link_to "My Cart: #{@cart.total_count}", cart_path, :class=>"nav-link" %>
+      <div class="logged-in-as"><%= "Logged in as #{current_user.name}" %></div>
       <% end %>
 
       <% if current_merchant? %>
+      <%= link_to "My Items", dashboard_items_path, :class=>"nav-link" %>
       <%= link_to "Dashboard", dashboard_path, :class=>"nav-link" %>
-        <%= link_to "Log Out", logout_path, :class=>"nav-link" %>
-        <div class="logged-in-as"><%= "#{current_user.name} logged in as merchant" %></div>
+      <%= link_to "Log Out", logout_path, :class=>"nav-link" %>
+      <div class="logged-in-as"><%= "#{current_user.name} logged in as merchant" %></div>
       <% end %>
 
       <% if current_admin? %>
-        <%= link_to "Users", admin_users_path, :class=>"nav-link" %>
-        <%= link_to "Dashboard", admin_dashboard_path, :class=>"nav-link" %>
-        <%= link_to "Log Out", logout_path, :class=>"nav-link" %>
-        <div class="logged-in-as"><%= "#{current_user.name} logged in as admin" %></div>
+      <%= link_to "Users", admin_users_path, :class=>"nav-link" %>
+      <%= link_to "Dashboard", admin_dashboard_path, :class=>"nav-link" %>
+      <%= link_to "Log Out", logout_path, :class=>"nav-link" %>
+      <div class="logged-in-as"><%= "#{current_user.name} logged in as admin" %></div>
       <% end %>
     </section>
+  </nav>
 
+  <body>
     <% flash.each do |name, message| %>
       <div class='alert alert-<%= name %>', role="alert">
         <%= message %>

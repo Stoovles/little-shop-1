@@ -20,6 +20,7 @@ RSpec.describe 'When I visit the merchant dashboard page' do
       @oi170 = OrderItem.create(order_id: @o39.id,item_id: @i22.id, quantity: 4,fulfilled: false,order_price: 60.0,created_at: "2018-04-04 00:55:36",updated_at: "2018-04-15 17:09:27")
       visit dashboard_order_path(@o39)
     end
+
     it 'shows me the correct information' do
 
       expect(page).to have_content(@u34.street_address)
@@ -42,19 +43,19 @@ RSpec.describe 'When I visit the merchant dashboard page' do
     end
 
     it 'for each item in order, we can fulfill item if not already fulfilled' do
-      within first ".order-card" do
+      within first ".customer-order-card" do
         expect(page).to have_button('Fulfill Item')
         click_button('Fulfill Item')
       end
         expect(current_path).to eq(dashboard_order_path(@o39))
         expect(page).to have_content("You have fulfilled #{@i19.item_name}")
         expect(@u7.items.order(:inventory)[0].inventory).to eq(26)
-      within first ".order-card" do
+      within first ".customer-order-card" do
         expect(page).to_not have_button('Fulfill Item')
         expect(page).to have_content('You have already fulfilled this item')
       end
 
-      within all(".order-card").last do
+      within all(".customer-order-card").last do
         expect(page).to have_content('You do not have enough inventory to fill this item!')
       end
     end
@@ -76,12 +77,12 @@ RSpec.describe 'When I visit the merchant dashboard page' do
 
       visit dashboard_order_path(o39)
 
-      within first ".order-card" do
+      within first ".customer-order-card" do
         expect(page).to have_button('Fulfill Item')
         click_button('Fulfill Item')
       end
 
-      within all(".order-card").last do
+      within all(".customer-order-card").last do
         expect(page).to have_button('Fulfill Item')
         click_button('Fulfill Item')
       end

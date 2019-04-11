@@ -141,6 +141,10 @@ RSpec.describe 'When I visit our application I see a navbar' do
 
           expect(page).to have_link 'Log Out'
 
+          expect(page).to have_link "My Items"
+          click_link "My Items"
+          expect(current_path).to eq(dashboard_items_path)
+
           expect(page).to have_link 'Dashboard'
           click_link 'Dashboard'
           expect(current_path).to eq(dashboard_path)
