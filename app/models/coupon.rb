@@ -6,7 +6,6 @@ class Coupon < ApplicationRecord
   enum discount: ["dollar", "percent"]
 
   def customers
-    x = User.joins(:coupons).where(role: 0)
-    binding.pry
+    User.joins(:coupons).where(role: 0)
   end
 end
