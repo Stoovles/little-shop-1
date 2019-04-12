@@ -1,0 +1,9 @@
+<h1>My Coupons</h1>
+
+<% @coupons.each do |coupon| %>
+  <div class="coupon-card">
+    <%= link_to coupon.name, dashboard_coupon_path(coupon) %>
+
+  </div>
+
+<% end %>
