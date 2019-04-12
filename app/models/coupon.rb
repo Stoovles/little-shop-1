@@ -9,4 +9,5 @@ class Coupon < ApplicationRecord
   def customers
     User.joins(:coupons).where(role: 0)
   end
+
 end

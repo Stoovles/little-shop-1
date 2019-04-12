@@ -54,7 +54,7 @@ RSpec.describe "merchant coupons" do
       click_link("Deactivate")
       expect(current_path).to eq(dashboard_coupon_path(@c1))
       visit dashboard_coupon_path(@c1)
-      expect(page).to have_content(@c1.active)
+      expect(page).to have_content("deactivated")
       expect(page).to have_link("Activate")
     end
   end
