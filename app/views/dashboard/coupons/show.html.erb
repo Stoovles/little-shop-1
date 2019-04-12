@@ -6,3 +6,10 @@
 <% elsif @coupon.dollar? %>
   <p>$<%= number_to_currency(@coupon.amount) %> off</p>
 <% end %>
+
+<h3>Coupon used by: </h3>
+<% @users.each do |user| %>
+  <ul>
+    <li><%= user.name %></li>
+  </ul>
+<% end %>

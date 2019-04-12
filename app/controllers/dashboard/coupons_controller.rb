@@ -5,5 +5,6 @@ class Dashboard::CouponsController < ApplicationController
 
   def show
     @coupon = Coupon.find(params[:id])
+    @users = @coupon.customers
   end
 end
