@@ -10,9 +10,15 @@ class Dashboard::CouponsController < ApplicationController
     @users = @coupon.customers
   end
 
-  def update
+  def deactivate
     coupon = Coupon.find(params[:id])
     coupon.update(active: 1)
+    redirect_to dashboard_coupon_path(coupon)
+  end
+
+  def activate
+    coupon = Coupon.find(params[:id])
+    coupon.update(active: 0)
     redirect_to dashboard_coupon_path(coupon)
   end
 

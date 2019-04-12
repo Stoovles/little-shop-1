@@ -9,9 +9,9 @@
 
 <%= @coupon.active %>
 <% if @coupon.activated? %>
-  <%= link_to "Deactivate", dashboard_coupon_path, method: :patch %>
+  <%= link_to "Deactivate", deactivate_dashboard_coupon_path, method: :patch %>
 <% else %>
-  <%= link_to "Activate", dashboard_coupon_path, method: :patch %>
+  <%= link_to "Activate", activate_dashboard_coupon_path, method: :patch %>
 <% end %>
 
 <h3>Coupon used by: </h3>
