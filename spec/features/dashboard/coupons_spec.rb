@@ -44,8 +44,14 @@ RSpec.describe "merchant coupons" do
       expect(page).to_not have_content(@u3.name)
     end
 
-    xit "should have an activate button for deactivated coupons" do
-
+    it "should have an activate button for deactivated coupons" do
+      visit dashboard_coupon_path(@c3)
+      expect(page).to have_link("Activate")
+      click_link("Activate")
+      expect(current_path).to eq(dashboard_coupon_path(@c3))
+      visit dashboard_coupon_path(@c3)
+      expect(page).to have_content("activated")
+      expect(page).to have_link("Deactivate")
     end
 
     it "should have a deactivate button for active coupons" do
