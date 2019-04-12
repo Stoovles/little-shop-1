@@ -10,6 +10,16 @@ class Dashboard::CouponsController < ApplicationController
     @users = @coupon.customers
   end
 
+  def edit
+    @coupon = Coupon.find(params[:id])
+  end
+
+  def update
+    coupon = Coupon.find(params[:id])
+    coupon.update(update_params)
+    redirect_to dashboard_coupon_path(coupon), success: "You have successfully updated #{coupon.name}"
+  end
+
   def deactivate
     coupon = Coupon.find(params[:id])
     coupon.update(active: 1)
@@ -26,5 +36,9 @@ class Dashboard::CouponsController < ApplicationController
 
   def require_merchant
     render file: "/public/404" unless current_merchant?
+  end
+
+  def update_params
+    up = params.require(:coupon).permit(:name,:discount,:amount)
   end
 end

@@ -63,6 +63,25 @@ RSpec.describe "merchant coupons" do
       expect(page).to have_content("deactivated")
       expect(page).to have_link("Activate")
     end
+
+    it "should have an update button" do
+      visit dashboard_coupon_path(@c1)
+      expect(page).to have_link("Update Coupon")
+      click_link("Update Coupon")
+      expect(current_path).to eq(edit_dashboard_coupon_path(@c1))
+      expect(page).to have_content("You have successfully updated #{@c1.name}")
+    end
+
+    xit "should have a delete button only if coupon hasn't been used" do
+      visit dashboard_coupon_path(@c1)
+      expect(page).to_not have_link("Delete Coupon")
+      visit dashboard_coupon_path(@c2)
+
+      expect(page).to have_link("Delete Coupon")
+      click_link("Delete Coupon")
+      expect(current_path).to eq(dashboard_coupons_path)
+      expect(page).to_not have_content("#{@c2.name}")
+    end
   end
 
 

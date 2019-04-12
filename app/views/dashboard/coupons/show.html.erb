@@ -14,6 +14,12 @@
   <%= link_to "Activate", activate_dashboard_coupon_path, method: :patch %>
 <% end %>
 
+<%= link_to "Update Coupon", edit_dashboard_coupon_path(@coupon) %>
+
+<% if @users.count == 0 %>
+  <%= link_to "Delete Coupon" %>
+<% end %>
+
 <h3>Coupon used by: </h3>
 <% @users.each do |user| %>
   <ul>
