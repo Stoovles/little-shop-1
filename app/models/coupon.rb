@@ -1,5 +1,6 @@
 class Coupon < ApplicationRecord
-  belongs_to :user
+  has_many :user_coupons
+  has_many :users, through: :user_coupons
   validates_presence_of :name, :discount, :amount, :active
 
   enum discount: ["dollar", "percent"]

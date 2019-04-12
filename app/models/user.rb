@@ -2,7 +2,8 @@ class User < ApplicationRecord
   attr_accessor :skip_password_validation
   has_many :items
   has_many :orders
-  has_many :coupons
+  has_many :user_coupons
+  has_many :coupons, through: :user_coupons
 
 
   has_secure_password allow_blank: true

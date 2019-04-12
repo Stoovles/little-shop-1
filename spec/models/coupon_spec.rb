@@ -9,7 +9,8 @@ RSpec.describe Coupon, type: :model do
   end
 
   describe "relationships" do
-    it {should belong_to :user}
+    it {should have_many :user_coupons}
+    it {should have_many :users}
   end
 
   before :each do
