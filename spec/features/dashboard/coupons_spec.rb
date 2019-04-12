@@ -69,7 +69,9 @@ RSpec.describe "merchant coupons" do
       expect(page).to have_link("Update Coupon")
       click_link("Update Coupon")
       expect(current_path).to eq(edit_dashboard_coupon_path(@c1))
-      expect(page).to have_content("You have successfully updated #{@c1.name}")
+      fill_in "coupon[amount]", with: 17
+      click_button "Update Coupon"
+      expect(page).to have_content("You have successfully updated WEEKEND15OFF")
     end
 
     xit "should have a delete button only if coupon hasn't been used" do
