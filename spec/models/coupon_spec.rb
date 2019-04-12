@@ -23,14 +23,14 @@ RSpec.describe Coupon, type: :model do
     @c2 = @umerch.coupons.create(name: "SUMMER20OFF",	discount: 0, amount: 20, active: 0)
     @c3 = @umerch.coupons.create(name: "HOLIDAY15PERCENT",	discount: 1, amount: 15, active: 1)
 
+    @u2.coupons << @c1
+    @u1.coupons << @c1
 
 
   end
 
   describe ".customers" do
     it "should list the users who have used this coupon in an order" do
-      @u2.coupons << @c1
-      @u1.coupons << @c1
       expect(@c1.customers).to eq([@u1,@u2])
     end
   end
