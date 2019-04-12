@@ -1,0 +1,8 @@
+<h2><%= @coupon.name %></h2>
+
+<h3>Info</h3>
+<% if @coupon.percent? %>
+  <p><%=  %>% off</p>
+<% elsif @coupon.dollar? %>
+  <p>$<%= number_to_currency(@coupon.amount) %> off</p>
+<% end %>
