@@ -74,10 +74,10 @@ RSpec.describe "merchant coupons" do
       expect(page).to have_content("You have successfully updated WEEKEND15OFF")
     end
 
-    xit "should have a delete button only if coupon hasn't been used" do
+    it "should have a delete button only if coupon hasn't been used" do
       visit dashboard_coupon_path(@c1)
       expect(page).to_not have_link("Delete Coupon")
-      visit dashboard_coupon_path(@c2)
+      visit dashboard_coupon_path(@c3)
 
       expect(page).to have_link("Delete Coupon")
       click_link("Delete Coupon")

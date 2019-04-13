@@ -7,7 +7,7 @@ class Coupon < ApplicationRecord
   enum active: ["activated","deactivated"]
 
   def customers
-    User.joins(:coupons).where(role: 0)
+    users.where(role: 0)
   end
 
 end
