@@ -49,4 +49,10 @@ RSpec.describe Coupon, type: :model do
       expect(@c4.item_list).to eq([@i23])
     end
   end
+
+  describe ".percent_off" do
+    it "should return the percent remaining to multiply a price by" do
+      expect(@c4.percent_off).to eq(0.85)
+    end
+  end
 end

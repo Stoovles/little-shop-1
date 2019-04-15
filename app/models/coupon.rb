@@ -1,7 +1,7 @@
 class Coupon < ApplicationRecord
   has_many :user_coupons, :dependent => :destroy
   has_many :users, through: :user_coupons
-  
+
   validates_presence_of :name, :discount, :amount, :active
   validates_uniqueness_of :name
 
@@ -15,6 +15,10 @@ class Coupon < ApplicationRecord
   def item_list
     merch = users.where(role: 1).first
     Item.where(id: merch.items, enabled: true)
+  end
+
+  def percent_off
+    (100 - amount)/100.0
   end
 
 end

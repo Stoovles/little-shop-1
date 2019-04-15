@@ -90,4 +90,16 @@ RSpec.describe "User's cart abilities", type: :feature do
       expect(page).to have_content("Discount Total: $75.00")
     end
   end
+
+  describe "orders with coupon" do
+    it "should link to the order create with the coupon" do
+      visit cart_path
+      within ".cart-container" do
+        fill_in "Coupon code", with: "#{@c2.name}"
+        click_button "Add Coupon"
+      end
+      click_button "Check Out"
+      expect(page).to have_content("Coupon: #{@c2.name}")
+    end
+  end
 end
