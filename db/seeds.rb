@@ -54,6 +54,63 @@ User.destroy_all
 @u49 = User.create(name: "Reynold Beed",street_address: "37076 Straubel Trail",city: "Oklahoma City",state: "Oklahoma",zip_code: "73099",email_address: "rbeed1c@ocn.ne.jp",password:"p1AZ5Z", enabled: true, role:0)
 @u50 = User.create(name: "Christiano Trighton",street_address: "81 Straubel Lane",city: "Las Vegas",state: "Nevada",zip_code: "89108",email_address: "ctrighton1d@comcast.net",password:"yz8Yvut6rG", enabled: true, role:0)
 
+
+#coupons
+@coup1 = @u4.coupons.create(name: "First Coupon", discount: 5.0)
+@coup2 = @u4.coupons.create(name: "Second Coupon", discount: 10.0)
+@coup3 = @u4.coupons.create(name: "Third Coupon", discount: 15.0)
+@coup4 = @u4.coupons.create(name: "Fourth Coupon", discount: 20.0)
+@coup5 = @u4.coupons.create(name: "Fifth Coupon", discount: 25.0)
+
+@coup6 = @u5.coupons.create(name: "Sixth Coupon", discount: 5.0)
+@coup7 = @u5.coupons.create(name: "Seventh Coupon", discount: 10.0)
+@coup8 = @u5.coupons.create(name: "Eigth Coupon", discount: 15.0)
+@coup9 = @u5.coupons.create(name: "Ninth Coupon", discount: 20.0)
+@coup10 = @u5.coupons.create(name: "Tenth Coupon", discount: 25.0)
+
+@coup11 = @u8.coupons.create(name: "Eleventh Coupon", discount: 5.0)
+@coup12= @u8.coupons.create(name: "Twelth Coupon", discount: 10.0)
+@coup13 = @u8.coupons.create(name: "Thirteenth Coupon", discount: 15.0)
+@coup14 = @u8.coupons.create(name: "Fourteenth Coupon", discount: 20.0)
+@coup15 = @u8.coupons.create(name: "Fifteenth Coupon", discount: 25.0)
+
+@coup16 = @u10.coupons.create(name: "Sixteenth Coupon", discount: 5.0)
+@coup17 = @u10.coupons.create(name: "Seventeenth Coupon", discount: 10.0)
+@coup18 = @u10.coupons.create(name: "Eighteenth Coupon", discount: 15.0)
+@coup19 = @u10.coupons.create(name: "Nineteenth Coupon", discount: 20.0)
+@coup20 = @u10.coupons.create(name: "Twenty Coupon", discount: 25.0)
+
+@coup21 = @u3.coupons.create(name: "21 Coupon", discount: 5.0)
+@coup22 = @u3.coupons.create(name: "22 Coupon", discount: 10.0)
+@coup23 = @u3.coupons.create(name: "23 Coupon", discount: 15.0)
+@coup24 = @u3.coupons.create(name: "24 Coupon", discount: 20.0)
+@coup25 = @u3.coupons.create(name: "25 Coupon", discount: 25.0)
+
+@coup26 = @u9.coupons.create(name: "26 Coupon", discount: 5.0)
+@coup27 = @u9.coupons.create(name: "27 Coupon", discount: 10.0)
+@coup28 = @u9.coupons.create(name: "28 Coupon", discount: 15.0)
+@coup29 = @u9.coupons.create(name: "29 Coupon", discount: 20.0)
+@coup30 = @u9.coupons.create(name: "30 Coupon", discount: 25.0)
+
+@coup31 = @u7.coupons.create(name: "31 Coupon", discount: 5.0)
+@coup32 = @u7.coupons.create(name: "32 Coupon", discount: 10.0)
+@coup33 = @u7.coupons.create(name: "33 Coupon", discount: 15.0)
+@coup34 = @u7.coupons.create(name: "34 Coupon", discount: 20.0)
+@coup35 = @u7.coupons.create(name: "35 Coupon", discount: 25.0)
+
+@coup36 = @u1.coupons.create(name: "36 Coupon", discount: 5.0)
+@coup37 = @u1.coupons.create(name: "37 Coupon", discount: 10.0)
+@coup38 = @u1.coupons.create(name: "38 Coupon", discount: 15.0)
+@coup39 = @u1.coupons.create(name: "39 Coupon", discount: 20.0)
+@coup40 = @u1.coupons.create(name: "40 Coupon", discount: 25.0)
+
+@coup41 = @u2.coupons.create(name: "36 Coupon", discount: 5.0)
+@coup42 = @u2.coupons.create(name: "37 Coupon", discount: 10.0)
+@coup43 = @u2.coupons.create(name: "38 Coupon", discount: 15.0)
+@coup44 = @u2.coupons.create(name: "39 Coupon", discount: 20.0)
+@coup45 = @u2.coupons.create(name: "40 Coupon", discount: 25.0)
+
+#items
 @i1 = @u4.items.create(item_name: "W.L. Weller Special Reserve",image_url: "http://www.buffalotracedistillery.com/sites/default/files/weller%20special%20reserve%20brand%20page%5B1%5D.png",current_price: 20.0,inventory: 4, description:"A sweet nose with a presence of caramel. Tasting notes of honey, butterscotch, and a soft woodiness. It's smooth, delicate and calm. Features a smooth finish with a sweet honeysuckle flair.",enabled: true)
 @i2 = @u5.items.create(item_name: "W.L. Weller C.Y.P.B.",image_url: "http://www.buffalotracedistillery.com/sites/default/files/Weller_CYPB_750ml_front_LoRes.png",current_price: 35.0,inventory: 30, description:"A light aroma with citrus and oak on the nose. The palate is well rounded and balanced, with a medium-long finish and hints of vanilla.",enabled: true)
 @i3 = @u8.items.create(item_name: "Bulleit Bourbon",image_url: "https://www.totalwine.com/media/sys_master/twmmedia/h5c/hed/11635356794910.png",current_price: 22.0,inventory: 42, description:"Medium amber in color, with gentle spiciness and sweet oak aromas. Mid-palate is smooth with tones of maple, oak, and nutmeg. Finish is long, dry, and satiny with a light toffee flavor.",enabled: true)
