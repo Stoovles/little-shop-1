@@ -147,7 +147,7 @@ RSpec.describe "User's cart abilities", type: :feature do
         end
       end
 
-      it 'does allows a user to check out' do
+      it 'does allow a user to check out' do
         visit login_path
         fill_in "email_address", with: @u1.email_address
         fill_in "password", with: @u1.password
@@ -175,7 +175,33 @@ RSpec.describe "User's cart abilities", type: :feature do
           expect(page).to have_content("Item Quantity: 1")
           expect(page).to have_content("Total: $35")
         end
+      end
+    end
 
+    describe "coupon functionality" do
+      it "does not allow a visitor to add a coupon" do
+        visit item_path(@i2)
+        click_button "Add to Cart"
+        visit cart_path
+        within ".cart-container" do
+          expect(page).to_not have_button('Add Coupon')
+        end
+      end
+
+      it "allows a logged-in user to add a coupon" do
+        visit login_path
+        fill_in "email_address", with: @u1.email_address
+        fill_in "password", with: @u1.password
+        click_on "Log Me In"
+
+        visit item_path(@i2)
+        click_button "Add to Cart"
+        visit cart_path
+
+        within ".cart-container" do
+          fill_in "Coupon code", with: "example"
+          expect(page).to have_button('Add Coupon')
+        end
       end
     end
   end
