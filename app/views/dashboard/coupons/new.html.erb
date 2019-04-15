@@ -1,6 +1,7 @@
 <h2>Add Coupon</h2>
 
-<%= form_for [:dashboard, @coupon] do |f| %>
+
+<%= form_for [:dashboard, @coupon], url: {action: "create"} do |f| %>
   <%= f.error_messages %>
 
   <%= f.label :name %>

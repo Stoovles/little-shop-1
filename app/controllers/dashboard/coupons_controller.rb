@@ -18,9 +18,10 @@ class Dashboard::CouponsController < ApplicationController
   end
 
   def create
-    coupon = current_user.coupons.new(coupon_params)
-    if coupon.save
-      redirect_to dashboard_coupons_path, success: "You have successfully added #{coupon.name}"
+    @coupon = Coupon.new(coupon_params)
+    if @coupon.save
+      current_user.coupons << @coupon
+      redirect_to dashboard_coupons_path, success: "You have successfully added #{@coupon.name}"
     else
       flash.now[:danger] = "Coupon name already taken"
       render :new
