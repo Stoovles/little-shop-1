@@ -1,0 +1,22 @@
+<div class="items-container">
+  <% @coupons.each do |coupon| %>
+    <div class="item-card">
+      <h2>ID: <%= coupon.id %></h2>
+      <p>Coupon Title: <%= coupon.name %></p>
+      <p>Discount:<%= coupon.discount %> %</p>
+      <br>
+      <%= link_to 'Edit Coupon', edit_dashboard_coupon_path(coupon), id: "button" %>
+      <% if coupon.enabled %>
+        <%= link_to 'Disable Coupon', deactivate_dashboard_coupon_path(coupon), method: :patch, id: "button"%>
+      <% else %>
+        <%= link_to 'Enable Coupon', activate_dashboard_coupon_path(coupon), method: :patch, id: "button"%>
+      <% end %>
+      <% if !coupon.used %>
+        <%= link_to 'Delete Coupon', dashboard_coupon_path(coupon), method: :delete, id: "button" %>
+      <% end %>
+    </div>
+  <% end %>
+  <% if current_user.coupons.count < 5 %>
+    <%= link_to 'Add New Coupon', new_dashboard_coupon_path, class: "browse-button"%>
+  <% end %>
+</div>

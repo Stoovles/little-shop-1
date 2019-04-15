@@ -1,0 +1,20 @@
+<h1>Create New Coupon</h1>
+<div class="welcome-login">
+
+<!-- <div class="row"> -->
+  <!-- <div class="col-md-6 col-md-offset-3"> -->
+    <%= form_for [:dashboard, @coupon], url: {action: "create"} do |f| %>
+      <%= f.error_messages %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, :required => true%>
+
+      <%= f.label :discount %>
+      <%= f.text_field :discount, :required => true %>
+
+      <%= f.submit "Create Coupon", id: "medium-button" %>
+
+    <% end %>
+</div>
+  <!-- </div> -->
+<!-- </div> -->
