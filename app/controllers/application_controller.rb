@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
     current_user.coupons.count < 5
   end
 
+  def coupon_unused?
+    Coupon.find(params[:id]).users.count == 1
+  end
+
   def set_cart
     @cart ||= Cart.new(session[:cart])
   end

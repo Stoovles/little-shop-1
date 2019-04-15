@@ -1,6 +1,7 @@
 class Dashboard::CouponsController < ApplicationController
   before_action :require_merchant
   before_action :coupon_limit, only: [:new, :create]
+  before_action :coupon_used, only: [:destroy]
 
   def index
     @coupons = current_user.coupons
@@ -62,6 +63,10 @@ class Dashboard::CouponsController < ApplicationController
 
   def coupon_limit
     render file: "/public/404" unless coupon_limit?
+  end
+
+  def coupon_used
+    render file: "/public/404" unless coupon_unused?
   end
 
   def coupon_params
