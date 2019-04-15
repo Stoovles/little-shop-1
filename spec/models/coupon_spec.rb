@@ -37,7 +37,8 @@ RSpec.describe Coupon, type: :model do
 
   describe ".customers" do
     it "should list the users who have used this coupon in an order" do
-      expect(@c1.customers).to eq([@u1,@u2])
+      expect(@c1.customers).to include(@u1)
+      expect(@c1.customers).to include(@u2)
       expect(@c2.customers).to eq([])
     end
   end
