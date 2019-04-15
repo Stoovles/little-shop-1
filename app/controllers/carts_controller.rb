@@ -17,9 +17,6 @@ before_action :require_visitor_or_user
   end
 
   def update
-    if params["Coupon code"]
-
-    end
     if params[:update] == "remove" || params[:quantity] == "0"
       session[:cart].delete(params[:item_id])
     else
@@ -29,6 +26,18 @@ before_action :require_visitor_or_user
       destroy
     else
       redirect_to cart_path
+    end
+  end
+
+  def discount
+    if current_user.my_used_coupons?(params["Coupon code"])
+      flash.now[:danger] = "Coupon has already been used"
+      render :show
+    elsif current_user.available_coupons?(params["Coupon code"])
+      flash.now[:danger] = "This coupon does not exist"
+      render :show
+    else
+      redirect_to cart_path, info: "#{params["Coupon code"]} has been added"
     end
   end
 

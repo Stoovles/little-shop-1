@@ -57,8 +57,9 @@ RSpec.describe "User's cart abilities", type: :feature do
       within ".cart-container" do
         fill_in "Coupon code", with: "example"
         click_button "Add Coupon"
-        expect(page).to have_content("Coupon does not exist")
       end
+      save_and_open_page
+      expect(page).to have_content("Coupon does not exist")
     end
 
     it "does not allow a disabled coupon to be used" do
@@ -83,7 +84,9 @@ RSpec.describe "User's cart abilities", type: :feature do
       visit cart_path
 
       fill_in "Coupon code", with: "#{@c2.name}"
-      expect(page).to have_button('Add Coupon')
+      click_button('Add Coupon')
+      visit cart_path
+      expect(page).to have_content("Discount Total: $75.00")
     end
   end
 end

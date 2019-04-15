@@ -24,15 +24,15 @@
         <div class="total">
           <h4>Subtotal: <%= number_to_currency(@cart.subtotal(item)) %></h4>
           <%= link_to 'Remove Item', cart_path(update: :remove, item_id: item.id),  method: :patch, id: :button %>
-          <% if session[:coupon] %>
-
-          <% end %>
         </div>
       </div>
     <% end %>
     <div class="cart-card">
       <div class="total">
         Total: <%= number_to_currency(@cart.cart_total) %>
+        <% if session[:coupon] %>
+          Discount Total: <%= number_to_currency(@cart.discount_total(session[:coupon])) %>
+        <% end %>
       <% if !current_user %>
       <div class="login-register">
         Please <%= link_to 'Register', new_user_path, id: "button" %> or <%= link_to 'Log In', login_path, id: "button" %> to place your order.
@@ -40,7 +40,7 @@
       <% else %>
       <div class="checkout">
         <%= button_to 'Check Out', profile_orders_path, method: :create, class: "browse-button" %>
-        <%= form_tag(cart_path, method: :patch) do %>
+        <%= form_tag(discount_cart_path, method: :patch) do %>
           <%= text_field_tag "Coupon code" %>
           <%= submit_tag "Add Coupon" %>
         <% end %>
