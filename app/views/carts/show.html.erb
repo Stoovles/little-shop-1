@@ -12,8 +12,12 @@
           <br>
           Current Price: <%= number_to_currency(item.current_price) %>
           <br>
+          <% if @cart.discounted?(session, item) %>
+            Discounted Price: <%= number_to_currency(@cart.discount_price(item, session[:coupon])) %>
+          <% end %>
+          <br>
           Quantity: <%= @cart.contents[item.id.to_s] %>
-          <%= form_tag(cart_path(item_id: item.id), method: :patch) do %>
+          <%= form_tag(cart_path(update: :quantity, item_id: item.id), method: :patch) do %>
           <%= select_tag :quantity, options_for_select(0..item.inventory), selected: @cart.contents[item.id.to_s] %>
           <br>
           <br>
@@ -22,7 +26,12 @@
           <% end %>
         </div>
         <div class="total">
+          <% if @cart.discounted?(session, item) %>
+            Subtotal: <%= number_to_currency(@cart.discounted_subtotal(item, session[:coupon])) %>
+          <% else %>
           <h4>Subtotal: <%= number_to_currency(@cart.subtotal(item)) %></h4>
+          <% end %>
+
           <%= link_to 'Remove Item', cart_path(update: :remove, item_id: item.id),  method: :patch, id: :button %>
         </div>
       </div>
@@ -30,6 +39,10 @@
     <div class="cart-card">
       <div class="total">
         Total: <%= number_to_currency(@cart.cart_total) %>
+        <br>
+        <% if session.key?("coupon") %>
+        Discounted Total: <%= number_to_currency(@cart.discounted_cart_total(session[:coupon])) %>
+        <% end %>
       <% if !current_user %>
       <div class="login-register">
         Please <%= link_to 'Register', new_user_path, id: "button" %> or <%= link_to 'Log In', login_path, id: "button" %> to place your order.
@@ -41,8 +54,20 @@
       <% end %>
     </div>
     </div>
+
+    <%= form_tag(cart_path(update: :coupon), method: :patch) do %>
+    <%= select_tag :coupon, options_for_select(@merchant_coupons.insert(0, "Select a Coupon"))%>
+    <br>
+    <br>
+    <%= submit_tag 'Update Coupon', id: :button %>
+    <br>
+    <% end %>
+
+
   <%= link_to 'Empty my cart', cart_path, method: :delete, id: "button" %>
-<% else %>
+
+  <% else %>
+
   <div>Your Cart is empty!</div>
 <% end %>
 </div>
