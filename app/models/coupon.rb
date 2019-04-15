@@ -1,7 +1,9 @@
 class Coupon < ApplicationRecord
   has_many :user_coupons, :dependent => :destroy
   has_many :users, through: :user_coupons
+  
   validates_presence_of :name, :discount, :amount, :active
+  validates_uniqueness_of :name
 
   enum discount: ["dollar", "percent"]
   enum active: ["activated","deactivated"]

@@ -46,6 +46,27 @@ RSpec.describe "merchant coupons" do
       visit dashboard_coupons_path
       click_link "Add Coupon"
       expect(current_path).to eq(new_dashboard_coupon_path)
+      fill_in "Name", with: "NEWCOUPON"
+      select "Dollar", from: "coupon[discount]"
+      fill_in "coupon[amount]", with: 10
+      click_button "Add Coupon"
+      coupon = Coupon.last
+      expect(current_path).to eq(dashboard_coupons_path)
+      expect(page).to have_content("You have successfully added #{coupon.name}")
+      visit dashboard_coupons_path
+      expect(page).to have_content("#{coupon.name}")
+    end
+
+    it "should not create coupon if invalid" do
+      visit dashboard_coupons_path
+      click_link "Add Coupon"
+      expect(current_path).to eq(new_dashboard_coupon_path)
+      fill_in "Name", with: "#{@c1.name}"
+      select "Dollar", from: "coupon[discount]"
+      fill_in "coupon[amount]", with: 10
+      binding.pry
+      click_button "Add Coupon"
+      expect(page).to have_content("Coupon name already taken")
     end
   end
 

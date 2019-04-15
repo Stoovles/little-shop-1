@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       member { patch :deactivate }
     end
     resources :orders, only: [:show, :update, :edit]
-    resources :coupons, only: [:index, :show, :edit, :update, :destroy, :new] do
+    resources :coupons, only: [:index, :show, :edit, :update, :destroy, :new, :create] do
       member {patch :activate}
       member {patch :deactivate}
     end

@@ -7,7 +7,6 @@
 
   <%= f.label :discount %>
   <%= f.select(:discount, Coupon.discounts.keys.map {|discount| [discount.titleize,discount]}) %>
-  <%= f.text_field :name, required: true %>
 
   <%= f.label :amount %>
   <% if @coupon.discount == "dollar" %>

@@ -13,7 +13,17 @@ class Dashboard::CouponsController < ApplicationController
   end
 
   def new
+    @coupon = Coupon.new
+  end
 
+  def create
+    coupon = current_user.coupons.new(coupon_params)
+    if coupon.save
+      redirect_to dashboard_coupons_path, success: "You have successfully added #{coupon.name}"
+    else
+      flash.now[:danger] = "Coupon name already taken"
+      render :new
+    end
   end
 
   def edit
@@ -52,6 +62,10 @@ class Dashboard::CouponsController < ApplicationController
 
   def coupon_limit
     render file: "/public/404" unless coupon_limit?
+  end
+
+  def coupon_params
+    params.require(:coupon).permit(:name,:discount,:amount)
   end
 
   def update_params
