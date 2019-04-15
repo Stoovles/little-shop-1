@@ -40,7 +40,8 @@ RSpec.describe "merchant coupons" do
 
     it "should show a list of all users who have used the coupon" do
       visit dashboard_coupon_path(@c1)
-      expect(page).to have_content("#{@u1.name}\n#{@u2.name}")
+      expect(page).to have_content("#{@u1.name}")
+      expect(page).to have_content("#{@u2.name}")
       expect(page).to_not have_content(@u3.name)
     end
 

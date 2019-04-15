@@ -77,7 +77,8 @@ RSpec.describe Cart do
 
   describe ".discount_items" do
     it "lists items included on a coupon" do
-      expect(@cart.discount_items(@c1)).to eq([@item, @item2])
+      expect(@cart.discount_items(@c1)).to include(@item)
+      expect(@cart.discount_items(@c1)).to include(@item2)
     end
   end
 
