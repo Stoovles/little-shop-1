@@ -1,6 +1,9 @@
 
 <h2 class="heading">Order: <%= @order.id %></h2>
 <div class="order-card">
+  <% if @order.coupon_id %>
+  <h5>Coupon Applied: <%= Coupon.find(@order.coupon_id).name %></h5>
+  <% end %>
   <h5>Created: <%= @order.created_at %></h5>
   <h5>Last Update: <%= @order.updated_at %></h5>
   <h5>Status: <%= @order.status %></h5> <!-- enums -->
