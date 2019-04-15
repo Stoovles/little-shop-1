@@ -1,13 +1,19 @@
 class Dashboard::CouponsController < ApplicationController
   before_action :require_merchant
+  before_action :coupon_limit, only: [:new, :create]
 
   def index
     @coupons = current_user.coupons
+    @count = @coupons.count
   end
 
   def show
     @coupon = Coupon.find(params[:id])
     @users = @coupon.customers
+  end
+
+  def new
+
   end
 
   def edit
@@ -42,6 +48,10 @@ class Dashboard::CouponsController < ApplicationController
 
   def require_merchant
     render file: "/public/404" unless current_merchant?
+  end
+
+  def coupon_limit
+    render file: "/public/404" unless coupon_limit?
   end
 
   def update_params

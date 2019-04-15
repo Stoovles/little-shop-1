@@ -26,6 +26,10 @@ class ApplicationController < ActionController::Base
     current_user && current_user.admin?
   end
 
+  def coupon_limit?
+    current_user.coupons.count < 5
+  end
+
   def set_cart
     @cart ||= Cart.new(session[:cart])
   end

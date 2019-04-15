@@ -25,6 +25,28 @@ RSpec.describe "merchant coupons" do
       click_link "#{@c1.name}"
       expect(current_path).to eq(dashboard_coupon_path(@c1))
     end
+
+    it "should have a create coupon button only if merchant have 5 or fewer coupons" do
+      visit dashboard_coupons_path
+      expect(page).to have_link("Add Coupon")
+      c4 = @umerch.coupons.create(name: "20OFF",	discount: 0, amount: 20, active: 0)
+      c5 = @umerch.coupons.create(name: "PERCENT",	discount: 1, amount: 15, active: 0)
+      visit dashboard_coupons_path
+      expect(page).to_not have_link("Add Coupon")
+    end
+
+    it "should not allow merchant to reach new coupon page if at the limit" do
+      c4 = @umerch.coupons.create(name: "20OFF",	discount: 0, amount: 20, active: 0)
+      c5 = @umerch.coupons.create(name: "PERCENT",	discount: 1, amount: 15, active: 0)
+      visit new_dashboard_coupon_path
+      expect(page).to have_content("The page you were looking for doesn't exist")
+    end
+
+    it "should successfully create new coupon" do
+      visit dashboard_coupons_path
+      click_link "Add Coupon"
+      expect(current_path).to eq(new_dashboard_coupon_path)
+    end
   end
 
   describe "on the coupon show page" do
@@ -88,6 +110,8 @@ RSpec.describe "merchant coupons" do
       # current_user.coupons still includes it even though Coupon.all does not
       # expect(page).to_not have_content("#{@c3.name}")
     end
+
+
   end
 
 

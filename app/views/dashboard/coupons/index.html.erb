@@ -5,5 +5,7 @@
     <%= link_to coupon.name, dashboard_coupon_path(coupon) %>
 
   </div>
-
+<% end %>
+<% if @count < 5 %>
+<%= link_to "Add Coupon", new_dashboard_coupon_path %>
 <% end %>
