@@ -62,9 +62,8 @@ RSpec.describe "merchant coupons" do
       click_link "Add Coupon"
       expect(current_path).to eq(new_dashboard_coupon_path)
       fill_in "Name", with: "#{@c1.name}"
-      select "Dollar", from: "coupon[discount]"
+      select "Dollar", from: "Discount"
       fill_in "coupon[amount]", with: 10
-      binding.pry
       click_button "Add Coupon"
       expect(page).to have_content("Coupon name already taken")
     end
