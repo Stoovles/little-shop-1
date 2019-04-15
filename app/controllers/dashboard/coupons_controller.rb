@@ -2,12 +2,15 @@ class Dashboard::CouponsController < ApplicationController
   before_action :require_merchant
 
   def new
-    @coupon = Coupon.new
+    if current_user.coupons.count > 4
+      redirect_to dashboard_coupons_path, danger: "Limit 5 coupons per merchant"
+    else @coupon = Coupon.new
+    end
   end
 
   def create
     @coupon = Coupon.new(coupon_params)
-    if @item.save
+    if @coupon.save
       session[:coupon_id] = @coupon.id
       redirect_to dashboard_coupons_path, success: "Coupon #{@coupon.id} has been created"
     else
@@ -16,7 +19,7 @@ class Dashboard::CouponsController < ApplicationController
   end
 
   def index
-    @coupons = Coupon.merchant_coupons(current_user)
+    @coupons = current_user.coupons
   end
 
   def edit
@@ -25,6 +28,7 @@ class Dashboard::CouponsController < ApplicationController
 
   def update
     @coupon = Coupon.find(params[:id])
+
     if @coupon.update(coupon_params)
       redirect_to dashboard_coupons_path, success: "Coupon #{@coupon.id} has been updated"
     else
@@ -33,8 +37,13 @@ class Dashboard::CouponsController < ApplicationController
   end
 
   def destroy
-    @coupon = Coupon.find(params[:id]).delete
-    redirect_to dashboard_coupons_path, danger: "Coupon #{@item.id} has been deleted"
+    @coupon = Coupon.find(params[:id])
+    if @coupon.used
+      redirect_to dashboard_coupons_path, danger: "Coupon #{@coupon.id} has been redeemed. Cannot Delete!"
+    else
+      @coupon.delete
+      redirect_to dashboard_coupons_path, danger: "Coupon #{@coupon.id} has been deleted"
+    end
   end
 
   def deactivate
@@ -58,7 +67,7 @@ class Dashboard::CouponsController < ApplicationController
   def coupon_params
     params.require(:coupon).permit(:name,
                                  :discount
-                                )
+                                ).merge(user_id: current_user.id)
   end
 
 end
