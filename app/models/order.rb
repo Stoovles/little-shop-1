@@ -2,8 +2,16 @@ class Order < ApplicationRecord
   has_many :order_items
   has_many :items, through: :order_items
   belongs_to :user
+  belongs_to :coupon, optional: true
 
   enum status: ["pending", "packaged", "shipped", "cancelled"]
+
+  def self.unique_coupon?(params, current_user)
+    if where(coupon_id: Coupon.find_by(name: params[:coupon])).where(user_id: current_user.id).count > 0
+      true
+    else false 
+    end
+  end
 
   def item_quantity
     OrderItem.where(order_id: self.id).sum(:quantity)
@@ -28,6 +36,8 @@ class Order < ApplicationRecord
     user = User.find(self.user_id)
     user.name
   end
+
+
 
 
 end
