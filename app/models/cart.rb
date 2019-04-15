@@ -42,11 +42,19 @@ class Cart
   end
 
   def discount_total(coupon)
+    regular_total = regular_items(coupon).inject(0) {|total, item| total += subtotal(item)}
     if coupon.discount == "dollar"
-      cart_total - coupon.amount
+      if (cart_total - coupon.amount) < 0
+        regular_total
+      else
+        cart_total - coupon.amount
+      end
     elsif coupon.discount == "percent"
-      discount_total = discount_items(coupon).inject(0) {|total, item| total += subtotal(item)*((100 - coupon.amount)/100.0)}
-      regular_total = regular_items(coupon).inject(0) {|total, item| total += subtotal(item)}
+      if coupon.amount >= 100
+        discount_total = discount_items(coupon).inject(0) {|total, item| total += subtotal(item)*((100 - coupon.amount)/100.0)}
+      else
+        discount_total = 0
+      end
       discount_total + regular_total
     end
   end
