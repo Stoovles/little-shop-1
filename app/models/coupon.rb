@@ -10,4 +10,9 @@ class Coupon < ApplicationRecord
     users.where(role: 0)
   end
 
+  def item_list
+    merch = users.where(role: 1).first
+    Item.where(id: merch.items, enabled: true)
+  end
+
 end
