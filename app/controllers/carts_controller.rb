@@ -30,19 +30,27 @@ before_action :require_visitor_or_user
   end
 
   def discount
-    if current_user.my_used_coupons?(params["Coupon code"])
+    if current_user.my_used_coupons?(coupon_params)
       flash.now[:danger] = "Coupon has already been used"
       render :show
-    elsif current_user.available_coupons?(params["Coupon code"])
-      flash.now[:danger] = "This coupon does not exist"
+    elsif Coupon.where(name: coupon_params, active: "deactivated").first
+      flash.now[:danger] = "Coupon does not exist"
+      render :show
+    elsif Coupon.where(name: coupon_params).pluck(:name).include?(coupon_params)
+      flash.now[:info] = "#{coupon_params} has been added"
       render :show
     else
-      redirect_to cart_path, info: "#{params["Coupon code"]} has been added"
+      flash.now[:danger] = "Coupon does not exist"
+      render :show
     end
   end
 
 private
   def require_visitor_or_user
     render file: "/public/404" unless current_user? || !current_user
+  end
+
+  def coupon_params
+    params.require("Coupon code")
   end
 end
