@@ -37,6 +37,10 @@
       <% else %>
       <div class="checkout">
         <%= button_to 'Check Out', profile_orders_path, method: :create, class: "browse-button" %>
+        <%= form_tag(carts_path, method: :patch) do %>
+          <%= text_field_tag "Coupon code" %>
+          <%= submit_tag "Add Coupon" %>
+        <% end %>
       </div>
       <% end %>
     </div>
