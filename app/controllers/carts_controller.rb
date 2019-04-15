@@ -37,6 +37,8 @@ before_action :require_visitor_or_user
       flash.now[:danger] = "Coupon does not exist"
       render :show
     elsif Coupon.where(name: coupon_params).pluck(:name).include?(coupon_params)
+      session[:coupon] = coupon_params
+      @coupon = Coupon.find_by(name: coupon_params)
       flash.now[:info] = "#{coupon_params} has been added"
       render :show
     else

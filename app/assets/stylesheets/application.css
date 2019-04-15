@@ -593,3 +593,7 @@ a img {
   color: #FFF5DB;
   text-decoration: none;
 }
+
+#discount {
+  color: red;
+}
