@@ -77,9 +77,9 @@ RSpec.describe User, type: :model do
 
     describe ".my_used_coupons?" do
       it "should indicate whether or not coupon has been used by user" do
-        expect(@u4.my_used_coupons?(@c1)).to eq(false)
+        expect(@u4.my_used_coupons?(@c1.name)).to eq(false)
         @u4.coupons << @c1
-        expect(@u4.my_used_coupons?(@c1)).to eq(true)
+        expect(@u4.my_used_coupons?(@c1.name)).to eq(true)
       end
     end
 

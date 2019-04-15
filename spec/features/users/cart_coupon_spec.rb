@@ -86,7 +86,6 @@ RSpec.describe "User's cart abilities", type: :feature do
         fill_in "Coupon code", with: "#{@c2.name}"
         click_button "Add Coupon"
       end
-      save_and_open_page
       expect(page).to have_content("#{@c2.name} has been added")
       expect(page).to have_content("Discount Total: $75.00")
     end
