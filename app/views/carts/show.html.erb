@@ -33,7 +33,6 @@
         <% if session[:coupon] %>
           <div id="discount">
             Discount Total: <%= number_to_currency(@cart.discount_total(@coupon)) %>
-
           </div>
         <% end %>
       <% if !current_user %>
