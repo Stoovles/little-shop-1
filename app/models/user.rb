@@ -43,6 +43,14 @@ class User < ApplicationRecord
     (total_quantity_sold / (total_inventory + total_quantity_sold).to_f) * 100
   end
 
+  def my_used_coupons?(coupon)
+    if coupons.include?(coupon)
+      return true
+    else
+      return false
+    end
+  end
+
   def self.top_three_states(merchant)
     joins(orders: :order_items).select(:state,"SUM(order_items.quantity)").where("order_items.fulfilled": true, "order_items.item_id": merchant.items.ids).group(:state).order("sum(order_items.quantity) DESC").limit(3)
   end
