@@ -17,6 +17,9 @@ before_action :require_visitor_or_user
   end
 
   def update
+    if params["Coupon code"]
+
+    end
     if params[:update] == "remove" || params[:quantity] == "0"
       session[:cart].delete(params[:item_id])
     else
