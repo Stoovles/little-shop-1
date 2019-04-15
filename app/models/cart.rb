@@ -31,7 +31,24 @@ class Cart
     items.inject(0) do |total, item|
       total += subtotal(item)
     end
+  end
 
+  def regular_items(coupon)
+    items.where.not(id: coupon.item_list)
+  end
+
+  def discount_items(coupon)
+    items.where(id: coupon.item_list)
+  end
+
+  def discount_total(coupon)
+    if coupon.discount == "dollar"
+      cart_total - coupon.amount
+    elsif coupon.discount == "percent"
+      discount_total = discount_items(coupon).inject(0) {|total, item| total += subtotal(item)*((100 - coupon.amount)/100.0)}
+      regular_total = regular_items(coupon).inject(0) {|total, item| total += subtotal(item)}
+      discount_total + regular_total
+    end
   end
 
 end
