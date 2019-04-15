@@ -2,6 +2,7 @@ class CartsController < ApplicationController
 before_action :require_visitor_or_user
   def show
     ids = @cart.contents.keys
+    @merchant_coupons = Coupon.find_coupons(@cart)
   end
 
   def create
@@ -19,13 +20,20 @@ before_action :require_visitor_or_user
   def update
     if params[:update] == "remove" || params[:quantity] == "0"
       session[:cart].delete(params[:item_id])
-    else
+    elsif params[:update] == "coupon"
+      if Order.unique_coupon?(params, current_user)
+        redirect_to cart_path, danger: "You have already used this coupon"
+      else
+      session[:coupon] = Coupon.find_by(name: params[:coupon])
+      redirect_to cart_path, success: "Coupon has been applied"
+      end
+    elsif params[:update] == "quantity"
       session[:cart][params[:item_id]] = params[:quantity].to_i
+      redirect_to cart_path, success: "Quantity Updated"
     end
+
     if @cart.contents.first == nil
       destroy
-    else
-      redirect_to cart_path
     end
   end
 
