@@ -32,6 +32,10 @@ Rails.application.routes.draw do
       member { patch :deactivate }
     end
     resources :orders, only: [:show, :update, :edit]
+    resources :coupons, only: [:index, :update, :edit, :create, :new, :destroy] do
+      member { patch :activate }
+      member { patch :deactivate }
+    end
   end
 
   get '/cart', to: "carts#show"
