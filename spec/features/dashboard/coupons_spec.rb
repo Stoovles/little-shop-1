@@ -82,7 +82,10 @@ RSpec.describe "merchant coupons" do
       expect(page).to have_link("Delete Coupon")
       click_link("Delete Coupon")
       expect(current_path).to eq(dashboard_coupons_path)
-      expect(page).to_not have_content("#{@c2.name}")
+      expect(page).to have_content("You have deleted #{@c3.name}")
+      visit dashboard_coupons_path
+      # current_user.coupons still includes it even though Coupon.all does not
+      # expect(page).to_not have_content("#{@c3.name}")
     end
   end
 

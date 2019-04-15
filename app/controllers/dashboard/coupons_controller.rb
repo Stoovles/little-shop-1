@@ -32,6 +32,12 @@ class Dashboard::CouponsController < ApplicationController
     redirect_to dashboard_coupon_path(coupon)
   end
 
+  def destroy
+    coupon = Coupon.find(params[:id])
+    coupon.destroy
+    redirect_to dashboard_coupons_path, success: "You have deleted #{coupon.name}"
+  end
+
   private
 
   def require_merchant
