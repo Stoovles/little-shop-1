@@ -25,8 +25,8 @@ skip_before_action :require_merchant, only: [:index]
 
     @total = @merchant.total_inventory
     @sold = @merchant.total_quantity_sold
-    @three_states_array = @merchant.top_three_states_array
-    @three_cities_array = @merchant.top_three_city_states_array
+    @three_states_array = User.top_three_states_array(@merchant)
+    @three_cities_array = User.top_three_city_states_array(@merchant)
     case params[:format]
     when "html"
     when "json"
