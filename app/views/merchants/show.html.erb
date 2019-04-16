@@ -17,8 +17,10 @@
       <br>
       Percentage of Inventory Sold: <%= current_user.percentage_sold.round(2) %>%
       <p id="pie-chart"><%= pie_chart @percent %></p>
-      <p id="pie-chart"><%= bar_chart @monthly_revenue %></p>
-      <p id="pie-chart"><%= bar_chart @daily_revenue %></p>
+      Revenue per Month -
+      <p id="bar-chart"><%= bar_chart @monthly_revenue %></p>
+      Revenue per Day of the Month - 
+      <p id="bar-chart"><%= bar_chart @daily_revenue %></p>
     </div>
     <br>
 
