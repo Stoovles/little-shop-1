@@ -10,6 +10,7 @@ skip_before_action :require_merchant, only: [:index]
     @citystates = User.top_three_city_states_overall
     @orders = User.three_biggest_orders
     @total_revenue = User.total_sales_array
+    @top_three = User.top_merchants_array
   end
 
   def show

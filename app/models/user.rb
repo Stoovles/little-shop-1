@@ -128,10 +128,19 @@ class User < ApplicationRecord
   end
 
   def self.total_sales_array
-    relations = joins(items: :order_items).where("order_items.fulfilled": true).select(:name,"SUM(quantity)").group(:name).order("SUM(quantity) desc")
+    relations = joins(items: :order_items).where("order_items.fulfilled": true).select(:name,"SUM(quantity*current_price)").group(:name).order("SUM(quantity*current_price) desc")
       relations.inject([]) do |array, relation|
         array << [relation.name,relation.sum]
       end
+  end
 
+  def self.top_merchants_array
+    self.total_sales_array[0,3]
+  end
+
+  def self.biggest_orders_array
+    self.three_biggest_orders.inject([]) do |array,relation|
+      array << [relation.id.to_s, relation.sum]
+    end
   end
 end

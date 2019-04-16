@@ -148,8 +148,22 @@ RSpec.describe 'when we visit a merchant show page' do
 
   describe ".total_sales_array" do
     it "makes an array of merchant names and their total revenue" do
-      expected = [["#{@umerch2.name}",433],["#{@umerch.name}",108]]
+      expected = [["#{@umerch2.name}",66710],["#{@umerch.name}",7830]]
       expect(User.total_sales_array).to eq(expected)
+    end
+  end
+
+  describe ".top_merchants_array" do
+    it "makes an array of top merchant names and their total revenue" do
+      expected = [["#{@umerch2.name}",66710],["#{@umerch.name}",7830]]
+      expect(User.top_merchants_array).to eq(expected)
+    end
+  end
+
+  describe ".biggest_orders_array" do
+    it "makes an array of the biggest orders by id" do
+      expected = [["#{@o12.id}",400],["#{@o9.id}",20],["#{@o8.id}",18]]
+      expect(User.biggest_orders_array).to eq(expected)
     end
   end
 end

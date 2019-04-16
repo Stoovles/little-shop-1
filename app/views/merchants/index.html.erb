@@ -1,11 +1,10 @@
 <div class="merch-stats">
  <h2> Statistics </h2>
- <%= pie_chart @total_revenue %>
   <div class="top-merchants">
-  <h5>Top 3 Merchants:</h5> <% @top.each do |merchant| %>
-    <%= merchant.name %> -
-    <%= number_to_currency(merchant.sum) %><br>
-  <% end %><br>
+    <h5>Merchant Chart:</h5>
+    <%= pie_chart @total_revenue %>
+    <h5>Top 3 Merchants:</h5>
+    <%= pie_chart @top_three %>
   <h5>Biggest Orders:</h5> <% @orders.each do |order| %>
   ID: <%= order.id %> -
   <%= order.sum %> units<br>
