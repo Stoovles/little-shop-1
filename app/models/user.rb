@@ -27,6 +27,13 @@ class User < ApplicationRecord
     OrderItem.where(item_id: self.items, order_id: order.id).sum("quantity*order_price")
   end
 
+  def monthly_revenue_array
+    relations = OrderItem.where(item_id: self.items, fulfilled: true).select("EXTRACT(MONTH FROM order_items.updated_at) as month","SUM(order_items.quantity*order_items.order_price)").group("EXTRACT(MONTH FROM order_items.updated_at)")
+    relations.inject([]) do |array,relation|
+      array << [relation.month.to_int,relation.sum]
+    end
+  end
+
   def merchant_pending_orders
     Order.joins(:order_items).select("orders.*").where("order_items.item_id": self.items,"order_items.fulfilled": false).distinct
   end

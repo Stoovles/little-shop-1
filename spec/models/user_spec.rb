@@ -48,11 +48,11 @@ RSpec.describe User, type: :model do
 
       @oi171 = OrderItem.create(order_id: @o39.id,item_id: @i39.id, quantity: 7,fulfilled: true,order_price: 53.0,created_at: "2018-04-07 22:05:50",updated_at: "2018-04-17 08:47:14")
       @oi172 = OrderItem.create(order_id: @o39.id,item_id: @i44.id, quantity: 7,fulfilled: true,order_price: 53.0,created_at: "2018-04-07 22:05:50",updated_at: "2018-04-17 08:47:14")
-      @oi214 = OrderItem.create(order_id: @o49.id,item_id: @i44.id, quantity: 2,fulfilled: false,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
-      @oi215 = OrderItem.create(order_id: @o49.id,item_id: @i23.id, quantity: 2,fulfilled: false,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
-      @oi275 = OrderItem.create(order_id: @o59.id,item_id: @i23.id, quantity: 2,fulfilled: false,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
-      @oi275 = OrderItem.create(order_id: @o61.id,item_id: @i39.id, quantity: 2,fulfilled: true,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
-      @oi275 = OrderItem.create(order_id: @o60.id,item_id: @i44.id, quantity: 2,fulfilled: true,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-04-15 04:26:51")
+      @oi214 = OrderItem.create(order_id: @o49.id,item_id: @i44.id, quantity: 2,fulfilled: false,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-05-15 04:26:51")
+      @oi215 = OrderItem.create(order_id: @o49.id,item_id: @i23.id, quantity: 2,fulfilled: false,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-05-15 04:26:51")
+      @oi275 = OrderItem.create(order_id: @o59.id,item_id: @i23.id, quantity: 2,fulfilled: false,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-07-15 04:26:51")
+      @oi275 = OrderItem.create(order_id: @o61.id,item_id: @i39.id, quantity: 2,fulfilled: true,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-07-15 04:26:51")
+      @oi275 = OrderItem.create(order_id: @o60.id,item_id: @i44.id, quantity: 2,fulfilled: true,order_price: 48.0,created_at: "2018-04-10 11:06:18",updated_at: "2018-09-15 04:26:51")
     end
 
     describe ".my_item_count" do
@@ -66,6 +66,13 @@ RSpec.describe User, type: :model do
       it "should find the total of the items for a merchant order" do
         expect(@umerch.my_total(@o39)).to eq(742.0)
         expect(@umerch.my_total(@o49)).to eq(96.0)
+      end
+    end
+
+    describe ".monthly_revenue_array" do
+      it "should return an array of the revenue per month" do
+        expected = [[4,742],[7,96],[9,96]]
+        expect(@umerch.monthly_revenue_array)
       end
     end
 
