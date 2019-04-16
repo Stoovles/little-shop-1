@@ -53,7 +53,6 @@ class Cart
       if coupon.amount < 100
         discount_total = discount_items(coupon).inject(0) {|total, item| total += subtotal(item)*(coupon.percent_off)}
       else
-        binding.pry
         discount_total = 0
       end
       discount_total + regular_total

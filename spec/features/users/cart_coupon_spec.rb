@@ -99,6 +99,8 @@ RSpec.describe "User's cart abilities", type: :feature do
         click_button "Add Coupon"
       end
       click_button "Check Out"
+      click_link "Order ID:"
+      save_and_open_page
       expect(page).to have_content("Coupon: #{@c2.name}")
     end
   end
