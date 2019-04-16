@@ -41,11 +41,7 @@
       </div>
       <% else %>
       <div class="checkout">
-        <% if session[:coupon] %>
-          <%= button_to 'Check Out', profile_orders_path(coupon: session[:coupon]), method: :create, class: "browse-button" %>
-        <% else %>
-          <%= button_to 'Check Out', profile_orders_path, method: :create, class: "browse-button" %>
-        <% end %>
+        <%= button_to 'Check Out', profile_orders_path, method: :create, class: "browse-button" %>
         <%= form_tag(discount_cart_path, method: :patch) do %>
           <%= text_field_tag "Coupon code" %>
           <%= submit_tag "Add Coupon" %>
