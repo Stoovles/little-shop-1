@@ -100,6 +100,15 @@ RSpec.describe "Merchant Show Page" do
         expect(page).to have_content("Percentage of Inventory Sold: 8.33%")
       end
     end
+
+    it "shows charts for the statistics" do
+      visit merchants_path
+      expect(page).to have_css("#chart-1")
+      expect(page).to have_css("#chart-2")
+      expect(page).to have_css("#chart-3")
+      expect(page).to have_css("#chart-4")
+      expect(page).to have_css("#chart-5")
+    end
   end
 
 end
