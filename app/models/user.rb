@@ -67,7 +67,7 @@ class User < ApplicationRecord
 
   def self.top_three_city_states_array(merchant)
     self.top_three_city_states(merchant).inject([]) do |array,relation|
-      array << [relation.citystate, relation.sum]
+      array << {"label":relation.citystate, "value":relation.sum}
     end
   end
 
