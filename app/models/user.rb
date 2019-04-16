@@ -34,6 +34,13 @@ class User < ApplicationRecord
     end
   end
 
+  def daily_revenue_array
+    relations = OrderItem.where(item_id: self.items, fulfilled: true).select("EXTRACT(DAY FROM order_items.updated_at) as day","SUM(order_items.quantity*order_items.order_price)").group("EXTRACT(DAY FROM order_items.updated_at)")
+    relations.inject([]) do |array,relation|
+      array << [relation.day.to_int,relation.sum]
+    end
+  end
+
   def merchant_pending_orders
     Order.joins(:order_items).select("orders.*").where("order_items.item_id": self.items,"order_items.fulfilled": false).distinct
   end

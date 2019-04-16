@@ -16,13 +16,15 @@
       Total Items Sold: <%= current_user.total_quantity_sold %>
       <br>
       Percentage of Inventory Sold: <%= current_user.percentage_sold.round(2) %>%
-    <p id="pie-chart"><%= pie_chart @percent %></p>
+      <p id="pie-chart"><%= pie_chart @percent %></p>
+      <p id="pie-chart"><%= bar_chart @monthly_revenue %></p>
+      <p id="pie-chart"><%= bar_chart @daily_revenue %></p>
     </div>
     <br>
+
     <div class="charts">
       - Top 3 States   -------------------------------   Top 3 Cities -
     </div>
-
     <div class="charts">
       <p id="pie-chart"><%= pie_chart @three_states_array %></p>
       <p id="pie-chart"><%= pie_chart @three_cities_array %></p>

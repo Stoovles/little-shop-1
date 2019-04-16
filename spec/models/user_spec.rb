@@ -71,8 +71,15 @@ RSpec.describe User, type: :model do
 
     describe ".monthly_revenue_array" do
       it "should return an array of the revenue per month" do
-        expected = [[4,742],[7,96],[9,96]]
+        expected = [[17,742],[15,192]]
         expect(@umerch.monthly_revenue_array)
+      end
+    end
+
+    describe ".daily_revenue_array" do
+      it "should return an array of the revenue per month" do
+        expected = [[4,742],[7,96],[9,96]]
+        expect(@umerch.daily_revenue_array)
       end
     end
 
