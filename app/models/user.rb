@@ -124,6 +124,14 @@ class User < ApplicationRecord
   end
 
   def self.three_biggest_orders
-    x = joins(orders: :order_items).where("order_items.fulfilled": true).select("orders.id", "sum(order_items.quantity)").group("orders.id").order("sum(order_items.quantity) DESC").limit(3)
+    joins(orders: :order_items).where("order_items.fulfilled": true).select("orders.id", "sum(order_items.quantity)").group("orders.id").order("sum(order_items.quantity) DESC").limit(3)
+  end
+
+  def self.total_sales_array
+    relations = joins(items: :order_items).where("order_items.fulfilled": true).select(:name,"SUM(quantity)").group(:name).order("SUM(quantity) desc")
+      relations.inject([]) do |array, relation|
+        array << [relation.name,relation.sum]
+      end
+
   end
 end

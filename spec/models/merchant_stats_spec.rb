@@ -145,4 +145,11 @@ RSpec.describe 'when we visit a merchant show page' do
       expect(User.three_biggest_orders.third.sum).to eq(18)
     end
   end
+
+  describe ".total_sales_array" do
+    it "makes an array of merchant names and their total revenue" do
+      expected = [["#{@umerch2.name}",433],["#{@umerch.name}",108]]
+      expect(User.total_sales_array).to eq(expected)
+    end
+  end
 end
