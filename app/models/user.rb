@@ -155,4 +155,16 @@ class User < ApplicationRecord
       array << [relation.name, relation.avg]
     end
   end
+
+  def self.states_overall_array
+    self.top_three_states_overall.inject([]) do |array,relation|
+      array << [relation.state,relation.count]
+    end
+  end
+
+  def self.cities_overall_array
+    self.top_three_city_states_overall.inject([]) do |array,relation|
+      array << [relation.citystate,relation.count]
+    end
+  end
 end

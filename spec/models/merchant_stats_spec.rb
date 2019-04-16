@@ -124,6 +124,7 @@ RSpec.describe 'when we visit a merchant show page' do
     end
   end
 
+
   describe "self.top_three_city_states_overall" do
     it "lists top 3 city,states overall by order count" do
       expect(User.top_three_city_states_overall.first.citystate).to eq("Miami, California")
@@ -178,6 +179,20 @@ RSpec.describe 'when we visit a merchant show page' do
     it "lists bottom 3 merchants by speed of fulfillment or lack thereof" do
       expected = [["#{@umerch2.name}","8 days 19:03:04.25"],["#{@umerch.name}","7 days 24:05:59.444444"]]
       expect(User.slowest_array).to eq(expected)
+    end
+  end
+
+  describe "self.states_overall_array" do
+    it "creates an array of the overall top states" do
+      expected = [["California",6],["Nevada",3],["Missouri",2]]
+      expect(User.states_overall_array).to eq(expected)
+    end
+  end
+
+  describe "self.cities_overall_array" do
+    it "creates an array of the overall top cities" do
+      expected = [["Miami, California",5],["Fresno, Nevada",3],["Saint Louis, Missouri",2]]
+      expect(User.cities_overall_array).to eq(expected)
     end
   end
 end
