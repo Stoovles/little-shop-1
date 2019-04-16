@@ -23,8 +23,7 @@ skip_before_action :require_merchant, only: [:index]
     @top_users_by_revenue = User.top_users_by_revenue(@merchant)
 
 
-    @total = @merchant.total_inventory
-    @sold = @merchant.total_quantity_sold
+    @percent = @merchant.percent_inventory_array
     @three_states_array = User.top_three_states_array(@merchant)
     @three_cities_array = User.top_three_city_states_array(@merchant)
   end

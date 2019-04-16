@@ -594,6 +594,11 @@ a img {
   color:#FFF5DB;
 }
 
+.charts {
+  display: flex;
+  justify-content: space-around;
+}
+
 #button {
   border: none;
   background: #FFF5DB;

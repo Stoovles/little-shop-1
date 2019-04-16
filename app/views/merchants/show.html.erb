@@ -16,44 +16,17 @@
       Total Items Sold: <%= current_user.total_quantity_sold %>
       <br>
       Percentage of Inventory Sold: <%= current_user.percentage_sold.round(2) %>%
-
-      <script>
-        var total = <%= @total %>;
-        var sold = <%= @sold %>;
-
-        var canvas = d3.select(".percentage-sold").append("svg")
-        .attr("width", 100)
-        .attr("height", 100);
-
-        var pie = canvas.append("rect")
-          .attr("height", 10)
-          .attr("width", total)
-
-          .attr("fill","red");
-
-        var sold = canvas.append("rect")
-          .attr("height", 10)
-          .attr("width", sold)
-
-          .attr("fill", "blue");
-      </script>
-
-<p id="line-chart"><%= line_chart OrderItem.where(item_id: 1).group(:created_at).count %></p>
-
-
-
-
-
-
+    <p id="pie-chart"><%= pie_chart @percent %></p>
     </div>
-    Top 3 States -
-    <p id="pie-chart"><%= pie_chart @three_states_array %></p>
+    <br>
+    <div class="charts">
+      - Top 3 States   -------------------------------   Top 3 Cities -
+    </div>
 
-    Top 3 Cities -
-    <p id="pie-chart"><%= pie_chart @three_cities_array %></p>
-    <% @top_3_cities.each do |relation| %>
-      <%= relation.citystate %>: <%= relation.sum %>
-    <% end %>
+    <div class="charts">
+      <p id="pie-chart"><%= pie_chart @three_states_array %></p>
+      <p id="pie-chart"><%= pie_chart @three_cities_array %></p>
+    </div>
   </div>
   <% end %>
   <div>
