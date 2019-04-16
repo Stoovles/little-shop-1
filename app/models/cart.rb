@@ -44,7 +44,7 @@ class Cart
   def discount_total(coupon)
     regular_total = regular_items(coupon).inject(0) {|total, item| total += subtotal(item)}
     if coupon.discount == "dollar"
-      if (cart_total - coupon.amount) < 0
+      if (cart_total - regular_total - coupon.amount) < 0
         regular_total
       else
         cart_total - coupon.amount

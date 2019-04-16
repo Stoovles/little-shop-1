@@ -29,6 +29,8 @@ RSpec.describe Cart do
 
     @c1 = @umerch.coupons.create(name: "WEEKEND15OFF",	discount: 0, amount: 15, active: 0)
     @c2 = @umerch.coupons.create(name: "WEEKEND50PERCENT",	discount: 1, amount: 50, active: 0)
+    @c4 = @umerch2.coupons.create(name: "100PERCENT",	discount: 1, amount: 1000, active: 0)
+    @c5 = @umerch2.coupons.create(name: "150OFF",	discount: 0, amount: 150, active: 0)
 
     @cart = Cart.new({
       "#{@item.id}" => 3,
@@ -86,6 +88,9 @@ RSpec.describe Cart do
     it "calculates the total price with a coupon" do
       expect(@cart.discount_total(@c1)).to eq(125.0)
       expect(@cart.discount_total(@c2)).to eq(95.0)
+      expect(@cart.discount_total(@c4)).to eq(90.0)
+      expect(@cart.discount_total(@c5)).to eq(90.0)
+
     end
   end
 end
