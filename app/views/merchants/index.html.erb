@@ -3,9 +3,13 @@
   <div class="top-merchants">
     <h5>Merchant Chart:</h5>
     <%= pie_chart @total_revenue %>
+    <br>
     <h5>Top 3 Merchants:</h5>
     <%= pie_chart @top_three %>
-  <h5>Biggest Orders:</h5> <% @orders.each do |order| %>
+    <br>
+    <h5>Biggest Orders:</h5>
+    <%= pie_chart @biggest %>
+  <% @orders.each do |order| %>
   ID: <%= order.id %> -
   <%= order.sum %> units<br>
   <% end %><br>

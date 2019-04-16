@@ -11,6 +11,7 @@ skip_before_action :require_merchant, only: [:index]
     @orders = User.three_biggest_orders
     @total_revenue = User.total_sales_array
     @top_three = User.top_merchants_array
+    @biggest = User.biggest_orders_array
   end
 
   def show
