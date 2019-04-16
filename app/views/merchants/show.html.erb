@@ -16,6 +16,34 @@
       Total Items Sold: <%= current_user.total_quantity_sold %>
       <br>
       Percentage of Inventory Sold: <%= current_user.percentage_sold.round(2) %>%
+
+      <script>
+        var total = <%= @total %>;
+        var sold = <%= @sold %>
+        var canvas = d3.select(".percentage-sold").append("svg")
+        .attr("width", 500)
+        .attr("height", 500);
+
+        var pie = canvas.append("rect")
+          .attr("width", 10)
+          .attr("height", total)
+          .attr("fill","red");
+
+        var sold = canvas.append("rect")
+          .attr("width", 10)
+          .attr("height", sold)
+          .attr("fill", "blue");
+
+        var circle = canvas.selectAll("circle")
+          .data(total)
+          .enter()
+          .append("circle")
+          .attr("cx", 250)
+          .attr("cy", 250)
+          .attr("r", function(d) {return d})
+          .attr("fill","red");
+      </script>
+
     </div>
     Top 3 States -
     <% @top_3_states.each do |relation| %>

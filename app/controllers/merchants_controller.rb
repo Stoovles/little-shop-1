@@ -21,6 +21,21 @@ skip_before_action :require_merchant, only: [:index]
     @top_user = User.top_user_by_orders(@merchant)
     @top_user_by_items = User.top_user_by_items(@merchant)
     @top_users_by_revenue = User.top_users_by_revenue(@merchant)
+
+
+    @total = @merchant.total_inventory
+    @sold = @merchant.total_quantity_sold
+    case params[:format]
+    when "html"
+    when "json"
+      render json: @total
+      render json: @sold
+    end
+
+    # respond_to do |format|
+    #   format.html
+    #   format.json {render json: @total}
+    # end
   end
 
   private
