@@ -61,9 +61,9 @@ RSpec.describe 'when we visit a merchant show page' do
 
   describe "self.top_three_states_array" do
     it "turns the top 3 states into an array with state/quantity" do
-      expected = [{"label" => "California", "value" => 34},
-              {"label" => "Nevada", "value" => 30},
-              {"label" => "Pennsylvania", "value" => 18}]
+      expected = ["{\"label\":\"California\",\"value\":34}",
+              "{\"label\":\"Nevada\",\"value\":30}",
+              "{\"label\":\"Pennsylvania\",\"value\":18}"]
 
       # [["California", 34],["Nevada",30],["Pennsylvania",18]]
       expect(User.top_three_states_array(@umerch)).to eq(expected)
@@ -83,9 +83,9 @@ RSpec.describe 'when we visit a merchant show page' do
 
   describe "self.top_three_city_states_array" do
     it "turns the top 3 states into an array with state/quantity" do
-      expected = [{"label" => "Fresno, Nevada", "value" => 30},
-              {"label" => "Miami, California", "value" => 20},
-              {"label" => "Harrisburg, Pennsylvania", "value" => 18}]
+      expected = ["{\"label\":\"Fresno, Nevada\",\"value\":30}",
+              "{\"label\":\"Miami, California\",\"value\":20}",
+              "{\"label\":\"Harrisburg, Pennsylvania\",\"value\":18}"]
       expect(User.top_three_city_states_array(@umerch)).to eq(expected)
     end
   end

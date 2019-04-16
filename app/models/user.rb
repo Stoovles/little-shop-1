@@ -57,7 +57,7 @@ class User < ApplicationRecord
 
   def self.top_three_states_array(merchant)
     self.top_three_states(merchant).inject([]) do |array,relation|
-      array << {"label" => relation.state, "value" => relation.sum}
+      array << {"label" => relation.state, "value" => relation.sum}.to_json
     end
   end
 
@@ -67,7 +67,7 @@ class User < ApplicationRecord
 
   def self.top_three_city_states_array(merchant)
     self.top_three_city_states(merchant).inject([]) do |array,relation|
-      array << {"label" => relation.citystate, "value" => relation.sum}
+      array << {"label" => relation.citystate, "value" => relation.sum}.to_json
     end
   end
 
