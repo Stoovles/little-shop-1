@@ -37,19 +37,21 @@
 
           .attr("fill", "blue");
       </script>
+
       <script type="text/javascript">
-var w = 300,                        //width
-h = 300,                            //height
-r = 100,                            //radius
+var w = 400,                        //width
+h = 400,                            //height
+r = 200,                            //radius
 color = d3.scale.category20c();     //builtin range of colors
-data = @three_states_array
-[{"label":"one", "value":20},
-        {"label":"two", "value":50},
-        {"label":"three", "value":30}];
+
+//data = ;
+//[{label:"California", value:20},
+        //{label:"Nevada", value:50},
+        //{label:"Pennsylvania", value:30}];
 
 var vis = d3.select("body")
     .append("svg:svg")              //create the SVG element inside the <body>
-    .data([data])                   //associate our data with the document
+    .data(<%= @three_states_array %>)                   //associate our data with the document
         .attr("width", w)           //set the width and height of our visualization (these will be attributes of the <svg> tag
         .attr("height", h)
     .append("svg:g")                //make a group to hold our pie chart

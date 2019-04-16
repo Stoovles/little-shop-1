@@ -27,13 +27,14 @@ skip_before_action :require_merchant, only: [:index]
     @sold = @merchant.total_quantity_sold
     @three_states_array = User.top_three_states_array(@merchant)
     @three_cities_array = User.top_three_city_states_array(@merchant)
+
     case params[:format]
     when "html"
     when "json"
       render json: @total
       render json: @sold
-      render json: @three_states_array
-      render json: @three_cities_array
+      render json: @three_states_array.to_json
+      render json: @three_cities_array.to_json
     end
 
     # respond_to do |format|
