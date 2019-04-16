@@ -32,11 +32,14 @@
 
   <div class="top-geographical">
   <h5>Top 3 States:</h5>
+  <p id="pie-chart"><%= pie_chart @overall_states %></p>
     <% @states.each do |relation| %>
     <%= relation.state %> -
     <%= relation.count %> orders<br>
   <% end %><br>
-  <h5>Top 3 Cities:</h5> <% @citystates.each do |relation| %>
+  <h5>Top 3 Cities:</h5>
+  <p id="pie-chart"><%= pie_chart @overall_cities %></p>
+  <% @citystates.each do |relation| %>
     <%= relation.citystate %> -
     <%= relation.count %> orders<br>
   <% end %><br>

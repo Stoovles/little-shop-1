@@ -14,6 +14,8 @@ skip_before_action :require_merchant, only: [:index]
     @biggest = User.biggest_orders_array
     @fastest_array = User.fastest_array
     @slowest_array = User.slowest_array
+    @overall_states = User.states_overall_array
+    @overall_cities = User.cities_overall_array
   end
 
   def show
