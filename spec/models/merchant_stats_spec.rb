@@ -59,6 +59,13 @@ RSpec.describe 'when we visit a merchant show page' do
     end
   end
 
+  describe "self.top_three_states_array" do
+    it "turns the top 3 states into an array with state/quantity" do
+      expected = [["California", 34],["Nevada",30],["Pennsylvania",18]]
+      expect(User.top_three_states_array(@umerch)).to eq(expected)
+    end
+  end
+
   describe 'self.top_three_city_states' do
     it 'lists top 3 city, states by quantity sold' do
       expect(User.top_three_city_states(@umerch).first.citystate).to eq("Fresno, Nevada")
@@ -69,6 +76,7 @@ RSpec.describe 'when we visit a merchant show page' do
       expect(User.top_three_city_states(@umerch).third.sum).to eq(18)
     end
   end
+
 
   describe "self.top_three_merchants_overall" do
     it "lists top 3 merchants by quantity * price" do
