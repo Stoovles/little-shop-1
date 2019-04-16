@@ -90,7 +90,6 @@ RSpec.describe Cart do
       expect(@cart.discount_total(@c2)).to eq(95.0)
       expect(@cart.discount_total(@c4)).to eq(90.0)
       expect(@cart.discount_total(@c5)).to eq(90.0)
-
     end
   end
 end

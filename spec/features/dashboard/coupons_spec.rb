@@ -20,7 +20,7 @@ RSpec.describe "merchant coupons" do
   describe "on the merchant coupons index" do
     it "should show my coupons" do
       visit dashboard_coupons_path
-      expect(page).to have_css(".coupon-card", count: 3)
+      expect(page).to have_css(".coupon-card", count: 4)
       expect(page).to have_link("#{@c1.name}")
       click_link "#{@c1.name}"
       expect(current_path).to eq(dashboard_coupon_path(@c1))
