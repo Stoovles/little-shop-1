@@ -43,6 +43,10 @@ class User < ApplicationRecord
     (total_quantity_sold / (total_inventory + total_quantity_sold).to_f) * 100
   end
 
+  def percent_inventory_array
+    [["sold", total_quantity_sold],["unsold",(total_inventory - total_quantity_sold)]]
+  end
+
   def my_used_coupons?(coupon_name)
     if coupons.pluck(:name).include?(coupon_name)
       return true

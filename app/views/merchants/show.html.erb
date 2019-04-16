@@ -22,8 +22,8 @@
         var sold = <%= @sold %>;
 
         var canvas = d3.select(".percentage-sold").append("svg")
-        .attr("width", 500)
-        .attr("height", 500);
+        .attr("width", 100)
+        .attr("height", 100);
 
         var pie = canvas.append("rect")
           .attr("height", 10)
@@ -40,19 +40,17 @@
 
 <p id="line-chart"><%= line_chart OrderItem.where(item_id: 1).group(:created_at).count %></p>
 
-<p id="pie-chart"><%= pie_chart Item.where("items.current_price > 45").group(:current_price).limit(5).count %></p>
 
-<p id="pie-chart"><%= pie_chart @three_states_array %></p>
 
 
 
 
     </div>
     Top 3 States -
-    <% @top_3_states.each do |relation| %>
-      <%= relation.state %>: <%= relation.sum %>
-    <% end %>
+    <p id="pie-chart"><%= pie_chart @three_states_array %></p>
+
     Top 3 Cities -
+    <p id="pie-chart"><%= pie_chart @three_cities_array %></p>
     <% @top_3_cities.each do |relation| %>
       <%= relation.citystate %>: <%= relation.sum %>
     <% end %>

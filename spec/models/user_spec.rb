@@ -95,6 +95,13 @@ RSpec.describe User, type: :model do
       end
     end
 
+    describe "percent_inventory_array" do
+      it "should give an array of sold items to unsold items" do
+        expected = [["sold", 18],["unsold",66]]
+        expect(@umerch.percent_inventory_array).to eq(expected)
+      end
+    end
+
     describe "percentage sold" do
       it "should give the percentage of a merchant's inventory sold" do
         expect(@umerch.percentage_sold.round(2)).to eq(17.65)
