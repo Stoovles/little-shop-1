@@ -16,11 +16,15 @@
   </div>
 
   <div class="merchant-speed">
-  <h5>Fastest Merchants:</h5> <% @fastest.each do |merchant| %>
+  <h5>Fastest Merchants:</h5>
+  <%= bar_chart @fastest_array %>
+  <% @fastest.each do |merchant| %>
       <%= merchant.name %> -
       <%= merchant.avg %><br>
     <% end %><br>
-  <h5>Slowest Merchants:</h5> <% @slowest.each do |merchant| %>
+  <h5>Slowest Merchants:</h5>
+    <%= bar_chart @slowest_array %>
+  <% @slowest.each do |merchant| %>
       <%= merchant.name %> -
       <%= merchant.avg %><br>
     <% end %><br>

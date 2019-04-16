@@ -166,4 +166,18 @@ RSpec.describe 'when we visit a merchant show page' do
       expect(User.biggest_orders_array).to eq(expected)
     end
   end
+
+  describe "self.fastest_array" do
+    it "lists top 3 merchants by speed of fulfillment" do
+      expected = [["#{@umerch.name}","7 days 24:05:59.444444"],["#{@umerch2.name}","8 days 19:03:04.25"]]
+      expect(User.fastest_array).to eq(expected)
+    end
+  end
+
+  describe "self.slowest_array" do
+    it "lists bottom 3 merchants by speed of fulfillment or lack thereof" do
+      expected = [["#{@umerch2.name}","8 days 19:03:04.25"],["#{@umerch.name}","7 days 24:05:59.444444"]]
+      expect(User.slowest_array).to eq(expected)
+    end
+  end
 end

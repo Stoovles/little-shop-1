@@ -143,4 +143,16 @@ class User < ApplicationRecord
       array << [relation.id.to_s, relation.sum]
     end
   end
+
+  def self.fastest_array
+    self.three_fastest.inject([]) do |array, relation|
+      array << [relation.name, relation.avg]
+    end
+  end
+
+  def self.slowest_array
+    self.three_slowest.inject([]) do |array, relation|
+      array << [relation.name, relation.avg]
+    end
+  end
 end
