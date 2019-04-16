@@ -1,5 +1,6 @@
 <div class="merch-stats">
  <h2> Statistics </h2>
+ <%= pie_chart @total_revenue %>
   <div class="top-merchants">
   <h5>Top 3 Merchants:</h5> <% @top.each do |merchant| %>
     <%= merchant.name %> -

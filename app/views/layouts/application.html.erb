@@ -11,10 +11,6 @@
     <%= stylesheet_link_tag 'http://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css' %>
     <%= javascript_include_tag 'http://yandex.st/bootstrap/3.1.1/js/bootstrap.min.js' %>
 
-    <script src="https://d3js.org/d3.v5.js"></script>
-    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?2.1.3"></script>
-
-
   </head>
 
   <nav>
@@ -57,11 +53,14 @@
   </nav>
 
   <body>
-    <% flash.each do |name, message| %>
+    <div class="body">
+      <% flash.each do |name, message| %>
       <div class='alert alert-<%= name %>', role="alert">
         <%= message %>
       </div>
-    <% end %>
-    <%= yield %>
+      <% end %>
+      <%= yield %>
+
+    </div>
   </body>
 </html>
