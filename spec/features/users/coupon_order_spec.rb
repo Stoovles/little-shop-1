@@ -20,7 +20,7 @@ RSpec.describe "order creation with coupon", type: :feature do
     @c2 = @umerch.coupons.create(name: "SUMMER20OFF",	discount: 0, amount: 20, active: 0)
     @c3 = @umerch2.coupons.create(name: "HOLIDAY15PERCENT",	discount: 1, amount: 15, active: 1)
     @c4 = @umerch2.coupons.create(name: "15PERCENT",	discount: 1, amount: 15, active: 0)
-    @c5 = @umerch2.coupons.create(name: "15OFF",	discount: 0, amount: 15, active: 0)
+    @c5 = @umerch2.coupons.create(name: "150OFF",	discount: 0, amount: 150, active: 0)
     @u1.coupons << @c1
 
     visit login_path
@@ -49,7 +49,7 @@ RSpec.describe "order creation with coupon", type: :feature do
       end
     end
 
-    describe "orders with greater than item dollar off coupon" do
+    describe "orders with coupon less than price" do
       it "should create the order with the percent coupon" do
         visit cart_path
         within ".cart-container" do
@@ -59,6 +59,19 @@ RSpec.describe "order creation with coupon", type: :feature do
         click_button "Check Out"
         click_link "Order ID:"
         expect(page).to have_content("Total: $86.00")
+      end
+    end
+
+    describe "orders with coupon greater than price" do
+      it "should create the order with the percent coupon" do
+        visit cart_path
+        within ".cart-container" do
+          fill_in "Coupon code", with: "#{@c5.name}"
+          click_button "Add Coupon"
+        end
+        click_button "Check Out"
+        click_link "Order ID:"
+        expect(page).to have_content("Total: $35.00")
       end
     end
 end

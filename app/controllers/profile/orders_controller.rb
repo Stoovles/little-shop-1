@@ -13,10 +13,10 @@ class Profile::OrdersController < ApplicationController
         discount_remainder = @coupon.amount - discount
         if @coupon.discount == "percent"
           order_item_price = Item.find(item_id).current_price * @coupon.percent_off
-        elsif  base_price < @coupon.amount
-          order_item_price = Item.find(item_id).current_price - @coupon.amount
+        elsif  base_price <= @coupon.amount
+          order_item_price = 0
           discount_remainder = 0
-        elsif  base_price >= @coupon.amount
+        elsif  base_price > @coupon.amount
           order_item_price = Item.find(item_id).current_price - discount_remainder
           discount_remainder - order_item_price
         end
