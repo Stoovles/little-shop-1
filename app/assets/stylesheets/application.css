@@ -1,14 +1,9 @@
 body {
+  font-family: New Century Schoolbook, serif;
   background: url(https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1439,w_2560,x_0,y_0/dpr_1.5/c_limit,w_1044/fl_lossy,q_auto/v1493394312/articles/2014/12/03/how-much-do-whisky-casks-really-affect-taste/141125-macallen-cask-tease_hw1wed);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  margin-top: 6.5em;
-}
-
-.body {
-  font-family: New Century Schoolbook, serif;
-  color:#FFF5DB;
   margin-top: 5.5em;
 }
 
@@ -637,5 +632,6 @@ a img {
 }
 
 #discount {
-  color: red;
+  background: maroon;
+  color: #FFF5DB;
 }
